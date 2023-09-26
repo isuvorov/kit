@@ -113,7 +113,7 @@ jobs:
           APP_NAME: ${{ env.K8S_APP_NAME_API }}
           STAGE: ${{ env.STAGE }}
           VERSION: ${{ env.VERSION }}
-          ENV_SECRET: ${{ env.K8S_ENV_SECRET_NAME }}
+          ENV_SECRET_NAME: ${{ env.K8S_ENV_SECRET_NAME }}
           DOCKER_IMAGE: ${{ env.DOCKER_IMAGE_API }}
     
   deploy_web:
@@ -140,5 +140,5 @@ jobs:
           APP_NAME: ${{ env.K8S_APP_NAME_WEB }}
           STAGE: ${{ env.STAGE }}
           VERSION: ${{ env.VERSION }}
-          ENV_SECRET: ${{ env.K8S_ENV_SECRET_NAME }}
+          ENV_SECRET_NAME: ${{ env.K8S_ENV_SECRET_NAME }}
           DOCKER_IMAGE: ${{ env.DOCKER_IMAGE_WEB }}
