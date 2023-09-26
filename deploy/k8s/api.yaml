@@ -55,8 +55,6 @@ spec:
           env:
             - name: STAGE
               value: ${STAGE}
-            - name: VERSION
-              value: ${VERSION}
             - name: PORT
               value: "8080"
 ---
