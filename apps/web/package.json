@@ -1,0 +1,36 @@
+{
+  "name": "web",
+  "version": "0.1.0",
+  "author": "Igor Suvorov <hi@isuvorov.com> (https://github.com/isuvorov)",
+  "private": true,
+  "scripts": {
+    "start": "          next start",
+    "dev": "            next dev",
+    "build": "          next build && echo ok",
+    "test": "           next lint",
+    "prepack": "        lsk run prepack",
+    "release": "        lsk run release"
+  },
+  "dependencies": {
+    "eslint": "8.46.0",
+    "eslint-config-next": "13.4.12",
+    "next": "13.4.12",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "18.2.18",
+    "typescript": "5.0"
+  },
+  "//": "///////////========================/////////========================/////////========================/////////",
+  "prettier": "@lskjs/eslint-config/prettier",
+  "eslintConfig": {
+    "extends": "@lskjs/eslint-config"
+  },
+  "jest": {
+    "preset": "@lskjs/jest-config"
+  },
+  "///": "//////////========================/////////========================/////////========================/////////",
+  "license": "ISC",
+  "////": "/////////========================/////////========================/////////========================/////////"
+}

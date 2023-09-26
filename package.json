@@ -1,0 +1,51 @@
+{
+  "name": "kit3-root",
+  "version": "1.0.0",
+  "description": "",
+  "author": "isuvorov",
+  "scripts": {
+    "dev": "            concurrently -k npm:dev:*",
+    "build": "          lsk run build",
+    "test": "           echo ok",
+    "prepack": "        lsk run prepack",
+    "release": "        lsk run release",
+    "debug": "DEBUG=lsk concurrently -k npm:dev:*",
+    "_dev:app": "   cd apps/app && npm run dev",
+    "dev:api": "    cd apps/api && npm run dev",
+    "dev:web": "    cd apps/web && npm run dev"
+  },
+  "devDependencies": {
+    "@lskjs/cli-scripts": "^3.11.0",
+    "@lskjs/cli-utils": "^3.11.0",
+    "@lskjs/eslint-config": "^3.11.0",
+    "@lskjs/jest-config": "^3.11.0",
+    "@lskjs/tsconfig": "^3.11.0",
+    "concurrently": "^8.2.0",
+    "lsk": "^3.11.0",
+    "nodemon": "^3.0.1",
+    "typescript": "^5.1.6"
+  },
+  "//": "///////////========================/////////========================/////////========================/////////",
+  "prettier": "@lskjs/eslint-config/prettier",
+  "eslintConfig": {
+    "settings": {
+      "import/resolver": {
+        "typescript": {
+          "project": [
+            "tsconfig.json",
+            "apps/*/tsconfig.json"
+          ]
+        }
+      }
+    },
+    "extends": "@lskjs/eslint-config"
+  },
+  "jest": {
+    "preset": "@lskjs/jest-config"
+  },
+  "main": "index.js",
+  "///": "//////////========================/////////========================/////////========================/////////",
+  "license": "ISC",
+  "keywords": [],
+  "////": "/////////========================/////////========================/////////========================/////////"
+}

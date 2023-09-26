@@ -1,0 +1,6 @@
+node_modules
+apps/*/lib
+apps/*/.release
+apps/*/.reports
+**/.env*
+__*
