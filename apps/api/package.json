@@ -7,7 +7,7 @@
   "scripts": {
     "start": "        node lib --alfred/apps/api",
     "dev": "          lsk run dev",
-    "build": "        lsk run build",
+    "build": "        nest build",
     "test": "         lsk run test",
     "prepack": "      lsk run prepack",
     "release": "      lsk run release"

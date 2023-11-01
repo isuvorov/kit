@@ -1,0 +1,13 @@
+{
+    "workbench.colorCustomizations": {
+        "debugConsole.warningForeground": "#ffffff",
+        "debugConsole.errorForeground": "#f00",
+        "debugConsole.infoForeground": "#0f0",
+        "debugConsole.sourceForeground": "#ffffff",
+        "debugConsole.inputForeground": "#0f0",
+        "debugConsole.promptForeground": "#ffffff",
+        "activityBar.background": "#541B07",
+        "titleBar.activeBackground": "#76260A",
+        "titleBar.activeForeground": "#FFFBF9"
+    }
+}
