@@ -7,6 +7,6 @@ ARG VERSION=unknown
 ENV VERSION=${VERSION}
 
 WORKDIR /app
-COPY ./.release/ /app
+COPY ./ /app
 
 CMD npm start
