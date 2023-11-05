@@ -9,7 +9,7 @@
     "build": "          next build && echo ok",
     "test": "           next lint",
     "prepack": "        lsk run prepack",
-    "release": "        lsk run release"
+    "release": "        pnpm install && pnpm -F \".\" deploy .release && .release && pnpm build"
   },
   "dependencies": {
     "eslint": "8.50.0",

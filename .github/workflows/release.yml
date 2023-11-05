@@ -10,8 +10,8 @@ env:
   STAGE: prod
   VERSION: ${{ github.sha }}
 
-  DOCKER_IMAGE_API: ${{ vars.DOCKER_REGISTRY }}/kit/api:${{ github.sha }}
-  DOCKER_IMAGE_WEB: ${{ vars.DOCKER_REGISTRY }}/kit/web:${{ github.sha }}
+  DOCKER_IMAGE_API: ${{ vars.DOCKER_REGISTRY }}/kit/kit-api:${{ github.sha }}
+  DOCKER_IMAGE_WEB: ${{ vars.DOCKER_REGISTRY }}/kit/kit-web:${{ github.sha }}
 
   K8S_ENV_SECRET_NAME: prod-kit-env
   K8S_DEPLOYMENT_API: deploy/k8s/api.yaml
@@ -47,6 +47,7 @@ jobs:
           working-directory: apps/api
           node-version: ${{ env.NODE_VERSION }}
           pnpm-version: ${{ env.PNPM_VERSION }}
+          command: pnpm release
       - name: Docker – Setup
         uses: docker/setup-buildx-action@v2
       - name: Docker - Login
@@ -76,10 +77,7 @@ jobs:
           working-directory: apps/web
           node-version: ${{ env.NODE_VERSION }}
           pnpm-version: ${{ env.PNPM_VERSION }}
-          command: |
-            pnpm install && \
-            pnpm -F "." deploy .release && \
-            cd .release && pnpm build
+          command: pnpm release
       - name: Docker – Setup
         uses: docker/setup-buildx-action@v2
       - name: Docker - Login
