@@ -15,15 +15,15 @@
     "dev:web": "    cd apps/web && npm run dev"
   },
   "devDependencies": {
-    "@lskjs/cli-scripts": "^3.16.1",
-    "@lskjs/cli-utils": "^3.16.1",
+    "@lskjs/cli-scripts": "^3.16.2",
+    "@lskjs/cli-utils": "^3.16.2",
     "@lskjs/eslint-config": "^3.16.0",
-    "@lskjs/jest-config": "^3.16.1",
+    "@lskjs/jest-config": "^3.16.2",
     "@lskjs/tsconfig": "^3.11.0",
     "concurrently": "^8.2.2",
     "jest": "^29.7.0",
     "jest-junit": "^16.0.0",
-    "lsk": "^3.16.1",
+    "lsk": "^3.16.2",
     "nodemon": "^3.0.1",
     "ts-jest": "^29.1.1",
     "typescript": "^5.2.2"

@@ -9,17 +9,17 @@ importers:
   .:
     devDependencies:
       '@lskjs/cli-scripts':
-        specifier: ^3.16.1
-        version: 3.16.1
+        specifier: ^3.16.2
+        version: 3.16.2
       '@lskjs/cli-utils':
-        specifier: ^3.16.1
-        version: 3.16.1
+        specifier: ^3.16.2
+        version: 3.16.2
       '@lskjs/eslint-config':
         specifier: ^3.16.0
         version: 3.16.0
       '@lskjs/jest-config':
-        specifier: ^3.16.1
-        version: 3.16.1(@babel/core@7.23.2)(@types/node@18.13.0)(typescript@5.2.2)
+        specifier: ^3.16.2
+        version: 3.16.2(@babel/core@7.23.2)(@types/node@18.13.0)(typescript@5.2.2)
       '@lskjs/tsconfig':
         specifier: ^3.11.0
         version: 3.11.0
@@ -33,8 +33,8 @@ importers:
         specifier: ^16.0.0
         version: 16.0.0
       lsk:
-        specifier: ^3.16.1
-        version: 3.16.1
+        specifier: ^3.16.2
+        version: 3.16.2
       nodemon:
         specifier: ^3.0.1
         version: 3.0.1
@@ -48,8 +48,8 @@ importers:
   apps/api:
     dependencies:
       '@lskjs/algos':
-        specifier: ^3.15.1
-        version: 3.15.1
+        specifier: ^3.16.2
+        version: 3.16.2
       '@lskjs/env':
         specifier: ^3.11.0
         version: 3.11.0
@@ -531,18 +531,11 @@ packages:
       regenerator-runtime: 0.13.11
     dev: true
 
-  /@babel/runtime@7.23.1:
-    resolution: {integrity: sha512-hC2v6p8ZSI/W0HUzh3V8C5g+NwSKzKPtJwSpTjwl0o297GP9+ZLQSkdvHz46CM3LqyoXxq+5G9komY+eSqSO0g==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      regenerator-runtime: 0.14.0
-
   /@babel/runtime@7.23.2:
     resolution: {integrity: sha512-mM8eg4yl5D6i3lu2QKPuPH4FArvJ8KhTofbE7jwMUv9KX5mBvwPAqnV3MlyBNqdp9RyRKP6Yck8TrfYrPvX3bg==}
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.14.0
-    dev: true
 
   /@babel/template@7.22.15:
     resolution: {integrity: sha512-QPErUVm4uyJa60rkI73qneDacvdvzxshT3kksGqlGWYdOTIUOwJ7RDUL8sGqslY1uXWSL6xMFKEXDS3ox2uF0w==}
@@ -1008,17 +1001,17 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
 
-  /@lskjs/algos@3.15.1:
-    resolution: {integrity: sha512-fR586jHbqNwJzFK/yFfPGAkoAzGmqyph4bx72swyiDRaJbB+wkcZ23ZZOtxVZ8z83XQyo7yZ8079u9x7LG3crw==}
+  /@lskjs/algos@3.16.2:
+    resolution: {integrity: sha512-wguaMwihMnFAjkUvcbFKguvS4vk8IhXlJFtfZc/p1F41KaH23iUYqQuB7he96EZlfOcPJfLF6GaeXMG+0dh51w==}
 
-  /@lskjs/cli-scripts@3.16.1:
-    resolution: {integrity: sha512-4x7xGrt+AbrGX6w6IM6QPMWXteSlM0LxnV0AgjVxJS8vLl/4O19q9bp0fhaDZ09hbGJ3GQXUwGjUkWHVtv5SWw==}
+  /@lskjs/cli-scripts@3.16.2:
+    resolution: {integrity: sha512-CbC81oPPvMHXvS0u+Ea4mb2MrGbbiX7aWD1xZMcjDEhiLsU2z8lbvq0AykCuMf9d7kVD5ptVkva6pcYe0xD7ig==}
     dependencies:
-      '@lskjs/algos': 3.15.1
-      '@lskjs/cli-utils': 3.16.1
+      '@lskjs/algos': 3.16.2
+      '@lskjs/cli-utils': 3.16.2
       '@lskjs/env': 3.11.0
-      '@lskjs/err': 3.15.1
-      '@lskjs/stringify': 3.15.1
+      '@lskjs/err': 3.16.2
+      '@lskjs/stringify': 3.16.2
       all-contributors-cli: 6.26.1
       fishbird: 0.20.0
       gitlog: 4.0.8
@@ -1031,16 +1024,16 @@ packages:
       - supports-color
     dev: true
 
-  /@lskjs/cli-utils@3.16.1:
-    resolution: {integrity: sha512-k64nfZYtrqQxSjL0CNFmvRzWsZvdssoh6x4c+Il9iIGG/GPeVl5n42n32/6QoMsX4G06eQ09HTai901AAZgF0A==}
+  /@lskjs/cli-utils@3.16.2:
+    resolution: {integrity: sha512-CiWg2Z1pjld7zHNRZMKfZMbR6nkr0rBuSVb6uICu8Szm9vnnNIeqNMp2WJYMUpC0m3YCnQmkVh/3E5X7QBlwLw==}
     hasBin: true
     dependencies:
       '@babel/runtime': 7.20.7
-      '@lskjs/algos': 3.15.1
+      '@lskjs/algos': 3.16.2
       '@lskjs/colors': 3.11.0
       '@lskjs/env': 3.11.0
-      '@lskjs/err': 3.15.1
-      '@lskjs/log': 3.15.1
+      '@lskjs/err': 3.16.2
+      '@lskjs/log': 3.16.2
       '@lskjs/utils': 3.8.1
       axios: 0.27.2
       bluebird: 3.7.2
@@ -1063,10 +1056,10 @@ packages:
   /@lskjs/env@3.11.0:
     resolution: {integrity: sha512-AohXi0/BY8VpgaVm40Xh6OBXOjlUW7pn+HDgZbpUcWX2TdQhBPH7helZ6LrF3cl3LnEIPR8gPRF5MoDWn+7P1A==}
 
-  /@lskjs/err@3.15.1:
-    resolution: {integrity: sha512-skxbfhITwvYWK3VtpCKCjhWzH9XKKgilYeHlukccHAE3itQGL7QWvPWfqVkw/7WUNOdxjg0ZhribUcoF3eridQ==}
+  /@lskjs/err@3.16.2:
+    resolution: {integrity: sha512-Ga0ibDu+665iVz631tWRtxPySIk5sJSc4cS5jD/K+2scmSxrwDI+d2bJ+ZL0HkCnmPfjQNVzqVLVbVhHwzu9vg==}
     dependencies:
-      '@lskjs/algos': 3.15.1
+      '@lskjs/algos': 3.16.2
     dev: true
 
   /@lskjs/eslint-config@3.16.0:
@@ -1097,8 +1090,8 @@ packages:
       - supports-color
     dev: true
 
-  /@lskjs/jest-config@3.16.1(@babel/core@7.23.2)(@types/node@18.13.0)(typescript@5.2.2):
-    resolution: {integrity: sha512-zHI6m9dk7k7h7wR9i6uY1jWVfkpdadKl536l0i/fZOsF4nAMXJoLuJnr0D/6a5qly2WfrhPsF+zmoqtorU5AGg==}
+  /@lskjs/jest-config@3.16.2(@babel/core@7.23.2)(@types/node@18.13.0)(typescript@5.2.2):
+    resolution: {integrity: sha512-RCLzHk15/RKfNPY5OuNupi/9DjDkMhzN4voKVQycQKpq11ytuiLSOOzSL8ICb3SvhKqPJONobF4yj2bKSSv+TQ==}
     dependencies:
       jest-junit: 16.0.0
       ts-jest: 29.1.1(@babel/core@7.23.2)(jest@29.7.0)(typescript@5.2.2)
@@ -1117,14 +1110,14 @@ packages:
       - typescript
     dev: true
 
-  /@lskjs/log@3.15.1:
-    resolution: {integrity: sha512-RfyncV6oYDgJ9OY5rWOoggE94defKz3fhgoRxG/IWq74111lfNrXwbUrjIUaqs+r9gHwIiFE5At47jGITFvRrQ==}
+  /@lskjs/log@3.16.2:
+    resolution: {integrity: sha512-RqPEwUDj1qsuDLM/qAmiNWWNpZf4+xZQNNXwCq0n/J3HtJd8lMRerFitLQ4uibif4E8UXbM0PBBBUSDontR6vg==}
     hasBin: true
     dependencies:
-      '@lskjs/algos': 3.15.1
+      '@lskjs/algos': 3.16.2
       '@lskjs/colors': 3.11.0
       '@lskjs/env': 3.11.0
-      '@lskjs/err': 3.15.1
+      '@lskjs/err': 3.16.2
       fast-safe-stringify: 2.1.1
       pretty-bytes: 5.6.0
       pretty-time: 1.1.0
@@ -1135,11 +1128,11 @@ packages:
       logfmt: 1.3.2
     dev: true
 
-  /@lskjs/stringify@3.15.1:
-    resolution: {integrity: sha512-/QRUwClUR/kCoRAXZ2jGxssRmUi1OHSg+sKJohIcScyuECah4uo5ml9Z3Q5aUt9Pr4J/UahcGeWk5MM8VO9mDw==}
+  /@lskjs/stringify@3.16.2:
+    resolution: {integrity: sha512-+MTI+FIo0kc2829GjIkEUTvweVw9ZvhMgkfGbvJAbMa7TcWGEc4vkBrKgeMDQ1zlnDluJNygCJhwT7FtP3U0uA==}
     dependencies:
-      '@lskjs/algos': 3.15.1
-      '@lskjs/err': 3.15.1
+      '@lskjs/algos': 3.16.2
+      '@lskjs/err': 3.16.2
       javascript-stringify: 2.1.0
       js-yaml: 4.1.0
     dev: true
@@ -3815,7 +3808,7 @@ packages:
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
     dependencies:
-      '@babel/runtime': 7.23.1
+      '@babel/runtime': 7.23.2
       aria-query: 5.3.0
       array-includes: 3.1.7
       array.prototype.flatmap: 1.3.2
@@ -3840,7 +3833,7 @@ packages:
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
     dependencies:
-      '@babel/runtime': 7.23.1
+      '@babel/runtime': 7.23.2
       aria-query: 5.3.0
       array-includes: 3.1.7
       array.prototype.flatmap: 1.3.2
@@ -5980,18 +5973,18 @@ packages:
     dependencies:
       yallist: 4.0.0
 
-  /lsk@3.16.1:
-    resolution: {integrity: sha512-ZU4i4sg67kL7+gsOW4WGNcfklJmEadBU2fJWnEl7nZpETv6bum+nsAHbWisulo1lZqNFWkcomgGWVUQUuSvqfQ==}
+  /lsk@3.16.2:
+    resolution: {integrity: sha512-cNkh+5+Iy5xHDDapW+Z4h83BB1DZhm+isFeZAPfiJcNGGPQAO7LWOkT2P2kudq6eNy9UAaQaaW6YCbzIvgewUw==}
     hasBin: true
     dependencies:
       '@babel/runtime': 7.20.13
-      '@lskjs/algos': 3.15.1
-      '@lskjs/cli-scripts': 3.16.1
-      '@lskjs/cli-utils': 3.16.1
+      '@lskjs/algos': 3.16.2
+      '@lskjs/cli-scripts': 3.16.2
+      '@lskjs/cli-utils': 3.16.2
       '@lskjs/colors': 3.11.0
       '@lskjs/env': 3.11.0
-      '@lskjs/err': 3.15.1
-      '@lskjs/log': 3.15.1
+      '@lskjs/err': 3.16.2
+      '@lskjs/log': 3.16.2
       '@types/node': 18.13.0
       logfmt: 1.3.2
       rsync: 0.6.1
