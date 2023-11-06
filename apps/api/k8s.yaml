@@ -1,0 +1,118 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ${K8S_NAMESPACE}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ${K8S_APP_NAME}
+  namespace: ${K8S_NAMESPACE}
+spec:
+  ports:
+    - name: api
+      port: 8080
+      targetPort: api
+  selector:
+    app: ${K8S_APP_NAME}
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: ${K8S_APP_NAME}
+  namespace: ${K8S_NAMESPACE}
+  labels:
+    app: ${K8S_APP_NAME}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ${K8S_APP_NAME}
+  template:
+    metadata:
+      labels:
+        app: ${K8S_APP_NAME}
+    spec:
+      imagePullSecrets:
+        - name: registry-kit
+      volumes:
+        - name: env
+          secret:
+            secretName: ${K8S_ENV_SECRET_NAME}
+      containers:
+        - name: app
+          image: ${DOCKER_IMAGE}
+          volumeMounts:
+            - name: env
+              readOnly: true
+              mountPath: "/app/.env.js"
+              subPath: "env_js"
+            - name: env
+              readOnly: true
+              mountPath: "/app/.env"
+              subPath: "env_file"
+          ports:
+            - name: api
+              containerPort: 8080
+          env:
+            - name: STAGE
+              value: ${STAGE}
+            - name: VERSION
+              value: ${VERSION}
+            - name: PORT
+              value: "8080"
+            - name: SITE_HOST
+              value: "${K8S_HOST}"
+          livenessProbe:
+            httpGet:
+              path: /api/healthcheck
+              port: api
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /api/healthcheck
+              port: api
+            initialDelaySeconds: 5
+            periodSeconds: 10
+---
+apiVersion: cert-manager.io/v1
+# kind: Issuer
+kind: ClusterIssuer
+metadata:
+  name: isuvorov-issuer
+spec:
+  acme:
+    email: devops@isuvorov.com
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: devops-isuvorov-issuer-account-key
+    solvers:
+      - http01:
+          ingress:
+            class: traefik
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ${K8S_APP_NAME}-ingress
+  namespace: ${K8S_NAMESPACE}
+  annotations:
+    cert-manager.io/cluster-issuer: "isuvorov-issuer"
+    kubernetes.io/ingress.class: "traefik"
+spec:
+  tls:
+    - hosts:
+        - "${K8S_HOST}"
+      secretName: botkit-tls
+  rules:
+    - host: "${K8S_HOST}"
+      http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: ${K8S_APP_NAME}
+                port:
+                  name: api
