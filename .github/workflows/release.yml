@@ -71,7 +71,7 @@ jobs:
           working-directory: apps/web
           node-version: ${{ env.NODE_VERSION }}
           pnpm-version: ${{ env.PNPM_VERSION }}
-          command: pnpm release && ls -la  && ls -la .release
+          command: pnpm release
       - name: Docker – Setup
         uses: docker/setup-buildx-action@v2
       - name: Docker - Login
