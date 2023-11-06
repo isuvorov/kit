@@ -13,9 +13,9 @@ env:
   DOCKER_IMAGE_API: ${{ vars.DOCKER_REGISTRY }}/kit/kit-api:${{ github.sha }}
   DOCKER_IMAGE_WEB: ${{ vars.DOCKER_REGISTRY }}/kit/kit-web:${{ github.sha }}
 
+  K8S_HOST: kit.lskjs.ru
+  K8S_NAMESPACE: kit
   K8S_ENV_SECRET_NAME: prod-kit-env
-  K8S_DEPLOYMENT_API: deploy/k8s/api.yaml
-  K8S_DEPLOYMENT_WEB: deploy/k8s/web.yaml
   K8S_APP_NAME_API: kit-api
   K8S_APP_NAME_WEB: kit-web
 
@@ -25,19 +25,18 @@ jobs:
     steps:
       - name: GIT – Checkout
         uses: actions/checkout@v4
-      - name: PNPM – Install & Build
+      - name: PNPM – Install
         uses: lskjs/action-pnpm@v1
         with:
           node-version: ${{ env.NODE_VERSION }}
           pnpm-version: ${{ env.PNPM_VERSION }}
-
   build_api:
     needs: [prepare]
     runs-on: ubuntu-22.04
     steps:
       - name: GIT – Checkout
         uses: actions/checkout@v4
-      - name: PNPM – Install & Build
+      - name: PNPM – Release
         uses: lskjs/action-pnpm@v1
         with:
           working-directory: apps/api
@@ -60,14 +59,13 @@ jobs:
           tags: ${{ env.DOCKER_IMAGE_API }}
           build-args: |
             VERSION=${{ env.VERSION }}
-
   build_web:
     needs: [prepare]
     runs-on: ubuntu-22.04
     steps:
       - name: GIT – Checkout
         uses: actions/checkout@v4
-      - name: PNPM – Install & Build
+      - name: PNPM – Release
         uses: lskjs/action-pnpm@v1
         with:
           working-directory: apps/web
@@ -90,7 +88,6 @@ jobs:
           tags: ${{ env.DOCKER_IMAGE_WEB }}
           build-args: |
             VERSION=${{ env.VERSION }}
-
   deploy_api:
     needs: [build_web, build_api]
     runs-on: ubuntu-22.04
@@ -109,14 +106,16 @@ jobs:
           content: ${{ secrets.PROD_ENV_FILE }}
           filename2: envs/env_js
           content2: ${{ secrets.PROD_ENV_JS }}
-      - run: kubectl create secret generic ${{ env.K8S_ENV_SECRET_NAME }} --from-file=./envs/env_file --from-file=./envs/env_js --save-config --dry-run=client -o yaml | kubectl apply -f -
-      - run: envsubst < ${{ env.K8S_DEPLOYMENT_API }} | kubectl apply -f -
+      - run: kubectl create secret generic ${{ env.K8S_ENV_SECRET_NAME }} --from-file=./envs/env_file --from-file=./envs/env_js --save-config --dry-run=client -o yaml -n ${{ env.K8S_NAMESPACE }} | kubectl apply -f - -n ${{ env.K8S_NAMESPACE }}
+      - run: envsubst < apps/api/k8s.yaml | kubectl apply -f -
         env: 
-          APP_NAME: ${{ env.K8S_APP_NAME_API }}
-          STAGE: ${{ env.STAGE }}
-          ENV_SECRET_NAME: ${{ env.K8S_ENV_SECRET_NAME }}
+          K8S_APP_NAME: ${{ env.K8S_APP_NAME_API }}
+          K8S_NAMESPACE: ${{ env.K8S_NAMESPACE }}
+          K8S_ENV_SECRET_NAME: ${{ env.K8S_ENV_SECRET_NAME }}
+
           DOCKER_IMAGE: ${{ env.DOCKER_IMAGE_API }}
-    
+          STAGE: ${{ env.STAGE }}
+          VERSION: ${{ env.VERSION }}
   deploy_web:
     needs: [build_web, build_api]
     runs-on: ubuntu-22.04
@@ -135,10 +134,13 @@ jobs:
           content: ${{ secrets.PROD_ENV_FILE }}
           filename2: envs/env_js
           content2: ${{ secrets.PROD_ENV_JS }}
-      - run: kubectl create secret generic ${{ env.K8S_ENV_SECRET_NAME }} --from-file=./envs/env_file --from-file=./envs/env_js --save-config --dry-run=client -o yaml | kubectl apply -f -
-      - run: envsubst < ${{ env.K8S_DEPLOYMENT_WEB }} | kubectl apply -f -
+      - run: kubectl create secret generic ${{ env.K8S_ENV_SECRET_NAME }} --from-file=./envs/env_file --from-file=./envs/env_js --save-config --dry-run=client -o yaml -n ${{ env.K8S_NAMESPACE }} | kubectl apply -f - -n ${{ env.K8S_NAMESPACE }}
+      - run: envsubst < apps/web/k8s.yaml | kubectl apply -f -
         env: 
-          APP_NAME: ${{ env.K8S_APP_NAME_WEB }}
-          STAGE: ${{ env.STAGE }}
-          ENV_SECRET_NAME: ${{ env.K8S_ENV_SECRET_NAME }}
+          K8S_APP_NAME: ${{ env.K8S_APP_NAME_WEB }}
+          K8S_NAMESPACE: ${{ env.K8S_NAMESPACE }}
+          K8S_ENV_SECRET_NAME: ${{ env.K8S_ENV_SECRET_NAME }}
+
           DOCKER_IMAGE: ${{ env.DOCKER_IMAGE_WEB }}
+          STAGE: ${{ env.STAGE }}
+          VERSION: ${{ env.VERSION }}
