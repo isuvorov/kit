@@ -26,6 +26,9 @@ importers:
       concurrently:
         specifier: ^8.2.2
         version: 8.2.2
+      jest:
+        specifier: ^29.7.0
+        version: 29.7.0(@types/node@18.13.0)
       jest-junit:
         specifier: ^16.0.0
         version: 16.0.0
