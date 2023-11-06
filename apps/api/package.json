@@ -5,7 +5,7 @@
   "author": "Igor Suvorov <hi@isuvorov.com> (https://github.com/isuvorov)",
   "private": true,
   "scripts": {
-    "start": "        node lib --alfred/apps/api",
+    "start": "        node lib",
     "dev": "          lsk run dev",
     "build": "        nest build && echo ok",
     "test": "         lsk run test",
