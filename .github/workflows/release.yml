@@ -106,9 +106,13 @@ jobs:
           content: ${{ secrets.PROD_ENV_FILE }}
           filename2: envs/env_js
           content2: ${{ secrets.PROD_ENV_JS }}
-      - run: kubectl create secret generic ${{ env.K8S_ENV_SECRET_NAME }} --from-file=./envs/env_file --from-file=./envs/env_js --save-config --dry-run=client -o yaml -n ${{ env.K8S_NAMESPACE }} | kubectl apply -f - -n ${{ env.K8S_NAMESPACE }}
-      - run: envsubst < apps/api/k8s.yaml | kubectl apply -f -
+      - name: K8S – deploy
+        run: |
+          kubectl get ns ${{ env.K8S_NAMESPACE }} || kubectl create ns ${{ env.K8S_NAMESPACE }} && \
+          kubectl create secret generic ${{ env.K8S_ENV_SECRET_NAME }} --from-file=./envs/env_file --from-file=./envs/env_js --save-config --dry-run=client -o yaml -n ${{ env.K8S_NAMESPACE }} | kubectl apply -f - -n ${{ env.K8S_NAMESPACE }} && \
+          envsubst < ${{ env.K8S_MANIFEST }} | kubectl apply -f -
         env: 
+          K8S_MANIFEST: apps/api/k8s.yaml
           K8S_APP_NAME: ${{ env.K8S_APP_NAME_API }}
           K8S_NAMESPACE: ${{ env.K8S_NAMESPACE }}
           K8S_ENV_SECRET_NAME: ${{ env.K8S_ENV_SECRET_NAME }}
@@ -134,9 +138,13 @@ jobs:
           content: ${{ secrets.PROD_ENV_FILE }}
           filename2: envs/env_js
           content2: ${{ secrets.PROD_ENV_JS }}
-      - run: kubectl create secret generic ${{ env.K8S_ENV_SECRET_NAME }} --from-file=./envs/env_file --from-file=./envs/env_js --save-config --dry-run=client -o yaml -n ${{ env.K8S_NAMESPACE }} | kubectl apply -f - -n ${{ env.K8S_NAMESPACE }}
-      - run: envsubst < apps/web/k8s.yaml | kubectl apply -f -
+      - name: K8S – deploy
+        run: |
+          kubectl get ns ${{ env.K8S_NAMESPACE }} || kubectl create ns ${{ env.K8S_NAMESPACE }} && \
+          kubectl create secret generic ${{ env.K8S_ENV_SECRET_NAME }} --from-file=./envs/env_file --from-file=./envs/env_js --save-config --dry-run=client -o yaml -n ${{ env.K8S_NAMESPACE }} | kubectl apply -f - -n ${{ env.K8S_NAMESPACE }} && \
+          envsubst < ${{ env.K8S_MANIFEST }} | kubectl apply -f -
         env: 
+          K8S_MANIFEST: apps/web/k8s.yaml
           K8S_APP_NAME: ${{ env.K8S_APP_NAME_WEB }}
           K8S_NAMESPACE: ${{ env.K8S_NAMESPACE }}
           K8S_ENV_SECRET_NAME: ${{ env.K8S_ENV_SECRET_NAME }}
