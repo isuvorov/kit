@@ -1,4 +1,4 @@
-import { stage } from '@lskjs/env';
+import { stage } from '@lsk4/env';
 import { Injectable } from '@nestjs/common';
 
 @Injectable()

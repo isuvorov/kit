@@ -1,35 +1,43 @@
 {
-  "name": "web",
-  "version": "0.1.0",
+  "name": "@kit3/web",
+  "version": "0.0.1",
   "author": "Igor Suvorov <hi@isuvorov.com> (https://github.com/isuvorov)",
   "private": true,
   "scripts": {
-    "start": "          next start",
-    "dev": "            next dev",
-    "build": "          next build",
-    "test": "           next lint",
-    "release": "        lsk run release"
+    "start": "        next start",
+    "dev": "          next dev",
+    "build": "        next build",
+    "test": "         next lint",
+    "prepack": "      ycmd prepack",
+    "release": "      ycmd release"
   },
   "dependencies": {
-    "eslint": "8.53.0",
-    "eslint-config-next": "14.0.1",
-    "next": "14.0.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react": "^18",
+    "react-dom": "^18",
+    "next": "14.0.3"
   },
   "devDependencies": {
-    "@types/react": "18.2.36",
-    "typescript": "~5.2.2"
+    "typescript": "^5",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.0.1",
+    "postcss": "^8",
+    "tailwindcss": "^3.3.0",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.3"
   },
   "//": "///////////========================/////////========================/////////========================/////////",
   "prettier": "@lskjs/eslint-config/prettier",
   "eslintConfig": {
     "extends": "@lskjs/eslint-config"
   },
-  "jest": {
-    "preset": "@lskjs/jest-config"
-  },
+  "files": [
+    "lib",
+    "files",
+    "Dockerfile",
+    "k8s.yml"
+  ],
   "///": "//////////========================/////////========================/////////========================/////////",
-  "license": "ISC",
   "////": "/////////========================/////////========================/////////========================/////////"
 }
