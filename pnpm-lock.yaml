@@ -15,8 +15,8 @@ importers:
         specifier: ^3.18.0
         version: 3.18.0
       '@ycmd/commands':
-        specifier: ^0.7.0
-        version: 0.7.0(typescript@5.3.2)
+        specifier: ^0.8.0
+        version: 0.8.0(typescript@5.3.2)
       concurrently:
         specifier: ^8.2.2
         version: 8.2.2
@@ -24,8 +24,8 @@ importers:
         specifier: ^5.3.2
         version: 5.3.2
       ycmd:
-        specifier: ^0.7.0
-        version: 0.7.0(typescript@5.3.2)
+        specifier: ^0.8.0
+        version: 0.8.0(typescript@5.3.2)
 
   apps/api:
     dependencies:
@@ -2668,15 +2668,15 @@ packages:
       tslib: 2.6.2
     dev: true
 
-  /@ycmd/commands@0.7.0(typescript@5.3.2):
-    resolution: {integrity: sha512-+v3KJK30ej24PAqO8nzFU4gUJM2M8rx20NUwA+ywkI+dVgztrawstj55DY1FidV8kyV6IMC3k3N8m7irSpyHbw==}
+  /@ycmd/commands@0.8.0(typescript@5.3.2):
+    resolution: {integrity: sha512-1SmqV+Mxni6MYtoUdOrxyqCzFE+9Hzo2jrK9iiTHFLgRLn+5cgR+b935SPR8qSfuQaOBYLkdI3N/qg+lj0CLrQ==}
     dependencies:
       '@lsk4/algos': 4.0.0-alpha.1
       '@lskjs/stringify': 3.19.0
       '@swc/cli': 0.1.63(@swc/core@1.3.99)(chokidar@3.5.3)
       '@swc/core': 1.3.99
-      '@ycmd/helpers': 0.7.0
-      '@ycmd/run': 0.7.0
+      '@ycmd/helpers': 0.8.0
+      '@ycmd/run': 0.8.0
       chokidar: 3.5.3
       clean-publish: github.com/isuvorov/clean-publish/bd4dc76ff2331b560c4c1e030375cb46ed3f518c
       fishbird: 1.0.1
@@ -2702,36 +2702,36 @@ packages:
       - typescript
     dev: true
 
-  /@ycmd/helpers@0.7.0:
-    resolution: {integrity: sha512-Z/mRIIoAVcQY+oIjA8q0xAIjnjK86y0VpPvfJ60mVNLny61ISrxgA96QG4Qt9B0jGdpq7Vhn3IrJpg+YxNfZjg==}
+  /@ycmd/helpers@0.8.0:
+    resolution: {integrity: sha512-//LeYJVg0+xVGl5Q4UHhkKEmfh+j9FEp/bFvpZ9LqEtCD8gWirqKByi0lA4QIIDPA+sxV4p9yrEyWtitpUGa+A==}
     dependencies:
       '@lsk4/colors': 4.0.0-alpha.1
       '@lsk4/env': 4.0.0-alpha.1
       '@lsk4/err': 4.0.0-alpha.1
-      '@ycmd/utils': 0.7.0
+      '@ycmd/utils': 0.8.0
       yargs: 17.7.2
     dev: true
 
-  /@ycmd/run@0.7.0:
-    resolution: {integrity: sha512-hYMla6GG5jtuJ23TptmlHZs5e7dRf+YPBpG08G7ZT9JWxTABM3YUhPx543QsvtUcA1bmL6oGGWOYLcaMNg0RkQ==}
+  /@ycmd/run@0.8.0:
+    resolution: {integrity: sha512-R81H8+WKCvhWBW/wpmRI2eryTf3aVDQbdPCI4wEzmzMyNyBoigZMg/uwcahg2v89cjz9+7md6GDfqnY+uZjJNg==}
     dependencies:
       '@lsk4/err': 4.0.0-alpha.1
-      '@ycmd/helpers': 0.7.0
-      '@ycmd/spawn': 0.7.0
-      '@ycmd/utils': 0.7.0
+      '@ycmd/helpers': 0.8.0
+      '@ycmd/spawn': 0.8.0
+      '@ycmd/utils': 0.8.0
       fishbird: 1.0.1
       global-prefix: 3.0.0
       yargs: 17.7.2
     dev: true
 
-  /@ycmd/spawn@0.7.0:
-    resolution: {integrity: sha512-v9lG6ko0ex8EepXn7/J+E0WraWq4tYwBJwi6nYY7kwyaznRmFjwWFiLUVdtIKLWPAeRtYv5EyeiXzWugXn9B1g==}
+  /@ycmd/spawn@0.8.0:
+    resolution: {integrity: sha512-u3dKFlagu9BaeTKda1yFcVeDXjq+LQvumn0oPbyy2OEBNplIB1IUuZkz8f0QbsqQol3qTECayxwaot8p1RIcXA==}
     dependencies:
-      '@ycmd/utils': 0.7.0
+      '@ycmd/utils': 0.8.0
     dev: true
 
-  /@ycmd/utils@0.7.0:
-    resolution: {integrity: sha512-ERhq0ZSoEZjFZKARAVjDCMOqQeldjSNlyNKGGnvlQKD5uu1QUGdmu6E7h0kt6nevVgI+pdShOpaLVv5FYvo00A==}
+  /@ycmd/utils@0.8.0:
+    resolution: {integrity: sha512-UuRUYr1yTO7g3EZ+AnNSY9y73ynsr41zf6v6lrRdoLOodeqoUW+XTxfRedFmiLrP6pH9UCII54tsDQGox4ZfEA==}
     dependencies:
       '@lsk4/env': 4.0.0-alpha.1
       '@lsk4/err': 4.0.0-alpha.1
@@ -11010,15 +11010,15 @@ packages:
       yargs-parser: 21.1.1
     dev: true
 
-  /ycmd@0.7.0(typescript@5.3.2):
-    resolution: {integrity: sha512-8WXm+QPcaFK5CP8fOT7qOwXlAP0iD58pAbI9fTdRroG8G9+znsTCVpJjw+t36noQpfrmUdnob4M11fd571Pv0Q==}
+  /ycmd@0.8.0(typescript@5.3.2):
+    resolution: {integrity: sha512-wlxNS63Rzbg0KwB0SEWfQFDizBDCwAiYURSpt4tl8PI6rSwVoOSP40NIALRUXsl6+xYY8n99eu9QP72G+pfYLQ==}
     hasBin: true
     dependencies:
       '@lsk4/err': 4.0.0-alpha.1
-      '@ycmd/commands': 0.7.0(typescript@5.3.2)
-      '@ycmd/helpers': 0.7.0
-      '@ycmd/run': 0.7.0
-      '@ycmd/utils': 0.7.0
+      '@ycmd/commands': 0.8.0(typescript@5.3.2)
+      '@ycmd/helpers': 0.8.0
+      '@ycmd/run': 0.8.0
+      '@ycmd/utils': 0.8.0
       yargs: 17.7.2
     transitivePeerDependencies:
       - '@microsoft/api-extractor'
