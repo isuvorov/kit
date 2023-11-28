@@ -6,8 +6,8 @@
   "scripts": {
     "start": "        next start",
     "dev": "          next dev",
-    "build": "        next build",
-    "test": "         next lint",
+    "build": "        next build && echo ok",
+    "test": "         next lint && echo ok",
     "prepack": "      ycmd prepack",
     "release": "      ycmd release"
   },
@@ -32,12 +32,6 @@
   "eslintConfig": {
     "extends": "@lskjs/eslint-config"
   },
-  "files": [
-    "lib",
-    "files",
-    "Dockerfile",
-    "k8s.yml"
-  ],
   "///": "//////////========================/////////========================/////////========================/////////",
   "////": "/////////========================/////////========================/////////========================/////////"
 }

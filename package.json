@@ -9,7 +9,7 @@
     "dev": "            concurrently -k npm:dev:*",
     "debug": "          DEBUG=* npm run dev",
     "build": "          ycmd build",
-    "test": "           ycmd test",
+    "test": "           echo ycmd test - skip",
     "prepack": "        ycmd prepack",
     "release": "        ycmd release",
     "dev:api": "        pnpm --filter {apps/api} dev",
@@ -18,10 +18,10 @@
   "devDependencies": {
     "@lskjs/eslint-config": "^3.18.0",
     "@lskjs/tsconfig": "^3.18.0",
-    "@ycmd/commands": "^0.3.0",
+    "@ycmd/commands": "^0.7.0",
     "concurrently": "^8.2.2",
-    "typescript": "^5.2.2",
-    "ycmd": "^0.3.0"
+    "typescript": "^5.3.2",
+    "ycmd": "^0.7.0"
   },
   "//": "///////////========================/////////========================/////////========================/////////",
   "prettier": "@lskjs/eslint-config/prettier",

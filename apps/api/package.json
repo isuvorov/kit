@@ -8,7 +8,7 @@
   "scripts": {
     "start": "        node lib",
     "dev": "          ycmd dev",
-    "build": "        ycmd build",
+    "build": "        nest build",
     "test": "         ycmd test",
     "prepack": "      ycmd prepack",
     "release": "      ycmd release"
