@@ -1,13 +1,21 @@
 {
   "extends": "@lskjs/tsconfig/nostrict/tsconfig.json",
   "compilerOptions": {
+    "jsx": "react",
     "strictPropertyInitialization": false,
     "sourceMap": true,
     "declaration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+
     "ignoreDeprecations": "5.0",
     "module": "NodeNext",
     // "moduleResolution": "bundler"
-    "moduleResolution": "NodeNext"
+    "moduleResolution": "NodeNext",
+
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+    }
   }
 }
-

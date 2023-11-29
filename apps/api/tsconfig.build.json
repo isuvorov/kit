@@ -3,9 +3,11 @@
   "include": ["./src"],
   "exclude": ["node_modules", "tests", "lib", "**/*spec.ts"],
   "compilerOptions": {
-    "baseUrl": "./",
     "outDir": "./lib",
     "incremental": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "paths": {
+      "@/*": ["src/*"],
+    }
   }
 }
