@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 import { Inter } from 'next/font/google';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -44,7 +45,7 @@ export default function Home() {
         />
       </div>
       <div>
-        <a href="/auth/login">
+        <Link href="/auth/login">
           <button className="border-b-4 border-r-4 hover:border-2 bg-blue-500 hover:bg-blue-450 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded rounded inline-flex items-center">
             <svg
               className="fill-current w-4 h-4 mr-2"
@@ -55,7 +56,7 @@ export default function Home() {
             </svg>
             Тут должна быть крутая кнопка
           </button>
-        </a>
+        </Link>
       </div>
       <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
         <a

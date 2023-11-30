@@ -1,13 +1,12 @@
 import { PropsWithChildren, ReactNode } from 'react';
 import { Form } from 'react-bootstrap';
-import { FieldError } from 'react-hook-form';
 
 export interface FormItemProps {
   id: string;
   label?: string | ReactNode;
   description?: string | ReactNode | number;
   required?: boolean;
-  error?: string | ReactNode | number | FieldError;
+  error?: string | ReactNode | number; // | FieldError;
 }
 
 export function FormItem({

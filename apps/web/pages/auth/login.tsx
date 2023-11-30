@@ -4,6 +4,7 @@ import { delay } from 'fishbird';
 import { Button as ReactBootstrapButton, Col, Container, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 
+import { AuthLayout } from '@/layouts/AuthLayout';
 import { FormButton as ChatterfyFormButton } from '@/lskjs/FormButton/FormButton';
 import { FormItem } from '@/lskjs/FormItem/FormItem';
 
@@ -129,9 +130,11 @@ export default function TestPage() {
   };
   return (
     <>
-      <Container>
-        <AuthLoginForm onSubmit={onSubmit} />
-      </Container>
+      <AuthLayout>
+        <Container>
+          <AuthLoginForm onSubmit={onSubmit} />
+        </Container>
+      </AuthLayout>
     </>
   );
 }

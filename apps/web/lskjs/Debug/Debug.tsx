@@ -1,11 +1,12 @@
 /* eslint-disable no-nested-ternary */
 // import Zebra from '@lskjs/dev/Zebra';
 
-import { useAppConfig } from '@/AppConfig/useAppConfig';
+// import { useAppConfig } from '@/AppConfig/useAppConfig';
 
 // import { useAppConfig } from '@/hooks/useAppConfig';
-
+import { isDev } from '@lsk4/env';
 // export const DebugContext = React.createContext('debug');
+const useAppConfig = () => ({ isDebug: isDev });
 
 interface ZebraProps {
   as?: React.ElementType;

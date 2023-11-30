@@ -4,7 +4,7 @@ import type { PropsWithChildren } from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 
 import styles from './AuthLayout.module.css';
-import { AppNavbar } from './components/AppNavbar';
+// import { AppNavbar } from './components/AppNavbar';
 
 // <AppConfig showAppbar={false}>
 export function AuthLayout({
