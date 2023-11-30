@@ -23,6 +23,7 @@ import { TelegrafModule } from 'nestjs-telegraf';
 // import { AuthService } from './lskjs/auth/AuthService';
 import models from './lskjs/auth/models';
 import { mikroOrmLoggerFactory } from './lskjs/mikroOrmLoggerFactory';
+import { TestController } from './api/TestController';
 
 const notNull = (v, def) => (v == null ? def : v);
 
@@ -109,6 +110,7 @@ const notNull = (v, def) => (v == null ? def : v);
     // ProductController,
     // ApiController,
     // TelegramAvartarController,
+    TestController,
   ],
   providers: [
     // AuthService,
