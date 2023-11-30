@@ -44,16 +44,18 @@ export default function Home() {
         />
       </div>
       <div>
-        <button className="border-b-4 border-r-4 hover:border-2 bg-blue-500 hover:bg-blue-450 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded rounded inline-flex items-center">
-          <svg
-            className="fill-current w-4 h-4 mr-2"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-          >
-            <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
-          </svg>
-          Тут должна быть крутая кнопка
-        </button>
+        <a href="/auth/login">
+          <button className="border-b-4 border-r-4 hover:border-2 bg-blue-500 hover:bg-blue-450 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded rounded inline-flex items-center">
+            <svg
+              className="fill-current w-4 h-4 mr-2"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
+            </svg>
+            Тут должна быть крутая кнопка
+          </button>
+        </a>
       </div>
       <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
         <a
