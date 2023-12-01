@@ -26,7 +26,10 @@ export class ListController {
     if (data.filter.role) {
       filter.role = data.filter.role;
     }
-    return this.usersRepository.find(filter);
+    return this.usersRepository.find(filter, {
+      limit: data.limit,
+      offset: data.skip,
+    });
   }
 
   @All(['findOne', 'get'])
