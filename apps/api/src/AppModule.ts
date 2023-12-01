@@ -14,6 +14,8 @@ import { ReactAdapter } from '@webtre/nestjs-mailer-react-adapter';
 import { S3Module } from 'nestjs-s3';
 import { TelegrafModule } from 'nestjs-telegraf';
 
+import { ListController } from './api/ListController';
+import { TestController } from './api/TestController';
 // import { ApiController } from './api/ApiController';
 // import { ProductController } from './api/ProductController';
 // import { TelegramAvartarController } from './api/TelegramAvartarController';
@@ -23,7 +25,6 @@ import { TelegrafModule } from 'nestjs-telegraf';
 // import { AuthService } from './lskjs/auth/AuthService';
 import models from './lskjs/auth/models';
 import { mikroOrmLoggerFactory } from './lskjs/mikroOrmLoggerFactory';
-import { TestController } from './api/TestController';
 
 const notNull = (v, def) => (v == null ? def : v);
 
@@ -111,6 +112,7 @@ const notNull = (v, def) => (v == null ? def : v);
     // ApiController,
     // TelegramAvartarController,
     TestController,
+    ListController,
   ],
   providers: [
     // AuthService,
