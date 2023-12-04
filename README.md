@@ -1,4 +1,4 @@
-# KIT4
+# KIT4 - Lego Starter Kit example #4
 
 ## Development
 
