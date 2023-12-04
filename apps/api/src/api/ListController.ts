@@ -7,6 +7,7 @@ import { ErrorTransformInterceptor } from '@/lskjs/ErrorTransformInterceptor';
 import { ExampleFilter } from '@/lskjs/Filter';
 import { Find, FindParams } from '@/lskjs/FindParams.decorator';
 import { ResponseTransformInterceptor } from '@/lskjs/ResponseTransformInterceptor';
+import { FilterQuery } from '@mikro-orm/core';
 
 @Controller('api/list')
 @UseInterceptors(new ResponseTransformInterceptor(), new ErrorTransformInterceptor())
@@ -23,7 +24,7 @@ export class ListController {
     })
     data: Find<ExampleFilter>,
   ) {
-    const filter = {} as any;
+    const filter: FilterQuery<UserModel> = {};
     if (data.filter.role) {
       filter.role = data.filter.role;
     }
