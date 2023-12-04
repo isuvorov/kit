@@ -3,12 +3,13 @@ import { InjectRepository } from '@mikro-orm/nestjs';
 import { All, Body, Controller, Param, Post, Query, UseInterceptors } from '@nestjs/common';
 
 import { UserModel } from '@/lskjs/auth/models/UserModel';
+import { ErrorTransformInterceptor } from '@/lskjs/ErrorTransformInterceptor';
 import { ExampleFilter } from '@/lskjs/Filter';
 import { Find, FindParams } from '@/lskjs/FindParams.decorator';
 import { ResponseTransformInterceptor } from '@/lskjs/ResponseTransformInterceptor';
 
 @Controller('api/list')
-@UseInterceptors(new ResponseTransformInterceptor())
+@UseInterceptors(new ResponseTransformInterceptor(), new ErrorTransformInterceptor())
 export class ListController {
   constructor(
     @InjectRepository(UserModel)

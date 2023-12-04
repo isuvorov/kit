@@ -28,18 +28,31 @@ export const FindParams = createParamDecorator(
     const data = { ...request.query, ...request.body };
     const { filter = {} } = data;
     const findParams = plainToInstance(Find, data, { enableImplicitConversion: true });
-    let filterValidated = [];
+    let filterValidationErrors = [];
     if (args?.filterDTO) {
       findParams.filter = plainToInstance(args.filterDTO, filter, {
         enableImplicitConversion: true,
       });
-      filterValidated = await validate(findParams.filter);
+      filterValidationErrors = await validate(findParams.filter);
     }
-    const validated = [...(await validate(findParams)), ...filterValidated];
-    if (validated.length) {
-      console.log(validated);
+    const validationErrors = [...(await validate(findParams)), ...filterValidationErrors];
+    if (validationErrors.length) {
+      const messages = validationErrors.map((error) => {
+        let message;
+        const keys = Object.keys(error.constraints);
+        if (keys.length > 1) {
+          message = Object.values(error.constraints);
+        } else {
+          message = error.constraints[keys[0]];
+        }
+        return {
+          property: error.property,
+          message,
+        };
+      });
       throw new Err('Validation Error', {
-        status: 401,
+        status: 400,
+        data: messages,
       });
     }
     return findParams;

@@ -3,10 +3,11 @@ import { All, Controller, Get, Res, UseInterceptors } from '@nestjs/common';
 import { Response } from 'express';
 import { delay } from 'fishbird';
 
+import { ErrorTransformInterceptor } from '@/lskjs/ErrorTransformInterceptor';
 import { ResponseTransformInterceptor } from '@/lskjs/ResponseTransformInterceptor';
 
 @Controller('api/test')
-@UseInterceptors(new ResponseTransformInterceptor())
+@UseInterceptors(new ResponseTransformInterceptor(), new ErrorTransformInterceptor())
 export class TestController {
   constructor() {}
 
