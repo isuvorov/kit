@@ -18,7 +18,7 @@ export class ListController {
   @All(['find', 'list'])
   async find(
     @FindParams({
-      filterDto: ExampleFilter,
+      filterDTO: ExampleFilter,
     })
     data: Find<ExampleFilter>,
   ) {
