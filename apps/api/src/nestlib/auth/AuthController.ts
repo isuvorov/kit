@@ -1,8 +1,8 @@
 import { pick } from '@lsk4/algos';
 import { Err } from '@lsk4/err';
-import { AuthRole } from '@lskjs/nest-auth';
 import { All, Body, Controller, Get, HttpStatus, Post, Req, UseInterceptors } from '@nestjs/common';
 import { MailerService } from '@nestjs-modules/mailer';
+import { AuthRole } from '@nestlib/auth';
 
 import { renderOtpEmail } from '../../emails/OtpEmail';
 import { ResponseTransformInterceptor } from '../interceptors/ResponseTransformInterceptor';

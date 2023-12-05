@@ -1,7 +1,4 @@
 import { isDev } from '@lsk4/env';
-import { AuthGuard } from '@lskjs/nest-auth/AuthGuard';
-import { ConfigModule, getConfig, loadConfigEnvs } from '@lskjs/nest-config';
-import { AccessLoggerMiddleware } from '@lskjs/nest-utils';
 import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule as NestConfigModule } from '@nestjs/config';
@@ -10,6 +7,9 @@ import { EventEmitterModule } from '@nestjs/event-emitter';
 // import { BotService } from './bot/bot.service';
 import { ScheduleModule } from '@nestjs/schedule';
 import { MailerModule } from '@nestjs-modules/mailer';
+import { AccessLoggerMiddleware } from '@nestlib/access-logger';
+import { AuthGuard } from '@nestlib/auth/AuthGuard';
+import { ConfigModule, getConfig, loadConfigEnvs } from '@nestlib/config';
 import { ReactAdapter } from '@webtre/nestjs-mailer-react-adapter';
 import { S3Module } from 'nestjs-s3';
 
