@@ -68,7 +68,7 @@ cd apps/api
 docker build -t kit-api .
 ```
 
-## Deployment inside BuzzGuru infrastructure
+## Deployment inside Local infrastructure
 
 ### Tech stack
 
@@ -126,7 +126,7 @@ You can change variable names in `deploy/docker-stack.yml`
 - `develop` branch for `dev` stage
 
 
-## Deployment from BuzzGuru infrastructure to DigitalOcean Kubernetes
+## Deployment from Local infrastructure to DigitalOcean Kubernetes
 
 ### Manual deploy
 `kubectl apply -f ./deploy/k8s-deploy.yaml`
