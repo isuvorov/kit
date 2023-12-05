@@ -4,9 +4,9 @@ import { Controller, Get, UseInterceptors } from '@nestjs/common';
 
 import { ResponseTransformInterceptor } from '@/nestlib/ResponseTransformInterceptor';
 
-@Controller()
+@Controller('/api/products')
 @UseInterceptors(new ResponseTransformInterceptor())
-export class ApiController {
+export class ProductsApiController {
   constructor() {}
 
   @Get('/api/healthcheck')
@@ -27,8 +27,8 @@ export class ApiController {
     });
   }
 
-  @Get('*')
-  getHello(): string {
+  @Get('/list')
+  list(): string {
     return 'Hello world';
   }
 }

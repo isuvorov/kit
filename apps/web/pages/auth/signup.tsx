@@ -5,22 +5,18 @@ import { useRouter } from 'next/router';
 
 import { AuthLayout } from '@/layouts/AuthLayout';
 import { useAppConfig } from '@/rckit/app/AppConfig/useAppConfig';
-import { AuthLoginForm, AuthLoginFormValues } from '@/rckit/auth/forms/AuthLoginForm';
-import { fetchAuthLogin } from '@/rckit/auth/queries/authLoginQuery';
-import { trimAndLower } from '@/rckit/auth/utils';
+import { AuthSignupForm, AuthSignupFormValues } from '@/rckit/auth/forms/AuthSignupForm';
+import { fetchAuthSignup } from '@/rckit/auth/queries/authSignupQuery';
 import { HeadMeta } from '@/rckit/meta/HeadMeta';
 
-export default function AuthLoginPage() {
-  const pageTitle = 'Login';
-  const { updateSession } = useAppConfig();
+export default AuthSignup;
+function AuthSignup() {
+  const pageTitle = 'Sing Up';
   const router = useRouter();
+  const { updateSession } = useAppConfig();
 
-  async function onSubmit(raw: AuthLoginFormValues) {
-    const values = {
-      ...raw,
-      email: trimAndLower(raw?.email),
-    };
-    const { session, otp } = await fetchAuthLogin(values);
+  async function onSubmit(values: AuthSignupFormValues) {
+    const { otp, session } = await fetchAuthSignup(values);
     if (session) {
       await updateSession(session);
       router.push(`/cabinet`);
@@ -38,10 +34,10 @@ export default function AuthLoginPage() {
       </Head>
       <AuthLayout>
         <AuthLayout.Body title={pageTitle}>
-          <AuthLoginForm onSubmit={onSubmit} />
+          <AuthSignupForm onSubmit={onSubmit} />
         </AuthLayout.Body>
         <AuthLayout.Footer>
-          Don&apos;t have an account? <Link href="/auth/signup">Sign Up</Link>
+          Already have an account? <Link href="/auth/login">Login</Link>
         </AuthLayout.Footer>
       </AuthLayout>
     </>

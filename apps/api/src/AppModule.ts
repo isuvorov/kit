@@ -14,15 +14,16 @@ import { ReactAdapter } from '@webtre/nestjs-mailer-react-adapter';
 import { S3Module } from 'nestjs-s3';
 import { TelegrafModule } from 'nestjs-telegraf';
 
-// import { ApiController } from './api/ApiController';
+import { ApiController } from './api/ApiController';
+import { ProductsApiController } from './api/ProductsApiController';
 // import { ProductController } from './api/ProductController';
 // import { TelegramAvartarController } from './api/TelegramAvartarController';
 // import { BotAppService } from './BotAppService';
 // import { AuthController } from './lskjs/auth/AuthController';
 // import { AuthOtpService } from './lskjs/auth/AuthOtpService';
 // import { AuthService } from './lskjs/auth/AuthService';
-import models from './lskjs/auth/models';
-import { mikroOrmLoggerFactory } from './lskjs/mikroOrmLoggerFactory';
+import models from './nestlib/auth/models';
+import { mikroOrmLoggerFactory } from './nestlib/mikroOrmLoggerFactory';
 
 const notNull = (v, def) => (v == null ? def : v);
 
@@ -107,7 +108,8 @@ const notNull = (v, def) => (v == null ? def : v);
     //
     // AuthController,
     // ProductController,
-    // ApiController,
+    ApiController,
+    ProductsApiController,
     // TelegramAvartarController,
   ],
   providers: [

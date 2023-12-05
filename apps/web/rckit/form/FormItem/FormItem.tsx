@@ -35,5 +35,3 @@ export function FormItem({
     </Form.Group>
   );
 }
-
-export default FormItem;
