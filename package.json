@@ -25,7 +25,7 @@
     "ycmd": "^0.8.0"
   },
   "//": "///////////========================/////////========================/////////========================/////////",
-  "prettier": "@lskjs/eslint-config/prettier",
+  "prettier": "@lsk4/eslint-config/prettier",
   "eslintConfig": {
     "settings": {
       "import/resolver": {
@@ -37,7 +37,7 @@
         }
       }
     },
-    "extends": "@lskjs/eslint-config"
+    "extends": "@lsk4/eslint-config"
   },
   "main": "index.js",
   "///": "//////////========================/////////========================/////////========================/////////",
