@@ -5,7 +5,6 @@
   "compilerOptions": {
     "outDir": "./lib",
     "incremental": true,
-    "experimentalDecorators": true,
     "paths": {
       "@/*": ["src/*"],
     }

@@ -66,7 +66,13 @@ export const useProductListQuery = (params?: ProductListParams, options?: ApiCli
 export const useProductListInfinityQuery = (
   params?: ProductListInfinityParams,
   options?: ApiClientOptions,
-) => useInfiniteQuery<ProductListResponse>(getProductListQuery(params, options));
+) =>
+  useInfiniteQuery<ProductListResponse>({
+    ...getProductListQuery(params, options),
+    initialPageParam: 1,
+    getNextPageParam: (lastPage: any) => lastPage.nextCursor,
+    getPreviousPageParam: (firstPage: any) => firstPage.prevCursor,
+  });
 
 // const { data, fetchNextPage, isFetching, isLoading } = useInfiniteQuery<PersonApiResponse>(
 //   ['table-data', sorting], // adding sorting state as key causes table to reset and fetch from new beginning upon sort

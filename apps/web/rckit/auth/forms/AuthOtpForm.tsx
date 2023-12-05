@@ -1,9 +1,7 @@
 import { Debug } from '@rckit/debug';
 import { Col, Form } from 'react-bootstrap';
 
-import { FormButton } from '@/rckit/form/FormButton/FormButton';
-import { FormItem } from '@/rckit/form/FormItem/FormItem';
-import { useSmartForm } from '@/rckit/form/useSmartForm';
+import { FormButton, FormItem, useSmartForm } from '@/rckit/form';
 
 export interface AuthOtpFormValues {
   code: string;

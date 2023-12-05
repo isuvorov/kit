@@ -2,7 +2,12 @@ import '@/styles/globals.css';
 import '@/styles/variables.css';
 
 import { isDev, stage, version } from '@lsk4/env';
-import { DehydratedState, Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import {
+  DehydratedState,
+  HydrationBoundary,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useState } from 'react';
@@ -21,11 +26,11 @@ export default function App({ Component, pageProps }: AppProps2) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <QueryClientProvider client={queryClient}>
-        {/* <Hydrate state={pageProps?.dehydratedState }> */}
-        <AppConfig>
-          <Component {...pageProps} />
-        </AppConfig>
-        {/* </Hydrate> */}
+        <HydrationBoundary state={pageProps?.dehydratedState}>
+          <AppConfig>
+            <Component {...pageProps} />
+          </AppConfig>
+        </HydrationBoundary>
       </QueryClientProvider>
     </>
   );

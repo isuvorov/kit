@@ -1,8 +1,6 @@
 import { Col, Form } from 'react-bootstrap';
 
-import { FormButton } from '@/lskjs/ui/FormButton/FormButton';
-import FormItem from '@/lskjs/ui/FormItem';
-import { useSmartForm } from '@/lskjs/ui/useSmartForm';
+import { FormButton, FormItem, useSmartForm } from '@/rckit/form';
 
 export interface AuthWebappSignupFormValues {
   email: string;

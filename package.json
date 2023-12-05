@@ -16,8 +16,8 @@
     "dev:web": "        pnpm --filter {apps/web} dev"
   },
   "devDependencies": {
-    "@lskjs/eslint-config": "^3.18.0",
-    "@lskjs/tsconfig": "^3.18.0",
+    "@lsk4/tsconfig": "^4.1.0",
+    "@lsk4/tsup-config": "^4.1.0",
     "@playwright/test": "^1.40.1",
     "@ycmd/commands": "^0.8.0",
     "concurrently": "^8.2.2",
