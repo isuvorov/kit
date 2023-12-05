@@ -1,5 +1,6 @@
 import { isDev } from '@lsk4/env';
 import { Err } from '@lsk4/err';
+import { log } from '@lsk4/log/log';
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
@@ -14,9 +15,7 @@ import session from 'express-session';
 import { AppModule } from './AppModule.js';
 
 async function main() {
-  const logger = createNestLogger();
-  // @ts-ignore
-  const app = await NestFactory.create<NestExpressApplication>(AppModule, { logger });
+  const app = await NestFactory.create<NestExpressApplication>(AppModule, { logger: createNestLogger() });
   const configService = app.get(ConfigService);
 
   const port = process.env.PORT || configService.get('webserver.port');
@@ -32,7 +31,7 @@ async function main() {
     app.useGlobalFilters(new AnyExceptionFilter());
     app.useGlobalPipes(new ValidationPipe());
     await app.listen(port);
-    logger.info(`⚡️ Server running on http://localhost:${port}`, 'main');
+    log.info(`⚡️ Server running on http://localhost:${port}`, 'main');
   }
 
   if (isDev) {

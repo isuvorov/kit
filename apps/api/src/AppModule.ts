@@ -15,7 +15,7 @@ import { S3Module } from 'nestjs-s3';
 
 import { ApiController } from './api/ApiController';
 import { ListController } from './api/ListController';
-import { ProductsApiController } from './api/ProductsApiController';
+import { ProductsController } from './api/ProductsController';
 import { TestController } from './api/TestController';
 // import { ApiController } from './api/ApiController';
 // import { ProductController } from './api/ProductController';
@@ -25,7 +25,7 @@ import { TestController } from './api/TestController';
 // import { AuthOtpService } from './lskjs/auth/AuthOtpService';
 // import { AuthService } from './lskjs/auth/AuthService';
 import models from './nestlib/auth/models';
-import { mikroOrmLoggerFactory } from './nestlib/mikroOrmLoggerFactory';
+import { loggerFactory } from './nestlib/mikro-orm/loggerFactory';
 
 const notNull = (v, def) => (v == null ? def : v);
 
@@ -50,7 +50,7 @@ const notNull = (v, def) => (v == null ? def : v);
         clientUrl: cnf.uri,
         entities: models,
         debug: notNull(cnf.debug, isDev),
-        loggerFactory: mikroOrmLoggerFactory,
+        loggerFactory,
       })),
     ),
     MikroOrmModule.forFeature({ entities: models }),
@@ -111,7 +111,7 @@ const notNull = (v, def) => (v == null ? def : v);
     // AuthController,
     // ProductController,
     ApiController,
-    ProductsApiController,
+    ProductsController,
     // TelegramAvartarController,
     TestController,
     ListController,

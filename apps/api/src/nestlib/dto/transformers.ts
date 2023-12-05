@@ -1,9 +1,3 @@
-interface ToNumberOptions {
-  default?: number;
-  min?: number;
-  max?: number;
-}
-
 export function toLowerCase(value: string): string {
   return value.toLowerCase();
 }
@@ -21,6 +15,12 @@ export function toBoolean(value: any): boolean {
   value = String(value).toLowerCase();
 
   return !!(value === 'true' || value === '1');
+}
+
+interface ToNumberOptions {
+  default?: number;
+  min?: number;
+  max?: number;
 }
 
 export function toNumber(value: string, opts: ToNumberOptions = {}): number {

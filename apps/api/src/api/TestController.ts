@@ -3,8 +3,7 @@ import { All, Controller, Get, Res, UseInterceptors } from '@nestjs/common';
 import { Response } from 'express';
 import { delay } from 'fishbird';
 
-import { ErrorTransformInterceptor } from '@/nestlib/interceptors/ErrorTransformInterceptor';
-import { ResponseTransformInterceptor } from '@/nestlib/interceptors/ResponseTransformInterceptor';
+import { ErrorTransformInterceptor, ResponseTransformInterceptor } from '@/nestlib/interceptors';
 
 @Controller('api/test')
 @UseInterceptors(new ResponseTransformInterceptor(), new ErrorTransformInterceptor())

@@ -2,10 +2,10 @@ import { omitNull } from '@lsk4/algos';
 import { isDev, stage } from '@lsk4/env';
 import { Controller, Get, UseInterceptors } from '@nestjs/common';
 
-import { ResponseTransformInterceptor } from '@/nestlib/interceptors/ResponseTransformInterceptor';
+import { ResponseTransformInterceptor, ErrorTransformInterceptor } from '@/nestlib/interceptors';
 
 @Controller()
-@UseInterceptors(new ResponseTransformInterceptor())
+@UseInterceptors(new ResponseTransformInterceptor(), new ErrorTransformInterceptor())
 export class ApiController {
   constructor() {}
 
@@ -26,9 +26,8 @@ export class ApiController {
       },
     });
   }
-
-  @Get('*')
-  getHello(): string {
-    return 'Hello world';
-  }
+  // @Get('*')
+  // getHello(): string {
+  //   return 'Hello world';
+  // }
 }

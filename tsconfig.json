@@ -1,6 +1,7 @@
 {
   // "extends": "@lskjs/tsconfig/nostrict/tsconfig.json"
   "extends": "@lsk4/tsconfig/nostrict",
+  // "extends": "@lsk4/tsconfig",
   "compilerOptions": {
     "jsx": "react"
   }

@@ -8,7 +8,7 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { pack } from '../utils/pack';
+import { pack } from './utils/pack';
 
 @Injectable()
 export class ErrorTransformInterceptor implements NestInterceptor {
