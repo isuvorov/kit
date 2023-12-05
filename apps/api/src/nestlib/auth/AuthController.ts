@@ -5,7 +5,7 @@ import { All, Body, Controller, Get, HttpStatus, Post, Req, UseInterceptors } fr
 import { MailerService } from '@nestjs-modules/mailer';
 
 import { renderOtpEmail } from '../../emails/OtpEmail';
-import { ResponseTransformInterceptor } from '../ResponseTransformInterceptor';
+import { ResponseTransformInterceptor } from '../interceptors/ResponseTransformInterceptor';
 import { AuthOtpService } from './AuthOtpService';
 import { AuthService } from './AuthService';
 import { Request, User } from './types';

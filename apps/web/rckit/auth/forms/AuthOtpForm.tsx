@@ -1,10 +1,9 @@
 import { Debug } from '@rckit/debug';
 import { Col, Form } from 'react-bootstrap';
-import OTPInput from 'react-otp-input';
 
-import { FormButton } from '@/lskjs/ui/FormButton/FormButton';
-import FormItem from '@/lskjs/ui/FormItem';
-import { useSmartForm } from '@/lskjs/ui/useSmartForm';
+import { FormButton } from '@/rckit/form/FormButton/FormButton';
+import { FormItem } from '@/rckit/form/FormItem/FormItem';
+import { useSmartForm } from '@/rckit/form/useSmartForm';
 
 export interface AuthOtpFormValues {
   code: string;
