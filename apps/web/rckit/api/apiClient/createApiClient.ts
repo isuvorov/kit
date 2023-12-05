@@ -1,13 +1,13 @@
 import { omitNull } from '@lsk4/algos';
 import { isServer } from '@lsk4/env';
 import { Err } from '@lsk4/err';
-import { Logger } from '@lsk4/log';
+import { createLogger } from '@lsk4/log';
 import axios from 'axios';
 
 import { serverBaseURL } from '@/config/config';
 import { ApiClient } from '@/rckit/api/apiClient/types';
 
-const log = new Logger({ ns: 'fetcher' });
+const log = createLogger('api');
 
 export function createApiClient(): ApiClient {
   // eslint-disable-next-line no-nested-ternary
