@@ -1,16 +1,11 @@
 import { isDev, stage, version } from '@lsk4/env';
 import { log } from '@lsk4/log/log';
-import { getEnvConfig } from './getEnvConfig.mjs';
+import { loadEnvConfig } from './loadEnvConfig.mjs';
 
-let config;
-
-try {
-  config = await getEnvConfig(['process.env.ENV_JSON', '.env.cjs', '../.env.cjs', '../../.env.cjs']);
-  if (config?.default) config = config.default;
-} catch (err) {
-  log.error('[getEnvConfig]', err);
-  config = {};
-}
+const config = await loadEnvConfig(
+  ['process.env.ENV_JSON', '.env.cjs', '../.env.cjs', '../../.env.cjs'],
+  { cwd: process.cwd(), throwError: false },
+);
 const securityHeaders = [
   {
     key: 'X-DNS-Prefetch-Control',
@@ -43,10 +38,9 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    domains: [
-      'kit-caps.s3.eu-central-2.wasabisys.com',
-      isDev ? 'picsum.photos' : null
-    ].filter(Boolean),
+    domains: ['kit-caps.s3.eu-central-2.wasabisys.com', isDev ? 'picsum.photos' : null].filter(
+      Boolean,
+    ),
   },
   // typescript: {
   //   // !! WARN !!
