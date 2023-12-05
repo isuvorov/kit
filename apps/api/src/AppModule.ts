@@ -12,10 +12,12 @@ import { ScheduleModule } from '@nestjs/schedule';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { ReactAdapter } from '@webtre/nestjs-mailer-react-adapter';
 import { S3Module } from 'nestjs-s3';
-import { TelegrafModule } from 'nestjs-telegraf';
 
 import { ApiController } from './api/ApiController';
+import { ListController } from './api/ListController';
 import { ProductsApiController } from './api/ProductsApiController';
+import { TestController } from './api/TestController';
+// import { ApiController } from './api/ApiController';
 // import { ProductController } from './api/ProductController';
 // import { TelegramAvartarController } from './api/TelegramAvartarController';
 // import { BotAppService } from './BotAppService';
@@ -111,6 +113,8 @@ const notNull = (v, def) => (v == null ? def : v);
     ApiController,
     ProductsApiController,
     // TelegramAvartarController,
+    TestController,
+    ListController,
   ],
   providers: [
     // AuthService,
