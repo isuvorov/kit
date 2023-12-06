@@ -17,7 +17,7 @@
   "dependencies": {
     "@lsk4/algos": "^4.1.1",
     "@lsk4/env": "4.1.1",
-    "@lsk4/err": "4.1.0",
+    "@lsk4/err": "4.1.1",
     "@lsk4/log": "4.1.1",
     "@rckit/debug": "^4.0.0",
     "@tanstack/react-query": "^5.12.2",

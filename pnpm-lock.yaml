@@ -20,9 +20,6 @@ importers:
       '@playwright/test':
         specifier: ^1.40.1
         version: 1.40.1
-      '@ycmd/commands':
-        specifier: ^0.12.0
-        version: 0.12.0(esbuild@0.19.8)(typescript@5.3.2)(ycmd@0.12.0)
       concurrently:
         specifier: ^8.2.2
         version: 8.2.2
@@ -30,8 +27,8 @@ importers:
         specifier: ^5.3.2
         version: 5.3.2
       ycmd:
-        specifier: ^0.12.0
-        version: 0.12.0(esbuild@0.19.8)(typescript@5.3.2)
+        specifier: ^0.13.0
+        version: 0.13.0(esbuild@0.19.8)(typescript@5.3.2)
 
   apps/api:
     dependencies:
@@ -51,8 +48,8 @@ importers:
         specifier: 4.1.1
         version: 4.1.1
       '@lsk4/err':
-        specifier: 4.1.0
-        version: 4.1.0
+        specifier: 4.1.1
+        version: 4.1.1
       '@lsk4/log':
         specifier: 4.1.1
         version: 4.1.1
@@ -232,8 +229,8 @@ importers:
         specifier: 4.1.1
         version: 4.1.1
       '@lsk4/err':
-        specifier: 4.1.0
-        version: 4.1.0
+        specifier: 4.1.1
+        version: 4.1.1
       '@lsk4/log':
         specifier: 4.1.1
         version: 4.1.1
@@ -1984,18 +1981,8 @@ packages:
       - supports-color
     dev: true
 
-  /@lsk4/algos@4.1.0:
-    resolution: {integrity: sha512-CwCP0fWu6qRPtYpzTIakcytpr+8nnVHFSL8HbRsVCrw8a3i1vOacdlliWijMwzB22EHB2oua1HODzGWr7LlJYA==}
-    dev: true
-
   /@lsk4/algos@4.1.1:
     resolution: {integrity: sha512-ougD1toC/NBzjrce2npm3opCwsYg+rLu0tG1V+tzE7XaGxPXbLV/yMaI4pswpy77rSi7YHTWkArcqhFHo5W2Uw==}
-
-  /@lsk4/colors@4.1.0:
-    resolution: {integrity: sha512-qryr9/pLCdDgOsAuxNN/95YQLjP8p026nMfarZMOu7N6d1u65zFFveJjB/oQc+P+RZ++mdRrs3FR7mBCS8/w9w==}
-    dependencies:
-      '@lsk4/env': 4.1.1
-    dev: true
 
   /@lsk4/colors@4.1.1:
     resolution: {integrity: sha512-zhlTKVc8ChXS6AjDWSfE/HUQT01BT4UpQgjNdHd0X/aCh0b2nNqOCFMB+oDlZH+qDdKDrSZgda+5g18AzCKLWA==}
@@ -2004,17 +1991,6 @@ packages:
 
   /@lsk4/env@4.1.1:
     resolution: {integrity: sha512-zx404DNHV3twudadFkPVgBz/HdXCk2RwwUmGfjHxbXNjb6cs6klC04hRYachWCrJthdB4/TQJjsj1fORWQz3JQ==}
-
-  /@lsk4/err@4.0.2:
-    resolution: {integrity: sha512-cGZApQZv+0gRTJxs8A82PYLS2De+K8i3KnQ+NB9UMwkUdvwCaMSD+XuONHIf8SdrzDDey83tScLbsoKdizLNag==}
-    dependencies:
-      '@lsk4/algos': 4.1.0
-    dev: true
-
-  /@lsk4/err@4.1.0:
-    resolution: {integrity: sha512-B1AdKOQVOAwO2zRktBk0D4xclQxUQ8/Cmi04dFFIHejnrnb8jwEvGpcinDsPUB8yJvcvH69wB5IbCoiGy9tgag==}
-    dependencies:
-      '@lsk4/algos': 4.1.1
 
   /@lsk4/err@4.1.1:
     resolution: {integrity: sha512-k45l0OkTG2zK8qvfCeoSHhXvUl/UtRF+qWxVaQ0lKDaz6TJ9M0LCZRlmGF5QQtsiUWD7lf4nNf/aJw2b1Nm27w==}
@@ -2066,31 +2042,21 @@ packages:
     optionalDependencies:
       logfmt: 1.3.2
 
+  /@lsk4/stringify@4.2.0:
+    resolution: {integrity: sha512-aJoLQmVn/At3C5xDmmQAN/Oh0KT2YvvGV1rz9PcWFczGoR9aT1WIxNfgyTebf77ZuO4byw/TnGb7HMrv8s499Q==}
+    dependencies:
+      '@lsk4/algos': 4.1.1
+      '@lsk4/err': 4.1.1
+      javascript-stringify: 2.1.0
+      js-yaml: 4.1.0
+    dev: true
+
   /@lsk4/tsconfig@4.1.1:
     resolution: {integrity: sha512-MJUzrSxdjNyT1FeL9UmrNNRZZoj1QvOBLUUDb3YZEHFyAOC8HnTUiKOgeoXMXktgNIzDi2u2abyk8PnAtBRvnw==}
     dev: true
 
   /@lsk4/tsup-config@4.1.1:
     resolution: {integrity: sha512-DGoURLSiJEJu6k6sa4/w2YkBTO5wWb8Hd9GjzapwQhhCahErMu3KMajFx28MfYvN4zC1Fmy9UEaYai7QtBMtRw==}
-    dev: true
-
-  /@lskjs/algos@3.18.0:
-    resolution: {integrity: sha512-dTLE+MJNdks4xKtNuziYqADgxR4+b5xUHr8RfmeWhousvNoRfCNi6LRzLEp8PYtrCt5KJfrB09v5t0MIOyGtPg==}
-    dev: true
-
-  /@lskjs/err@3.18.0:
-    resolution: {integrity: sha512-5eUaWXVBc6FeF9BfCJWv9Ug70VLn/kQAgck6VBUg1rgKt9nfJLIu7yAqJlZn+GqDeAXA15sSIgmoxs1S6Lojmg==}
-    dependencies:
-      '@lskjs/algos': 3.18.0
-    dev: true
-
-  /@lskjs/stringify@3.19.0:
-    resolution: {integrity: sha512-nT0l+a0Ma7ctzpjP4hlVYtW7/Mlnw9Q/5V/vP3r0jbzlUcAz8DhV1tgI0V5ozbwXS+QV7CsC6/ZKYZUg7+Fg+w==}
-    dependencies:
-      '@lskjs/algos': 3.18.0
-      '@lskjs/err': 3.18.0
-      javascript-stringify: 2.1.0
-      js-yaml: 4.1.0
     dev: true
 
   /@lukeed/csprng@1.1.0:
@@ -2700,7 +2666,7 @@ packages:
       '@nestlib/config': ^4.0.0
     dependencies:
       '@lsk4/env': 4.1.1
-      '@lsk4/err': 4.1.0
+      '@lsk4/err': 4.1.1
       '@nestjs/common': 10.2.10(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.8.1)
       '@nestjs/core': 10.2.10(@nestjs/common@10.2.10)(@nestjs/microservices@10.2.10)(@nestjs/platform-express@10.2.10)(reflect-metadata@0.1.13)(rxjs@7.8.1)
       '@nestlib/config': 4.1.0(@nestjs/common@10.2.10)(@nestjs/config@3.1.1)(@nestjs/core@10.2.10)
@@ -2719,7 +2685,7 @@ packages:
       '@nestjs/core': ^10.1.2
     dependencies:
       '@lsk4/algos': 4.1.1
-      '@lsk4/err': 4.1.0
+      '@lsk4/err': 4.1.1
       '@nestjs/common': 10.2.10(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.8.1)
       '@nestjs/config': 3.1.1(@nestjs/common@10.2.10)(reflect-metadata@0.1.13)
       '@nestjs/core': 10.2.10(@nestjs/common@10.2.10)(@nestjs/microservices@10.2.10)(@nestjs/platform-express@10.2.10)(reflect-metadata@0.1.13)(rxjs@7.8.1)
@@ -2733,7 +2699,7 @@ packages:
     dependencies:
       '@lsk4/algos': 4.1.1
       '@lsk4/env': 4.1.1
-      '@lsk4/err': 4.1.0
+      '@lsk4/err': 4.1.1
       '@lsk4/log': 4.1.1
       '@nestjs/common': 10.2.10(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.8.1)
       '@nestjs/config': 3.1.1(@nestjs/common@10.2.10)(reflect-metadata@0.1.13)
@@ -5199,18 +5165,18 @@ packages:
       tslib: 2.6.2
     dev: true
 
-  /@ycmd/commands@0.12.0(esbuild@0.19.8)(typescript@5.3.2)(ycmd@0.12.0):
-    resolution: {integrity: sha512-9B4mNElJBED4zaF1mhltIJ5ue06oQHWLCmRFS5r2/iJ7bTgNqn2m5Gs2fDtikZ+DP7hhSZuJdpd7FdgX1tuqMQ==}
+  /@ycmd/commands@0.13.0(esbuild@0.19.8)(typescript@5.3.2)(ycmd@0.13.0):
+    resolution: {integrity: sha512-5WUfnzRPWmijkslC1PTZETdzn0v4MAkkWobuX1udWIl7WJMgkRali0JuvvzzEML5C3NqiU0FehDEMbRzb/KiJQ==}
     peerDependencies:
       ycmd: ^0.8.0
     dependencies:
-      '@lsk4/algos': 4.1.0
-      '@lskjs/stringify': 3.19.0
+      '@lsk4/algos': 4.1.1
+      '@lsk4/stringify': 4.2.0
       '@macrobe/tsup': 0.0.1(@swc/core@1.3.100)(typescript@5.3.2)
       '@swc/cli': 0.1.63(@swc/core@1.3.100)(chokidar@3.5.3)
       '@swc/core': 1.3.100
-      '@ycmd/helpers': 0.12.0(esbuild@0.19.8)
-      '@ycmd/run': 0.12.0(esbuild@0.19.8)
+      '@ycmd/helpers': 0.13.0(esbuild@0.19.8)
+      '@ycmd/run': 0.13.0(esbuild@0.19.8)
       chokidar: 3.5.3
       clean-publish: github.com/isuvorov/clean-publish/bd4dc76ff2331b560c4c1e030375cb46ed3f518c
       fishbird: 1.1.8
@@ -5223,7 +5189,7 @@ packages:
       sort-package-json: 2.6.0
       tsm: 2.3.0
       yargs: 17.7.2
-      ycmd: 0.12.0(esbuild@0.19.8)(typescript@5.3.2)
+      ycmd: 0.13.0(esbuild@0.19.8)(typescript@5.3.2)
     transitivePeerDependencies:
       - '@microsoft/api-extractor'
       - '@swc-node/register'
@@ -5238,27 +5204,27 @@ packages:
       - typescript
     dev: true
 
-  /@ycmd/helpers@0.12.0(esbuild@0.19.8):
-    resolution: {integrity: sha512-Dkz0nST/fHaFPr73oBbO7MFuSwAIFPvArFDKnh7oCeU3nVkGGfAhc0k1wLJnF/lB/M8i4564Uke/c3fef5AV3Q==}
+  /@ycmd/helpers@0.13.0(esbuild@0.19.8):
+    resolution: {integrity: sha512-q9EfqbpMgfo6nEgJ3s0NUO5KDlqm14Wvt4TpvWY/rH1Kgvg69jW17IBCyD3LK3DhHtFMTTnnKg1OUzydtZ7y6A==}
     dependencies:
-      '@lsk4/algos': 4.1.0
-      '@lsk4/colors': 4.1.0
+      '@lsk4/algos': 4.1.1
+      '@lsk4/colors': 4.1.1
       '@lsk4/env': 4.1.1
-      '@lsk4/err': 4.1.0
+      '@lsk4/err': 4.1.1
       '@lsk4/log': 4.1.1
-      '@ycmd/utils': 0.12.0(esbuild@0.19.8)
+      '@ycmd/utils': 0.13.0(esbuild@0.19.8)
       yargs: 17.7.2
     transitivePeerDependencies:
       - esbuild
     dev: true
 
-  /@ycmd/run@0.12.0(esbuild@0.19.8):
-    resolution: {integrity: sha512-UZ2p/LES5TBKcPzN/3Bg8slBWBmcLWLe/umj44kMxf5vXvM6j+9xYcjiDqStuhLaxthxdpSUFhB0j+jqVVLr5A==}
+  /@ycmd/run@0.13.0(esbuild@0.19.8):
+    resolution: {integrity: sha512-Bdgw4x4EAd1RrjRzMyvk+M7/i4NCWKrKpmfRkQf9v7nFa5YFrFmWNTeEuymRiCYBE+a1kSw9AS0iSz8GofjVAQ==}
     dependencies:
-      '@lsk4/err': 4.0.2
-      '@ycmd/helpers': 0.12.0(esbuild@0.19.8)
-      '@ycmd/spawn': 0.12.0(esbuild@0.19.8)
-      '@ycmd/utils': 0.12.0(esbuild@0.19.8)
+      '@lsk4/err': 4.1.1
+      '@ycmd/helpers': 0.13.0(esbuild@0.19.8)
+      '@ycmd/spawn': 0.13.0(esbuild@0.19.8)
+      '@ycmd/utils': 0.13.0(esbuild@0.19.8)
       fishbird: 1.1.8
       global-prefix: 3.0.0
       yargs: 17.7.2
@@ -5266,19 +5232,19 @@ packages:
       - esbuild
     dev: true
 
-  /@ycmd/spawn@0.12.0(esbuild@0.19.8):
-    resolution: {integrity: sha512-MN8SmUdIa5ipSPnPlvSMUvQKzhQWvV+pQrNsyggAKRroF3awwOHhIt8wTPqTzgn/QWAlQjIgsSiuohbpcA4BtQ==}
+  /@ycmd/spawn@0.13.0(esbuild@0.19.8):
+    resolution: {integrity: sha512-/ixWehCWETvlRUsXc8R6TT5knmBkL1pZfdlZbdf9qF7zDNSUDa7mkiIga5WI8s6OeeWS2Tda4kEy7bSGfcBhVQ==}
     dependencies:
-      '@ycmd/utils': 0.12.0(esbuild@0.19.8)
+      '@ycmd/utils': 0.13.0(esbuild@0.19.8)
     transitivePeerDependencies:
       - esbuild
     dev: true
 
-  /@ycmd/utils@0.12.0(esbuild@0.19.8):
-    resolution: {integrity: sha512-ZYeJE8NfOdBJONIPrW07n4LgEYHaWzJ1wQFvFySwZ2LVgCNWjo2d/GTAH4E1CKMt8b8yq7QZ/7m307sCW1t6nw==}
+  /@ycmd/utils@0.13.0(esbuild@0.19.8):
+    resolution: {integrity: sha512-nuWAzOhdez+I4mBn5z3q8wgPZvHzJ2TTZGbrhUXywCa13nix7WTCZX+60xKA3yFpzu76o7ePUl/1YMewVmhWkg==}
     dependencies:
       '@lsk4/env': 4.1.1
-      '@lsk4/err': 4.1.0
+      '@lsk4/err': 4.1.1
       '@lsk4/log': 4.1.1
       bundle-require: 4.0.2(esbuild@0.19.8)
       fishbird: 1.1.8
@@ -15868,15 +15834,15 @@ packages:
       yargs-parser: 21.1.1
     dev: true
 
-  /ycmd@0.12.0(esbuild@0.19.8)(typescript@5.3.2):
-    resolution: {integrity: sha512-skz0B3yrv913vVu9cgeUg8SF9LUe3BFAPk0Oycp9n44vbfnhMDWq0CY1n1D4XQ9ugVLrCSkDleNxgKwuQV3xhA==}
+  /ycmd@0.13.0(esbuild@0.19.8)(typescript@5.3.2):
+    resolution: {integrity: sha512-Zs2BEl3NFn0yC/l1Cd+ntQ7XFLQil/vct+va85tGYlOpLSRhWgLKAmJ4VJxbGYlshlrKW4muumLEzZMWD62eJg==}
     hasBin: true
     dependencies:
-      '@lsk4/err': 4.1.0
-      '@ycmd/commands': 0.12.0(esbuild@0.19.8)(typescript@5.3.2)(ycmd@0.12.0)
-      '@ycmd/helpers': 0.12.0(esbuild@0.19.8)
-      '@ycmd/run': 0.12.0(esbuild@0.19.8)
-      '@ycmd/utils': 0.12.0(esbuild@0.19.8)
+      '@lsk4/err': 4.1.1
+      '@ycmd/commands': 0.13.0(esbuild@0.19.8)(typescript@5.3.2)(ycmd@0.13.0)
+      '@ycmd/helpers': 0.13.0(esbuild@0.19.8)
+      '@ycmd/run': 0.13.0(esbuild@0.19.8)
+      '@ycmd/utils': 0.13.0(esbuild@0.19.8)
       yargs: 17.7.2
     transitivePeerDependencies:
       - '@microsoft/api-extractor'

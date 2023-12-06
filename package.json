@@ -20,10 +20,9 @@
     "@lsk4/tsconfig": "^4.1.1",
     "@lsk4/tsup-config": "4.1.1",
     "@playwright/test": "^1.40.1",
-    "@ycmd/commands": "^0.12.0",
     "concurrently": "^8.2.2",
     "typescript": "^5.3.2",
-    "ycmd": "^0.12.0"
+    "ycmd": "^0.13.0"
   },
   "//": "///////////========================/////////========================/////////========================/////////",
   "prettier": "@lsk4/eslint-config/prettier",
