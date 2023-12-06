@@ -1,4 +1,4 @@
-import { Err } from '@lskjs/err';
+import { Err } from '@lsk4/err';
 import { FieldValues, useForm } from 'react-hook-form';
 
 export const useSmartForm = <T extends FieldValues>({

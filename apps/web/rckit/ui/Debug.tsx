@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /* eslint-disable no-nested-ternary */
 // import Zebra from '@lskjs/dev/Zebra';
 

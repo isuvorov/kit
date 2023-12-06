@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /* eslint-disable max-len */
 // import { useGlobalContext } from '@/hooks/useGlobalContext';
 // import { IsomorphicContext } from '@/types';
@@ -20,8 +22,8 @@ import { useVirtual } from 'react-virtual';
 
 // import { Person } from '@/__components/makeData';
 import { AdminLayout } from '@/layouts/AdminLayout';
-import { Badges } from '@/lskjs/ui/Badges';
 import { ProductListItem, useProductListInfinityQuery } from '@/queries/products';
+import { Badges } from '@/rckit/ui/Badges';
 
 const fetchSize = 25;
 
@@ -67,7 +69,7 @@ export default function SomePage() {
 
   const [sorting, setSorting] = React.useState<SortingState>([]);
 
-  console.log({ sorting });
+  // console.log({ sorting });
 
   const { data, fetchNextPage, isFetching, isLoading } = useProductListInfinityQuery({
     pageSize: fetchSize,

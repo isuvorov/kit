@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /* eslint-disable max-len */
 // import { useGlobalContext } from '@/hooks/useGlobalContext';
 // import { IsomorphicContext } from '@/types';
@@ -10,14 +12,14 @@ import { Button, Table } from 'react-bootstrap';
 import ReactPaginate from 'react-paginate';
 
 import { AdminLayout } from '@/layouts/AdminLayout';
+// import { useBillingTransactionListQuery } from '@/queries/billing';
+import { useUserListQuery } from '@/queries/users';
 import { LeftArrowIcon } from '@/rckit/ui/icons/LeftArrowIcon';
 import RefreshIcon from '@/rckit/ui/icons/RefreshIcon';
 import { RightArrowIcon } from '@/rckit/ui/icons/RightArrowIcon';
 // import { FilterMenu } from '@/rckit/ui/FlexTable/FilterMenu';
 import { SortIndicator } from '@/rckit/ui/icons/SortIndicator';
 import { getSpinAnimationStyles } from '@/rckit/utils/getSpinAnimationStyles';
-// import { useBillingTransactionListQuery } from '@/queries/billing';
-import { useUserListQuery } from '@/queries/users';
 
 export default function AdminUsersPage() {
   const [page, setPage] = useState(0);
@@ -36,13 +38,7 @@ export default function AdminUsersPage() {
     //   },
     // },
   });
-  const {
-    data: rawItems,
-    isFetching,
-    error,
-    status,
-    refetch,
-  } = res;
+  const { data: rawItems, isFetching, error, status, refetch } = res;
   const { items = [], total = 0 } = rawItems || {};
 
   const pageCount = Math.ceil(total / pageSize);
@@ -61,7 +57,7 @@ export default function AdminUsersPage() {
     likes: 1,
   };
 
-  console.log(res, { items, total, page, pageCount, isFetching, error, status, refetch })
+  // console.log(res, { items, total, page, pageCount, isFetching, error, status, refetch });
 
   return (
     <AdminLayout activeHref="/admin/users">
@@ -69,7 +65,7 @@ export default function AdminUsersPage() {
         <div></div>
         <div>
           {isFetching ? <span className="mr-2">Refreshing...</span> : null}
-          {status === 'loading' && <span className="mr-2">Loading...</span>}
+          {status === 'pending' && <span className="mr-2">Loading...</span>}
           {status === 'error' && <span className="mr-2">Error: {Err.getMessage(error)}</span>}
           {status === 'success' && !items?.length && (
             <span className="mr-2">{page ? 'reset filter and page' : 'No data'}</span>

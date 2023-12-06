@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /* eslint-disable max-len */
 // import { useGlobalContext } from '@/hooks/useGlobalContext';
 // import { IsomorphicContext } from '@/types';

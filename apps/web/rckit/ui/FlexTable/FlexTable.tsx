@@ -2,16 +2,16 @@
 // import { useGlobalContext } from '@/hooks/useGlobalContext';
 // import { IsomorphicContext } from '@/types';
 
-import { Err } from '@lskjs/err';
+import { Debug } from '@rckit/debug';
 import Image from 'next/image';
 import { useCallback, useState } from 'react';
 import { Button, Col, Form, Row, Table } from 'react-bootstrap';
 import ReactPaginate from 'react-paginate';
 
 import { AdminLayout } from '@/layouts/AdminLayout';
-import { Debug } from '@/lskjs/ui/Debug';
 // import { useBillingTransactionListQuery } from '@/queries/billing';
 import { useProductListQuery } from '@/queries/products';
+import { debounce } from '@/rckit/utils/debounce';
 
 import { SortIndicator } from '../icons/SortIndicator';
 
@@ -188,7 +188,7 @@ export default function FlexTable({ query }: any) {
   return (
     <AdminLayout>
       {isFetching ? <div>Refreshing...</div> : null}
-      {status === 'loading' && 'Loading...'}
+      {status === 'pending' && 'Loading...'}
       {/* {status === 'error' && Err.getMessage(error)} */}
       {status === 'success' && !items?.length && (page ? 'reset filter and page' : 'No data')}
       {status === 'success' && !!items?.length && (
