@@ -5,13 +5,13 @@ import { MailerService } from '@nestjs-modules/mailer';
 import { AuthRole } from '@nestlib/auth';
 
 import { renderOtpEmail } from '../../emails/OtpEmail';
-import { ResponseTransformInterceptor } from '../interceptors/ResponseTransformInterceptor';
+import { ResponseTransformInterceptor, ErrorTransformInterceptor } from '../interceptors';
 import { AuthOtpService } from './AuthOtpService';
 import { AuthService } from './AuthService';
 import { Request, User } from './types';
 
 @Controller('/api/auth')
-@UseInterceptors(new ResponseTransformInterceptor())
+@UseInterceptors(new ResponseTransformInterceptor(), new ErrorTransformInterceptor())
 export class AuthController {
   constructor(
     private authService: AuthService,

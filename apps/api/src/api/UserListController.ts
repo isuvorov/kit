@@ -4,13 +4,13 @@ import { InjectRepository } from '@mikro-orm/nestjs';
 import { All, Body, Controller, Post, Query, UseInterceptors } from '@nestjs/common';
 
 import { UserModel } from '@/nestlib/auth/models/UserModel';
-import { ExampleFilter } from '@/nestlib/Filter';
+import { ExampleFilter } from '@/examples/Filter';
 import { ErrorTransformInterceptor, ResponseTransformInterceptor } from '@/nestlib/interceptors';
 import { Find, FindParams } from '@/nestlib/list/FindParams.decorator';
 
-@Controller('api/list')
+@Controller('api/users')
 @UseInterceptors(new ResponseTransformInterceptor(), new ErrorTransformInterceptor())
-export class ListController {
+export class UserListController {
   constructor(
     @InjectRepository(UserModel)
     private usersRepository: EntityRepository<UserModel>,
@@ -27,10 +27,11 @@ export class ListController {
     if (data.filter.role) {
       filter.role = data.filter.role;
     }
-    return this.usersRepository.find(filter, {
+    const items = await this.usersRepository.find(filter, {
       limit: data.limit,
       offset: data.skip,
     });
+    return {items}
   }
 
   @All(['findOne', 'get'])

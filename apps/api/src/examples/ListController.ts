@@ -8,9 +8,9 @@ import { ExampleFilter } from '@/examples/Filter';
 import { ErrorTransformInterceptor, ResponseTransformInterceptor } from '@/nestlib/interceptors';
 import { Find, FindParams } from '@/nestlib/list/FindParams.decorator';
 
-@Controller('api/products')
+@Controller('api/list')
 @UseInterceptors(new ResponseTransformInterceptor(), new ErrorTransformInterceptor())
-export class ProductsController {
+export class ListController {
   constructor(
     @InjectRepository(UserModel)
     private usersRepository: EntityRepository<UserModel>,

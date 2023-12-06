@@ -14,9 +14,10 @@ import { ReactAdapter } from '@webtre/nestjs-mailer-react-adapter';
 import { S3Module } from 'nestjs-s3';
 
 import { ApiController } from './api/ApiController';
-import { ListController } from './api/ListController';
+import { ListController } from './examples/ListController';
 import { ProductsController } from './api/ProductsController';
-import { TestController } from './api/TestController';
+import { UserListController } from './api/UserListController';
+import { TestController } from './examples/TestController';
 // import { ApiController } from './api/ApiController';
 // import { ProductController } from './api/ProductController';
 // import { TelegramAvartarController } from './api/TelegramAvartarController';
@@ -64,7 +65,7 @@ const notNull = (v, def) => (v == null ? def : v);
     //   //   },
     // }),
 
-    S3Module.forRootAsync(getConfig('s3', (config) => ({ config }))),
+    // S3Module.forRootAsync(getConfig('s3', (config) => ({ config }))),
 
     // GraphQLModule.forRoot<ApolloDriverConfig>({
     //   driver: YogaDriver,
@@ -76,22 +77,22 @@ const notNull = (v, def) => (v == null ? def : v);
     //   // sortSchema: true,
     //   // playground: true,
     // }),
-    MailerModule.forRootAsync(
-      getConfig('mailer', (cnf) => ({
-        ...cnf,
-        template: {
-          dir: `${__dirname}/emails`,
-          adapter: new ReactAdapter({
-            pretty: isDev,
-            // plainText: true,
-          }),
-          // // adapter: new PugAdapter(),
-          // options: {
-          //   strict: true,
-          // },
-        },
-      })),
-    ),
+    // MailerModule.forRootAsync(
+    //   getConfig('mailer', (cnf) => ({
+    //     ...cnf,
+    //     template: {
+    //       dir: `${__dirname}/emails`,
+    //       adapter: new ReactAdapter({
+    //         pretty: isDev,
+    //         // plainText: true,
+    //       }),
+    //       // // adapter: new PugAdapter(),
+    //       // options: {
+    //       //   strict: true,
+    //       // },
+    //     },
+    //   })),
+    // ),
     // CacheModule.registerAsync(
     //   getConfig('redis', (cnf) => ({
     //     store: redisStore,
@@ -110,11 +111,12 @@ const notNull = (v, def) => (v == null ? def : v);
     //
     // AuthController,
     // ProductController,
-    ApiController,
     ProductsController,
     // TelegramAvartarController,
     TestController,
     ListController,
+    UserListController,
+    ApiController,
   ],
   providers: [
     // AuthService,
