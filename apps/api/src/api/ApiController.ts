@@ -2,7 +2,7 @@ import { omitNull } from '@lsk4/algos';
 import { isDev, stage } from '@lsk4/env';
 import { Controller, Get, UseInterceptors } from '@nestjs/common';
 
-import { ResponseTransformInterceptor, ErrorTransformInterceptor } from '@/nestlib/interceptors';
+import { ErrorTransformInterceptor, ResponseTransformInterceptor } from '@/nestlib/interceptors';
 
 @Controller()
 @UseInterceptors(new ResponseTransformInterceptor(), new ErrorTransformInterceptor())

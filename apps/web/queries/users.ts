@@ -46,7 +46,7 @@ export async function fetchUserList(
   });
   // console.log({data})
   // TODO: check data
-  console.log({data})
+  // console.log({ data });
   return data;
 }
 

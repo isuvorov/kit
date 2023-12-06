@@ -10,14 +10,14 @@ import { Button, Table } from 'react-bootstrap';
 import ReactPaginate from 'react-paginate';
 
 import { AdminLayout } from '@/layouts/AdminLayout';
+// import { useBillingTransactionListQuery } from '@/queries/billing';
+import { useProductListQuery } from '@/queries/products';
 import { LeftArrowIcon } from '@/rckit/ui/icons/LeftArrowIcon';
 import RefreshIcon from '@/rckit/ui/icons/RefreshIcon';
 import { RightArrowIcon } from '@/rckit/ui/icons/RightArrowIcon';
 // import { FilterMenu } from '@/rckit/ui/FlexTable/FilterMenu';
 import { SortIndicator } from '@/rckit/ui/icons/SortIndicator';
 import { getSpinAnimationStyles } from '@/rckit/utils/getSpinAnimationStyles';
-// import { useBillingTransactionListQuery } from '@/queries/billing';
-import { useProductListQuery } from '@/queries/products';
 
 export default function AdminProductsPage() {
   const [page, setPage] = useState(0);
