@@ -1,11 +1,11 @@
 import { pick } from '@lsk4/algos';
 import { Err } from '@lsk4/err';
-import { All, Body, Controller, Get, HttpStatus, Post, Req, UseInterceptors } from '@nestjs/common';
+import { All, Body, Controller, HttpStatus, Post, Req, UseInterceptors } from '@nestjs/common';
 import { MailerService } from '@nestjs-modules/mailer';
 import { AuthRole } from '@nestlib/auth';
 
 import { renderOtpEmail } from '../../emails/OtpEmail';
-import { ResponseTransformInterceptor, ErrorTransformInterceptor } from '../interceptors';
+import { ErrorTransformInterceptor, ResponseTransformInterceptor } from '../interceptors';
 import { AuthOtpService } from './AuthOtpService';
 import { AuthService } from './AuthService';
 import { Request, User } from './types';

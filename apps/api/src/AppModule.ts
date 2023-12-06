@@ -6,15 +6,12 @@ import { APP_GUARD } from '@nestjs/core';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 // import { BotService } from './bot/bot.service';
 import { ScheduleModule } from '@nestjs/schedule';
+import { MailerModule } from '@nestjs-modules/mailer';
 import { AccessLoggerMiddleware } from '@nestlib/access-logger';
 import { AuthGuard } from '@nestlib/auth/AuthGuard';
 import { ConfigModule, getConfig, loadConfigEnvs } from '@nestlib/config';
+import { ReactAdapter } from '@webtre/nestjs-mailer-react-adapter';
 
-import { ApiController } from './api/ApiController';
-import { ListController } from './examples/ListController';
-import { ProductsController } from './api/ProductsController';
-import { UserListController } from './api/UserListController';
-import { TestController } from './examples/TestController';
 // import { ApiController } from './api/ApiController';
 // import { ProductController } from './api/ProductController';
 // import { TelegramAvartarController } from './api/TelegramAvartarController';
@@ -22,8 +19,13 @@ import { TestController } from './examples/TestController';
 // import { AuthController } from './lskjs/auth/AuthController';
 // import { AuthOtpService } from './lskjs/auth/AuthOtpService';
 // import { AuthService } from './lskjs/auth/AuthService';
-
 import { AuthController, AuthOtpService, AuthService } from '@/nestlib/auth';
+
+import { ApiController } from './api/ApiController';
+import { ProductsController } from './api/ProductsController';
+import { UserListController } from './api/UserListController';
+import { ListController } from './examples/ListController';
+import { TestController } from './examples/TestController';
 import models from './nestlib/auth/models';
 import { loggerFactory } from './nestlib/mikro-orm/loggerFactory';
 
@@ -76,22 +78,22 @@ const notNull = (v, def) => (v == null ? def : v);
     //   // sortSchema: true,
     //   // playground: true,
     // }),
-    // MailerModule.forRootAsync(
-    //   getConfig('mailer', (cnf) => ({
-    //     ...cnf,
-    //     template: {
-    //       dir: `${__dirname}/emails`,
-    //       adapter: new ReactAdapter({
-    //         pretty: isDev,
-    //         // plainText: true,
-    //       }),
-    //       // // adapter: new PugAdapter(),
-    //       // options: {
-    //       //   strict: true,
-    //       // },
-    //     },
-    //   })),
-    // ),
+    MailerModule.forRootAsync(
+      getConfig('mailer', (cnf) => ({
+        ...cnf,
+        template: {
+          dir: `${__dirname}/emails`,
+          adapter: new ReactAdapter({
+            pretty: isDev,
+            // plainText: true,
+          }),
+          // // adapter: new PugAdapter(),
+          // options: {
+          //   strict: true,
+          // },
+        },
+      })),
+    ),
     // CacheModule.registerAsync(
     //   getConfig('redis', (cnf) => ({
     //     store: redisStore,
@@ -118,12 +120,10 @@ const notNull = (v, def) => (v == null ? def : v);
     ApiController,
 
     AuthController,
-    AuthOtpService,
-    AuthService,
   ],
   providers: [
-    // AuthService,
-    // AuthOtpService,
+    AuthService,
+    AuthOtpService,
     // BotAppService,
 
     // TODO: подумать
