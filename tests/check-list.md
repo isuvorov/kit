@@ -1,6 +1,6 @@
 # #1 Sign Up
 
-## № 1.1 Happy path Sign Up
+## :rocket: № 1.1 Happy path Sign Up
 
 1. Нажать "Sign In".
 2. Заполнить поле "Email Address" верным адресом электронной почты
@@ -12,7 +12,7 @@
 
 **Ожидаемый результат:** вход в систему
 
-## Тестовые сценарии Sign Up
+## :scroll: Тестовые сценарии Sign Up
 
 ### № 1.2 Пустое поле "Email Address"
 
@@ -57,7 +57,7 @@
 
 # #2 Restore password
 
-## № 2.1 Happy path Restore password
+## :rocket: № 2.1 Happy path Restore password
 
 1. Нажать "Forgot Password?"
 2. Ввести верный email
@@ -70,7 +70,7 @@
 
     **Ожидаемый результат:** вход в систему
 
-## Тестовые сценарии Restore password
+## :scroll: Тестовые сценарии Restore password
 
 ### № 2.2 Подтверждение пароля не совпадает с паролем
 
@@ -102,7 +102,7 @@
 
 # #3 AuthCompany – Settings
 
-## №3.1 Happy path AuthCompany – Settings
+## :rocket: №3.1 Happy path AuthCompany – Settings
 
 1. Авторизация в системе как Owner компании.
 2. Нажать "Settings"
@@ -111,7 +111,7 @@
 
     **Ожидаемый результат:** изменения сохранены.
 
-## Тестовые сценарии AuthCompany – Settings
+## :scroll: Тестовые сценарии AuthCompany – Settings
 
 ### №3.2 Изменение аватарки на файл недопустимого формата
 
