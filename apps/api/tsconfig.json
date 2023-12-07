@@ -1,19 +1,6 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "jsx": "react",
-    // "sourceMap": true,
-    // "declaration": true,
-    // "emitDecoratorMetadata": true,
-    // "experimentalDecorators": true,
-    // "experimentalDecorators": true,
-    
-    "strictPropertyInitialization": false,
-    "ignoreDeprecations": "5.0",
-    // "module": "NodeNext",
-    // // "moduleResolution": "bundler"
-    // "moduleResolution": "NodeNext",
-
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],

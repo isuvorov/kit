@@ -1,16 +1,9 @@
 import { isDev, stage, version } from '@lsk4/env';
 import { log } from '@lsk4/log/log';
-// import { loadEnvConfig } from './loadEnvConfig.mjs';
 import { loadConfig } from '@lsk4/config';
-
-// const config = await loadEnvConfig(
-//   ['process.env.ENV_JSON', '.env.cjs', '../.env.cjs', '../../.env.cjs'],
-//   { cwd: process.cwd(), throwError: false },
-// );
 const { config } = await loadConfig('.env', {
   cwd: process.cwd(),
   processEnvKey: 'ENV_JSON',
-  // exts: ['.cjs', '.mjs', '.js', '.json'],
   throwError: isDev,
 });
 const securityHeaders = [
@@ -63,12 +56,16 @@ const nextConfig = {
     if (!isDev) return [];
     const prefix = config?.next?.server?.baseURL || 'UNKNOWN';
     log.debug(`Proxy: /api/:path* => ${prefix}/api/:path*`);
-    return [
+    const localPaths = [
       {
         source: '/api/:path*',
         destination: `${prefix}/api/:path*`,
       },
     ];
+    localPaths.forEach(({ source, destination }) => {
+      log.debug(`${source} => ${destination}`);
+    });
+    return localPaths;
   },
   // async headers() {
   //   return [

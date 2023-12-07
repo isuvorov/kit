@@ -4,9 +4,6 @@
   "exclude": ["node_modules", "tests", "lib", "**/*spec.ts"],
   "compilerOptions": {
     "outDir": "./lib",
-    "incremental": true,
-    "paths": {
-      "@/*": ["src/*"],
-    }
+    "incremental": true
   }
 }
