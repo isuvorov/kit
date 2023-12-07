@@ -3,8 +3,8 @@ import { EntityManager, EntityRepository } from '@mikro-orm/mongodb';
 import { InjectRepository } from '@mikro-orm/nestjs';
 import { All, Body, Controller, Post, Query, UseInterceptors } from '@nestjs/common';
 
-import { UserModel } from '@/nestlib/auth/models/UserModel';
 import { ExampleFilter } from '@/examples/Filter';
+import { UserModel } from '@/nestlib/auth/models/UserModel';
 import { ErrorTransformInterceptor, ResponseTransformInterceptor } from '@/nestlib/interceptors';
 import { Find, FindParams } from '@/nestlib/list/FindParams.decorator';
 

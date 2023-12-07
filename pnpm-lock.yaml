@@ -169,7 +169,7 @@ importers:
         version: 2.0.1(@aws-sdk/client-s3@3.465.0)(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)
       nestjs-telegraf:
         specifier: ^2.7.0
-        version: 2.7.0(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)(reflect-metadata@0.1.13)(telegraf@4.15.3)(typescript@5.3.2)
+        version: 2.7.0(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)(reflect-metadata@0.1.13)(telegraf@4.15.3)(typescript@5.3.3)
       nodemailer:
         specifier: ^6.9.7
         version: 6.9.7
@@ -194,7 +194,7 @@ importers:
         version: 10.2.10(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)(cache-manager@5.3.1)(reflect-metadata@0.1.13)(rxjs@7.8.1)
       '@nestjs/schematics':
         specifier: ^10.0.3
-        version: 10.0.3(typescript@5.3.2)
+        version: 10.0.3(typescript@5.3.3)
       '@nestjs/testing':
         specifier: ^10.2.10
         version: 10.2.10(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)(@nestjs/microservices@10.2.10)(@nestjs/platform-express@10.2.10)
@@ -223,17 +223,20 @@ importers:
   apps/web:
     dependencies:
       '@lsk4/algos':
-        specifier: ^4.1.1
-        version: 4.1.1
+        specifier: ^4.3.0
+        version: 4.3.0
+      '@lsk4/config':
+        specifier: ^4.3.3
+        version: 4.3.3(esbuild@0.19.8)
       '@lsk4/env':
-        specifier: 4.1.1
-        version: 4.1.1
+        specifier: 4.3.1
+        version: 4.3.1
       '@lsk4/err':
-        specifier: 4.1.1
-        version: 4.1.1
+        specifier: 4.3.0
+        version: 4.3.0
       '@lsk4/log':
-        specifier: 4.1.1
-        version: 4.1.1
+        specifier: 4.3.1
+        version: 4.3.1
       '@rckit/debug':
         specifier: ^4.0.0
         version: 4.0.0(react@18.2.0)
@@ -248,7 +251,7 @@ importers:
         version: 1.6.2
       blb-ui-lib:
         specifier: ^1.0.20
-        version: 1.0.20(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.2)
+        version: 1.0.20(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.3)
       bootstrap:
         specifier: ^5.3.2
         version: 5.3.2(@popperjs/core@2.11.8)
@@ -293,8 +296,8 @@ importers:
         specifier: ^0.5.1
         version: 0.5.1
       '@types/node':
-        specifier: ^20.10.3
-        version: 20.10.3
+        specifier: ^20.10.4
+        version: 20.10.4
       '@types/react':
         specifier: ^18.2.42
         version: 18.2.42
@@ -309,7 +312,7 @@ importers:
         version: 8.55.0
       eslint-config-next:
         specifier: 14.0.3
-        version: 14.0.3(eslint@8.55.0)(typescript@5.3.2)
+        version: 14.0.3(eslint@8.55.0)(typescript@5.3.3)
       postcss:
         specifier: ^8.4.32
         version: 8.4.32
@@ -317,8 +320,8 @@ importers:
         specifier: ^3.3.6
         version: 3.3.6
       typescript:
-        specifier: ^5.3.2
-        version: 5.3.2
+        specifier: ^5.3.3
+        version: 5.3.3
 
 packages:
 
@@ -1316,7 +1319,6 @@ packages:
     cpu: [arm64]
     os: [android]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/android-arm@0.15.18:
@@ -1334,7 +1336,6 @@ packages:
     cpu: [arm]
     os: [android]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/android-x64@0.19.8:
@@ -1343,7 +1344,6 @@ packages:
     cpu: [x64]
     os: [android]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/darwin-arm64@0.19.8:
@@ -1352,7 +1352,6 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/darwin-x64@0.19.8:
@@ -1361,7 +1360,6 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/freebsd-arm64@0.19.8:
@@ -1370,7 +1368,6 @@ packages:
     cpu: [arm64]
     os: [freebsd]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/freebsd-x64@0.19.8:
@@ -1379,7 +1376,6 @@ packages:
     cpu: [x64]
     os: [freebsd]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/linux-arm64@0.19.8:
@@ -1388,7 +1384,6 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/linux-arm@0.19.8:
@@ -1397,7 +1392,6 @@ packages:
     cpu: [arm]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/linux-ia32@0.19.8:
@@ -1406,7 +1400,6 @@ packages:
     cpu: [ia32]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/linux-loong64@0.15.18:
@@ -1424,7 +1417,6 @@ packages:
     cpu: [loong64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/linux-mips64el@0.19.8:
@@ -1433,7 +1425,6 @@ packages:
     cpu: [mips64el]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/linux-ppc64@0.19.8:
@@ -1442,7 +1433,6 @@ packages:
     cpu: [ppc64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/linux-riscv64@0.19.8:
@@ -1451,7 +1441,6 @@ packages:
     cpu: [riscv64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/linux-s390x@0.19.8:
@@ -1460,7 +1449,6 @@ packages:
     cpu: [s390x]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/linux-x64@0.19.8:
@@ -1469,7 +1457,6 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/netbsd-x64@0.19.8:
@@ -1478,7 +1465,6 @@ packages:
     cpu: [x64]
     os: [netbsd]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/openbsd-x64@0.19.8:
@@ -1487,7 +1473,6 @@ packages:
     cpu: [x64]
     os: [openbsd]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/sunos-x64@0.19.8:
@@ -1496,7 +1481,6 @@ packages:
     cpu: [x64]
     os: [sunos]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/win32-arm64@0.19.8:
@@ -1505,7 +1489,6 @@ packages:
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/win32-ia32@0.19.8:
@@ -1514,7 +1497,6 @@ packages:
     cpu: [ia32]
     os: [win32]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/win32-x64@0.19.8:
@@ -1523,7 +1505,6 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@eslint-community/eslint-utils@4.4.0(eslint@8.51.0):
@@ -1984,18 +1965,46 @@ packages:
   /@lsk4/algos@4.1.1:
     resolution: {integrity: sha512-ougD1toC/NBzjrce2npm3opCwsYg+rLu0tG1V+tzE7XaGxPXbLV/yMaI4pswpy77rSi7YHTWkArcqhFHo5W2Uw==}
 
+  /@lsk4/algos@4.3.0:
+    resolution: {integrity: sha512-e0fAeSoyGSru2rN6swbb50mfDG6G0+DOwDDU2KuuP7+TmlUPdec6pPH3wZYZyCvPv78VZ3/tmavOWEtbJZIwBw==}
+
   /@lsk4/colors@4.1.1:
     resolution: {integrity: sha512-zhlTKVc8ChXS6AjDWSfE/HUQT01BT4UpQgjNdHd0X/aCh0b2nNqOCFMB+oDlZH+qDdKDrSZgda+5g18AzCKLWA==}
     dependencies:
       '@lsk4/env': 4.1.1
 
+  /@lsk4/colors@4.3.1:
+    resolution: {integrity: sha512-patq2Z99RnQLdUrOb7a+02P5coLrFqQTTZpe7nMQc2tpGLi4rLhBg1IL87uUiXFASQGf3+63KT1NFfoIyltlEA==}
+    dependencies:
+      '@lsk4/env': 4.3.1
+
+  /@lsk4/config@4.3.3(esbuild@0.19.8):
+    resolution: {integrity: sha512-jvtiDPiOL6RrB4oGtEhCoIG4flLeyTwALG8TQW3N8FSNiivF2tQvcyz4PtPHJEwpBR1vfPrpcwVz/YWDcbVEIA==}
+    dependencies:
+      '@lsk4/err': 4.3.0
+      '@lsk4/log': 4.3.1
+      bundle-require: 4.0.2(esbuild@0.19.8)
+      joycon: 3.1.1
+      strip-json-comments: 3.1.1
+    transitivePeerDependencies:
+      - esbuild
+    dev: false
+
   /@lsk4/env@4.1.1:
     resolution: {integrity: sha512-zx404DNHV3twudadFkPVgBz/HdXCk2RwwUmGfjHxbXNjb6cs6klC04hRYachWCrJthdB4/TQJjsj1fORWQz3JQ==}
+
+  /@lsk4/env@4.3.1:
+    resolution: {integrity: sha512-umVmY5tcqDV6r5qzceC4jQjtrzHBlaqNrW8uTNeJE8voqcYFeSBfKP9b6TAodANO+4FA0HCb09xeXz2ATtlg3A==}
 
   /@lsk4/err@4.1.1:
     resolution: {integrity: sha512-k45l0OkTG2zK8qvfCeoSHhXvUl/UtRF+qWxVaQ0lKDaz6TJ9M0LCZRlmGF5QQtsiUWD7lf4nNf/aJw2b1Nm27w==}
     dependencies:
       '@lsk4/algos': 4.1.1
+
+  /@lsk4/err@4.3.0:
+    resolution: {integrity: sha512-vOxWqGiluP9136F5p/PVXcy4PlUHfMoat+JWvUFyWxPnu6TjlbVcaREMK2LUm8RB47Wu3ABvw875OkrpHmRIew==}
+    dependencies:
+      '@lsk4/algos': 4.3.0
 
   /@lsk4/eslint-config@4.1.1:
     resolution: {integrity: sha512-/mFLzq8MZloEKFcByJtHBNM9O7fY5SsRh+8wV55bFUivOcOZsiVOvAZeC/5bcMh6nq1enlDmjhPtPwY+EAiaJA==}
@@ -2041,12 +2050,30 @@ packages:
       through: 2.3.8
     optionalDependencies:
       logfmt: 1.3.2
+    dev: false
+
+  /@lsk4/log@4.3.1:
+    resolution: {integrity: sha512-8tJuoGrRQxvlUnHn/4pESYs1Qrl/oYAYtaQrQjWQhYAz31E9MYv4eHGg6xnImX0WWXidvqrnmBE1EmBmostCiA==}
+    hasBin: true
+    dependencies:
+      '@lsk4/algos': 4.3.0
+      '@lsk4/colors': 4.3.1
+      '@lsk4/env': 4.3.1
+      '@lsk4/err': 4.3.0
+      fast-safe-stringify: 2.1.1
+      pretty-bytes: 5.6.0
+      pretty-time: 1.1.0
+      readline: 1.3.0
+      split: 1.0.1
+      through: 2.3.8
+    optionalDependencies:
+      logfmt: 1.3.2
 
   /@lsk4/stringify@4.2.0:
     resolution: {integrity: sha512-aJoLQmVn/At3C5xDmmQAN/Oh0KT2YvvGV1rz9PcWFczGoR9aT1WIxNfgyTebf77ZuO4byw/TnGb7HMrv8s499Q==}
     dependencies:
-      '@lsk4/algos': 4.1.1
-      '@lsk4/err': 4.1.1
+      '@lsk4/algos': 4.3.0
+      '@lsk4/err': 4.3.0
       javascript-stringify: 2.1.0
       js-yaml: 4.1.0
     dev: true
@@ -2581,7 +2608,7 @@ packages:
       - chokidar
     dev: true
 
-  /@nestjs/schematics@10.0.3(typescript@5.3.2):
+  /@nestjs/schematics@10.0.3(typescript@5.3.3):
     resolution: {integrity: sha512-2BRujK0GqGQ7j1Zpz+obVfskDnnOeVKt5aXoSaVngKo8Oczy8uYCY+R547TQB+Kf35epdfFER2pVnQrX3/It5A==}
     peerDependencies:
       typescript: '>=4.8.2'
@@ -2591,7 +2618,7 @@ packages:
       comment-json: 4.2.3
       jsonc-parser: 3.2.0
       pluralize: 8.0.0
-      typescript: 5.3.2
+      typescript: 5.3.3
     transitivePeerDependencies:
       - chokidar
     dev: true
@@ -3392,7 +3419,7 @@ packages:
     peerDependencies:
       react: ^18.2.0
     dependencies:
-      '@lsk4/env': 4.1.1
+      '@lsk4/env': 4.3.1
       react: 18.2.0
     dev: false
 
@@ -4514,7 +4541,7 @@ packages:
     dependencies:
       '@types/http-cache-semantics': 4.0.4
       '@types/keyv': 3.1.4
-      '@types/node': 20.10.3
+      '@types/node': 20.10.4
       '@types/responselike': 1.0.3
     dev: true
 
@@ -4570,7 +4597,7 @@ packages:
     resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 20.10.3
+      '@types/node': 20.10.4
     dev: true
 
   /@types/http-cache-semantics@4.0.4:
@@ -4618,7 +4645,7 @@ packages:
   /@types/keyv@3.1.4:
     resolution: {integrity: sha512-BQ5aZNSCpj7D6K2ksrRCTmKRLEpnPvWDiLPfoGyhZ++8YtiK9d/3DBKPJgry359X/P1PfruyYwvnvwFjuEiEIg==}
     dependencies:
-      '@types/node': 20.10.3
+      '@types/node': 20.10.4
     dev: true
 
   /@types/long@4.0.2:
@@ -4650,12 +4677,17 @@ packages:
   /@types/node-fetch@2.6.9:
     resolution: {integrity: sha512-bQVlnMLFJ2d35DkPNjEPmd9ueO/rh5EiaZt2bhqiSarPjZIuIV6bPQVqcrEyvNo+AfTrRGVazle1tl597w3gfA==}
     dependencies:
-      '@types/node': 20.10.3
+      '@types/node': 20.10.4
       form-data: 4.0.0
     dev: false
 
   /@types/node@20.10.3:
     resolution: {integrity: sha512-XJavIpZqiXID5Yxnxv3RUDKTN5b81ddNC3ecsA0SoFXz/QU8OGBwZGMomiq0zw+uuqbL/krztv/DINAQ/EV4gg==}
+    dependencies:
+      undici-types: 5.26.5
+
+  /@types/node@20.10.4:
+    resolution: {integrity: sha512-D08YG6rr8X90YB56tSIuBaddy/UXAA9RKJoFvrsnogAum/0pmjkgi4+2nx96A330FmioegBWmEYQ+syqCFaveg==}
     dependencies:
       undici-types: 5.26.5
 
@@ -4703,7 +4735,7 @@ packages:
   /@types/responselike@1.0.3:
     resolution: {integrity: sha512-H/+L+UkTV33uf49PH5pCAUBVPNj2nDBXTN+qS1dOwyyg24l3CcicicCA7ca+HMvJBZcFgl5r8e+RR6elsb4Lyw==}
     dependencies:
-      '@types/node': 20.10.3
+      '@types/node': 20.10.4
     dev: true
 
   /@types/scheduler@0.16.8:
@@ -4806,7 +4838,7 @@ packages:
       - supports-color
     dev: true
 
-  /@typescript-eslint/parser@6.10.0(eslint@8.55.0)(typescript@5.3.2):
+  /@typescript-eslint/parser@6.10.0(eslint@8.55.0)(typescript@5.3.3):
     resolution: {integrity: sha512-+sZwIj+s+io9ozSxIWbNB5873OSdfeBEH/FR0re14WLI6BaKuSOnnwCJ2foUiu8uXf4dRp1UqHP0vrZ1zXGrog==}
     engines: {node: ^16.0.0 || >=18.0.0}
     peerDependencies:
@@ -4818,11 +4850,11 @@ packages:
     dependencies:
       '@typescript-eslint/scope-manager': 6.10.0
       '@typescript-eslint/types': 6.10.0
-      '@typescript-eslint/typescript-estree': 6.10.0(typescript@5.3.2)
+      '@typescript-eslint/typescript-estree': 6.10.0(typescript@5.3.3)
       '@typescript-eslint/visitor-keys': 6.10.0
       debug: 4.3.4(supports-color@5.5.0)
       eslint: 8.55.0
-      typescript: 5.3.2
+      typescript: 5.3.3
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -4894,7 +4926,7 @@ packages:
     engines: {node: ^16.0.0 || >=18.0.0}
     dev: true
 
-  /@typescript-eslint/typescript-estree@6.10.0(typescript@5.3.2):
+  /@typescript-eslint/typescript-estree@6.10.0(typescript@5.3.3):
     resolution: {integrity: sha512-ek0Eyuy6P15LJVeghbWhSrBCj/vJpPXXR+EpaRZqou7achUWL8IdYnMSC5WHAeTWswYQuP2hAZgij/bC9fanBg==}
     engines: {node: ^16.0.0 || >=18.0.0}
     peerDependencies:
@@ -4909,8 +4941,8 @@ packages:
       globby: 11.1.0
       is-glob: 4.0.3
       semver: 7.5.4
-      ts-api-utils: 1.0.3(typescript@5.3.2)
-      typescript: 5.3.2
+      ts-api-utils: 1.0.3(typescript@5.3.3)
+      typescript: 5.3.3
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -5170,7 +5202,7 @@ packages:
     peerDependencies:
       ycmd: ^0.8.0
     dependencies:
-      '@lsk4/algos': 4.1.1
+      '@lsk4/algos': 4.3.0
       '@lsk4/stringify': 4.2.0
       '@macrobe/tsup': 0.0.1(@swc/core@1.3.100)(typescript@5.3.2)
       '@swc/cli': 0.1.63(@swc/core@1.3.100)(chokidar@3.5.3)
@@ -5207,11 +5239,11 @@ packages:
   /@ycmd/helpers@0.13.0(esbuild@0.19.8):
     resolution: {integrity: sha512-q9EfqbpMgfo6nEgJ3s0NUO5KDlqm14Wvt4TpvWY/rH1Kgvg69jW17IBCyD3LK3DhHtFMTTnnKg1OUzydtZ7y6A==}
     dependencies:
-      '@lsk4/algos': 4.1.1
+      '@lsk4/algos': 4.3.0
       '@lsk4/colors': 4.1.1
-      '@lsk4/env': 4.1.1
-      '@lsk4/err': 4.1.1
-      '@lsk4/log': 4.1.1
+      '@lsk4/env': 4.3.1
+      '@lsk4/err': 4.3.0
+      '@lsk4/log': 4.3.1
       '@ycmd/utils': 0.13.0(esbuild@0.19.8)
       yargs: 17.7.2
     transitivePeerDependencies:
@@ -5243,9 +5275,9 @@ packages:
   /@ycmd/utils@0.13.0(esbuild@0.19.8):
     resolution: {integrity: sha512-nuWAzOhdez+I4mBn5z3q8wgPZvHzJ2TTZGbrhUXywCa13nix7WTCZX+60xKA3yFpzu76o7ePUl/1YMewVmhWkg==}
     dependencies:
-      '@lsk4/env': 4.1.1
-      '@lsk4/err': 4.1.1
-      '@lsk4/log': 4.1.1
+      '@lsk4/env': 4.3.1
+      '@lsk4/err': 4.3.0
+      '@lsk4/log': 4.3.1
       bundle-require: 4.0.2(esbuild@0.19.8)
       fishbird: 1.1.8
       global-prefix: 3.0.0
@@ -5818,7 +5850,7 @@ packages:
       readable-stream: 3.6.2
     dev: true
 
-  /blb-ui-lib@1.0.20(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.2):
+  /blb-ui-lib@1.0.20(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.3):
     resolution: {integrity: sha512-aMPYhI0XcdNU7RtqdzFzvPioXW78FPvbuOK3P56t5G1nmgzYgW1OIwYqJsoOeN9sjU6YbU5DccUNRgQ4GgEdIA==}
     peerDependencies:
       react: '>=18.2.0'
@@ -5827,7 +5859,7 @@ packages:
     dependencies:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      typescript: 5.3.2
+      typescript: 5.3.3
     dev: false
 
   /bn.js@4.12.0:
@@ -5991,7 +6023,6 @@ packages:
     dependencies:
       esbuild: 0.19.8
       load-tsconfig: 0.2.5
-    dev: true
 
   /busboy@1.6.0:
     resolution: {integrity: sha512-8SFQbg/0hQ9xy3UNTB0YEnsNBbWfhf7RtnzpL7TkBiTBRfrQ9Fxcnz7VJsleJpyp6rVLvXiuORqjlHi5q+PYuA==}
@@ -7630,7 +7661,6 @@ packages:
       '@esbuild/win32-arm64': 0.19.8
       '@esbuild/win32-ia32': 0.19.8
       '@esbuild/win32-x64': 0.19.8
-    dev: true
 
   /escalade@3.1.1:
     resolution: {integrity: sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==}
@@ -7718,7 +7748,7 @@ packages:
       object.entries: 1.1.7
     dev: true
 
-  /eslint-config-next@14.0.3(eslint@8.55.0)(typescript@5.3.2):
+  /eslint-config-next@14.0.3(eslint@8.55.0)(typescript@5.3.3):
     resolution: {integrity: sha512-IKPhpLdpSUyKofmsXUfrvBC49JMUTdeaD8ZIH4v9Vk0sC1X6URTuTJCLtA0Vwuj7V/CQh0oISuSTvNn5//Buew==}
     peerDependencies:
       eslint: ^7.23.0 || ^8.0.0
@@ -7729,7 +7759,7 @@ packages:
     dependencies:
       '@next/eslint-plugin-next': 14.0.3
       '@rushstack/eslint-patch': 1.5.1
-      '@typescript-eslint/parser': 6.10.0(eslint@8.55.0)(typescript@5.3.2)
+      '@typescript-eslint/parser': 6.10.0(eslint@8.55.0)(typescript@5.3.3)
       eslint: 8.55.0
       eslint-import-resolver-node: 0.3.9
       eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@6.10.0)(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.0)(eslint@8.55.0)
@@ -7737,7 +7767,7 @@ packages:
       eslint-plugin-jsx-a11y: 6.8.0(eslint@8.55.0)
       eslint-plugin-react: 7.33.2(eslint@8.55.0)
       eslint-plugin-react-hooks: 4.6.0(eslint@8.55.0)
-      typescript: 5.3.2
+      typescript: 5.3.3
     transitivePeerDependencies:
       - eslint-import-resolver-webpack
       - supports-color
@@ -7829,7 +7859,7 @@ packages:
       eslint-import-resolver-webpack:
         optional: true
     dependencies:
-      '@typescript-eslint/parser': 6.10.0(eslint@8.55.0)(typescript@5.3.2)
+      '@typescript-eslint/parser': 6.10.0(eslint@8.55.0)(typescript@5.3.3)
       debug: 3.2.7
       eslint: 8.55.0
       eslint-import-resolver-node: 0.3.9
@@ -10261,7 +10291,6 @@ packages:
   /joycon@3.1.1:
     resolution: {integrity: sha512-34wB/Y7MW7bzjKRjUKTa46I2Z7eV62Rkhva+KkopW7Qvv/OSWBqvkSY7vusOPrNuZcUG3tApvdVgNB8POj3SPw==}
     engines: {node: '>=10'}
-    dev: true
 
   /js-beautify@1.14.11:
     resolution: {integrity: sha512-rPogWqAfoYh1Ryqqh2agUpVfbxAhbjuN1SmU86dskQUKouRiggUTCO4+2ym9UPXllc2WAp0J+T5qxn7Um3lCdw==}
@@ -10723,7 +10752,6 @@ packages:
   /load-tsconfig@0.2.5:
     resolution: {integrity: sha512-IXO6OCs9yg8tMKzfPZ1YmheJbZCiEsnBdcB03l0OcfK9prKnJb96siuHCr5Fl37/yo9DnKU+TLpxzTUspw9shg==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
-    dev: true
 
   /loader-runner@4.3.0:
     resolution: {integrity: sha512-3R/1M+yS3j5ou80Me59j7F9IMs4PXs3VqRrm0TU3AbKPxlmpoY1TNscJV/oGJXo8qCatFGTfDbY6W6ipGOYXfg==}
@@ -11785,7 +11813,7 @@ packages:
       '@nestjs/core': 10.2.10(@nestjs/common@10.2.10)(@nestjs/microservices@10.2.10)(@nestjs/platform-express@10.2.10)(reflect-metadata@0.1.13)(rxjs@7.8.1)
     dev: false
 
-  /nestjs-telegraf@2.7.0(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)(reflect-metadata@0.1.13)(telegraf@4.15.3)(typescript@5.3.2):
+  /nestjs-telegraf@2.7.0(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)(reflect-metadata@0.1.13)(telegraf@4.15.3)(typescript@5.3.3):
     resolution: {integrity: sha512-rtXvk+s5tCBIzp8oZMRNEmFf0ox7E2CMMaE1gskqQRqtafqqZKKDe8V600R63i7pynCJcld4mZC9oPEqKP2obA==}
     peerDependencies:
       '@nestjs/common': ^9.0.0 || ^10.0.0
@@ -11799,7 +11827,7 @@ packages:
       lodash: 4.17.21
       reflect-metadata: 0.1.13
       telegraf: 4.15.3
-      typescript: 5.3.2
+      typescript: 5.3.3
     dev: false
 
   /netmask@2.0.2:
@@ -14498,7 +14526,6 @@ packages:
   /strip-json-comments@3.1.1:
     resolution: {integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==}
     engines: {node: '>=8'}
-    dev: true
 
   /strip-outer@2.0.0:
     resolution: {integrity: sha512-A21Xsm1XzUkK0qK1ZrytDUvqsQWict2Cykhvi0fBQntGG5JSprESasEyV1EZ/4CiR5WB5KjzLTrP/bO37B0wPg==}
@@ -14969,6 +14996,15 @@ packages:
       typescript: 5.3.2
     dev: true
 
+  /ts-api-utils@1.0.3(typescript@5.3.3):
+    resolution: {integrity: sha512-wNMeqtMz5NtwpT/UZGY5alT+VoKdSsOOP/kqHFcUW1P/VRhH2wJ48+DN2WwUliNbQ976ETwDL0Ifd2VVvgonvg==}
+    engines: {node: '>=16.13.0'}
+    peerDependencies:
+      typescript: '>=4.2.0'
+    dependencies:
+      typescript: 5.3.3
+    dev: true
+
   /ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
     dev: true
@@ -15141,6 +15177,12 @@ packages:
 
   /typescript@5.3.2:
     resolution: {integrity: sha512-6l+RyNy7oAHDfxC4FzSJcz9vnjTKxrLpDG5M2Vu4SHRVNg6xzqZp6LYSR9zjqQTu8DU/f5xwxUdADOkbrIX2gQ==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+    dev: true
+
+  /typescript@5.3.3:
+    resolution: {integrity: sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -15838,7 +15880,7 @@ packages:
     resolution: {integrity: sha512-Zs2BEl3NFn0yC/l1Cd+ntQ7XFLQil/vct+va85tGYlOpLSRhWgLKAmJ4VJxbGYlshlrKW4muumLEzZMWD62eJg==}
     hasBin: true
     dependencies:
-      '@lsk4/err': 4.1.1
+      '@lsk4/err': 4.3.0
       '@ycmd/commands': 0.13.0(esbuild@0.19.8)(typescript@5.3.2)(ycmd@0.13.0)
       '@ycmd/helpers': 0.13.0(esbuild@0.19.8)
       '@ycmd/run': 0.13.0(esbuild@0.19.8)

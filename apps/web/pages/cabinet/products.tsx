@@ -10,7 +10,7 @@ import { useAppConfig } from '@/rckit/app/AppConfig/useAppConfig';
 import { HeadMeta } from '@/rckit/meta/HeadMeta';
 // import { IsomorphicContext } from '@/types';
 
-export default function CabinetPage() {
+export default function CabinetProductsPage() {
   const pageTitle = 'Cabinet Products';
   const { sessionStatus } = useAppConfig();
   // @ts-ignore

@@ -60,6 +60,12 @@ export function getProductListQuery(params?: ProductListParams, options?: ApiCli
   };
 }
 
+/// /////////////////
+
+// invalidateProducts(queryClient, params) {
+//   queryClient.invalidateQueries(getBotQueryKey(params));
+// }
+
 export const useProductListQuery = (params?: ProductListParams, options?: ApiClientOptions) =>
   useQuery<ProductListResponse>(getProductListQuery(params, options));
 

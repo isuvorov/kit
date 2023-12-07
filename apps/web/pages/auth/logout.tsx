@@ -13,5 +13,6 @@ export default function AuthLogoutPage() {
     router.push('/');
   }, [router, clearSession]);
 
+  // LogoutPage
   return null; // This can be an empty component or your loading indicator
 }

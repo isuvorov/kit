@@ -30,4 +30,10 @@ export class OtpModel {
   // До какого времени годен
   @Property()
   expiredAt?: Date;
+
+  @Property()
+  createdAt: Date = new Date();
+
+  @Property({ onUpdate: () => new Date() })
+  updatedAt: Date = new Date();
 }

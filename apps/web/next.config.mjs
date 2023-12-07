@@ -1,11 +1,18 @@
 import { isDev, stage, version } from '@lsk4/env';
 import { log } from '@lsk4/log/log';
-import { loadEnvConfig } from './loadEnvConfig.mjs';
+// import { loadEnvConfig } from './loadEnvConfig.mjs';
+import { loadConfig } from '@lsk4/config';
 
-const config = await loadEnvConfig(
-  ['process.env.ENV_JSON', '.env.cjs', '../.env.cjs', '../../.env.cjs'],
-  { cwd: process.cwd(), throwError: false },
-);
+// const config = await loadEnvConfig(
+//   ['process.env.ENV_JSON', '.env.cjs', '../.env.cjs', '../../.env.cjs'],
+//   { cwd: process.cwd(), throwError: false },
+// );
+const { config } = await loadConfig('.env', {
+  cwd: process.cwd(),
+  processEnvKey: 'ENV_JSON',
+  // exts: ['.cjs', '.mjs', '.js', '.json'],
+  // throwError: false,
+});
 const securityHeaders = [
   {
     key: 'X-DNS-Prefetch-Control',
@@ -38,12 +45,12 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    remotePatterns: ['kit-caps.s3.eu-central-2.wasabisys.com', isDev ? 'picsum.photos' : null].filter(
-      Boolean,
-    ).map((hostname) => ({
-      protocol: 'https',
-      hostname,
-    })),
+    remotePatterns: ['kit-caps.s3.eu-central-2.wasabisys.com', isDev ? 'picsum.photos' : null]
+      .filter(Boolean)
+      .map((hostname) => ({
+        protocol: 'https',
+        hostname,
+      })),
   },
   // typescript: {
   //   // !! WARN !!

@@ -33,4 +33,10 @@ export class TransactionModel {
 
   @Property()
   meta!: any;
+
+  @Property()
+  createdAt: Date = new Date();
+
+  @Property({ onUpdate: () => new Date() })
+  updatedAt: Date = new Date();
 }
