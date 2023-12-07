@@ -11,7 +11,7 @@ const { config } = await loadConfig('.env', {
   cwd: process.cwd(),
   processEnvKey: 'ENV_JSON',
   // exts: ['.cjs', '.mjs', '.js', '.json'],
-  // throwError: false,
+  throwError: isDev,
 });
 const securityHeaders = [
   {

@@ -25,7 +25,7 @@ import { ApiController } from './api/ApiController';
 import { ProductsController } from './api/ProductsController';
 import { UserListController } from './api/UserListController';
 import { ListController } from './examples/ListController';
-import { TestController } from './examples/TestController';
+import testControlers from './examples/test';
 import models from './nestlib/auth/models';
 import { loggerFactory } from './nestlib/mikro-orm/loggerFactory';
 
@@ -114,7 +114,7 @@ const notNull = (v, def) => (v == null ? def : v);
     // ProductController,
     ProductsController,
     // TelegramAvartarController,
-    TestController,
+    ...testControlers,
     ListController,
     UserListController,
     ApiController,
