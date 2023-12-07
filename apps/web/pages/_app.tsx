@@ -1,5 +1,6 @@
 import '@/styles/globals.css';
 import '@/styles/variables.css';
+import 'blb-table/dist/variables.css';
 
 import { isDev, stage, version } from '@lsk4/env';
 import {
