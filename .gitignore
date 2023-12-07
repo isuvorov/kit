@@ -5,3 +5,4 @@ apps/*/.release
 apps/*/.reports
 **/.env*
 __*
+package-lock.json
