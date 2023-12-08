@@ -82,7 +82,7 @@
 6. Ввести подтверждение пароля, не совпадающее с паролем.
 7. Нажать "Submit"
 
-    **Ожидаемый результат:** появление сообщения "Password confirmation does not match password"
+**Ожидаемый результат:** появление сообщения "Password confirmation does not match password"
 
 ### № 2.3 Несуществующий email
 
