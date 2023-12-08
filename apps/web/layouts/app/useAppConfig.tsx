@@ -1,7 +1,6 @@
 /* eslint-disable prefer-destructuring */
+import { Session } from '@rckit/auth';
 import { createContext, Dispatch, SetStateAction, useContext } from 'react';
-
-import { Session } from '@/rckit/auth/types';
 
 export interface ModalProps {
   title: string;

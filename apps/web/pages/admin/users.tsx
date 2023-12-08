@@ -112,7 +112,7 @@ export default function AdminUsersPage() {
                   <td>{item.role}</td>
                   {/* <td>${item.price}</td> */}
                   <td>{item.createdAt}</td>
-                  <td>{item.createdAt}</td>
+                  <td>{item.updatedAt}</td>
                   <td>
                     <Button
                       // @ts-ignore

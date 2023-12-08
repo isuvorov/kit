@@ -1,13 +1,12 @@
 /* eslint-disable @next/next/no-sync-scripts */
 import { Err } from '@lsk4/err';
+import { AuthOtpForm, AuthOtpFormValues, fetchAuthOtpActivate } from '@rckit/auth';
 import { Debug } from '@rckit/debug';
+import { HeadMeta } from '@rckit/meta';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import { AuthLayout } from '@/layouts/AuthLayout';
-import { AuthOtpForm, AuthOtpFormValues } from '@/rckit/auth/forms/AuthOtpForm';
-import { fetchAuthOtpActivate } from '@/rckit/auth/queries/authOtpQuery';
-import { HeadMeta } from '@rckit/meta';
 
 export default function AuthOtpPage() {
   const pageTitle = 'One time code';

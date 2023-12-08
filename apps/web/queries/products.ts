@@ -1,7 +1,6 @@
 import { omitNull } from '@lsk4/algos';
+import { apiClient as defaultApiClient, ApiClientOptions } from '@rckit/api-client';
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
-
-import { apiClient as defaultApiClient, ApiClientOptions } from '@/rckit/api/apiClient';
 
 export interface ProductListParams {
   skip?: number;

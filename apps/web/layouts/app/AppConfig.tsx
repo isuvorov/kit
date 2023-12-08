@@ -4,8 +4,7 @@ import { Modal } from 'react-bootstrap';
 import { ToastContainer } from 'react-toastify';
 import useLocalStorageState from 'use-local-storage-state';
 
-import { fetchAuthSession } from '@/rckit/auth/queries/authSessionQuery';
-import { Session } from '@/rckit/auth/types';
+import { fetchAuthSession, Session } from '@rckit/auth';
 
 // import TopupBanner from '@/components/TopupBanner/TopupBanner';
 import {

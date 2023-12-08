@@ -1,4 +1,5 @@
 import { Err } from '@lsk4/err';
+import { AuthLoginForm, AuthLoginFormValues, fetchAuthLogin, trimAndLower } from '@rckit/auth';
 import { HeadMeta } from '@rckit/meta';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -6,9 +7,6 @@ import { useRouter } from 'next/router';
 
 import { useAppConfig } from '@/layouts/app/useAppConfig';
 import { AuthLayout } from '@/layouts/AuthLayout';
-import { AuthLoginForm, AuthLoginFormValues } from '@/rckit/auth/forms/AuthLoginForm';
-import { fetchAuthLogin } from '@/rckit/auth/queries/authLoginQuery';
-import { trimAndLower } from '@/rckit/auth/utils';
 
 export default function AuthLoginPage() {
   const pageTitle = 'Login';
