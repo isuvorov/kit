@@ -1,16 +1,41 @@
-import clsx from 'clsx';
 import type { PropsWithChildren } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Breadcrumb, Container } from 'react-bootstrap';
 
-import styles from './AuthLayout.module.css';
-import { AppNavbar } from './components/AppNavbar';
+import { AppNavbar } from './app/AppNavbar';
+import { findBreadcrumbsByActiveHref, isActive } from './app/menus';
 
-// <AppConfig showAppbar={false}>
-export function CabinetLayout({ children }: PropsWithChildren<{ left?: React.ReactNode }>) {
+type CabinetLayoutProps = PropsWithChildren<{
+  showNavbar?: boolean;
+  title?: string;
+  activeHref?: string;
+}>;
+export function CabinetLayout({
+  showNavbar = true,
+  title: initTitle,
+  activeHref = '',
+  children,
+}: CabinetLayoutProps) {
+  const breadcrumbs = findBreadcrumbsByActiveHref(activeHref);
+  const title = initTitle || breadcrumbs[breadcrumbs.length - 1]?.title;
   return (
     <>
-      <AppNavbar />
-      <section className={clsx([styles.pageWrapper, styles.gradient])}>
+      {Boolean(showNavbar) && <AppNavbar />}
+      <Container>
+        <div className="mt-4">
+          {breadcrumbs && breadcrumbs.length > 1 && (
+            <Breadcrumb>
+              {breadcrumbs.map((item, index) => (
+                <Breadcrumb.Item key={index} href={item.href} active={isActive(item, activeHref)}>
+                  {item.title}
+                </Breadcrumb.Item>
+              ))}
+            </Breadcrumb>
+          )}
+          {title && <h1>{title}</h1>}
+        </div>
+        <div className="mt-4">{children}</div>
+      </Container>
+      {/* <section className={clsx([styles.pageWrapper, styles.gradient])}>
         <Container className="py-5 h-100">
           <Row className="d-flex justify-content-center align-items-center h-100">
             <Col md={12} lg={12} className="d-flex align-items-center">
@@ -18,7 +43,7 @@ export function CabinetLayout({ children }: PropsWithChildren<{ left?: React.Rea
             </Col>
           </Row>
         </Container>
-      </section>
+      </section> */}
     </>
   );
 }

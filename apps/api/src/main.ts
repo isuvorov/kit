@@ -15,7 +15,9 @@ import session from 'express-session';
 import { AppModule } from './AppModule.js';
 
 async function main() {
-  const app = await NestFactory.create<NestExpressApplication>(AppModule, { logger: createNestLogger() });
+  const app = await NestFactory.create<NestExpressApplication>(AppModule, {
+    logger: createNestLogger(),
+  });
   const configService = app.get(ConfigService);
 
   const port = process.env.PORT || configService.get('webserver.port');
@@ -31,7 +33,7 @@ async function main() {
     app.useGlobalFilters(new AnyExceptionFilter());
     app.useGlobalPipes(new ValidationPipe());
     await app.listen(port);
-    log.info(`⚡️ Server running on http://localhost:${port}`, 'main');
+    log.info(`⚡️ Server running on http://localhost:${port}`);
   }
 
   if (isDev) {

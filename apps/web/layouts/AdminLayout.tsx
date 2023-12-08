@@ -1,16 +1,28 @@
 /* eslint-disable no-continue */
 /* eslint-disable no-restricted-syntax */
+import { PropsWithChildren } from 'react';
 import { Breadcrumb, Container } from 'react-bootstrap';
 
-import { AppNavbar, findBreadcrumbsByActiveHref, isActive } from './components/AppNavbar';
+import { AppNavbar } from './app/AppNavbar';
+import { findBreadcrumbsByActiveHref, isActive } from './app/menus';
 
+type AdminLayoutProps = PropsWithChildren<{
+  showNavbar?: boolean;
+  title?: string;
+  activeHref?: string;
+}>;
 // export const AdminLayout = ({ children }: React.PropsWithChildren<{}>) => (
-export const AdminLayout = ({ title: initTitle, activeHref, children }: any) => {
+export const AdminLayout = ({
+  showNavbar = true,
+  title: initTitle,
+  activeHref = '',
+  children,
+}: AdminLayoutProps) => {
   const breadcrumbs = findBreadcrumbsByActiveHref(activeHref);
   const title = initTitle || breadcrumbs[breadcrumbs.length - 1]?.title;
   return (
     <>
-      <AppNavbar activeHref={activeHref} />
+      {Boolean(showNavbar) && <AppNavbar activeHref={activeHref} />}
       <Container>
         <div className="mt-4">
           {breadcrumbs && breadcrumbs.length > 1 && (

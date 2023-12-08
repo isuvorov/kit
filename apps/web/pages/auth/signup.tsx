@@ -1,13 +1,13 @@
 import { Err } from '@lsk4/err';
+import { HeadMeta } from '@rckit/meta';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
+import { useAppConfig } from '@/layouts/app/useAppConfig';
 import { AuthLayout } from '@/layouts/AuthLayout';
-import { useAppConfig } from '@/rckit/app/AppConfig/useAppConfig';
 import { AuthSignupForm, AuthSignupFormValues } from '@/rckit/auth/forms/AuthSignupForm';
 import { fetchAuthSignup } from '@/rckit/auth/queries/authSignupQuery';
-import { HeadMeta } from '@/rckit/meta/HeadMeta';
 
 export default AuthSignup;
 function AuthSignup() {

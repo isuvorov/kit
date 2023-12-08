@@ -1,87 +1,12 @@
-/* eslint-disable no-nested-ternary */
-/* eslint-disable no-continue */
-/* eslint-disable no-restricted-syntax */
 import { Debug } from '@rckit/debug';
-import Image from 'next/image';
 import Link from 'next/link';
 import Avatar from 'react-avatar';
 import { Container, Dropdown, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 
-import { brandLogo, brandTitle } from '@/config/branding';
-import { useAppConfig } from '@/rckit/app/AppConfig/useAppConfig';
+import { useAppConfig } from '@/layouts/app/useAppConfig';
 
-export interface MenuItem {
-  title: string;
-  href: string;
-  items?: MenuItem[];
-  active?: boolean;
-  parent?: string;
-}
-
-export const menuItems: MenuItem[] = [
-  // {
-  //   title: 'Orders',
-  //   href: '/cabinet/orders',
-  // },
-  // {
-  //   title: 'My products',
-  //   href: '/cabinet/products',
-  // },
-  // {
-  //   title: 'Admin',
-  //   href: '/admin',
-  // },
-];
-
-export const adminMenuItems: MenuItem[] = [
-  {
-    title: 'Admin',
-    href: '/admin',
-    items: [
-      {
-        title: 'Admin Index',
-        href: '/admin',
-      },
-      {
-        title: 'Users',
-        href: '/admin/users',
-      },
-      {
-        title: 'Products',
-        href: '/admin/products',
-      },
-      {
-        title: 'Orders',
-        href: '/admin/billing/orders',
-      },
-      {
-        title: 'Transactions',
-        href: '/admin/billing/transactions',
-      },
-    ],
-  },
-];
-
-// const user = {
-//   id: '1',
-//   title: 'Igor Suvorov',
-//   avatar: 'https://picsum.photos/32/32',
-// };
-
-export const isActive = (item: MenuItem, activeHref: string) => item?.href === activeHref;
-const findBreadcrumbs = (items: MenuItem[], activeHref: string) => {
-  for (const item of items) {
-    if (item.items) {
-      const subitem = item.items.find((it) => isActive(it, activeHref));
-      if (subitem) return [item, subitem];
-    }
-    if (isActive(item, activeHref)) return [item];
-  }
-  return [];
-};
-
-export const findBreadcrumbsByActiveHref = (activeHref: string) =>
-  findBreadcrumbs([...menuItems, ...adminMenuItems], activeHref);
+import { AppLogo } from './AppLogo';
+import { adminMenuItems, isActive, MenuItem, menuItems } from './menus';
 
 interface MenuProps {
   items: MenuItem[];
@@ -236,14 +161,7 @@ export const AppNavbar = ({ activeHref }: any) => {
           // }}
         >
           <Navbar.Brand href="/">
-            <Image
-              src={brandLogo}
-              alt="Logo"
-              width="30"
-              height="24"
-              className="d-inline-block align-text-top pr-2"
-            />
-            <span className="px-2">{brandTitle}</span>
+            <AppLogo type="tiny" />
           </Navbar.Brand>
           <Menu items={menuItems} activeHref={activeHref} />
         </Nav>

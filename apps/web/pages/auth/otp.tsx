@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 import { AuthLayout } from '@/layouts/AuthLayout';
 import { AuthOtpForm, AuthOtpFormValues } from '@/rckit/auth/forms/AuthOtpForm';
 import { fetchAuthOtpActivate } from '@/rckit/auth/queries/authOtpQuery';
-import { HeadMeta } from '@/rckit/meta/HeadMeta';
+import { HeadMeta } from '@rckit/meta';
 
 export default function AuthOtpPage() {
   const pageTitle = 'One time code';

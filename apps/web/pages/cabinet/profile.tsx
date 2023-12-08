@@ -1,9 +1,9 @@
 /* eslint-disable no-nested-ternary */
+import { HeadMeta } from '@rckit/meta';
 import Head from 'next/head';
 import { Card, Col, Row } from 'react-bootstrap';
 
 import { CabinetLayout } from '@/layouts/CabinetLayout';
-import { HeadMeta } from '@/rckit/meta/HeadMeta';
 
 export default function CabinetProfilePage() {
   const pageTitle = 'Cabinet Profile';

@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
-import { useAppConfig } from '@/rckit/app/AppConfig/useAppConfig';
+import { useAppConfig } from '@/layouts/app/useAppConfig';
 
 export function createRedirectPage({ redirectPath }: { redirectPath: string }) {
   return function RedirectPage() {

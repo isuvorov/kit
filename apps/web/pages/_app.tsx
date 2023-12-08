@@ -3,6 +3,7 @@ import '@/styles/variables.css';
 import 'blb-table/dist/variables.css';
 
 import { isDev, stage, version } from '@lsk4/env';
+import { HeadEnv } from '@rckit/meta';
 import {
   DehydratedState,
   HydrationBoundary,
@@ -13,8 +14,7 @@ import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useState } from 'react';
 
-import { AppConfig } from '@/rckit/app/AppConfig/AppConfig';
-import { HeadEnv } from '@/rckit/head/HeadEnv';
+import { AppConfig } from '@/layouts/app/AppConfig';
 
 type AppProps2 = AppProps<{ dehydratedState: DehydratedState }>;
 

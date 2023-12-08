@@ -15,5 +15,5 @@ export default [
   TestBaseController,
   TestCacheController,
   TestErrController,
-  TestRmqController,
+//   TestRmqController,
 ];

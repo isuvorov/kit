@@ -1,13 +1,13 @@
 /* eslint-disable no-nested-ternary */
+// import { useGlobalContext } from '@/hooks/useGlobalContext';
+import { HeadMeta } from '@rckit/meta';
 import Head from 'next/head';
 import Image from 'next/image';
 import { Card, Col, Row } from 'react-bootstrap';
 
+import { useAppConfig } from '@/layouts/app/useAppConfig';
 import { CabinetLayout } from '@/layouts/CabinetLayout';
 import { useProductListQuery } from '@/queries/products';
-import { useAppConfig } from '@/rckit/app/AppConfig/useAppConfig';
-// import { useGlobalContext } from '@/hooks/useGlobalContext';
-import { HeadMeta } from '@/rckit/meta/HeadMeta';
 // import { IsomorphicContext } from '@/types';
 
 export default function CabinetProductsPage() {
@@ -30,7 +30,7 @@ export default function CabinetProductsPage() {
       <Head>
         <HeadMeta title={pageTitle} />
       </Head>
-      <CabinetLayout>
+      <CabinetLayout activeHref="/cabinet/products">
         <Row>
           {products.map(({ id, image, price, title, description }: any) => (
             <Col key={id} xs={6} md={3} lg={3} className="mb-4 d-flex">

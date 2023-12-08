@@ -73,8 +73,6 @@ export const AppConfig = ({ children, showAppbar = true }: any) => {
   // if (chatsStatus.error) return `Error: ${chatsStatus.error.message}`;
   return (
     <AppConfigContext.Provider value={payload}>
-      {/* <TynRoot showAppbar={showAppbar}> */}
-      {/* {showAppbar && <div style={{ paddingTop: 76 }} />} */}
       {/* <Debug>TopupBanner</Debug> */}
       {children}
       {/* <FsLightbox {...lightboxState} /> */}
@@ -91,7 +89,6 @@ export const AppConfig = ({ children, showAppbar = true }: any) => {
         theme="dark"
         limit={10}
       />
-      {/* </TynRoot> */}
       {/* <TynModals /> */}
     </AppConfigContext.Provider>
   );
