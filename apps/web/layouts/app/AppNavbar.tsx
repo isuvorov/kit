@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Avatar from 'react-avatar';
 import { Container, Dropdown, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 
+import { useSession } from '@/hooks/useSession';
 import { useAppConfig } from '@/layouts/app/useAppConfig';
 
 import { AppLogo } from './AppLogo';
@@ -61,7 +62,7 @@ export const AppNavbarDebug = () => {
   );
 };
 export const AppNavbarUser = () => {
-  const { session, sessionStatus } = useAppConfig();
+  const { session, status } = useSession();
   const user = session?.user;
 
   // if (user) {
@@ -137,7 +138,7 @@ export const AppNavbarUser = () => {
     );
   }
 
-  if (sessionStatus === 'loading') {
+  if (status === 'loading') {
     return <Nav.Link href="/auth">Loading...</Nav.Link>;
   }
 
@@ -147,7 +148,7 @@ export const AppNavbarUser = () => {
 // export const AdminLayout = ({ children }: React.PropsWithChildren<{}>) => (
 
 export const AppNavbar = ({ activeHref }: any) => {
-  const { session } = useAppConfig();
+  const { session } = useSession();
   const role = session?.user?.role;
 
   return (

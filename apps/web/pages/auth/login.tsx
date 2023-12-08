@@ -4,6 +4,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
+import { useSession } from '@/hooks/useSession';
 import { useAppConfig } from '@/layouts/app/useAppConfig';
 import { AuthLayout } from '@/layouts/AuthLayout';
 import { AuthLoginForm, AuthLoginFormValues } from '@/rckit/auth/forms/AuthLoginForm';
@@ -12,7 +13,7 @@ import { trimAndLower } from '@/rckit/auth/utils';
 
 export default function AuthLoginPage() {
   const pageTitle = 'Login';
-  const { updateSession } = useAppConfig();
+  const { update } = useSession();
   const router = useRouter();
 
   async function onSubmit(raw: AuthLoginFormValues) {
@@ -22,7 +23,7 @@ export default function AuthLoginPage() {
     };
     const { session, otp } = await fetchAuthLogin(values);
     if (session) {
-      await updateSession(session);
+      await update(session);
       router.push(`/cabinet`);
     } else if (otp) {
       router.push(`/auth/otp?_id=${otp._id}`);

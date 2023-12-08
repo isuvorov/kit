@@ -1,6 +1,8 @@
 import type { PropsWithChildren } from 'react';
 import { Breadcrumb, Container } from 'react-bootstrap';
 
+import { useSession } from '@/hooks/useSession';
+
 import { AppNavbar } from './app/AppNavbar';
 import { findBreadcrumbsByActiveHref, isActive } from './app/menus';
 
@@ -15,6 +17,7 @@ export function CabinetLayout({
   activeHref = '',
   children,
 }: CabinetLayoutProps) {
+  useSession({ redirectTo: '/auth' });
   const breadcrumbs = findBreadcrumbsByActiveHref(activeHref);
   const title = initTitle || breadcrumbs[breadcrumbs.length - 1]?.title;
   return (

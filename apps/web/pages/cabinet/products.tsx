@@ -5,23 +5,29 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { Card, Col, Row } from 'react-bootstrap';
 
-import { useAppConfig } from '@/layouts/app/useAppConfig';
 import { CabinetLayout } from '@/layouts/CabinetLayout';
 import { useProductListQuery } from '@/queries/products';
 // import { IsomorphicContext } from '@/types';
 
 export default function CabinetProductsPage() {
   const pageTitle = 'Cabinet Products';
-  const { sessionStatus } = useAppConfig();
   // @ts-ignore
   const { data, isLoading, isError } = useProductListQuery({ limit: 12 });
 
-  if (isLoading || sessionStatus === 'loading') {
-    return <div>Loading...</div>;
+  if (isLoading) {
+    return (
+      <CabinetLayout activeHref="/cabinet/products">
+        <div>Loading...</div>
+      </CabinetLayout>
+    );
   }
 
   if (isError) {
-    return <div>Error fetching user</div>;
+    return (
+      <CabinetLayout activeHref="/cabinet/products">
+        <div>Error fetching user</div>
+      </CabinetLayout>
+    );
   }
   const products = data?.items || [];
 

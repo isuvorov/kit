@@ -52,6 +52,20 @@ const nextConfig = {
   //   // !! WARN !!
   //   ignoreBuildErrors: true,
   // },
+  async redirects() {
+    return [
+      {
+        source: '/links',
+        destination: '/links/tos',
+        permanent: true,
+      },
+      {
+        source: '/auth',
+        destination: '/auth/login',
+        permanent: true,
+      },
+    ]
+  },
   async rewrites() {
     if (!isDev) return [];
     const prefix = config?.next?.server?.baseURL || 'UNKNOWN';

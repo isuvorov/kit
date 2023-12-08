@@ -39,6 +39,7 @@ export const AppConfig = ({ children, showAppbar = true }: any) => {
         sessionId: session?._id,
         sessionFetchedAt: Date.now(),
         sessionStatus: 'fetched',
+        sessionLoggedIn: Boolean(session),
       }));
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -52,6 +53,7 @@ export const AppConfig = ({ children, showAppbar = true }: any) => {
       sessionId: undefined,
       sessionFetchedAt: undefined,
       sessionStatus: undefined,
+      sessionLoggedIn: false,
     }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

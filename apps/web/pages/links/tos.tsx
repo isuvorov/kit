@@ -1,10 +1,12 @@
 import { HeadMeta } from '@rckit/meta';
 import Head from 'next/head';
 
+import { useSession } from '@/hooks/useSession';
 import { TextLayout } from '@/layouts/TextLayout';
 
 export default function LinksTosPage() {
   const pageTitle = 'Terms of Service';
+  useSession({ redirectTo: '/auth' });
 
   return (
     <>

@@ -16,14 +16,16 @@ export interface AppConfigType {
 
   sessionId?: string;
   session?: Session;
-  sessionStatus?: string;
+  sessionStatus?: 'loading' | 'fetched';
   sessionFetchedAt?: number;
+  sessionLoggedIn: boolean;
 }
 
 export const defaultAppConfig: AppConfigType = {
   isDebug: false,
   theme: 'light',
   notify: 'manual',
+  sessionLoggedIn: false,
 };
 
 export type AppConfigContextProps = AppConfigType & {
