@@ -1,7 +1,7 @@
 import { Err } from '@lsk4/err';
 import { createParamDecorator, ExecutionContext } from '@nestjs/common';
 import { Exclude, plainToInstance } from 'class-transformer';
-import { IsNumber, Max, Min, validate } from 'class-validator';
+import { IsBoolean, IsNumber, Max, Min, validate } from 'class-validator';
 
 export class Find<Filter = any> {
   @IsNumber()
@@ -16,6 +16,10 @@ export class Find<Filter = any> {
   filter?: Filter;
 
   sort: any;
+
+  // Нужно ли возвращать общее количество записей
+  @IsBoolean()
+  count?: any = false;
 }
 
 interface FindParamsArgs {

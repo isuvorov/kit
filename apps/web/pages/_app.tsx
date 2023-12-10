@@ -3,6 +3,7 @@ import '@/styles/variables.css';
 import 'blb-table/dist/variables.css';
 
 import { isDev, stage, version } from '@lsk4/env';
+import { ComponentProvider } from '@rckit/link';
 import { HeadEnv } from '@rckit/meta';
 import {
   DehydratedState,
@@ -12,6 +13,8 @@ import {
 } from '@tanstack/react-query';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
+import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 
 import { AppConfig } from '@/layouts/app/AppConfig';
@@ -26,13 +29,15 @@ export default function App({ Component, pageProps }: AppProps2) {
         <HeadEnv isDev={isDev} stage={stage} version={version} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
-      <QueryClientProvider client={queryClient}>
-        <HydrationBoundary state={pageProps?.dehydratedState}>
-          <AppConfig>
-            <Component {...pageProps} />
-          </AppConfig>
-        </HydrationBoundary>
-      </QueryClientProvider>
+      <ComponentProvider Link={Link} Image={Image}>
+        <QueryClientProvider client={queryClient}>
+          <HydrationBoundary state={pageProps?.dehydratedState}>
+            <AppConfig>
+              <Component {...pageProps} />
+            </AppConfig>
+          </HydrationBoundary>
+        </QueryClientProvider>
+      </ComponentProvider>
     </>
   );
 }

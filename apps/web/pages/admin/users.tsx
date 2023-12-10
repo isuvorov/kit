@@ -5,20 +5,18 @@
 // import { IsomorphicContext } from '@/types';
 
 import { Err } from '@lsk4/err';
-import Image from 'next/image';
+import { Avatar } from '@rckit/avatar';
 import Link from 'next/link';
 import { useState } from 'react';
 import { Button, Table } from 'react-bootstrap';
-import ReactPaginate from 'react-paginate';
 
+import { Pagination } from '@/components/Pagination';
+// import { FilterMenu } from '@/rckit/ui/FlexTable/FilterMenu';
+import { SortIndicator } from '@/components/SortIndicator';
 import { AdminLayout } from '@/layouts/AdminLayout';
 // import { useBillingTransactionListQuery } from '@/queries/billing';
 import { useUserListQuery } from '@/queries/users';
-import { LeftArrowIcon } from '@/rckit/ui/icons/LeftArrowIcon';
-import RefreshIcon from '@/rckit/ui/icons/RefreshIcon';
-import { RightArrowIcon } from '@/rckit/ui/icons/RightArrowIcon';
-// import { FilterMenu } from '@/rckit/ui/FlexTable/FilterMenu';
-import { SortIndicator } from '@/rckit/ui/icons/SortIndicator';
+import { Refresh }  from '@rckit/icons'
 import { getSpinAnimationStyles } from '@/rckit/utils/getSpinAnimationStyles';
 
 export default function AdminUsersPage() {
@@ -75,7 +73,7 @@ export default function AdminUsersPage() {
             onClick={refetch}
             variant="outline-primary ml-4"
           >
-            <RefreshIcon style={getSpinAnimationStyles(isFetching)} />
+            <Refresh style={getSpinAnimationStyles(isFetching)} />
           </Button>
         </div>
       </div>
@@ -105,12 +103,11 @@ export default function AdminUsersPage() {
               {items?.map((item, index) => (
                 <tr key={index}>
                   <td>
-                    <Image src={item.image} alt={item.title} width={32} height={32} />
+                    <Avatar src={item.avatar} name={item.name} email={item.email} size={32} />
                   </td>
                   <td>{item.email}</td>
-                  <td>{item.email}</td>
+                  <td>{item.name}</td>
                   <td>{item.role}</td>
-                  {/* <td>${item.price}</td> */}
                   <td>{item.createdAt}</td>
                   <td>{item.updatedAt}</td>
                   <td>
@@ -128,31 +125,7 @@ export default function AdminUsersPage() {
               ))}
             </tbody>
           </Table>
-          <nav aria-label="Page navigation comments" className="mt-4">
-            <ReactPaginate
-              previousLabel={<LeftArrowIcon />}
-              nextLabel={<RightArrowIcon />}
-              breakLabel="..."
-              breakClassName="page-item"
-              breakLinkClassName="page-link"
-              pageCount={pageCount}
-              pageRangeDisplayed={2}
-              marginPagesDisplayed={1}
-              onPageChange={handlePageClick}
-              containerClassName="pagination justify-content-end"
-              pageClassName="page-item"
-              pageLinkClassName="page-link"
-              previousClassName="page-item"
-              previousLinkClassName="page-link"
-              nextClassName="page-item"
-              nextLinkClassName="page-link"
-              activeClassName="active"
-              // eslint-disable-next-line no-unused-vars
-              hrefBuilder={(p) => `?page=${p}`}
-              hrefAllControls
-              forcePage={page}
-            />
-          </nav>
+          <Pagination pageCount={pageCount} onPageChange={handlePageClick} page={page} />
         </>
       )}
     </AdminLayout>

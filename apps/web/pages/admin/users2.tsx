@@ -1,4 +1,5 @@
 import { Err } from '@lsk4/err';
+import { Refresh } from '@rckit/icons';
 import { ColumnDef, QueryParams, Table } from 'blb-table';
 import { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
@@ -6,7 +7,6 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { AdminLayout } from '@/layouts/AdminLayout';
 import { UserListItem, UserListResponse, useUserListInfinityQuery } from '@/queries/users2';
-import RefreshIcon from '@/rckit/ui/icons/RefreshIcon';
 import { getSpinAnimationStyles } from '@/rckit/utils/getSpinAnimationStyles';
 
 interface User {
@@ -92,7 +92,7 @@ export default function AdminUsersPage() {
             onClick={refetch}
             variant="outline-primary ml-4"
           >
-            <RefreshIcon style={getSpinAnimationStyles(isFetching)} />
+            <Refresh style={getSpinAnimationStyles(isFetching)} />
           </Button>
         </div>
       </div>

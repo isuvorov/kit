@@ -13,7 +13,7 @@ import { AdminLayout } from '@/layouts/AdminLayout';
 import { useProductListQuery } from '@/queries/products';
 import { debounce } from '@/rckit/utils/debounce';
 
-import { SortIndicator } from '../icons/SortIndicator';
+import { SortIndicator } from '../../../components/SortIndicator';
 
 // const SortIndicator = ({ value }) => (value === 1 ? '▼' : value === -1 ? '▲' : '');
 

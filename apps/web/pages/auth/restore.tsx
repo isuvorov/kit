@@ -9,7 +9,7 @@ import { useAppConfig } from '@/layouts/app/useAppConfig';
 import { AuthLayout } from '@/layouts/AuthLayout';
 
 export default function AuthLoginPage() {
-  const pageTitle = 'Login';
+  const pageTitle = 'Restore password';
   const { updateSession } = useAppConfig();
   const router = useRouter();
 

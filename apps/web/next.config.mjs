@@ -38,7 +38,11 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    remotePatterns: ['kit-caps.s3.eu-central-2.wasabisys.com', isDev ? 'picsum.photos' : null]
+    remotePatterns: [
+      'kit-caps.s3.eu-central-2.wasabisys.com',
+      'gravatar.com',
+      isDev ? 'picsum.photos' : null,
+    ]
       .filter(Boolean)
       .map((hostname) => ({
         protocol: 'https',

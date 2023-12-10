@@ -1,6 +1,7 @@
 
 @import "~blb-ui-lib/src/variables.css";
 @import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~react-datepicker/dist/react-datepicker.css";
 
 /* @tailwind base; */
 @tailwind components;

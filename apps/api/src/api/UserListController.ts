@@ -1,3 +1,4 @@
+import { omit } from '@lsk4/algos';
 import { FilterQuery } from '@mikro-orm/core';
 import { EntityManager, EntityRepository } from '@mikro-orm/mongodb';
 import { InjectRepository } from '@mikro-orm/nestjs';
@@ -7,6 +8,8 @@ import { ExampleFilter } from '@/examples/Filter';
 import { UserModel } from '@/nestlib/auth/models/UserModel';
 import { ErrorTransformInterceptor, ResponseTransformInterceptor } from '@/nestlib/interceptors';
 import { Find, FindParams } from '@/nestlib/list/FindParams.decorator';
+
+import { getGravatarHash } from './getGravatarHash';
 
 @Controller('api/users')
 @UseInterceptors(new ResponseTransformInterceptor(), new ErrorTransformInterceptor())
@@ -21,17 +24,22 @@ export class UserListController {
     @FindParams({
       filterDTO: ExampleFilter,
     })
-    data: Find<ExampleFilter>,
+    findOptions: Find<ExampleFilter>,
   ) {
     const filter: FilterQuery<UserModel> = {};
-    if (data.filter.role) {
-      filter.role = data.filter.role;
+    if (findOptions.filter.role) {
+      filter.role = findOptions.filter.role;
     }
-    const items = await this.usersRepository.find(filter, {
-      limit: data.limit,
-      offset: data.skip,
+    const raw = await this.usersRepository.find(filter, {
+      limit: findOptions.limit,
+      offset: findOptions.skip,
     });
-    return { items };
+    const items = raw.map(this.getUserFields);
+    if (!findOptions.count) return { items };
+    // TODO: подумать а может распараллелить?
+    const total = await this.usersRepository.count();
+    const count = await this.usersRepository.count(filter);
+    return { items, count, total };
   }
 
   @All(['findOne', 'get'])
@@ -50,7 +58,8 @@ export class UserListController {
     user.password = '123';
     user.companyId = '123';
     await em.persistAndFlush(user);
-    return user;
+
+    return this.getUserFields(user);
   }
 
   @Post(['update', 'edit'])
@@ -60,6 +69,7 @@ export class UserListController {
     const user = await this.findOne(id);
     user.role = role;
     await em.persistAndFlush(user);
+    // TODO: а может вернуть измененный объект?
     return true;
   }
 
@@ -75,5 +85,19 @@ export class UserListController {
   @All('count')
   async count() {
     return this.usersRepository.count();
+  }
+
+  getUserFields(user) {
+    const fields = omit(user.toJSON(), ['password']);
+    if (!fields.avatar && fields.email) {
+      // fields.avatar = `https://gravatar.com/avatar/${getGravatarHash(fields.email)}?s=200&d=retro`;
+      // fields.avatar = `https://gravatar.com/avatar/${getGravatarHash(fields.email)}?s=200&d=404`;
+      const transparentPixel = 'https://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png';
+      const hash = getGravatarHash(fields.email);
+      const s = 200;
+      const d = encodeURIComponent(transparentPixel);
+      fields.avatar = `https://gravatar.com/avatar/${hash}?s=${s}&d=${d}`;
+    }
+    return fields;
   }
 }

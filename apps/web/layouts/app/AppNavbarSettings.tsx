@@ -1,6 +1,6 @@
+import { Avatar } from '@rckit/avatar';
 import { Debug } from '@rckit/debug';
 import Link from 'next/link';
-import Avatar from 'react-avatar';
 import { Dropdown, Nav, NavDropdown } from 'react-bootstrap';
 
 import { useAppConfig } from '@/layouts/app/useAppConfig';
@@ -19,7 +19,7 @@ export const AppNavbarSettings = () => {
         <NavDropdown
           title={
             <>
-              <Avatar name={title} src={avatar} size={String(20)} round={true} />
+              <Avatar name={title} src={avatar} size={20} />
               {/* <Image
                 src={avatar}
                 alt={title}
@@ -51,7 +51,7 @@ export const AppNavbarSettings = () => {
               aria-expanded="false"
             >
               <>
-                <Avatar name={title} src={avatar} size={String(20)} round={true} />
+                <Avatar name={title} src={avatar} size={20} />
                 {/* <Image src={avatar} alt={title} width={20} height={20} className="rounded-circle" /> */}
                 <span className="d-none d-sm-inline mx-1">{title}</span>
               </>

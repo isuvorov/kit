@@ -232,26 +232,35 @@ importers:
         specifier: ^4.3.3
         version: 4.3.3(esbuild@0.19.8)
       '@lsk4/env':
-        specifier: 4.3.1
+        specifier: ^4.3.1
         version: 4.3.1
       '@lsk4/err':
-        specifier: 4.3.0
+        specifier: ^4.3.0
         version: 4.3.0
       '@lsk4/log':
-        specifier: 4.3.1
+        specifier: ^4.3.1
         version: 4.3.1
       '@rckit/api-client':
         specifier: ^4.5.1
         version: 4.5.1(react@18.2.0)
       '@rckit/auth':
-        specifier: ^4.6.0
-        version: 4.6.0(react-bootstrap@2.9.1)(react-hook-form@7.48.2)(react@18.2.0)(use-local-storage-state@19.1.0)
+        specifier: ^4.8.2
+        version: 4.8.2(react-bootstrap@2.9.1)(react-hook-form@7.49.0)(react@18.2.0)(use-local-storage-state@19.1.0)
+      '@rckit/avatar':
+        specifier: ^4.8.1
+        version: 4.8.1(react@18.2.0)
       '@rckit/debug':
         specifier: ^4.5.0
         version: 4.5.0(react@18.2.0)
       '@rckit/form':
-        specifier: ^4.6.0
-        version: 4.6.0(react-bootstrap@2.9.1)(react-hook-form@7.48.2)(react@18.2.0)
+        specifier: ^4.8.2
+        version: 4.8.2(react-bootstrap@2.9.1)(react-hook-form@7.49.0)(react@18.2.0)
+      '@rckit/icons':
+        specifier: ^4.8.1
+        version: 4.8.1(react@18.2.0)
+      '@rckit/link':
+        specifier: 4.8.1
+        version: 4.8.1(react@18.2.0)
       '@rckit/meta':
         specifier: ^4.4.0
         version: 4.4.0(react@18.2.0)
@@ -259,8 +268,8 @@ importers:
         specifier: ^4.3.0
         version: 4.3.0(react@18.2.0)
       '@tanstack/react-query':
-        specifier: ^5.12.2
-        version: 5.12.2(react@18.2.0)
+        specifier: ^5.13.4
+        version: 5.13.4(react@18.2.0)
       '@tanstack/react-table':
         specifier: ^8.10.7
         version: 8.10.7(react-dom@18.2.0)(react@18.2.0)
@@ -293,13 +302,16 @@ importers:
         version: 5.0.3(@babel/runtime@7.23.5)(core-js-pure@3.34.0)(prop-types@15.8.1)(react@18.2.0)
       react-bootstrap:
         specifier: ^2.9.1
-        version: 2.9.1(@types/react@18.2.42)(react-dom@18.2.0)(react@18.2.0)
+        version: 2.9.1(@types/react@18.2.43)(react-dom@18.2.0)(react@18.2.0)
+      react-datepicker:
+        specifier: ^4.24.0
+        version: 4.24.0(react-dom@18.2.0)(react@18.2.0)
       react-dom:
         specifier: ^18
         version: 18.2.0(react@18.2.0)
       react-hook-form:
-        specifier: ^7.48.2
-        version: 7.48.2(react@18.2.0)
+        specifier: ^7.49.0
+        version: 7.49.0(react@18.2.0)
       react-paginate:
         specifier: ^8.2.0
         version: 8.2.0(react@18.2.0)
@@ -309,6 +321,9 @@ importers:
       react-virtual:
         specifier: ^2.10.4
         version: 2.10.4(react@18.2.0)
+      use-debounce:
+        specifier: ^10.0.0
+        version: 10.0.0(react@18.2.0)
       use-local-storage-state:
         specifier: ^19.1.0
         version: 19.1.0(react-dom@18.2.0)(react@18.2.0)
@@ -320,8 +335,8 @@ importers:
         specifier: ^20.10.4
         version: 20.10.4
       '@types/react':
-        specifier: ^18.2.42
-        version: 18.2.42
+        specifier: ^18.2.43
+        version: 18.2.43
       '@types/react-dom':
         specifier: ^18
         version: 18.2.17
@@ -3470,8 +3485,8 @@ packages:
       - debug
     dev: false
 
-  /@rckit/auth@4.6.0(react-bootstrap@2.9.1)(react-hook-form@7.48.2)(react@18.2.0)(use-local-storage-state@19.1.0):
-    resolution: {integrity: sha512-1EkzLt/jxntzgnfUfJ0EQVu3+MfIJJpvYvKti2xzozjQd3wMgtjBftBNrJX1JS1VC27f9pnt8fkfZWxVUd7bvw==}
+  /@rckit/auth@4.8.2(react-bootstrap@2.9.1)(react-hook-form@7.49.0)(react@18.2.0)(use-local-storage-state@19.1.0):
+    resolution: {integrity: sha512-/yC9YclCCj750WXIXUCSzdvuclsDnPYj3jCEnkTQCjquDoIIXIG8qPjKSYW9B8D1xsNAT0BUoXovUoFcSHTEQQ==}
     peerDependencies:
       react: ^18.2.0
       react-bootstrap: ^2.9.1
@@ -3480,13 +3495,25 @@ packages:
       '@lsk4/env': 4.3.1
       '@lsk4/err': 4.3.0
       '@rckit/api-client': 4.5.1(react@18.2.0)
-      '@rckit/form': 4.6.0(react-bootstrap@2.9.1)(react-hook-form@7.48.2)(react@18.2.0)
+      '@rckit/form': 4.8.2(react-bootstrap@2.9.1)(react-hook-form@7.49.0)(react@18.2.0)
+      '@rckit/link': 4.8.1(react@18.2.0)
       react: 18.2.0
-      react-bootstrap: 2.9.1(@types/react@18.2.42)(react-dom@18.2.0)(react@18.2.0)
+      react-bootstrap: 2.9.1(@types/react@18.2.43)(react-dom@18.2.0)(react@18.2.0)
       use-local-storage-state: 19.1.0(react-dom@18.2.0)(react@18.2.0)
     transitivePeerDependencies:
       - debug
       - react-hook-form
+    dev: false
+
+  /@rckit/avatar@4.8.1(react@18.2.0):
+    resolution: {integrity: sha512-tzVGuh3QZQ5bslgJMV5qok+YDpd8HEHNcJWJN5ql/h6j0kcOcS/gdLfbxQ/1LFkE8D6h8D9C44danJ30OcqY4A==}
+    peerDependencies:
+      react: ^18.2.0
+    dependencies:
+      '@lsk4/algos': 4.3.0
+      '@lsk4/env': 4.3.1
+      '@rckit/link': 4.8.1(react@18.2.0)
+      react: 18.2.0
     dev: false
 
   /@rckit/debug@4.5.0(react@18.2.0):
@@ -3498,8 +3525,8 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@rckit/form@4.6.0(react-bootstrap@2.9.1)(react-hook-form@7.48.2)(react@18.2.0):
-    resolution: {integrity: sha512-7zBzYz/BdYd1vtSLVAbkehtXr+twmibsUO5vRB/dA+Airag4wh5AloTB/rXLkhqnkfBX1KKqeDXxU+fKodnogg==}
+  /@rckit/form@4.8.2(react-bootstrap@2.9.1)(react-hook-form@7.49.0)(react@18.2.0):
+    resolution: {integrity: sha512-XCYm17sQPKk+z1b6Q78XUxArwbvvBSyx4+2+LvI3fxjA09dX2wq8gkBw7AgT21y/UGflEb8wjguAhRjeha8DPA==}
     peerDependencies:
       react: ^18.2.0
       react-bootstrap: ^2.9.1
@@ -3508,8 +3535,25 @@ packages:
       '@lsk4/env': 4.3.1
       '@lsk4/err': 4.3.0
       react: 18.2.0
-      react-bootstrap: 2.9.1(@types/react@18.2.42)(react-dom@18.2.0)(react@18.2.0)
-      react-hook-form: 7.48.2(react@18.2.0)
+      react-bootstrap: 2.9.1(@types/react@18.2.43)(react-dom@18.2.0)(react@18.2.0)
+      react-hook-form: 7.49.0(react@18.2.0)
+    dev: false
+
+  /@rckit/icons@4.8.1(react@18.2.0):
+    resolution: {integrity: sha512-/YwEI34i/GOSL5a2OhawcbyQrOnNXzaPYc2hw+waREl9a0+S344VGkSRPTkRRbPwm27gDkRP+ja+QGpLZReAAw==}
+    peerDependencies:
+      react: ^18.2.0
+    dependencies:
+      react: 18.2.0
+    dev: false
+
+  /@rckit/link@4.8.1(react@18.2.0):
+    resolution: {integrity: sha512-r6viv4aZlKBL9D22Ws+mRzeHx9nWr0PeOGzAgXsWolgfmhTlUhMlElRM3zNHh+8D6wRHbMvLG3rnER9B7/Tk1A==}
+    peerDependencies:
+      react: ^18.2.0
+    dependencies:
+      '@lsk4/env': 4.3.1
+      react: 18.2.0
     dev: false
 
   /@rckit/meta@4.4.0(react@18.2.0):
@@ -4560,16 +4604,16 @@ packages:
       defer-to-connect: 2.0.1
     dev: true
 
-  /@tanstack/query-core@5.12.1:
-    resolution: {integrity: sha512-WbZztNmKq0t6QjdNmHzezbi/uifYo9j6e2GLJkodsYaYUlzMbAp91RDyeHkIZrm7EfO4wa6Sm5sxJZm5SPlh6w==}
+  /@tanstack/query-core@5.13.4:
+    resolution: {integrity: sha512-8+rJucXvC/xlr4OrxHhEIob/cTlbT4fgmz1VsvB0D12FRStKaXeLORNGcOhSAynRd2NL74SV/Qq0IIb4DedLcA==}
     dev: false
 
-  /@tanstack/react-query@5.12.2(react@18.2.0):
-    resolution: {integrity: sha512-BeWZu8zVFH20oRc+S/K9ADPgWjEzP/XQCGBNz5IbApUwPQAdwkQYbXODVL5AyAlWiSxhx+P2xlARPBApj2Yrog==}
+  /@tanstack/react-query@5.13.4(react@18.2.0):
+    resolution: {integrity: sha512-3HjvkFFriEQwffUXtKHPiwkfFXUGbs46YATTzzyK1+Pw6Ekd3kwzS50e45qdamWuEXmXxyo5S1zp534LdFG0Rw==}
     peerDependencies:
       react: ^18.0.0
     dependencies:
-      '@tanstack/query-core': 5.12.1
+      '@tanstack/query-core': 5.13.4
       react: 18.2.0
     dev: false
 
@@ -4821,21 +4865,21 @@ packages:
   /@types/react-dom@18.2.17:
     resolution: {integrity: sha512-rvrT/M7Df5eykWFxn6MYt5Pem/Dbyc1N8Y0S9Mrkw2WFCRiqUgw9P7ul2NpwsXCSM1DVdENzdG9J5SreqfAIWg==}
     dependencies:
-      '@types/react': 18.2.42
+      '@types/react': 18.2.43
     dev: true
 
   /@types/react-transition-group@4.4.9:
     resolution: {integrity: sha512-ZVNmWumUIh5NhH8aMD9CR2hdW0fNuYInlocZHaZ+dgk/1K49j1w/HoAuK1ki+pgscQrOFRTlXeoURtuzEkV3dg==}
     dependencies:
-      '@types/react': 18.2.42
+      '@types/react': 18.2.43
     dev: false
 
-  /@types/react@18.2.42:
-    resolution: {integrity: sha512-c1zEr96MjakLYus/wPnuWDo1/zErfdU9rNsIGmE+NV71nx88FG9Ttgo5dqorXTu/LImX2f63WBP986gJkMPNbA==}
+  /@types/react@18.2.43:
+    resolution: {integrity: sha512-nvOV01ZdBdd/KW6FahSbcNplt2jCJfyWdTos61RYHV+FVv5L/g9AOX1bmbVcWcLFL8+KHQfh1zVIQrud6ihyQA==}
     dependencies:
       '@types/prop-types': 15.7.11
       '@types/scheduler': 0.16.8
-      csstype: 3.1.2
+      csstype: 3.1.3
 
   /@types/responselike@1.0.3:
     resolution: {integrity: sha512-H/+L+UkTV33uf49PH5pCAUBVPNj2nDBXTN+qS1dOwyyg24l3CcicicCA7ca+HMvJBZcFgl5r8e+RR6elsb4Lyw==}
@@ -6943,6 +6987,10 @@ packages:
 
   /csstype@3.1.2:
     resolution: {integrity: sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==}
+    dev: false
+
+  /csstype@3.1.3:
+    resolution: {integrity: sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==}
 
   /damerau-levenshtein@1.0.8:
     resolution: {integrity: sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==}
@@ -6963,7 +7011,6 @@ packages:
     engines: {node: '>=0.11'}
     dependencies:
       '@babel/runtime': 7.23.2
-    dev: true
 
   /dateformat@3.0.3:
     resolution: {integrity: sha512-jyCETtSl3VMZMWeRo7iY1FL19ges1t55hMo5yaam4Jrsm5EPL89UQkoQRyiI+Yf4k8r2ZpdngkV8hr1lIdjb3Q==}
@@ -13525,7 +13572,7 @@ packages:
       react: 18.2.0
     dev: false
 
-  /react-bootstrap@2.9.1(@types/react@18.2.42)(react-dom@18.2.0)(react@18.2.0):
+  /react-bootstrap@2.9.1(@types/react@18.2.43)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-ezgmh/ARCYp18LbZEqPp0ppvy+ytCmycDORqc8vXSKYV3cer4VH7OReV8uMOoKXmYzivJTxgzGHalGrHamryHA==}
     peerDependencies:
       '@types/react': '>=16.14.8'
@@ -13538,7 +13585,7 @@ packages:
       '@babel/runtime': 7.23.2
       '@restart/hooks': 0.4.11(react@18.2.0)
       '@restart/ui': 1.6.6(react-dom@18.2.0)(react@18.2.0)
-      '@types/react': 18.2.42
+      '@types/react': 18.2.43
       '@types/react-transition-group': 4.4.9
       classnames: 2.3.2
       dom-helpers: 5.2.1
@@ -13552,6 +13599,22 @@ packages:
       warning: 4.0.3
     dev: false
 
+  /react-datepicker@4.24.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-2QUC2pP+x4v3Jp06gnFllxKsJR0yoT/K6y86ItxEsveTXUpsx+NBkChWXjU0JsGx/PL8EQnsxN0wHl4zdA1m/g==}
+    peerDependencies:
+      react: ^16.9.0 || ^17 || ^18
+      react-dom: ^16.9.0 || ^17 || ^18
+    dependencies:
+      '@popperjs/core': 2.11.8
+      classnames: 2.3.2
+      date-fns: 2.30.0
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      react-onclickoutside: 6.13.0(react-dom@18.2.0)(react@18.2.0)
+      react-popper: 2.3.0(@popperjs/core@2.11.8)(react-dom@18.2.0)(react@18.2.0)
+    dev: false
+
   /react-dom@18.2.0(react@18.2.0):
     resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
     peerDependencies:
@@ -13562,9 +13625,13 @@ packages:
       scheduler: 0.23.0
     dev: false
 
-  /react-hook-form@7.48.2(react@18.2.0):
-    resolution: {integrity: sha512-H0T2InFQb1hX7qKtDIZmvpU1Xfn/bdahWBN1fH19gSe4bBEqTfmlr7H3XWTaVtiK4/tpPaI1F3355GPMZYge+A==}
-    engines: {node: '>=12.22.0'}
+  /react-fast-compare@3.2.2:
+    resolution: {integrity: sha512-nsO+KSNgo1SbJqJEYRE9ERzo7YtYbou/OqjSQKxV7jcKox7+usiUVZOAC+XnDOABXggQTno0Y1CpVnuWEc1boQ==}
+    dev: false
+
+  /react-hook-form@7.49.0(react@18.2.0):
+    resolution: {integrity: sha512-gf4qyY4WiqK2hP/E45UUT6wt3Khl49pleEVcIzxhLBrD6m+GMWtLRk0vMrRv45D1ZH8PnpXFwRPv0Pewske2jw==}
+    engines: {node: '>=18', pnpm: '8'}
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18
     dependencies:
@@ -13582,6 +13649,16 @@ packages:
     resolution: {integrity: sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==}
     dev: false
 
+  /react-onclickoutside@6.13.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-ty8So6tcUpIb+ZE+1HAhbLROvAIJYyJe/1vRrrcmW+jLsaM+/powDRqxzo6hSh9CuRZGSL1Q8mvcF5WRD93a0A==}
+    peerDependencies:
+      react: ^15.5.x || ^16.x || ^17.x || ^18.x
+      react-dom: ^15.5.x || ^16.x || ^17.x || ^18.x
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
   /react-paginate@8.2.0(react@18.2.0):
     resolution: {integrity: sha512-sJCz1PW+9PNIjUSn919nlcRVuleN2YPoFBOvL+6TPgrH/3lwphqiSOgdrLafLdyLDxsgK+oSgviqacF4hxsDIw==}
     peerDependencies:
@@ -13589,6 +13666,20 @@ packages:
     dependencies:
       prop-types: 15.8.1
       react: 18.2.0
+    dev: false
+
+  /react-popper@2.3.0(@popperjs/core@2.11.8)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-e1hj8lL3uM+sgSR4Lxzn5h1GxBlpa4CQz0XLF8kx4MDrDRWY0Ena4c97PUeSX9i5W3UAfDP0z0FXCTQkoXUl3Q==}
+    peerDependencies:
+      '@popperjs/core': ^2.0.0
+      react: ^16.8.0 || ^17 || ^18
+      react-dom: ^16.8.0 || ^17 || ^18
+    dependencies:
+      '@popperjs/core': 2.11.8
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      react-fast-compare: 3.2.2
+      warning: 4.0.3
     dev: false
 
   /react-toastify@9.1.3(react-dom@18.2.0)(react@18.2.0):
@@ -15338,7 +15429,7 @@ packages:
       react: '>=15.0.0'
     dependencies:
       '@babel/runtime': 7.23.2
-      '@types/react': 18.2.42
+      '@types/react': 18.2.43
       invariant: 2.2.4
       react: 18.2.0
       react-lifecycles-compat: 3.0.4
@@ -15451,6 +15542,15 @@ packages:
 
   /urlpattern-polyfill@9.0.0:
     resolution: {integrity: sha512-WHN8KDQblxd32odxeIgo83rdVDE2bvdkb86it7bMhYZwWKJz0+O0RK/eZiHYnM+zgt/U7hAHOlCQGfjjvSkw2g==}
+    dev: false
+
+  /use-debounce@10.0.0(react@18.2.0):
+    resolution: {integrity: sha512-XRjvlvCB46bah9IBXVnq/ACP2lxqXyZj0D9hj4K5OzNroMDpTEBg8Anuh1/UfRTRs7pLhQ+RiNxxwZu9+MVl1A==}
+    engines: {node: '>= 16.0.0'}
+    peerDependencies:
+      react: '>=16.8.0'
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /use-local-storage-state@19.1.0(react-dom@18.2.0)(react@18.2.0):

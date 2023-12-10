@@ -2,10 +2,10 @@
 // import { useGlobalContext } from '@/hooks/useGlobalContext';
 // import { IsomorphicContext } from '@/types';
 
+import { Filter } from '@rckit/icons';
 import { useCallback, useState } from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
 
-import { FilterIcon } from '@/rckit/ui/icons/FilterIcon';
 import { debounce } from '@/rckit/utils/debounce';
 
 import { Debug } from '../Debug';
@@ -54,7 +54,7 @@ export const FilterMenu = ({ value, setValue }: any) => {
         </Col>
         <Col xs={1} md={1}>
           <Button onClick={toggleFilter} variant={showFilter ? 'primary' : 'outline-primary'}>
-            <FilterIcon />
+            <Filter />
           </Button>
         </Col>
       </Row>

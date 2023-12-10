@@ -13,13 +13,11 @@ import { useState } from 'react';
 // import { FilterMenu } from '@/lskjs/ui/FlexTable/FilterMenu';
 // import { useBillingTransactionListQuery } from '@/queries/billing';
 import { Table } from 'react-bootstrap';
-import ReactPaginate from 'react-paginate';
 
+import { Pagination } from '@/components/Pagination';
 import { AdminLayout } from '@/layouts/AdminLayout';
-import { Badges } from '@/rckit/ui/Badges';
-import { LeftArrowIcon } from '@/rckit/ui/icons/LeftArrowIcon';
-import { RightArrowIcon } from '@/rckit/ui/icons/RightArrowIcon';
 import { ProductListItem, useProductListQuery } from '@/queries/products';
+import { Badges } from '@/rckit/ui/Badges';
 
 const columnHelper = createColumnHelper<ProductListItem>();
 const columns = [
@@ -100,31 +98,7 @@ export default function AdminProducts2Page() {
             ))}
           </tbody>
         </Table>
-        <nav aria-label="Page navigation comments" className="mt-4">
-          <ReactPaginate
-            previousLabel={<LeftArrowIcon />}
-            nextLabel={<RightArrowIcon />}
-            breakLabel="..."
-            breakClassName="page-item"
-            breakLinkClassName="page-link"
-            pageCount={pageCount}
-            pageRangeDisplayed={2}
-            marginPagesDisplayed={1}
-            onPageChange={handlePageClick}
-            containerClassName="pagination justify-content-end"
-            pageClassName="page-item"
-            pageLinkClassName="page-link"
-            previousClassName="page-item"
-            previousLinkClassName="page-link"
-            nextClassName="page-item"
-            nextLinkClassName="page-link"
-            activeClassName="active"
-            // eslint-disable-next-line no-unused-vars
-            hrefBuilder={(p) => `?page=${p}`}
-            hrefAllControls
-            forcePage={page}
-          />
-        </nav>
+        <Pagination pageCount={pageCount} onPageChange={handlePageClick} page={page} />
         <div className="h-4" />
         <button onClick={() => {}} className="border p-2">
           Rerender

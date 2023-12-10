@@ -5,20 +5,18 @@
 // import { IsomorphicContext } from '@/types';
 
 import { Err } from '@lsk4/err';
+import { ArrowLeft, ArrowRight, Refresh } from '@rckit/icons';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
-import { Button, Table } from 'react-bootstrap';
+import { Button, Pagination, Table } from 'react-bootstrap';
 import ReactPaginate from 'react-paginate';
 
+// import { FilterMenu } from '@/rckit/ui/FlexTable/FilterMenu';
+import { SortIndicator } from '@/components/SortIndicator';
 import { AdminLayout } from '@/layouts/AdminLayout';
 // import { useBillingTransactionListQuery } from '@/queries/billing';
 import { useProductListQuery } from '@/queries/products';
-import { LeftArrowIcon } from '@/rckit/ui/icons/LeftArrowIcon';
-import RefreshIcon from '@/rckit/ui/icons/RefreshIcon';
-import { RightArrowIcon } from '@/rckit/ui/icons/RightArrowIcon';
-// import { FilterMenu } from '@/rckit/ui/FlexTable/FilterMenu';
-import { SortIndicator } from '@/rckit/ui/icons/SortIndicator';
 import { getSpinAnimationStyles } from '@/rckit/utils/getSpinAnimationStyles';
 
 export default function AdminProductsPage() {
@@ -78,7 +76,7 @@ export default function AdminProductsPage() {
             onClick={refetch}
             variant="outline-primary ml-4"
           >
-            <RefreshIcon style={getSpinAnimationStyles(isFetching)} />
+            <Refresh style={getSpinAnimationStyles(isFetching)} />
           </Button>
         </div>
       </div>
@@ -126,31 +124,8 @@ export default function AdminProductsPage() {
               ))}
             </tbody>
           </Table>
-          <nav aria-label="Page navigation comments" className="mt-4">
-            <ReactPaginate
-              previousLabel={<LeftArrowIcon />}
-              nextLabel={<RightArrowIcon />}
-              breakLabel="..."
-              breakClassName="page-item"
-              breakLinkClassName="page-link"
-              pageCount={pageCount}
-              pageRangeDisplayed={2}
-              marginPagesDisplayed={1}
-              onPageChange={handlePageClick}
-              containerClassName="pagination justify-content-end"
-              pageClassName="page-item"
-              pageLinkClassName="page-link"
-              previousClassName="page-item"
-              previousLinkClassName="page-link"
-              nextClassName="page-item"
-              nextLinkClassName="page-link"
-              activeClassName="active"
-              // eslint-disable-next-line no-unused-vars
-              hrefBuilder={(p) => `?page=${p}`}
-              hrefAllControls
-              forcePage={page}
-            />
-          </nav>
+
+          <Pagination pageCount={pageCount} onPageChange={handlePageClick} page={page} />
         </>
       )}
     </AdminLayout>
