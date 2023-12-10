@@ -1,133 +1,124 @@
-// @ts-nocheck
-
-/* eslint-disable max-len */
-// import { useGlobalContext } from '@/hooks/useGlobalContext';
-// import { IsomorphicContext } from '@/types';
-
-import { Err } from '@lsk4/err';
 import { Avatar } from '@rckit/avatar';
+import { Eye, Trash } from '@rckit/icons';
+import { Pencil } from '@rckit/icons/pencil';
+import { HeadMeta } from '@rckit/meta';
+import { QueryParams as BaseQueryParams, Table, TableColumn } from '@rckit/table';
+import Head from 'next/head';
 import Link from 'next/link';
 import { useState } from 'react';
-import { Button, Table } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
+import { AdminUsersForm as Filter } from '@/components/AdminUsersForm';
+import { HumanDate } from '@/components/HumanDate';
 import { Pagination } from '@/components/Pagination';
-// import { FilterMenu } from '@/rckit/ui/FlexTable/FilterMenu';
-import { SortIndicator } from '@/components/SortIndicator';
 import { AdminLayout } from '@/layouts/AdminLayout';
-// import { useBillingTransactionListQuery } from '@/queries/billing';
-import { useUserListQuery } from '@/queries/users';
-import { Refresh }  from '@rckit/icons'
-import { getSpinAnimationStyles } from '@/rckit/utils/getSpinAnimationStyles';
+import { UserListItem, useUserListInfinityQuery } from '@/queries/users2';
+
+type QueryParams = BaseQueryParams & {
+  filter?: {
+    role?: string;
+  };
+  count?: boolean;
+};
+const UserActions = ({ id }: { id: string }) => (
+  <>
+    <Button
+      // @ts-ignore
+      as={Link}
+      href={`/users/${id}`}
+      variant="primary"
+    >
+      <Eye />
+    </Button>
+    <Button
+      // @ts-ignore
+      as={Link}
+      href={`/users/${id}`}
+      variant="warning"
+      className="mx-2"
+    >
+      <Pencil />
+    </Button>
+    <Button
+      // @ts-ignore
+      as={Link}
+      href={`/users/${id}`}
+      variant="danger"
+    >
+      <Trash />
+    </Button>
+  </>
+);
+
+const columns: TableColumn<UserListItem, UserListItem>[] = [
+  {
+    accessorKey: 'avatar',
+    header: 'Ava',
+    cell: (info: any) => <Avatar size={32} src={info.getValue()} name={info.getValue()} />,
+    width: '50px',
+  },
+  {
+    accessorKey: 'email',
+    header: 'Email',
+    width: '2fr',
+  },
+  {
+    accessorKey: 'id',
+    header: 'ID',
+    width: '1fr',
+  },
+  {
+    accessorKey: 'role',
+    header: 'Role',
+    cell: (info) => String(info.getValue()).toUpperCase(),
+    width: '100px',
+  },
+  {
+    accessorKey: 'createdAt',
+    header: 'Created At',
+    cell: (info: any) => <HumanDate date={info.getValue()} />,
+    enableSorting: true,
+    width: '200px',
+  },
+  {
+    accessorKey: 'updatedAt',
+    header: 'Updated At',
+    cell: (info: any) => <HumanDate date={info.getValue()} />,
+    enableSorting: true,
+    width: '200px',
+  },
+  {
+    accessorKey: 'id',
+    header: 'Actions',
+    cell: (info: any) => <UserActions id={info.getValue()} />,
+    width: '160px',
+  },
+];
 
 export default function AdminUsersPage() {
-  const [page, setPage] = useState(0);
-  const [filter, setFilter] = useState({});
-  const [sort, setSort] = useState<any>({});
-
-  const pageSize = 10;
-  // const { data: rawItems, isLoading } = useBillingTransactionListQuery();
-  const res = useUserListQuery({
-    limit: pageSize,
-    skip: page * pageSize,
-    sort,
-    // filter: {
-    //   price: {
-    //     $lt: 1,
-    //   },
-    // },
-  });
-  const { data: rawItems, isFetching, error, status, refetch } = res;
-  const { items = [], total = 0 } = rawItems || {};
-
-  const pageCount = Math.ceil(total / pageSize);
-  const handlePageClick = ({ selected }: { selected: number }) => {
-    setPage(selected);
-  };
-
-  const createHandleSort = (name: any) => () => {
-    const newSort = {
-      [name]: sort[name] === 1 ? -1 : 1,
-    };
-    setSort(newSort);
-  };
-  const sorts = {
-    price: 1,
-    likes: 1,
-  };
-
-  // console.log(res, { items, total, page, pageCount, isFetching, error, status, refetch });
-
+  const pageTitle = 'Admin Users';
+  const [queryParams, setQueryParams] = useState<QueryParams>({ limit: 10, count: true });
+  const query = useUserListInfinityQuery(queryParams);
   return (
-    <AdminLayout activeHref="/admin/users">
-      <div className="d-flex justify-content-between align-items-center mb-2">
-        <div></div>
-        <div>
-          {isFetching ? <span className="mr-2">Refreshing...</span> : null}
-          {status === 'pending' && <span className="mr-2">Loading...</span>}
-          {status === 'error' && <span className="mr-2">Error: {Err.getMessage(error)}</span>}
-          {status === 'success' && !items?.length && (
-            <span className="mr-2">{page ? 'reset filter and page' : 'No data'}</span>
-          )}
-          <Button
-            // @ts-ignore
-            onClick={refetch}
-            variant="outline-primary ml-4"
-          >
-            <Refresh style={getSpinAnimationStyles(isFetching)} />
-          </Button>
-        </div>
-      </div>
-      {status === 'success' && !!items?.length && (
-        <>
-          {/* <FilterMenu value={filter} setValue={setFilter} /> */}
-
-          <Table striped bordered hover>
-            <thead>
-              <tr>
-                <th>Avatar</th>
-                <th>Email</th>
-                <th>Name</th>
-                <th>Role</th>
-                <th onClick={createHandleSort('price')}>
-                  Created
-                  <SortIndicator value={sorts.price} />
-                </th>
-                <th onClick={createHandleSort('likes')}>
-                  Last Activity
-                  <SortIndicator value={sorts.likes} />
-                </th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {items?.map((item, index) => (
-                <tr key={index}>
-                  <td>
-                    <Avatar src={item.avatar} name={item.name} email={item.email} size={32} />
-                  </td>
-                  <td>{item.email}</td>
-                  <td>{item.name}</td>
-                  <td>{item.role}</td>
-                  <td>{item.createdAt}</td>
-                  <td>{item.updatedAt}</td>
-                  <td>
-                    <Button
-                      // @ts-ignore
-                      as={Link}
-                      // @ts-ignore
-                      href={`/products/${item.id}`}
-                      variant="primary"
-                    >
-                      View
-                    </Button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-          <Pagination pageCount={pageCount} onPageChange={handlePageClick} page={page} />
-        </>
-      )}
-    </AdminLayout>
+    <>
+      <Head>
+        <HeadMeta title={pageTitle} />
+      </Head>
+      <AdminLayout activeHref="/admin/users">
+        <Table
+          // @ts-ignore
+          query={query}
+          columns={columns}
+          initialState={queryParams}
+          onChange={setQueryParams}
+          components={
+            {
+              Pagination,
+              Filter,
+            } as any
+          }
+        />
+      </AdminLayout>
+    </>
   );
 }
