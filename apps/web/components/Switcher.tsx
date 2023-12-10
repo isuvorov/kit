@@ -1,7 +1,7 @@
 import { Form } from 'react-bootstrap';
 
 export function Switcher({ field, label, id, reverse = false, onChange = null }) {
-  const checked = reverse ? !field.value : field.value;
+  const checked = reverse ? !field?.value : field?.value;
   function handleChange(e) {
     if (reverse) {
       field.onChange(!e.target.checked);

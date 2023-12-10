@@ -1,6 +1,8 @@
-import { CrossCircle as ClearIcon, Filter, Search as SearchIcon } from '@rckit/icons';
+import { CrossCircle as ClearIcon, Filter, Refresh, Search as SearchIcon } from '@rckit/icons';
 import { useState } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
+
+import { getSpinAnimationStyles } from '@/rckit/utils/getSpinAnimationStyles';
 
 import type { TableSearchProps } from '../../types';
 import styles from './TableSearch.module.css';
@@ -9,8 +11,12 @@ export const TableSearch = ({
   placeholder = 'Search...',
   onChange,
   open,
+  isFetching,
+  showRefresh = true,
+  refresh,
   hasFilter = false,
   search = '',
+  children,
 }: TableSearchProps) => {
   const [searchValue, setSearchValue] = useState(search);
   const debounced = useDebouncedCallback((value) => {
@@ -43,9 +49,15 @@ export const TableSearch = ({
           </div>
         )}
       </div>
+      {children}
       {hasFilter && (
         <button className={styles.filterButton} onClick={open}>
           <Filter />
+        </button>
+      )}
+      {showRefresh && (
+        <button className={styles.filterButton} onClick={refresh}>
+          <Refresh style={getSpinAnimationStyles(isFetching)} />
         </button>
       )}
     </div>

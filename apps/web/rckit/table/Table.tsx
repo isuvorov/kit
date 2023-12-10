@@ -31,6 +31,7 @@ export const Table = ({
   //   const { data: raw, isFetching, error, status, refetch } = query
 
   // }
+  const { isFetching } = query;
   const isInfinityQuery = Boolean(query?.data?.pages);
   let items: any[] = [];
   if (!data && query) {
@@ -60,8 +61,8 @@ export const Table = ({
     manualPagination: true,
   });
   const { rows } = table.getRowModel();
-  const isEmpty = rows.length === 0 && !_isLoading;
-  const isLoading = rows.length === 0 && _isLoading;
+  const isEmpty = rows.length === 0 && !isFetching;
+  const isLoading = rows.length === 0 && isFetching;
 
   // eslint-disable-next-line no-nested-ternary
   const messageType = (isEmpty ? 'empty' : isLoading ? 'loading' : null) as
@@ -110,6 +111,17 @@ export const Table = ({
       <Search
         search={search}
         hasFilter={!!Filter}
+        open={() => setOpenFilter(!openFilter)}
+        showRefresh={true}
+        isFetching={isFetching}
+        refresh={() => {
+          query.refetch();
+          // onChange((prev) => ({
+          //   ...prev,
+          //   search: value,
+          //   skip: 0,
+          // }));
+        }}
         onChange={(value) => {
           onChange((prev) => ({
             ...prev,
@@ -117,8 +129,13 @@ export const Table = ({
             skip: 0,
           }));
         }}
-        open={() => setOpenFilter(!openFilter)}
       />
+      {/* {hasFilter && (
+          <button className={styles.filterButton} onClick={open}>
+            <Filter />
+          </button>
+        )}
+      </Search> */}
       {openFilter && Filter && <Filter onSubmit={onChange} />}
       {content}
     </div>

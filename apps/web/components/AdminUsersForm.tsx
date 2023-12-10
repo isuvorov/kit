@@ -1,13 +1,15 @@
 import { FormButton, FormItem, useSmartForm } from '@rckit/form';
 import { Col, Form, Row } from 'react-bootstrap';
-import DatePicker from 'react-datepicker';
-import { Controller, useFormContext } from 'react-hook-form';
+import { Controller } from 'react-hook-form';
 
 import { Switcher } from './Switcher';
 
 const a = 1;
 export interface AdminUsersFormValues {
-  email: string;
+  role?: string;
+  dateFrom?: Date;
+  dateTo?: Date;
+  hasUpdated?: boolean;
 }
 export interface AdminUsersFormProps {
   onSubmit: (values: AdminUsersFormValues) => Promise<void>;
@@ -16,7 +18,6 @@ export function AdminUsersForm({ onSubmit }: AdminUsersFormProps) {
   const { register, formState, onSmartSubmit, control } = useSmartForm<AdminUsersFormValues>({
     onSubmit,
   });
-  console.log({ control });
   if (a) {
     return (
       <Form onChange={onSmartSubmit} style={{ backgroundColor: '#ededed', padding: 16 }}>
@@ -24,7 +25,7 @@ export function AdminUsersForm({ onSubmit }: AdminUsersFormProps) {
           <Col lg={3}>
             <Form.Group controlId="role">
               <Form.Label>Role</Form.Label>
-              <Form.Select {...register('email')}>
+              <Form.Select {...register('role')} className="form-control">
                 <option value="">Select role</option>
                 {['user', 'guest'].map((role) => (
                   <option key={role} value={role}>
@@ -35,11 +36,55 @@ export function AdminUsersForm({ onSubmit }: AdminUsersFormProps) {
             </Form.Group>
           </Col>
           <Col lg={3}>
-            {/* <Form.Group controlId="dateFrom">
-              <Form.Label>Date From</Form.Label>
+            <Form.Group controlId="dateFrom">
+              <Form.Label>Created Date From</Form.Label>
               <Controller
-                key="dateFrom"
+                name="dateFrom"
                 control={control}
+                render={({ field }) => <input {...field} type="date" className="form-control" />}
+              />
+            </Form.Group>
+          </Col>
+          <Col lg={3}>
+            <Form.Group controlId="dateTo">
+              <Form.Label>Created Date To</Form.Label>
+              <Controller
+                name="dateTo"
+                control={control}
+                render={({ field }) => <input {...field} type="date" className="form-control" />}
+              />
+            </Form.Group>
+          </Col>
+          <Col lg={3}>
+            <Form.Group controlId="dateFrom">
+              <Form.Label>Has updated</Form.Label>
+              <Controller
+                name="hasUpdated"
+                control={control}
+                render={({ field }) => <Switcher field={field} className="form-control" />}
+              />
+            </Form.Group>
+          </Col>
+          {/* <Controller
+                control={control}
+                name="test"
+                render={({
+                  field,
+                  // fieldState: { invalid, isTouched, isDirty, error },
+                  // formState,
+                }) => (
+                  <Switcher
+                    field={field}
+                    // onBlur={onBlur} // notify when input is touched
+                    // onChange={onChange} // send value to hook form
+                    // checked={value}
+                    // inputRef={ref}
+                  />
+                )}
+              />
+              <Controller
+                name="dateFrom"
+                // control={control}
                 // render={({ field }) => (
                 //   <DatePicker
                 //     {...field}
@@ -49,9 +94,7 @@ export function AdminUsersForm({ onSubmit }: AdminUsersFormProps) {
                 //     placeholderText="Date from"
                 //   />
                 // )}
-              />
-            </Form.Group> */}
-          </Col>
+              /> */}
           {/* <Col lg={3}>
             <Form.Group controlId="dateFrom">
               <Form.Label>Date To</Form.Label>

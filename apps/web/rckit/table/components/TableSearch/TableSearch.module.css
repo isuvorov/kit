@@ -42,14 +42,17 @@
 
 .searchIcon {
   display: flex;
-  top: 8px;
-  left: 8px;
+  margin: 0px 12px;
+  height: 100%;
 }
 
 .clearIcon {
-  right: 8px;
-  top: 8px;
   cursor: pointer;
+  top: 0px;
+  right: 0px;
+  height: 100%;
+  margin: 0px 12px;
+  height: 100%;
 }
 
 .filterButton {
