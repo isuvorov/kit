@@ -1,8 +1,9 @@
 
-@import "~blb-ui-lib/src/variables.css";
 @import "~bootstrap/dist/css/bootstrap.min.css";
-@import "~react-datepicker/dist/react-datepicker.css";
-@import "./index.css";
+/* @import "~react-datepicker/dist/react-datepicker.css"; */
+/* @import "@rckit/table/lib/index.css"; */
+@import "./rckit-variables.css";
+@import "./rckit-table.css";
 
 
 @keyframes spin {

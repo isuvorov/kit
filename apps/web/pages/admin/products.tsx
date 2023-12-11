@@ -14,7 +14,7 @@ import { useState } from 'react';
 // import { useBillingTransactionListQuery } from '@/queries/billing';
 import { Table } from 'react-bootstrap';
 
-import { Pagination } from '@/components/Pagination';
+import { Pagination } from '@/comps/Pagination';
 import { AdminLayout } from '@/layouts/AdminLayout';
 import { ProductListItem, useProductListQuery } from '@/queries/products';
 import { Badges } from '@/rckit/ui/Badges';

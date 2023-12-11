@@ -8,9 +8,9 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { Button } from 'react-bootstrap';
 
-import { AdminUsersForm as Filter } from '@/components/AdminUsersForm';
-import { HumanDate } from '@/components/HumanDate';
-import { Pagination } from '@/components/Pagination';
+import { AdminUsersForm as Filter } from '@/comps/AdminUsersForm';
+import { HumanDate } from '@/comps/HumanDate';
+import { Pagination } from '@/comps/Pagination';
 import { AdminLayout } from '@/layouts/AdminLayout';
 import { UserListItem, useUserListInfinityQuery } from '@/queries/users2';
 

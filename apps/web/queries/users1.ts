@@ -6,18 +6,11 @@ export interface UserListParams {
   skip?: number;
   limit?: number;
   filter?: any;
-  search?: string;
-  sort?:
-    | string
-    | Record<string, number>
-    | {
-        id: string;
-        desc: boolean;
-      }[];
+  sort: string | Record<string, number>;
 }
-// export interface UserListInfinityParams extends Omit<UserListParams, 'skip' | 'limit'> {
-//   pageSize?: number;
-// }
+export interface UserListInfinityParams extends Omit<UserListParams, 'skip' | 'limit'> {
+  pageSize?: number;
+}
 
 export interface UserListItem {
   _id: string;
@@ -71,28 +64,15 @@ export function getUserListQuery(params?: UserListParams, options?: ApiClientOpt
 export const useUserListQuery = (params?: UserListParams, options?: ApiClientOptions) =>
   useQuery<UserListResponse>(getUserListQuery(params, options));
 
-// export const useUserListInfinityQuery = (
-//   params?: UserListInfinityParams,
-//   options?: ApiClientOptions,
-// ) =>
-//   useInfiniteQuery<UserListResponse>({
-//     ...getUserListQuery(params, options),
-//     initialPageParam: 1,
-//     getNextPageParam: (lastPage: any) => lastPage.nextCursor,
-//     getPreviousPageParam: (firstPage: any) => firstPage.prevCursor,
-//   });
-
-export const useUserListInfinityQuery = (params?: UserListParams, options?: ApiClientOptions) =>
+export const useUserListInfinityQuery = (
+  params?: UserListInfinityParams,
+  options?: ApiClientOptions,
+) =>
   useInfiniteQuery<UserListResponse>({
     ...getUserListQuery(params, options),
-    initialPageParam: 0,
-    refetchOnWindowFocus: false,
-    getNextPageParam: (lastPage, _, lastPageParam: any) => {
-      if (lastPage.total <= (lastPageParam + 1) * (params?.limit || 0)) {
-        return undefined;
-      }
-      return lastPageParam + 1;
-    },
+    initialPageParam: 1,
+    getNextPageParam: (lastPage: any) => lastPage.nextCursor,
+    getPreviousPageParam: (firstPage: any) => firstPage.prevCursor,
   });
 
 // const { data, fetchNextPage, isFetching, isLoading } = useInfiniteQuery<PersonApiResponse>(

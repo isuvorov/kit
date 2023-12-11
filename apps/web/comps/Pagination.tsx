@@ -13,7 +13,7 @@ export const Pagination = ({ pageCount, onPageChange, page }: PaginationProps) =
       previousLabel={
         <>
           <ArrowLeft />
-          &nbsp; Previous
+          &nbsp; Prev
         </>
       }
       nextLabel={

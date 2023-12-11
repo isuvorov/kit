@@ -1,6 +1,4 @@
 import '@/styles/globals.css';
-import '@/styles/variables.css';
-import 'blb-table/dist/variables.css';
 
 // import '@rckit/table/lib/index.css';
 import { isDev, stage, version } from '@lsk4/env';
