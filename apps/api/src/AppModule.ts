@@ -26,6 +26,8 @@ import { ProductsController } from './api/ProductsController';
 import { UserListController } from './api/UserListController';
 import { ExampleListController } from './examples/ExampleListController';
 import testControlers from './examples/test';
+import { LSKAuthService } from './lsk/auth/LSKAuthService';
+import { LSKUserModel } from './lsk/auth/LSKUserModel';
 import models from './nestlib/auth/models';
 import { loggerFactory } from './nestlib/mikro-orm/loggerFactory';
 
@@ -50,12 +52,15 @@ const notNull = (v, def) => (v == null ? def : v);
       getConfig('dbs.mongodb', (cnf) => ({
         type: 'mongo',
         clientUrl: cnf.uri,
-        entities: models,
+        entities: [...models, LSKUserModel],
         debug: notNull(cnf.debug, isDev),
         loggerFactory,
+        discovery: {
+          checkDuplicateTableNames: false,
+        },
       })),
     ),
-    MikroOrmModule.forFeature({ entities: models }),
+    MikroOrmModule.forFeature({ entities: [...models, LSKUserModel] }),
 
     // MikroOrmModule.forRoot({
     //   type: 'mongo',
@@ -122,7 +127,10 @@ const notNull = (v, def) => (v == null ? def : v);
     AuthController,
   ],
   providers: [
-    AuthService,
+    {
+      provide: AuthService,
+      useClass: LSKAuthService,
+    },
     AuthOtpService,
     // BotAppService,
 
