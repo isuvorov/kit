@@ -100,6 +100,14 @@ export class AuthOtpService {
 
     return otp;
   }
+  // TODO: only for TEST, remove
+  async findByEmail(email: string): Promise<any> {
+    const otp = await this.otpsRepository.findOne({
+      // @ts-ignore
+      'params.email': email,
+    });
+    return otp?.code;
+  }
   async findAndCheck(otpId, code): Promise<any> {
     const otp = await this.otpsRepository.findOne({ _id: otpId });
     if (!otp) {

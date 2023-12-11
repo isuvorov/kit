@@ -282,6 +282,15 @@ export class AuthController {
     return this.authService.setNewPassword(email, password);
   }
 
+  // TODO: remove TEST only
+  @All('getOTPByEmail')
+  // @AuthRole(AuthRole.admin)
+  async getOTP(@Req() req: Request) {
+    const email = req.body.email || req.query.email;
+    if (!email) throw new Err('!email');
+    return this.otpService.findByEmail(email);
+  }
+
   // @All('clearSessions')
   // @AuthRole(AuthRole.admin)
   // async clearSessions(@Req() req: Request) {
