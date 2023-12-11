@@ -1,5 +1,5 @@
 import { Err } from '@lsk4/err';
-import { AuthLoginForm, AuthLoginFormValues, fetchAuthLogin, trimAndLower } from '@rckit/auth';
+import { AuthLoginFormValues, AuthRestoreForm, fetchAuthLogin } from '@rckit/auth';
 import { HeadMeta } from '@rckit/meta';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -32,7 +32,7 @@ export default function AuthLoginPage() {
       </Head>
       <AuthLayout>
         <AuthLayout.Body title={pageTitle}>
-          <AuthLoginForm onSubmit={onSubmit} />
+          <AuthRestoreForm onSubmit={onSubmit} />
         </AuthLayout.Body>
         <AuthLayout.Footer>
           Don&apos;t have an account? <Link href="/auth/signup">Sign Up</Link>

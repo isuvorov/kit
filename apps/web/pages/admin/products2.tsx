@@ -13,7 +13,7 @@ import { Button, Pagination, Table } from 'react-bootstrap';
 import ReactPaginate from 'react-paginate';
 
 // import { FilterMenu } from '@/rckit/ui/FlexTable/FilterMenu';
-import { SortIndicator } from '@/components/SortIndicator';
+import { SortIndicator } from '@/comps/SortIndicator';
 import { AdminLayout } from '@/layouts/AdminLayout';
 // import { useBillingTransactionListQuery } from '@/queries/billing';
 import { useProductListQuery } from '@/queries/products';

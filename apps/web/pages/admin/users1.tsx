@@ -10,12 +10,12 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { Button, Table } from 'react-bootstrap';
 
-import { Pagination } from '@/components/Pagination';
+import { Pagination } from '@/comps/Pagination';
 // import { FilterMenu } from '@/rckit/ui/FlexTable/FilterMenu';
-import { SortIndicator } from '@/components/SortIndicator';
+import { SortIndicator } from '@/comps/SortIndicator';
 import { AdminLayout } from '@/layouts/AdminLayout';
 // import { useBillingTransactionListQuery } from '@/queries/billing';
-import { useUserListQuery } from '@/queries/users';
+import { useUserListQuery } from '@/queries/users1';
 import { Refresh }  from '@rckit/icons'
 import { getSpinAnimationStyles } from '@/rckit/utils/getSpinAnimationStyles';
 

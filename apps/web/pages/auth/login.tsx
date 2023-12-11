@@ -1,5 +1,5 @@
 import { Err } from '@lsk4/err';
-import { AuthLoginForm, AuthLoginFormValues, fetchAuthLogin, trimAndLower } from '@rckit/auth';
+import { AuthLoginForm, AuthLoginFormValues, fetchAuthLogin } from '@rckit/auth';
 import { HeadMeta } from '@rckit/meta';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -9,7 +9,7 @@ import { useAppConfig } from '@/layouts/app/useAppConfig';
 import { AuthLayout } from '@/layouts/AuthLayout';
 
 export default function AuthLoginPage() {
-  const pageTitle = 'Login';
+  const pageTitle = 'Sign In';
   const { updateSession } = useAppConfig();
   const router = useRouter();
 
