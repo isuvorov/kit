@@ -26,7 +26,7 @@ import { ProductsController } from './api/ProductsController';
 import { UserListController } from './api/UserListController';
 import { ExampleListController } from './examples/ExampleListController';
 import testControlers from './examples/test';
-import { LSKAuthService } from './lsk/auth/LSKAuthService';
+// import { LSKAuthService } from './lsk/auth/LSKAuthService';
 import { LSKUserModel } from './lsk/auth/LSKUserModel';
 import models from './nestlib/auth/models';
 import { loggerFactory } from './nestlib/mikro-orm/loggerFactory';
@@ -127,10 +127,11 @@ const notNull = (v, def) => (v == null ? def : v);
     AuthController,
   ],
   providers: [
-    {
-      provide: AuthService,
-      useClass: LSKAuthService,
-    },
+    AuthService,
+    // {
+    //   provide: AuthService,
+    //   useClass: LSKAuthService,
+    // },
     AuthOtpService,
     // BotAppService,
 

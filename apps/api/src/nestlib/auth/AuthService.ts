@@ -1,9 +1,9 @@
 import { Err } from '@lsk4/err';
 import { EntityRepository } from '@mikro-orm/mongodb';
-import { InjectRepository } from '@mikro-orm/nestjs';
+// import { InjectRepository } from '@mikro-orm/nestjs';
 import { Injectable } from '@nestjs/common';
 
-// import { InjectRepository } from '@nestjs/typeorm';
+import { InjectRepo } from '../decorators/InjectRepo';
 import { comparePassword, hashPassword } from './crypto';
 import { UserModel } from './models/UserModel';
 import { UserDto } from './types';
@@ -11,7 +11,7 @@ import { UserDto } from './types';
 @Injectable()
 export class AuthService {
   constructor(
-    @InjectRepository(UserModel)
+    @InjectRepo('UserModel')
     private usersRepository: EntityRepository<UserModel>,
   ) {}
 
