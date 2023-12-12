@@ -27,7 +27,7 @@ export const AppNavbarSettings = () => {
     const { avatar } = user;
     return (
       <>
-        <Debug>
+        {/* <Debug>
           <NavDropdown
             title={
               <div style={{ display: 'inline-block' }}>
@@ -47,7 +47,7 @@ export const AppNavbarSettings = () => {
               Logout
             </NavDropdown.Item>
           </NavDropdown>
-        </Debug>
+        </Debug> */}
 
         <Dropdown>
           <Dropdown.Toggle

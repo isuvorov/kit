@@ -23,7 +23,7 @@ export default function AuthSignup() {
   async function onSubmit(values: AuthSignupFormValues) {
     const { otp, session } = await fetchAuthSignup(values);
     if (session) {
-      await updateSessionWithRedirect(session, router.query.r || '/cabinet');
+      await updateSessionWithRedirect(session, router, '/cabinet');
     } else if (otp) {
       router.push(`/auth/otp?_id=${otp._id}`);
     } else {

@@ -15,7 +15,6 @@ import { AuthLayout } from '@/layouts/AuthLayout';
 
 export default function AuthLoginPage() {
   useAuthGuard(useRouter(), { role: 'guestOnly' });
-
   const pageTitle = 'Sign In';
   const { updateSessionWithRedirect } = useAppSession();
   const router = useRouter();
@@ -23,7 +22,7 @@ export default function AuthLoginPage() {
   async function onSubmit(values: AuthLoginFormValues) {
     const { session, otp } = await fetchAuthLogin(values);
     if (session) {
-      await updateSessionWithRedirect(session, router.query.r || '/cabinet');
+      await updateSessionWithRedirect(session, router, '/cabinet');
     } else if (otp) {
       router.push(`/auth/otp?_id=${otp._id}`);
     } else {

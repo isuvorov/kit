@@ -21,16 +21,13 @@ export default function AuthOtpPage() {
   const router = useRouter();
   const otpId = router.query._id as string;
 
-  async function onSubmit(raw: AuthOtpFormValues) {
-    const values = {
-      ...raw,
-    };
+  async function onSubmit(values: AuthOtpFormValues) {
     const { session } = await fetchAuthOtpActivate({
       otpId,
       ...values,
     });
     if (session) {
-      await updateSessionWithRedirect(session, router.query.r || '/cabinet');
+      await updateSessionWithRedirect(session, router, '/cabinet');
     } else {
       throw new Err('Something went wrong');
     }
