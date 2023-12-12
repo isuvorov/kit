@@ -226,16 +226,20 @@
 ### № 1.22 Вставить пробел перед заполнением "First name" и "Last name" 
 
 1. Нажать "Sign Up"
-2. Вставить пробел перед заполнением "First name" и "Last name"
-например "First name" - " Дима", "Last name" - " Тестов"
+2. Вставить пробел перед заполнением "First name" и "Last name", например:
+- "First name" - " Дима"
+- "Last name" - " Тестов"
+3. Остальные поля валидные
+4. Нажать "Submit"
 
 **Ожидаемый результат:** Проверить что после регистрации пробелы обрезаются, тоже самое с пробелами в конце
 
 ### № 1.23 Ввести в поле пробел по середине "First name" и "Last name"
 
 1. Нажать "Sign Up"
-2. Ввести в поле пробел по середине "First name" и "Last name"
-например "First name" - "Edwin", "Last name" - "Van Der Sar"
+2. Ввести в поле пробел по середине "First name" и "Last name", например:
+- "First name" - "Edwin"
+- "Last name" - "Van Der Sar"
 3. Остальные поля валидные
 4. Нажать "Submit"
 
@@ -271,9 +275,13 @@
 ### № 1.27 Проверить что в поле "First name" и "Last name" можно заполнить русскими и английскими буквами, uppercase и lowercase
 
 1. Нажать "Sign Up"
-2. Заполнить поля "First name" и "Last name" русскими и английскими буквами, uppercase и lowercase, цифрами
-например "First name" - "ДИМА", "Last name" - "Testov", или "First name" - "DiMa", "Last name" - "тестов", 
-или "First name" - "Дима", "Last name" - "Testov1"
+2. Заполнить поля "First name" и "Last name" русскими и английскими буквами, uppercase и lowercase, цифрами например 
+- "First name" - "ДИМА"
+- "Last name" - "Testov"
+- "First name" - "DiMa" 
+- "Last name" - "тестов"
+- "First name" - "Дима"
+- "Last name" - "Testov1"
 3. Остальные поля валидные
 4. Нажать "Submit"
 
