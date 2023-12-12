@@ -1,8 +1,8 @@
 import { Err } from '@lsk4/err';
 import {
-  AuthLoginFormValues,
   AuthRestoreForm,
-  fetchAuthLogin,
+  AuthRestoreFormValues,
+  fetchAuthRestore,
   useAppSession,
   useAuthGuard,
 } from '@rckit/auth';
@@ -19,8 +19,9 @@ export default function AuthLoginPage() {
   const { updateSessionWithRedirect } = useAppSession();
   const router = useRouter();
 
-  async function onSubmit(values: AuthLoginFormValues) {
-    const { session, otp } = await fetchAuthLogin(values);
+  async function onSubmit(values: AuthRestoreFormValues) {
+    // @ts-ignore
+    const { session, otp } = await fetchAuthRestore(values);
     if (session) {
       await updateSessionWithRedirect(session, router, '/cabinet');
     } else if (otp) {

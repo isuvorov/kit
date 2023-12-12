@@ -244,8 +244,8 @@ importers:
         specifier: ^4.5.1
         version: 4.5.1(react@18.2.0)
       '@rckit/auth':
-        specifier: ^4.10.0
-        version: 4.10.0(react-bootstrap@2.9.1)(react-hook-form@7.49.0)(react@18.2.0)(use-local-storage-state@19.1.0)
+        specifier: ^4.10.2
+        version: 4.10.2(react-bootstrap@2.9.1)(react-hook-form@7.49.0)(react@18.2.0)(use-local-storage-state@19.1.0)
       '@rckit/avatar':
         specifier: ^4.10.0
         version: 4.10.0(react@18.2.0)
@@ -3693,8 +3693,8 @@ packages:
       - debug
     dev: false
 
-  /@rckit/auth@4.10.0(react-bootstrap@2.9.1)(react-hook-form@7.49.0)(react@18.2.0)(use-local-storage-state@19.1.0):
-    resolution: {integrity: sha512-pstIc5WeFHm5lxp9UQyBRR+/kUDwFhuLB3lBeAK2iVTPd86s7i/80oAFkDdX1dvPKMrfUDItMN/EN8OSL/yHYQ==}
+  /@rckit/auth@4.10.2(react-bootstrap@2.9.1)(react-hook-form@7.49.0)(react@18.2.0)(use-local-storage-state@19.1.0):
+    resolution: {integrity: sha512-9rZRfITjph83mGOohhm5QBNPA7V+EtRLcPY22YrqPE6sJI3Kh33R69PW5Dtj/RzC/cqfUcu243XbJqgr7mn9DA==}
     peerDependencies:
       react: ^18.2.0
       react-bootstrap: ^2.9.1
@@ -3702,6 +3702,7 @@ packages:
     dependencies:
       '@lsk4/env': 4.3.1
       '@lsk4/err': 4.3.0
+      '@lsk4/log': 4.3.1
       '@rckit/api-client': 4.5.1(react@18.2.0)
       '@rckit/form': 4.8.2(react-bootstrap@2.9.1)(react-hook-form@7.49.0)(react@18.2.0)
       '@rckit/link': 4.10.0(react@18.2.0)
