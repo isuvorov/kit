@@ -1,12 +1,11 @@
+import { useAppSession } from '@rckit/auth';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-
-import { useAppConfig } from '@/layouts/app/useAppConfig';
 
 export function createRedirectPage({ redirectPath }: { redirectPath: string }) {
   return function RedirectPage() {
     const router = useRouter();
-    const { sessionStatus } = useAppConfig();
+    const { sessionStatus } = useAppSession();
 
     useEffect(() => {
       if (sessionStatus === 'loading') return;

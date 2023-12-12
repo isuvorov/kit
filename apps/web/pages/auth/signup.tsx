@@ -1,24 +1,29 @@
 import { Err } from '@lsk4/err';
-import { AuthSignupForm, AuthSignupFormValues, fetchAuthSignup } from '@rckit/auth';
+import {
+  AuthSignupForm,
+  AuthSignupFormValues,
+  fetchAuthSignup,
+  useAppSession,
+  useAuthGuard,
+} from '@rckit/auth';
 import { HeadMeta } from '@rckit/meta';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import { useAppConfig } from '@/layouts/app/useAppConfig';
 import { AuthLayout } from '@/layouts/AuthLayout';
 
-export default AuthSignup;
-function AuthSignup() {
+export default function AuthSignup() {
+  useAuthGuard(useRouter(), { role: 'guestOnly' });
+
   const pageTitle = 'Sing Up';
   const router = useRouter();
-  const { updateSession } = useAppConfig();
+  const { updateSessionWithRedirect } = useAppSession();
 
   async function onSubmit(values: AuthSignupFormValues) {
     const { otp, session } = await fetchAuthSignup(values);
     if (session) {
-      await updateSession(session);
-      router.push(`/cabinet`);
+      await updateSessionWithRedirect(session, router.query.r || '/cabinet');
     } else if (otp) {
       router.push(`/auth/otp?_id=${otp._id}`);
     } else {

@@ -1,3 +1,4 @@
+import { useAuthGuard } from '@rckit/auth';
 import { Avatar } from '@rckit/avatar';
 import { Eye, Trash } from '@rckit/icons';
 import { Pencil } from '@rckit/icons/pencil';
@@ -5,6 +6,7 @@ import { HeadMeta } from '@rckit/meta';
 import { QueryParams as BaseQueryParams, Table, TableColumn } from '@rckit/table';
 import Head from 'next/head';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { Button } from 'react-bootstrap';
 
@@ -96,9 +98,14 @@ const columns: TableColumn<UserListItem, UserListItem>[] = [
 ];
 
 export default function AdminUsersPage() {
+  useAuthGuard(useRouter(), { role: 'admin' });
   const pageTitle = 'Admin Users';
+
+  // console.log('session', session);
+  // console.log('sessionStatus', sessionStatus);
   const [queryParams, setQueryParams] = useState<QueryParams>({ limit: 10, count: true });
   const query = useUserListInfinityQuery(queryParams);
+
   return (
     <>
       <Head>

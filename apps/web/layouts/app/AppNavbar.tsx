@@ -1,7 +1,6 @@
+import { useAppSession } from '@rckit/auth';
 import Link from 'next/link';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
-
-import { useAppConfig } from '@/layouts/app/useAppConfig';
 
 import { AppLogo } from './AppLogo';
 import { AppNavbarDebug } from './AppNavbarDebug';
@@ -44,7 +43,7 @@ const Menu = ({ items, activeHref }: MenuProps) => (
 // export const AdminLayout = ({ children }: React.PropsWithChildren<{}>) => (
 
 export const AppNavbar = ({ activeHref }: any) => {
-  const { session } = useAppConfig();
+  const { session } = useAppSession();
   const role = session?.user?.role;
 
   return (

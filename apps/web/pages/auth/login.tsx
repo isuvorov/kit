@@ -1,23 +1,29 @@
 import { Err } from '@lsk4/err';
-import { AuthLoginForm, AuthLoginFormValues, fetchAuthLogin } from '@rckit/auth';
+import {
+  AuthLoginForm,
+  AuthLoginFormValues,
+  fetchAuthLogin,
+  useAppSession,
+  useAuthGuard,
+} from '@rckit/auth';
 import { HeadMeta } from '@rckit/meta';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import { useAppConfig } from '@/layouts/app/useAppConfig';
 import { AuthLayout } from '@/layouts/AuthLayout';
 
 export default function AuthLoginPage() {
+  useAuthGuard(useRouter(), { role: 'guestOnly' });
+
   const pageTitle = 'Sign In';
-  const { updateSession } = useAppConfig();
+  const { updateSessionWithRedirect } = useAppSession();
   const router = useRouter();
 
   async function onSubmit(values: AuthLoginFormValues) {
     const { session, otp } = await fetchAuthLogin(values);
     if (session) {
-      await updateSession(session);
-      router.push(`/cabinet`);
+      await updateSessionWithRedirect(session, router.query.r || '/cabinet');
     } else if (otp) {
       router.push(`/auth/otp?_id=${otp._id}`);
     } else {

@@ -244,11 +244,11 @@ importers:
         specifier: ^4.5.1
         version: 4.5.1(react@18.2.0)
       '@rckit/auth':
-        specifier: ^4.9.1
-        version: 4.9.1(react-bootstrap@2.9.1)(react-hook-form@7.49.0)(react@18.2.0)(use-local-storage-state@19.1.0)
+        specifier: ^4.10.0
+        version: 4.10.0(react-bootstrap@2.9.1)(react-hook-form@7.49.0)(react@18.2.0)(use-local-storage-state@19.1.0)
       '@rckit/avatar':
-        specifier: ^4.8.1
-        version: 4.8.1(react@18.2.0)
+        specifier: ^4.10.0
+        version: 4.10.0(react@18.2.0)
       '@rckit/debug':
         specifier: ^4.5.0
         version: 4.5.0(react@18.2.0)
@@ -259,8 +259,8 @@ importers:
         specifier: ^4.9.0
         version: 4.9.0(react@18.2.0)
       '@rckit/link':
-        specifier: 4.8.1
-        version: 4.8.1(react@18.2.0)
+        specifier: 4.10.0
+        version: 4.10.0(react@18.2.0)
       '@rckit/meta':
         specifier: ^4.4.0
         version: 4.4.0(react@18.2.0)
@@ -268,8 +268,8 @@ importers:
         specifier: ^4.3.0
         version: 4.3.0(react@18.2.0)
       '@rckit/table':
-        specifier: ^4.9.1
-        version: 4.9.1(@tanstack/react-table@8.10.7)(esbuild@0.19.9)(react@18.2.0)
+        specifier: ^4.10.0
+        version: 4.10.0(@tanstack/react-table@8.10.7)(esbuild@0.19.9)(react@18.2.0)
       '@tanstack/react-query':
         specifier: ^5.13.4
         version: 5.13.4(react@18.2.0)
@@ -302,7 +302,7 @@ importers:
         version: 18.2.0
       react-avatar:
         specifier: ^5.0.3
-        version: 5.0.3(@babel/runtime@7.23.5)(core-js-pure@3.34.0)(prop-types@15.8.1)(react@18.2.0)
+        version: 5.0.3(@babel/runtime@7.23.6)(core-js-pure@3.34.0)(prop-types@15.8.1)(react@18.2.0)
       react-bootstrap:
         specifier: ^2.9.1
         version: 2.9.1(@types/react@18.2.43)(react-dom@18.2.0)(react@18.2.0)
@@ -1319,6 +1319,13 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.14.0
+
+  /@babel/runtime@7.23.6:
+    resolution: {integrity: sha512-zHd0eUrf5GZoOWVCXp6koAKQTfZV07eit6bGPmJgnZdnSAvvZee6zniW2XMF7Cmc4ISOOnPy3QaSiIJGJkVEDQ==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      regenerator-runtime: 0.14.0
+    dev: false
 
   /@babel/types@7.23.5:
     resolution: {integrity: sha512-ON5kSOJwVO6xXVRTvOI0eOnWe7VdUcIpsovGo9U/Br4Ie4UVFQTboO2cYnDhAGU6Fp+UxSiT+pMft0SMHfuq6w==}
@@ -3686,8 +3693,8 @@ packages:
       - debug
     dev: false
 
-  /@rckit/auth@4.9.1(react-bootstrap@2.9.1)(react-hook-form@7.49.0)(react@18.2.0)(use-local-storage-state@19.1.0):
-    resolution: {integrity: sha512-OkbfHjME5euSmgIsR19tlM4aJnsDNSWNatHgbDV6H8ydpWJ7uJCNg7kbDvyF+hUy9NFf30FsWIsPUUf8cDKUPw==}
+  /@rckit/auth@4.10.0(react-bootstrap@2.9.1)(react-hook-form@7.49.0)(react@18.2.0)(use-local-storage-state@19.1.0):
+    resolution: {integrity: sha512-pstIc5WeFHm5lxp9UQyBRR+/kUDwFhuLB3lBeAK2iVTPd86s7i/80oAFkDdX1dvPKMrfUDItMN/EN8OSL/yHYQ==}
     peerDependencies:
       react: ^18.2.0
       react-bootstrap: ^2.9.1
@@ -3697,7 +3704,8 @@ packages:
       '@lsk4/err': 4.3.0
       '@rckit/api-client': 4.5.1(react@18.2.0)
       '@rckit/form': 4.8.2(react-bootstrap@2.9.1)(react-hook-form@7.49.0)(react@18.2.0)
-      '@rckit/link': 4.8.1(react@18.2.0)
+      '@rckit/link': 4.10.0(react@18.2.0)
+      fishbird: 1.1.8
       react: 18.2.0
       react-bootstrap: 2.9.1(@types/react@18.2.43)(react-dom@18.2.0)(react@18.2.0)
       use-local-storage-state: 19.1.0(react-dom@18.2.0)(react@18.2.0)
@@ -3706,14 +3714,14 @@ packages:
       - react-hook-form
     dev: false
 
-  /@rckit/avatar@4.8.1(react@18.2.0):
-    resolution: {integrity: sha512-tzVGuh3QZQ5bslgJMV5qok+YDpd8HEHNcJWJN5ql/h6j0kcOcS/gdLfbxQ/1LFkE8D6h8D9C44danJ30OcqY4A==}
+  /@rckit/avatar@4.10.0(react@18.2.0):
+    resolution: {integrity: sha512-oWrwkrvmTeRRhkya0B2bQiiCfgwCzTpEnbqWohKPY+pyKP/XwGGDqBfWYqdGKJdPhESNEoaK9l4KMGDtKpaf4w==}
     peerDependencies:
       react: ^18.2.0
     dependencies:
       '@lsk4/algos': 4.3.0
       '@lsk4/env': 4.3.1
-      '@rckit/link': 4.8.1(react@18.2.0)
+      '@rckit/link': 4.10.0(react@18.2.0)
       react: 18.2.0
     dev: false
 
@@ -3748,8 +3756,8 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@rckit/link@4.8.1(react@18.2.0):
-    resolution: {integrity: sha512-r6viv4aZlKBL9D22Ws+mRzeHx9nWr0PeOGzAgXsWolgfmhTlUhMlElRM3zNHh+8D6wRHbMvLG3rnER9B7/Tk1A==}
+  /@rckit/link@4.10.0(react@18.2.0):
+    resolution: {integrity: sha512-FQHXsLaSSX967wLlRNmwjoHcQQ5qI5IH94qCyU84vfcdmBTVPMF+JtTt86ZhTrp0yVjwpI6ECd+2nwDha+/TaA==}
     peerDependencies:
       react: ^18.2.0
     dependencies:
@@ -3773,8 +3781,8 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@rckit/table@4.9.1(@tanstack/react-table@8.10.7)(esbuild@0.19.9)(react@18.2.0):
-    resolution: {integrity: sha512-GMyByDZpapUla7u8kwFoZWTrNdjy3EaqvzoPjjo94FBPiS7zKPP2KRAzcRKVD06Qc/XwpC/5xXxUmIiyiEAtxA==}
+  /@rckit/table@4.10.0(@tanstack/react-table@8.10.7)(esbuild@0.19.9)(react@18.2.0):
+    resolution: {integrity: sha512-qjInb6gV/a7SjwsBzuVwTN8cFsOkhWTa9oWigtmZQohtWuj128yWf5NdCUxBdVTyYvjJ7V9AxndjGNkDHgab5A==}
     peerDependencies:
       '@tanstack/react-table': ^8.10.7
       react: ^18.2.0
@@ -5537,8 +5545,8 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@whatwg-node/server@0.9.19:
-    resolution: {integrity: sha512-GViwZq7iE1qCV6fSL2JHAHPQb6Jn2Ke34pkC5Wv7nAZi0qIqqPcBrEUG7TbJc79hYjCSrzRTi7FEs2xyWnQn7Q==}
+  /@whatwg-node/server@0.9.21:
+    resolution: {integrity: sha512-D8fhTttCTwCvjc7dPCFmymHuZyLDIDS/jD5oAmNoEQL+rT8omAbSuRfFwzM2G04siMQlYSEij/Sa2GYujw0kzA==}
     engines: {node: '>=16.0.0'}
     dependencies:
       '@whatwg-node/fetch': 0.9.14
@@ -9832,7 +9840,7 @@ packages:
       '@graphql-yoga/logger': 1.0.0
       '@graphql-yoga/subscription': 4.0.0
       '@whatwg-node/fetch': 0.9.14
-      '@whatwg-node/server': 0.9.19
+      '@whatwg-node/server': 0.9.21
       dset: 3.1.3
       graphql: 16.8.1
       lru-cache: 10.1.0
@@ -13934,7 +13942,7 @@ packages:
       strip-json-comments: 2.0.1
     dev: false
 
-  /react-avatar@5.0.3(@babel/runtime@7.23.5)(core-js-pure@3.34.0)(prop-types@15.8.1)(react@18.2.0):
+  /react-avatar@5.0.3(@babel/runtime@7.23.6)(core-js-pure@3.34.0)(prop-types@15.8.1)(react@18.2.0):
     resolution: {integrity: sha512-DNc+qkWH9QehSEZqHBhqpXWsPY+rU9W7kD68QFHfu8Atfsvx/3ML0DzAePgTUd96nCXQQ3KZMcC3LKYT8FiBIg==}
     peerDependencies:
       '@babel/runtime': '>=7'
@@ -13942,7 +13950,7 @@ packages:
       prop-types: ^15.0.0 || ^16.0.0
       react: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
     dependencies:
-      '@babel/runtime': 7.23.5
+      '@babel/runtime': 7.23.6
       core-js-pure: 3.34.0
       is-retina: 1.0.3
       md5: 2.3.0

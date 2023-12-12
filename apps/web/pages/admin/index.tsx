@@ -1,10 +1,13 @@
+import { useAuthGuard } from '@rckit/auth';
 import { HeadMeta } from '@rckit/meta';
 import Head from 'next/head';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import { AdminLayout } from '@/layouts/AdminLayout';
 
 export default function AdminIndexPage() {
+  useAuthGuard(useRouter(), { role: 'admin' });
   const pageTitle = 'Admin Index';
   const items = [
     {

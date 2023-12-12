@@ -1,6 +1,12 @@
 /* eslint-disable @next/next/no-sync-scripts */
 import { Err } from '@lsk4/err';
-import { AuthOtpForm, AuthOtpFormValues, fetchAuthOtpActivate } from '@rckit/auth';
+import {
+  AuthOtpForm,
+  AuthOtpFormValues,
+  fetchAuthOtpActivate,
+  useAppSession,
+  useAuthGuard,
+} from '@rckit/auth';
 import { Debug } from '@rckit/debug';
 import { HeadMeta } from '@rckit/meta';
 import Head from 'next/head';
@@ -9,7 +15,9 @@ import { useRouter } from 'next/router';
 import { AuthLayout } from '@/layouts/AuthLayout';
 
 export default function AuthOtpPage() {
+  useAuthGuard(useRouter(), { role: 'guestOnly' });
   const pageTitle = 'One time code';
+  const { updateSessionWithRedirect } = useAppSession();
   const router = useRouter();
   const otpId = router.query._id as string;
 
@@ -22,7 +30,7 @@ export default function AuthOtpPage() {
       ...values,
     });
     if (session) {
-      router.push(`/cabinet`);
+      await updateSessionWithRedirect(session, router.query.r || '/cabinet');
     } else {
       throw new Err('Something went wrong');
     }
