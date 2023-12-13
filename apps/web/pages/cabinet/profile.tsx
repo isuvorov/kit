@@ -5,11 +5,15 @@ import { HeadMeta } from '@rckit/meta';
 import Head from 'next/head';
 import { Button, Card, Col, Row } from 'react-bootstrap';
 
-import { SettingsProfileForm } from '@/comps/SettingsProfileForm';
+import { SettingsProfileForm, SettingsProfileFormValues } from '@/comps/SettingsProfileForm';
 import { CabinetLayout } from '@/layouts/CabinetLayout';
+import { fetchUserUpdate } from '@/queries/usersUpdate';
 
 export default function CabinetProfilePage() {
   const { session, updateSession } = useAppSession();
+  const user = session?.user || {};
+  console.log('user', user);
+  console.log('session', session);
   const pageTitle = 'Cabinet Profile';
   const handleUpdateSession = async () => {
     // eslint-disable-next-line no-console
@@ -21,9 +25,10 @@ export default function CabinetProfilePage() {
       console.log('handleUpdateSession err', err);
     }
   };
-  const onSettingProfileSubmit = async (values) => {
-    // eslint-disable-next-line no-console
-    console.log('onSettingProfileSubmit', values);
+  const onSettingProfileSubmit = async (values: SettingsProfileFormValues) => {
+    console.log({ values });
+    const _id = user?._id || user?.id;
+    await fetchUserUpdate({ _id }, values);
   };
   return (
     <>
@@ -34,7 +39,7 @@ export default function CabinetProfilePage() {
         <h1>{pageTitle}</h1>
         <Row>
           <Col md={8}>
-            <SettingsProfileForm onSubmit={onSettingProfileSubmit} />
+            <SettingsProfileForm defaultValues={user} onSubmit={onSettingProfileSubmit} />
             {/* <Card className="w-100">
               <Card.Header className="p-3 text-center">
                 <h1>{pageTitle}</h1>

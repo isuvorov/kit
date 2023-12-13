@@ -1,4 +1,5 @@
-import { omit } from '@lsk4/algos';
+import { omit, pick } from '@lsk4/algos';
+import { Err } from '@lsk4/err';
 import { FilterQuery } from '@mikro-orm/core';
 import { EntityManager, EntityRepository } from '@mikro-orm/mongodb';
 import { InjectRepository } from '@mikro-orm/nestjs';
@@ -63,11 +64,17 @@ export class UserListController {
   }
 
   @Post(['update', 'edit'])
-  async update(@Query('_id') id, @Body('role') role) {
+  async update(@Query('_id') id, @Body() raw) {
     const em = this.usersRepository.getEntityManager() as EntityManager;
-    if (typeof role !== 'string') return false;
+    const data = pick(raw, ['firstName', 'lastName']);
+    if (!id) throw new Err('!_id', 'Empty query _id', { status: 400 });
+    if (!Object.keys(data).length) throw new Err('!data', 'Empty data', { status: 400 });
     const user = await this.findOne(id);
-    user.role = role;
+    if (!user) throw new Err('!user', 'User not found', { status: 404 });
+    // TODO: or use em.assign(user, data); ??
+    Object.keys(data).forEach((key) => {
+      user[key] = data[key];
+    });
     await em.persistAndFlush(user);
     // TODO: а может вернуть измененный объект?
     return true;

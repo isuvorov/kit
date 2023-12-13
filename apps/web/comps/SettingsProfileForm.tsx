@@ -2,6 +2,7 @@ import { FormButton, FormItem, useSmartForm } from '@rckit/form';
 import { Col, Form, Row } from 'react-bootstrap';
 
 interface FormProps<T> {
+  defaultValues: T;
   onSubmit: (values: T) => Promise<any>;
 }
 
@@ -10,8 +11,13 @@ export interface SettingsProfileFormValues {
   lastName?: string;
   avatar?: string;
 }
-export function SettingsProfileForm({ onSubmit }: FormProps<SettingsProfileFormValues>) {
+export function SettingsProfileForm({
+  defaultValues,
+  onSubmit,
+}: FormProps<SettingsProfileFormValues>) {
   const { register, formState, onSmartSubmit } = useSmartForm<SettingsProfileFormValues>({
+    // @ts-ignore
+    defaultValues,
     onSubmit,
   });
   return (
