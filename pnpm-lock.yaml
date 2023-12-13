@@ -241,11 +241,11 @@ importers:
         specifier: ^4.3.1
         version: 4.3.1
       '@rckit/api-client':
-        specifier: ^4.5.1
-        version: 4.5.1(react@18.2.0)
+        specifier: ^4.10.3
+        version: 4.10.3(react@18.2.0)
       '@rckit/auth':
-        specifier: ^4.10.2
-        version: 4.10.2(react-bootstrap@2.9.1)(react-hook-form@7.49.0)(react@18.2.0)(use-local-storage-state@19.1.0)
+        specifier: ^4.10.3
+        version: 4.10.3(react-bootstrap@2.9.1)(react-hook-form@7.49.0)(react@18.2.0)(use-local-storage-state@19.1.0)
       '@rckit/avatar':
         specifier: ^4.10.0
         version: 4.10.0(react@18.2.0)
@@ -3678,8 +3678,8 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@rckit/api-client@4.5.1(react@18.2.0):
-    resolution: {integrity: sha512-tc5eJ/uRt2gXR5cOn0ysevpup9a+GTLh016oK894qksYk25GHm1KQulh4/QFpuiqhjUF4152sn2le1V1p9aOTg==}
+  /@rckit/api-client@4.10.3(react@18.2.0):
+    resolution: {integrity: sha512-2BBeRt2R1FHS/tvXKQkWe6e2jtI3DfaxGwNc9yYur/5loBY8ofR7oQGOQje6DAoCnnVAL8i2VsVmmeutW6v8yA==}
     peerDependencies:
       react: ^18.2.0
     dependencies:
@@ -3693,8 +3693,8 @@ packages:
       - debug
     dev: false
 
-  /@rckit/auth@4.10.2(react-bootstrap@2.9.1)(react-hook-form@7.49.0)(react@18.2.0)(use-local-storage-state@19.1.0):
-    resolution: {integrity: sha512-9rZRfITjph83mGOohhm5QBNPA7V+EtRLcPY22YrqPE6sJI3Kh33R69PW5Dtj/RzC/cqfUcu243XbJqgr7mn9DA==}
+  /@rckit/auth@4.10.3(react-bootstrap@2.9.1)(react-hook-form@7.49.0)(react@18.2.0)(use-local-storage-state@19.1.0):
+    resolution: {integrity: sha512-5qq45Fs+CnNQ+3tqPo4k1t/cSZnafKlQ05+P2y4zRp8k6gIvTGhMoHlgXqJT755TwxFBhmUit9PdYEYDQqvLIg==}
     peerDependencies:
       react: ^18.2.0
       react-bootstrap: ^2.9.1
@@ -3703,7 +3703,7 @@ packages:
       '@lsk4/env': 4.3.1
       '@lsk4/err': 4.3.0
       '@lsk4/log': 4.3.1
-      '@rckit/api-client': 4.5.1(react@18.2.0)
+      '@rckit/api-client': 4.10.3(react@18.2.0)
       '@rckit/form': 4.8.2(react-bootstrap@2.9.1)(react-hook-form@7.49.0)(react@18.2.0)
       '@rckit/link': 4.10.0(react@18.2.0)
       fishbird: 1.1.8

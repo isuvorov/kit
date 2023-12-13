@@ -18,12 +18,13 @@ import Link from 'next/link';
 import Router from 'next/router';
 import { useState } from 'react';
 
+import { queryClientConfig } from '@/config/queryClientConfig';
 import { AppConfig } from '@/layouts/app/AppConfig';
 
 type AppProps2 = AppProps<{ dehydratedState: DehydratedState }>;
 
 export default function App({ Component, pageProps }: AppProps2) {
-  const [queryClient] = useState(() => new QueryClient());
+  const [queryClient] = useState(() => new QueryClient(queryClientConfig));
   return (
     <>
       <Head>
