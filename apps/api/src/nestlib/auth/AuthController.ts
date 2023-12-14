@@ -256,7 +256,9 @@ export class AuthController {
     if (!sessionUser) return null;
 
     // console.log('sessionUser', sessionUser);
-    const rawUser = await this.usersRepository.findOne(sessionUser.id);
+    const rawUser = await this.usersRepository.findOne({
+      _id: sessionUser.id,
+    });
     const user = rawUser ? toUserJson(rawUser) : null;
 
     // if (!rawUser) throw new Err('!user', 'User not found', { status: 404 });
