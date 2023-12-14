@@ -2,10 +2,10 @@ import { omitNull } from '@lsk4/algos';
 import { isDev, stage } from '@lsk4/env';
 import { Controller, Get, UseInterceptors } from '@nestjs/common';
 
-import { ErrorTransformInterceptor, ResponseTransformInterceptor } from '@/nestlib/interceptors';
+import { ErrorInterceptor, ResponseInterceptor } from '@nestlib/interceptors';
 
 @Controller()
-@UseInterceptors(new ResponseTransformInterceptor(), new ErrorTransformInterceptor())
+@UseInterceptors(new ResponseInterceptor(), new ErrorInterceptor())
 export class ApiController {
   constructor() {}
 

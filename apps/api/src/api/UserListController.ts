@@ -4,17 +4,17 @@ import { FilterQuery, wrap } from '@mikro-orm/core';
 import { EntityManager, EntityRepository } from '@mikro-orm/mongodb';
 import { InjectRepository } from '@mikro-orm/nestjs';
 import { All, Body, Controller, Post, UseInterceptors } from '@nestjs/common';
+import { ErrorInterceptor, ResponseInterceptor } from '@nestlib/interceptors';
 
 import { ExampleFilter } from '@/examples/Filter';
 import { UserModel } from '@/nestlib/auth/models/UserModel';
 import { Query } from '@/nestlib/decorators/Query.decorator';
-import { ErrorTransformInterceptor, ResponseTransformInterceptor } from '@/nestlib/interceptors';
 import { Find, FindParams } from '@/nestlib/list/FindParams.decorator';
 
 import { toUserJson } from './toUserJson';
 
 @Controller('api/users')
-@UseInterceptors(new ResponseTransformInterceptor(), new ErrorTransformInterceptor())
+@UseInterceptors(new ResponseInterceptor(), new ErrorInterceptor())
 export class UserListController {
   constructor(
     @InjectRepository(UserModel)

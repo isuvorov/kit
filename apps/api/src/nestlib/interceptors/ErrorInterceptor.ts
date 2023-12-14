@@ -9,13 +9,22 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { pack } from './utils/pack';
+import { printPrettyError } from './utils/printPrettyError';
 
 @Injectable()
-export class ErrorTransformInterceptor implements NestInterceptor {
+export class ErrorInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
     return next.handle().pipe(
       catchError((error = {}) => {
         const { code, message, status, err, data = null, ...debug } = error || {};
+
+        // NOTE: может не надо делать setTimeout?
+        setTimeout(() => {
+          printPrettyError(error);
+        }, 0);
+
+        context.switchToHttp().getRequest().nestError = error;
+
         const res = {} as any;
         if (!message) {
           if (typeof err === 'string') {

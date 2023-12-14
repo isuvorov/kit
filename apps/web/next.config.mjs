@@ -42,6 +42,8 @@ const nextConfig = {
       'kit-caps.s3.eu-central-2.wasabisys.com',
       'gravatar.com',
       'avatars.githubusercontent.com',
+      // 'https://i1.wp.com/upload.wikimedia.org/',
+      'i1.wp.com',
       isDev ? 'picsum.photos' : null,
     ]
       .filter(Boolean)

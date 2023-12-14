@@ -1,13 +1,12 @@
 import { Controller, Get, UseInterceptors } from '@nestjs/common';
 import { AuthRole, IsAuth, IsPublic } from '@nestlib/auth';
-
-import { ErrorTransformInterceptor, ResponseTransformInterceptor } from '@/nestlib/interceptors';
+import { ErrorInterceptor, ResponseInterceptor } from '@nestlib/interceptors';
 
 // // TODO: проверить работу доступов на контроллере
 // @IsAuth()
 
 @Controller('/api/test/auth')
-@UseInterceptors(new ResponseTransformInterceptor(), new ErrorTransformInterceptor())
+@UseInterceptors(new ResponseInterceptor(), new ErrorInterceptor())
 export class TestAuthController {
   @Get('public')
   @IsPublic()

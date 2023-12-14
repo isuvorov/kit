@@ -12,13 +12,6 @@ import { AuthGuard } from '@nestlib/auth/AuthGuard';
 import { ConfigModule, getConfig, loadConfigEnvs } from '@nestlib/config';
 import { ReactAdapter } from '@webtre/nestjs-mailer-react-adapter';
 
-// import { ApiController } from './api/ApiController';
-// import { ProductController } from './api/ProductController';
-// import { TelegramAvartarController } from './api/TelegramAvartarController';
-// import { BotAppService } from './BotAppService';
-// import { AuthController } from './lskjs/auth/AuthController';
-// import { AuthOtpService } from './lskjs/auth/AuthOtpService';
-// import { AuthService } from './lskjs/auth/AuthService';
 import { AuthController, AuthOtpService, AuthService } from '@/nestlib/auth';
 
 import { ApiController } from './api/ApiController';
@@ -133,7 +126,7 @@ const notNull = (v, def) => (v == null ? def : v);
     },
     // {
     //   provide: APP_INTERCEPTOR,
-    //   useClass: ResponseTransformInterceptor,
+    //   useClass: ResponseInterceptor,
     // },
     // PrevappService,
     // BotService,

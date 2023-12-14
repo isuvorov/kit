@@ -26,15 +26,14 @@ export async function fetchUserFindOne(
   params?: UserFindOneParams,
   { apiClient = defaultApiClient }: ApiClientOptions = {},
 ) {
-  console.log({ params });
+  // console.log({ params });
   // TODO: change any
   const { data } = await apiClient.request<any, any>({
     method: 'get',
     url: '/api/users/findOne',
     params,
   });
-  console.log({ data });
-
+  // console.log({ data });
   // console.log({data})
   // TODO: check data
   // console.log({ data });

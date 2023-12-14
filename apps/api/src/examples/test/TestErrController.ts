@@ -1,118 +1,122 @@
 import { Err } from '@lsk4/err';
 import { Controller, Get, UseInterceptors } from '@nestjs/common';
+import { ErrorInterceptor, ResponseInterceptor } from '@nestlib/interceptors';
 
-import { ErrorTransformInterceptor, ResponseTransformInterceptor } from '@/nestlib/interceptors';
-
-@Controller('api/test/err')
-@UseInterceptors(new ResponseTransformInterceptor(), new ErrorTransformInterceptor())
+@Controller('/api/test/err')
+@UseInterceptors(new ResponseInterceptor(), new ErrorInterceptor())
 export class TestErrController {
   // TODO: у всех ошибок один и тот же стандартный response nest.js
 
-  @Get('/err/1')
+  @Get('/0')
+  err0() {
+    throw 'TEST_ERROR_CODE';
+  }
+
+  @Get('/1')
   err1() {
     throw new Err('TEST_ERROR_CODE');
   }
 
-  @Get('/err/2')
+  @Get('/2')
   err2() {
     throw { code: 'TEST_ERROR_CODE', message: 'The message text' };
   }
 
-  @Get('/err/3')
+  @Get('/3')
   err3() {
     throw new Error('The message text');
   }
 
-  @Get('/err/4')
+  @Get('/4')
   err4() {
     throw new Error('TEST_ERROR_CODE');
   }
 
-  @Get('/err/5')
+  @Get('/5')
   err5() {
     const error = new Error('The message text');
     // @ts-ignore
     error.code = 'TEST_ERROR_CODE';
-    throw new Error('The message text');
+    throw error;
   }
 
-  @Get('/err/6')
+  @Get('/6')
   err6() {
     throw {};
   }
 
-  @Get('/err/7')
+  @Get('/7')
   err7() {
     throw null;
   }
 
-  @Get('/err/10')
+  @Get('/10')
   err10() {
     throw new Err();
   }
 
-  @Get('/err/11')
+  @Get('/11')
   err11() {
     throw new Err('TEST_ERROR_CODE');
   }
 
-  @Get('/err/12')
+  @Get('/12')
   err12() {
     throw new Err('TEST_ERROR_CODE', { message: 'The message text' });
   }
 
-  @Get('/err/13')
+  @Get('/13')
   err13() {
     throw new Err('TEST_ERROR_CODE', { message: 'The message text' }, { status: 404 });
   }
 
-  @Get('/err/14')
+  @Get('/14')
   err14() {
     throw new Err({ code: 'TEST_ERROR_CODE', message: 'The message text' }, { status: 404 });
   }
 
-  @Get('/err/15')
+  @Get('/15')
   err15() {
     throw new Err('test.someError', { status: 404 });
   }
 
-  @Get('/err/16')
+  @Get('/16')
   err16() {
     throw new Err('test.anotherError', { status: 404, data: { hello: 'world' } });
   }
 
-  @Get('/err/17')
+  @Get('/17')
   err17() {
     // @ts-ignore
     throw new Error('err', 'file', 123);
   }
 
-  @Get('/err/18')
+  @Get('/18')
   err18() {
     throw new Err({ code: 'TEST_ERROR_CODE', message: 'The message text' }, { status: 404 });
   }
 
-  @Get('/err/19')
+  @Get('/19')
   err19() {
     throw new Err({ code: 'TEST_ERROR_CODE', message: 'The message text' }, { status: 404 });
   }
 
-  @Get('/err/20')
+  @Get('/20')
   err20() {
     throw new Err({ code: 'TEST_ERROR_CODE', message: 'The message text' }, { status: 404 });
   }
 
-  @Get('/err/21')
+  @Get('/21')
   err21() {
     throw new Err('user.notFound', { status: 404 });
   }
 
-  @Get('/err/21')
+  @Get('/21')
   err22() {
     throw new Err('some.error', { status: 404 });
   }
 
-  @Get('/err/24')
+  @Get('/24')
   err24() {
     throw new Err('some.error', { status: 404 });
   }

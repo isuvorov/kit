@@ -1,3 +1,4 @@
+import 'source-map-support/register';
 import './main.js';
 
 process.on('uncaughtException', (err) => {

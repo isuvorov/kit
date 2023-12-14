@@ -12,16 +12,25 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query';
 import { AppProps } from 'next/app';
+import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import Router from 'next/router';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import { queryClientConfig } from '@/config/queryClientConfig';
 import { AppConfig } from '@/layouts/app/AppConfig';
 
 type AppProps2 = AppProps<{ dehydratedState: DehydratedState }>;
+
+const NoSsr2 = ({ children }: React.PropsWithChildren<any>) => (
+  <React.Fragment>{children}</React.Fragment>
+);
+
+export const NoSsr = dynamic(() => Promise.resolve(NoSsr2), {
+  ssr: false,
+});
 
 export default function App({ Component, pageProps }: AppProps2) {
   const [queryClient] = useState(() => new QueryClient(queryClientConfig));
@@ -34,11 +43,13 @@ export default function App({ Component, pageProps }: AppProps2) {
       <ComponentProvider Link={Link} Image={Image} Router={Router}>
         <QueryClientProvider client={queryClient}>
           <HydrationBoundary state={pageProps?.dehydratedState}>
-            <AppConfig>
-              <AppSession>
-                <Component {...pageProps} />
-              </AppSession>
-            </AppConfig>
+            <NoSsr>
+              <AppConfig>
+                <AppSession>
+                  <Component {...pageProps} />
+                </AppSession>
+              </AppConfig>
+            </NoSsr>
           </HydrationBoundary>
         </QueryClientProvider>
       </ComponentProvider>

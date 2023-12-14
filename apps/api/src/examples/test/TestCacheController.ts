@@ -1,9 +1,8 @@
 import { createLogger } from '@lsk4/log';
 import { CacheTTL } from '@nestjs/cache-manager';
 import { Controller, Get, Query, UseInterceptors } from '@nestjs/common';
+import { ErrorInterceptor, ResponseInterceptor } from '@nestlib/interceptors';
 import { delay } from 'fishbird';
-
-import { ErrorTransformInterceptor, ResponseTransformInterceptor } from '@/nestlib/interceptors';
 
 // NOTE: тестируем кеш как-то так
 // ab -n 10 -c 1 https://lskjs.ru/
@@ -12,7 +11,7 @@ import { ErrorTransformInterceptor, ResponseTransformInterceptor } from '@/nestl
 // по идее при этих 3х запросах максимальное время ответа должен быть плюс минус одно
 
 @Controller('/api/test/cache')
-@UseInterceptors(new ResponseTransformInterceptor(), new ErrorTransformInterceptor())
+@UseInterceptors(new ResponseInterceptor(), new ErrorInterceptor())
 export class TestCacheController {
   log = createLogger(this.constructor.name);
 

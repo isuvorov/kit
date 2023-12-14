@@ -15,7 +15,7 @@ export function SettingsProfileForm({
   defaultValues,
   onSubmit,
 }: FormProps<SettingsProfileFormValues>) {
-  console.log({ defaultValues });
+  // console.log({ defaultValues });
   const { register, formState, onSmartSubmit } = useSmartForm<SettingsProfileFormValues>({
     // @ts-ignore
     defaultValues,

@@ -5,11 +5,11 @@ import { All, Body, Controller, Post, Query, UseInterceptors } from '@nestjs/com
 
 import { ExampleFilter } from '@/examples/Filter';
 import { UserModel } from '@/nestlib/auth/models/UserModel';
-import { ErrorTransformInterceptor, ResponseTransformInterceptor } from '@/nestlib/interceptors';
+import { ErrorInterceptor, ResponseInterceptor } from '@nestlib/interceptors';
 import { Find, FindParams } from '@/nestlib/list/FindParams.decorator';
 
 @Controller('api/products')
-@UseInterceptors(new ResponseTransformInterceptor(), new ErrorTransformInterceptor())
+@UseInterceptors(new ResponseInterceptor(), new ErrorInterceptor())
 export class ProductsController {
   constructor(
     @InjectRepository(UserModel)

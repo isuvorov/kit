@@ -1,12 +1,11 @@
 import { Err } from '@lsk4/err';
 import { All, Controller, Get, Res, UseInterceptors } from '@nestjs/common';
+import { ErrorInterceptor, ResponseInterceptor } from '@nestlib/interceptors';
 import { Response } from 'express';
 import { delay } from 'fishbird';
 
-import { ErrorTransformInterceptor, ResponseTransformInterceptor } from '@/nestlib/interceptors';
-
 @Controller('/api/test/base')
-@UseInterceptors(new ResponseTransformInterceptor(), new ErrorTransformInterceptor())
+@UseInterceptors(new ResponseInterceptor(), new ErrorInterceptor())
 export class TestBaseController {
   constructor() {}
 

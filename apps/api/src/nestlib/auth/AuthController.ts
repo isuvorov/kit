@@ -9,14 +9,14 @@ import { AuthRole } from '@nestlib/auth';
 import { toUserJson } from '@/api/toUserJson';
 
 import { renderOtpEmail } from '../../emails/OtpEmail';
-import { ErrorTransformInterceptor, ResponseTransformInterceptor } from '../interceptors';
+import { ErrorInterceptor, ResponseInterceptor } from '../interceptors';
 import { AuthOtpService } from './AuthOtpService';
 import { AuthService } from './AuthService';
 import { UserModel } from './models/UserModel';
 import { Request, User } from './types';
 
 @Controller('/api/auth')
-@UseInterceptors(new ResponseTransformInterceptor(), new ErrorTransformInterceptor())
+@UseInterceptors(new ResponseInterceptor(), new ErrorInterceptor())
 export class AuthController {
   constructor(
     private authService: AuthService,
