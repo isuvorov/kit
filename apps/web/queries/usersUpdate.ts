@@ -2,11 +2,15 @@ import { apiClient as defaultApiClient, ApiClientOptions } from '@rckit/api-clie
 
 export interface UserUpdateParams {
   _id?: string;
+  id?: string;
 }
 
 export interface UserUpdateData {
-  firstName?: string;
-  lastName?: string;
+  info?: {
+    firstName?: string;
+    lastName?: string;
+    avatar?: string;
+  };
 }
 
 export interface UserUpdateResponse {

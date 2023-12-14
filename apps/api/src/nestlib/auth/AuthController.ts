@@ -1,13 +1,18 @@
 import { pick } from '@lsk4/algos';
 import { Err } from '@lsk4/err';
+import { EntityRepository } from '@mikro-orm/mongodb';
+import { InjectRepository } from '@mikro-orm/nestjs';
 import { All, Body, Controller, HttpStatus, Post, Req, UseInterceptors } from '@nestjs/common';
 import { MailerService } from '@nestjs-modules/mailer';
 import { AuthRole } from '@nestlib/auth';
+
+import { toUserJson } from '@/api/toUserJson';
 
 import { renderOtpEmail } from '../../emails/OtpEmail';
 import { ErrorTransformInterceptor, ResponseTransformInterceptor } from '../interceptors';
 import { AuthOtpService } from './AuthOtpService';
 import { AuthService } from './AuthService';
+import { UserModel } from './models/UserModel';
 import { Request, User } from './types';
 
 @Controller('/api/auth')
@@ -18,6 +23,9 @@ export class AuthController {
     private otpService: AuthOtpService,
 
     private mailerService: MailerService,
+
+    @InjectRepository(UserModel)
+    private usersRepository: EntityRepository<UserModel>,
   ) {}
 
   @All()
@@ -244,12 +252,23 @@ export class AuthController {
 
   @All('session')
   async session(@Req() req: Request) {
-    const { user } = req.session || {};
-    if (!user) return null;
+    const { user: sessionUser } = req.session || {};
+    if (!sessionUser) return null;
+
+    // console.log('sessionUser', sessionUser);
+    const rawUser = await this.usersRepository.findOne(sessionUser.id);
+    const user = rawUser ? toUserJson(rawUser) : null;
+
+    // if (!rawUser) throw new Err('!user', 'User not found', { status: 404 });
+    // return toUserJson(user);
+
     return {
       _id: req.session.id,
       user,
-      session: req.session,
+      session: {
+        ...req.session,
+        user,
+      },
     };
   }
 

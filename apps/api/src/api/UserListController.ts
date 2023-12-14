@@ -1,4 +1,4 @@
-import { omit, pick } from '@lsk4/algos';
+import { pick } from '@lsk4/algos';
 import { Err } from '@lsk4/err';
 import { FilterQuery } from '@mikro-orm/core';
 import { EntityManager, EntityRepository } from '@mikro-orm/mongodb';
@@ -10,7 +10,7 @@ import { UserModel } from '@/nestlib/auth/models/UserModel';
 import { ErrorTransformInterceptor, ResponseTransformInterceptor } from '@/nestlib/interceptors';
 import { Find, FindParams } from '@/nestlib/list/FindParams.decorator';
 
-import { getGravatarHash } from './getGravatarHash';
+import { toUserJson } from './toUserJson';
 
 @Controller('api/users')
 @UseInterceptors(new ResponseTransformInterceptor(), new ErrorTransformInterceptor())
@@ -35,7 +35,7 @@ export class UserListController {
       limit: findOptions.limit,
       offset: findOptions.skip,
     });
-    const items = raw.map(this.getUserFields);
+    const items = raw.map(toUserJson);
     if (!findOptions.count) return { items };
     // TODO: подумать а может распараллелить?
     const total = await this.usersRepository.count();
@@ -44,10 +44,15 @@ export class UserListController {
   }
 
   @All(['findOne', 'get'])
-  async findOne(@Query('_id') id) {
-    return this.usersRepository.findOne({
+  async findOne(@Query('_id') _id, @Query('id') id) {
+    // eslint-disable-next-line no-param-reassign
+    id = id || _id;
+    if (!id) throw new Err('!_id', 'Empty query _id', { status: 400 });
+    const user = await this.usersRepository.findOne({
       _id: id,
     });
+    if (!user) throw new Err('!user', 'User not found', { status: 404 });
+    return toUserJson(user);
   }
 
   @Post('create')
@@ -60,19 +65,35 @@ export class UserListController {
     user.companyId = '123';
     await em.persistAndFlush(user);
 
-    return this.getUserFields(user);
+    return toUserJson(user);
   }
 
   @Post(['update', 'edit'])
-  async update(@Query('_id') id, @Body() raw) {
+  async update(@Query('_id') _id, @Query('id') id, @Body() raw) {
     const em = this.usersRepository.getEntityManager() as EntityManager;
-    const data = pick(raw, ['firstName', 'lastName']);
+    const data = pick(raw, ['info']);
+    const id2 = id || _id;
     if (!id) throw new Err('!_id', 'Empty query _id', { status: 400 });
     if (!Object.keys(data).length) throw new Err('!data', 'Empty data', { status: 400 });
-    const user = await this.findOne(id);
+    const user = await this.usersRepository.findOne(id2);
     if (!user) throw new Err('!user', 'User not found', { status: 404 });
-    // TODO: or use em.assign(user, data); ??
+
+    // await wrap(user).assign({ info: { avatar: 'qweqwe' } }, { em, mergeObjects: true });
+    // console.log('data', data);
+    // console.log('res', res);
+    // console.log('user', user);
+
+    // // TODO: or use em.assign(user, data); ??
     Object.keys(data).forEach((key) => {
+      if (key === 'info') {
+        user.info = {
+          ...(user.info || {}),
+        };
+        Object.keys(data.info).forEach((infoKey) => {
+          user.info[infoKey] = data.info[infoKey];
+        });
+        return;
+      }
       user[key] = data[key];
     });
     await em.persistAndFlush(user);
@@ -92,19 +113,5 @@ export class UserListController {
   @All('count')
   async count() {
     return this.usersRepository.count();
-  }
-
-  getUserFields(user) {
-    const fields = omit(user.toJSON(), ['password']);
-    if (!fields.avatar && fields.email) {
-      // fields.avatar = `https://gravatar.com/avatar/${getGravatarHash(fields.email)}?s=200&d=retro`;
-      // fields.avatar = `https://gravatar.com/avatar/${getGravatarHash(fields.email)}?s=200&d=404`;
-      const transparentPixel = 'https://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png';
-      const hash = getGravatarHash(fields.email);
-      const s = 200;
-      const d = encodeURIComponent(transparentPixel);
-      fields.avatar = `https://gravatar.com/avatar/${hash}?s=${s}&d=${d}`;
-    }
-    return fields;
   }
 }

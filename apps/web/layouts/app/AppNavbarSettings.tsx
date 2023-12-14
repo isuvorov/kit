@@ -22,7 +22,7 @@ export const AppNavbarSettings = () => {
 
   if (user) {
     // @ts-ignore
-    const title = user.title || user.email;
+    const title = user.name || user.email;
     // @ts-ignore
     const { avatar } = user;
     return (

@@ -3,7 +3,7 @@ import { ObjectId } from '@mikro-orm/mongodb';
 
 @Entity({ tableName: 'auth_user' })
 export class UserModel {
-  @PrimaryKey()
+  @PrimaryKey({ name: '_id', hidden: false })
   _id!: ObjectId;
 
   @Property()
@@ -12,7 +12,7 @@ export class UserModel {
   @Property()
   role!: string;
 
-  @Property()
+  @Property({ hidden: true })
   password!: string;
 
   @Property()
@@ -23,6 +23,13 @@ export class UserModel {
 
   @Property({ onUpdate: () => new Date() })
   updatedAt: Date = new Date();
+
+  @Property()
+  info?: {
+    firstName?: string;
+    lastName?: string;
+    avatar?: string;
+  };
 
   @Property()
   statuses?: {

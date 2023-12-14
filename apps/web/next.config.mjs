@@ -41,6 +41,7 @@ const nextConfig = {
     remotePatterns: [
       'kit-caps.s3.eu-central-2.wasabisys.com',
       'gravatar.com',
+      'avatars.githubusercontent.com',
       isDev ? 'picsum.photos' : null,
     ]
       .filter(Boolean)

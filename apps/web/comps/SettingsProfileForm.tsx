@@ -15,6 +15,7 @@ export function SettingsProfileForm({
   defaultValues,
   onSubmit,
 }: FormProps<SettingsProfileFormValues>) {
+  console.log({ defaultValues });
   const { register, formState, onSmartSubmit } = useSmartForm<SettingsProfileFormValues>({
     // @ts-ignore
     defaultValues,
@@ -34,13 +35,13 @@ export function SettingsProfileForm({
           </FormItem>
         </Col>
         <Col md={6}>
-          <FormItem
-            id="lastName"
-            label="Last name"
-            error={formState.errors.lastName?.message}
-            required
-          >
-            <Form.Control {...register('lastName', { required: 'Last name cannot be black' })} />
+          <FormItem id="lastName" label="Last name" error={formState.errors.lastName?.message}>
+            <Form.Control {...register('lastName')} />
+          </FormItem>
+        </Col>
+        <Col md={6}>
+          <FormItem id="avatar" label="Avatar" error={formState.errors.avatar?.message}>
+            <Form.Control {...register('avatar')} />
           </FormItem>
         </Col>
         <Col lg={12} className="mt-4">
