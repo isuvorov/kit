@@ -1,12 +1,13 @@
 import { pick } from '@lsk4/algos';
 import { Err } from '@lsk4/err';
-import { FilterQuery } from '@mikro-orm/core';
+import { FilterQuery, wrap } from '@mikro-orm/core';
 import { EntityManager, EntityRepository } from '@mikro-orm/mongodb';
 import { InjectRepository } from '@mikro-orm/nestjs';
-import { All, Body, Controller, Post, Query, UseInterceptors } from '@nestjs/common';
+import { All, Body, Controller, Post, UseInterceptors } from '@nestjs/common';
 
 import { ExampleFilter } from '@/examples/Filter';
 import { UserModel } from '@/nestlib/auth/models/UserModel';
+import { Query } from '@/nestlib/decorators/Query.decorator';
 import { ErrorTransformInterceptor, ResponseTransformInterceptor } from '@/nestlib/interceptors';
 import { Find, FindParams } from '@/nestlib/list/FindParams.decorator';
 
@@ -69,33 +70,15 @@ export class UserListController {
   }
 
   @Post(['update', 'edit'])
-  async update(@Query('_id') _id, @Query('id') id, @Body() raw) {
+  async update(@Query(['_id', 'id']) id, @Body() raw) {
     const em = this.usersRepository.getEntityManager() as EntityManager;
     const data = pick(raw, ['info']);
-    const id2 = id || _id;
     if (!id) throw new Err('!_id', 'Empty query _id', { status: 400 });
     if (!Object.keys(data).length) throw new Err('!data', 'Empty data', { status: 400 });
-    const user = await this.usersRepository.findOne(id2);
+    const user = await this.usersRepository.findOne(id);
     if (!user) throw new Err('!user', 'User not found', { status: 404 });
 
-    // await wrap(user).assign({ info: { avatar: 'qweqwe' } }, { em, mergeObjects: true });
-    // console.log('data', data);
-    // console.log('res', res);
-    // console.log('user', user);
-
-    // // TODO: or use em.assign(user, data); ??
-    Object.keys(data).forEach((key) => {
-      if (key === 'info') {
-        user.info = {
-          ...(user.info || {}),
-        };
-        Object.keys(data.info).forEach((infoKey) => {
-          user.info[infoKey] = data.info[infoKey];
-        });
-        return;
-      }
-      user[key] = data[key];
-    });
+    wrap(user).assign({ info: data.info || {} }, { mergeObjects: true });
     await em.persistAndFlush(user);
     // TODO: а может вернуть измененный объект?
     return true;

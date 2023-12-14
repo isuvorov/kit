@@ -1,5 +1,22 @@
-import { Entity, PrimaryKey, Property } from '@mikro-orm/core';
+// eslint-disable-next-line max-classes-per-file
+import { Embeddable, Embedded, Entity, PrimaryKey, Property } from '@mikro-orm/core';
 import { ObjectId } from '@mikro-orm/mongodb';
+import { Optional } from '@nestjs/common';
+
+@Embeddable()
+export class Info {
+  @Optional()
+  @Property()
+  firstName?: string;
+
+  @Property()
+  @Optional()
+  lastName?: string;
+
+  @Property()
+  @Optional()
+  avatar?: string;
+}
 
 @Entity({ tableName: 'auth_user' })
 export class UserModel {
@@ -24,7 +41,7 @@ export class UserModel {
   @Property({ onUpdate: () => new Date() })
   updatedAt: Date = new Date();
 
-  @Property()
+  @Embedded(() => Info, { object: true })
   info?: {
     firstName?: string;
     lastName?: string;
