@@ -30,6 +30,7 @@
     "@rckit/meta": "^4.4.0",
     "@rckit/secret-checkbox": "^4.3.0",
     "@rckit/table": "^4.10.0",
+    "@react-email/components": "^0.0.12",
     "@tanstack/react-query": "^5.13.4",
     "@tanstack/react-table": "^8.10.7",
     "axios": "^1.6.0",
