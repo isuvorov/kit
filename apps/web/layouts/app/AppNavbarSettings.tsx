@@ -1,8 +1,7 @@
 import { useAppSession } from '@rckit/auth';
 import { Avatar } from '@rckit/avatar';
-import { Debug } from '@rckit/debug';
 import Link from 'next/link';
-import { Dropdown, Nav, NavDropdown } from 'react-bootstrap';
+import { Dropdown, Nav } from 'react-bootstrap';
 
 const AvatarWithTitle = ({ title, ...props }: any) => (
   <div
@@ -19,7 +18,6 @@ const AvatarWithTitle = ({ title, ...props }: any) => (
 export const AppNavbarSettings = () => {
   const { session, sessionStatus } = useAppSession();
   const user = session?.user;
-
   if (user) {
     // @ts-ignore
     const title = user.name || user.email;

@@ -5,11 +5,11 @@ import { InjectRepository } from '@mikro-orm/nestjs';
 import { All, Body, Controller, HttpStatus, Post, Req, UseInterceptors } from '@nestjs/common';
 import { MailerService } from '@nestjs-modules/mailer';
 import { AuthRole } from '@nestlib/auth';
+import { ErrorInterceptor, ResponseInterceptor } from '@nestlib/interceptors';
 
 import { toUserJson } from '@/api/toUserJson';
 
 import { renderOtpEmail } from '../../emails/OtpEmail';
-import { ErrorInterceptor, ResponseInterceptor } from '../-interceptors';
 import { AuthOtpService } from './AuthOtpService';
 import { AuthService } from './AuthService';
 import { UserModel } from './models/UserModel';

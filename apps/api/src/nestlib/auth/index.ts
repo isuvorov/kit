@@ -1,3 +1,3 @@
-export * from './AuthController'
-export * from './AuthOtpService'
-export * from './AuthService'
+export * from './AuthController';
+export * from './AuthOtpService';
+export * from './AuthService';

@@ -1,9 +1,10 @@
 /* eslint-disable no-nested-ternary */
-import { useAppSession } from '@rckit/auth';
+import { useAppSession, useAuthGuard } from '@rckit/auth';
 import { Avatar } from '@rckit/avatar';
 import { Debug } from '@rckit/debug';
 import { HeadMeta } from '@rckit/meta';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import { Button, Card, Col, Row } from 'react-bootstrap';
 
 import { SettingsProfileForm, SettingsProfileFormValues } from '@/comps/SettingsProfileForm';
@@ -22,6 +23,7 @@ const useAppUser = () => {
 };
 
 export default function CabinetProfilePage() {
+  useAuthGuard(useRouter());
   const { session, updateSession } = useAppSession();
   const { _id } = useAppUser() || {};
   const { data: user } = useUserFindOneQuery({ _id });
@@ -71,7 +73,8 @@ export default function CabinetProfilePage() {
               <Card.Body className="card-body pt-3 p-3 ">
                 <div className="mb-3 text-center">
                   <Avatar
-                    {...user}
+                    // @ts-ignore
+                    name={user.name || user.email}
                     // @ts-ignore
                     src={user.avatar}
                     size={128}

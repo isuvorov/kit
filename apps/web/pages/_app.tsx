@@ -28,6 +28,7 @@ const NoSsr2 = ({ children }: React.PropsWithChildren<any>) => (
   <React.Fragment>{children}</React.Fragment>
 );
 
+// TODO: перенести куда нибудь
 export const NoSsr = dynamic(() => Promise.resolve(NoSsr2), {
   ssr: false,
 });
@@ -40,19 +41,19 @@ export default function App({ Component, pageProps }: AppProps2) {
         <HeadEnv isDev={isDev} stage={stage} version={version} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
-      <ComponentProvider Link={Link} Image={Image} Router={Router}>
-        <QueryClientProvider client={queryClient}>
-          <HydrationBoundary state={pageProps?.dehydratedState}>
-            <NoSsr>
+      <NoSsr>
+        <ComponentProvider Link={Link} Image={Image} Router={Router}>
+          <QueryClientProvider client={queryClient}>
+            <HydrationBoundary state={pageProps?.dehydratedState}>
               <AppConfig>
                 <AppSession>
                   <Component {...pageProps} />
                 </AppSession>
               </AppConfig>
-            </NoSsr>
-          </HydrationBoundary>
-        </QueryClientProvider>
-      </ComponentProvider>
+            </HydrationBoundary>
+          </QueryClientProvider>
+        </ComponentProvider>
+      </NoSsr>
     </>
   );
 }

@@ -247,11 +247,11 @@ importers:
         specifier: ^4.4.0
         version: 4.4.0
       '@rckit/api-client':
-        specifier: ^4.10.5
-        version: 4.10.5(react@18.2.0)
+        specifier: ^4.11.0
+        version: 4.11.0(react@18.2.0)
       '@rckit/auth':
-        specifier: ^4.10.5
-        version: 4.10.5(react-bootstrap@2.9.1)(react-hook-form@7.49.2)(react@18.2.0)(use-local-storage-state@19.1.0)
+        specifier: ^4.11.0
+        version: 4.11.0(react-bootstrap@2.9.1)(react-hook-form@7.49.2)(react@18.2.0)(use-local-storage-state@19.1.0)
       '@rckit/avatar':
         specifier: ^4.10.5
         version: 4.10.5(react@18.2.0)
@@ -259,8 +259,8 @@ importers:
         specifier: ^4.10.5
         version: 4.10.5(react@18.2.0)
       '@rckit/form':
-        specifier: ^4.10.5
-        version: 4.10.5(react-bootstrap@2.9.1)(react-hook-form@7.49.2)(react@18.2.0)
+        specifier: ^4.11.0
+        version: 4.11.0(react-bootstrap@2.9.1)(react-hook-form@7.49.2)(react@18.2.0)
       '@rckit/icons':
         specifier: ^4.10.5
         version: 4.10.5(react@18.2.0)
@@ -3465,8 +3465,8 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@rckit/api-client@4.10.5(react@18.2.0):
-    resolution: {integrity: sha512-//lxntlskU22ZXTddSga17mqIyHMxVorl95snuKWuKe7bY6d+pKTfZfCFE7uYsZ3NifkkWmXiFiBV5EsaOkUYg==}
+  /@rckit/api-client@4.11.0(react@18.2.0):
+    resolution: {integrity: sha512-S9WeTFdbCpWOfT9ZlY2fdMwI1pdCAk15aG/09NM5caD6h+f04/0+XDLvfaJSh6LJnOvAZBjjyzWnFdguJ1v/gg==}
     peerDependencies:
       react: ^18.2.0
     dependencies:
@@ -3480,8 +3480,8 @@ packages:
       - debug
     dev: false
 
-  /@rckit/auth@4.10.5(react-bootstrap@2.9.1)(react-hook-form@7.49.2)(react@18.2.0)(use-local-storage-state@19.1.0):
-    resolution: {integrity: sha512-5nwyJP8GLEYdtlxSX2UBWs8xBmiQ69XlShlIiViaWRAHlrq4/P+SmBmQeyIDJQRP8AGH6ooN4fGZreOUzOgWMw==}
+  /@rckit/auth@4.11.0(react-bootstrap@2.9.1)(react-hook-form@7.49.2)(react@18.2.0)(use-local-storage-state@19.1.0):
+    resolution: {integrity: sha512-ObscPNXNoarsu1cF6CsLnQlwDJUySrzzNWpCXo+3C9+uDBKmJx+OZvegBDhXnqGkmsrXW8Z8qISHz1ZLHIRGXQ==}
     peerDependencies:
       react: ^18.2.0
       react-bootstrap: ^2.9.1
@@ -3491,9 +3491,9 @@ packages:
       '@lsk4/env': 4.4.0
       '@lsk4/err': 4.4.0
       '@lsk4/log': 4.4.0
-      '@rckit/api-client': 4.10.5(react@18.2.0)
+      '@rckit/api-client': 4.11.0(react@18.2.0)
       '@rckit/debug': 4.10.5(react@18.2.0)
-      '@rckit/form': 4.10.5(react-bootstrap@2.9.1)(react-hook-form@7.49.2)(react@18.2.0)
+      '@rckit/form': 4.11.0(react-bootstrap@2.9.1)(react-hook-form@7.49.2)(react@18.2.0)
       '@rckit/link': 4.10.5(react@18.2.0)
       fishbird: 1.1.8
       react: 18.2.0
@@ -3524,8 +3524,8 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@rckit/form@4.10.5(react-bootstrap@2.9.1)(react-hook-form@7.49.2)(react@18.2.0):
-    resolution: {integrity: sha512-sQTu++6rfyW0fVWz4UpRsjNEWn0Ki0eOs6eM8l0//CdBwz7Bt/u83W7v5E05h6u6XzXkt2lPf00vjIgpg4X6pA==}
+  /@rckit/form@4.11.0(react-bootstrap@2.9.1)(react-hook-form@7.49.2)(react@18.2.0):
+    resolution: {integrity: sha512-v2Dzzf2t9WfWB8Ba976jbrtR5tjFYqiu4/SIc3tCjYp1yHGKwSTF843DJ6IZ9Y8SwVqmk9DkhCveub+1nDuA5Q==}
     peerDependencies:
       react: ^18.2.0
       react-bootstrap: ^2.9.1
@@ -3533,6 +3533,7 @@ packages:
     dependencies:
       '@lsk4/env': 4.4.0
       '@lsk4/err': 4.4.0
+      '@lsk4/log': 4.4.0
       react: 18.2.0
       react-bootstrap: 2.9.1(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0)
       react-hook-form: 7.49.2(react@18.2.0)
