@@ -9,7 +9,7 @@ import { AuthRole } from '@nestlib/auth';
 import { toUserJson } from '@/api/toUserJson';
 
 import { renderOtpEmail } from '../../emails/OtpEmail';
-import { ErrorInterceptor, ResponseInterceptor } from '../interceptors';
+import { ErrorInterceptor, ResponseInterceptor } from '../-interceptors';
 import { AuthOtpService } from './AuthOtpService';
 import { AuthService } from './AuthService';
 import { UserModel } from './models/UserModel';
@@ -255,10 +255,11 @@ export class AuthController {
     const { user: sessionUser } = req.session || {};
     if (!sessionUser) return null;
 
-    // console.log('sessionUser', sessionUser);
-    const rawUser = await this.usersRepository.findOne({
-      _id: sessionUser.id,
-    });
+    const id = sessionUser._id || sessionUser.id;
+    // const { id } = sessionUser;
+    // console.log('[req.session]', req.session);
+    // console.log('[id]', id);
+    const rawUser = await this.usersRepository.findOne({ _id: id });
     const user = rawUser ? toUserJson(rawUser) : null;
 
     // if (!rawUser) throw new Err('!user', 'User not found', { status: 404 });

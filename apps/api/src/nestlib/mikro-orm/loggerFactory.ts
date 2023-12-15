@@ -11,7 +11,7 @@ export const loggerFactory = (options: LoggerOptions): Logger => {
   };
   return {
     logQuery(context: LogContext) {
-      getLogger('query').trace(`[${'query'}]`, context.query, context.params);
+      getLogger('query').trace(`[${'query'}]`, ...[context.query, context.params].filter(Boolean));
     },
     log(ns: LoggerNamespace, message: string) {
       getLogger(ns).debug(message);
