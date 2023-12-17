@@ -1,18 +1,18 @@
 /* eslint-disable no-nested-ternary */
 // import { useGlobalContext } from '@/hooks/useGlobalContext';
+import { useAppSession } from '@rckit/auth';
 import { HeadMeta } from '@rckit/meta';
 import Head from 'next/head';
 import Image from 'next/image';
 import { Card, Col, Row } from 'react-bootstrap';
 
 import { CabinetLayout } from '@/layouts/CabinetLayout';
-import { useAppConfig } from '@/layouts/components/useAppConfig';
 import { useProductListQuery } from '@/queries/products';
 // import { IsomorphicContext } from '@/types';
 
 export default function CabinetProductsPage() {
   const pageTitle = 'Cabinet Products';
-  const { sessionStatus } = useAppConfig();
+  const { sessionStatus } = useAppSession();
   // @ts-ignore
   const { data, isLoading, isError } = useProductListQuery({ limit: 12 });
 

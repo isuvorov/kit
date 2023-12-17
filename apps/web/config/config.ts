@@ -6,7 +6,9 @@ const { publicRuntimeConfig, serverRuntimeConfig } = getConfig();
 const defaultConfig = {
   site: {
     title: 'Unknown',
-    version: 'u',
+    desription: 'Unknown description',
+    company: 'Unknown company',
+    version: '',
   },
 };
 

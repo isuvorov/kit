@@ -8,6 +8,7 @@ export const menuItems: NavbarMenuItem[] = [
       {
         title: 'Cabinet Index',
         href: '/cabinet',
+        visible: false,
       },
       {
         title: 'Products',
@@ -33,6 +34,7 @@ export const adminMenuItems: NavbarMenuItem[] = [
       {
         title: 'Admin Index',
         href: '/admin',
+        visible: false,
       },
       {
         title: 'Users',

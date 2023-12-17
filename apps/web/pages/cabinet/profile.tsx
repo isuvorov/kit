@@ -1,5 +1,5 @@
 /* eslint-disable no-nested-ternary */
-import { useAppSession, useAuthGuard } from '@rckit/auth';
+import { useAppSession, useAppUser, useAuthGuard } from '@rckit/auth';
 import { Avatar } from '@rckit/avatar';
 import { Debug } from '@rckit/debug';
 import { HeadMeta } from '@rckit/meta';
@@ -11,8 +11,6 @@ import { SettingsProfileForm, SettingsProfileFormValues } from '@/comps/Settings
 import { CabinetLayout } from '@/layouts/CabinetLayout';
 import { useUserFindOneQuery } from '@/queries/usersFindOne';
 import { fetchUserUpdate } from '@/queries/usersUpdate';
-
-import { useAppUser } from '../../rckit/app/useAppUser';
 
 export default function CabinetProfilePage() {
   useAuthGuard(useRouter());

@@ -17,11 +17,14 @@ export default function AdminIndexPage() {
         <HeadMeta title={pageTitle} />
       </Head>
       <AdminLayout activeHref="/admin">
-        {items.map((item) => (
-          <p key={item.href}>
-            <Link href={item.href}>{item.title}</Link>
-          </p>
-        ))}
+        {(items || []).map((item) => {
+          if (item.visible === false) return null;
+          return (
+            <p key={item.href}>
+              <Link href={item.href}>{item.title}</Link>
+            </p>
+          );
+        })}
       </AdminLayout>
     </>
   );
