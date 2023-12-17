@@ -3,8 +3,8 @@ import Image from 'next/image';
 import type { PropsWithChildren } from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 
-import { AppNavbar } from './app/AppNavbar';
 import styles from './AuthLayout.module.css';
+import { LayoutNavbar } from './LayoutNavbar';
 
 type AuthLayoutProps = PropsWithChildren<{
   showNavbar?: boolean;
@@ -13,7 +13,7 @@ type AuthLayoutProps = PropsWithChildren<{
 export function AuthLayout({ showNavbar = false, left = null, children }: AuthLayoutProps) {
   return (
     <>
-      {Boolean(showNavbar) && <AppNavbar />}
+      {Boolean(showNavbar) && <LayoutNavbar />}
       <section className={clsx([styles.pageWrapper, styles.gradient])}>
         <Container className="py-5 h-100">
           <Row className="d-flex justify-content-center align-items-center h-100">

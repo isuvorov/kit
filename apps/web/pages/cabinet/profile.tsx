@@ -12,15 +12,7 @@ import { CabinetLayout } from '@/layouts/CabinetLayout';
 import { useUserFindOneQuery } from '@/queries/usersFindOne';
 import { fetchUserUpdate } from '@/queries/usersUpdate';
 
-const useAppUser = () => {
-  const { session } = useAppSession();
-  const user = session?.user;
-  return {
-    ...user,
-    // @ts-ignore
-    _id: user?.id,
-  };
-};
+import { useAppUser } from '../../rckit/app/useAppUser';
 
 export default function CabinetProfilePage() {
   useAuthGuard(useRouter());

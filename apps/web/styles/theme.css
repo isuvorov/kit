@@ -1,0 +1,18 @@
+@import url('./theme-navbar.css');
+/* @import url('./theme-fixed-top.css'); */
+@import url('./theme-section.css');
+@import url('./theme-bg.css');
+@import url('./theme-text.css');
+
+.navbar {
+  padding: 0.135rem 1rem !important;
+}
+
+.navbar-nav .nav-link {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+.dropdown-menu {
+  border-radius: 0;
+  margin: 0px !important;
+}

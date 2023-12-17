@@ -4,17 +4,13 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
+import { adminMenuItems } from '@/config/menus';
 import { AdminLayout } from '@/layouts/AdminLayout';
 
 export default function AdminIndexPage() {
   useAuthGuard(useRouter(), { role: 'admin' });
   const pageTitle = 'Admin Index';
-  const items = [
-    {
-      title: 'Users',
-      href: '/admin/users',
-    },
-  ];
+  const { items } = adminMenuItems[0];
   return (
     <>
       <Head>

@@ -1,8 +1,9 @@
 import type { PropsWithChildren } from 'react';
-import { Breadcrumb, Container } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 
-import { AppNavbar } from './app/AppNavbar';
-import { findBreadcrumbsByActiveHref, isActive } from './app/menus';
+import { AppBreadcrumbs } from '@/comps/AppBreadcrumbs';
+
+import { LayoutNavbar } from './LayoutNavbar';
 
 type CabinetLayoutProps = PropsWithChildren<{
   showNavbar?: boolean;
@@ -11,39 +12,17 @@ type CabinetLayoutProps = PropsWithChildren<{
 }>;
 export function CabinetLayout({
   showNavbar = true,
-  title: initTitle,
+  title,
   activeHref = '',
   children,
 }: CabinetLayoutProps) {
-  const breadcrumbs = findBreadcrumbsByActiveHref(activeHref);
-  const title = initTitle || breadcrumbs[breadcrumbs.length - 1]?.title;
   return (
     <>
-      {Boolean(showNavbar) && <AppNavbar />}
+      {Boolean(showNavbar) && <LayoutNavbar />}
       <Container>
-        <div className="mt-4">
-          {breadcrumbs && breadcrumbs.length > 1 && (
-            <Breadcrumb>
-              {breadcrumbs.map((item, index) => (
-                <Breadcrumb.Item key={index} href={item.href} active={isActive(item, activeHref)}>
-                  {item.title}
-                </Breadcrumb.Item>
-              ))}
-            </Breadcrumb>
-          )}
-          {title && <h1>{title}</h1>}
-        </div>
+        <AppBreadcrumbs title={title} activeHref={activeHref} />
         <div className="mt-4">{children}</div>
       </Container>
-      {/* <section className={clsx([styles.pageWrapper, styles.gradient])}>
-        <Container className="py-5 h-100">
-          <Row className="d-flex justify-content-center align-items-center h-100">
-            <Col md={12} lg={12} className="d-flex align-items-center">
-              <div className="card-body p-4 p-lg-5 text-black">{children}</div>
-            </Col>
-          </Row>
-        </Container>
-      </section> */}
     </>
   );
 }

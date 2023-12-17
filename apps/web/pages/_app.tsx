@@ -1,40 +1,23 @@
 import '@/styles/globals.css';
 
-// import '@rckit/table/lib/index.css';
 import { isDev, stage, version } from '@lsk4/env';
-import { AppSession } from '@rckit/auth';
+import { AppConfig, AppSession } from '@rckit/auth';
 import { ComponentProvider } from '@rckit/link';
 import { HeadEnv } from '@rckit/meta';
-import {
-  DehydratedState,
-  HydrationBoundary,
-  QueryClient,
-  QueryClientProvider,
-} from '@tanstack/react-query';
+import { DehydratedState, HydrationBoundary } from '@tanstack/react-query';
 import { AppProps } from 'next/app';
-import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import Router from 'next/router';
-import React, { useState } from 'react';
 
-import { queryClientConfig } from '@/config/queryClientConfig';
-import { AppConfig } from '@/layouts/app/AppConfig';
+import { AppQuery } from '@/layouts/components/AppQuery';
+import { AppModal } from '@/rckit/modal';
+import { NoSsr } from '@/rckit/ui/NoSsr';
 
 type AppProps2 = AppProps<{ dehydratedState: DehydratedState }>;
 
-const NoSsr2 = ({ children }: React.PropsWithChildren<any>) => (
-  <React.Fragment>{children}</React.Fragment>
-);
-
-// TODO: перенести куда нибудь
-export const NoSsr = dynamic(() => Promise.resolve(NoSsr2), {
-  ssr: false,
-});
-
 export default function App({ Component, pageProps }: AppProps2) {
-  const [queryClient] = useState(() => new QueryClient(queryClientConfig));
   return (
     <>
       <Head>
@@ -43,15 +26,17 @@ export default function App({ Component, pageProps }: AppProps2) {
       </Head>
       <NoSsr>
         <ComponentProvider Link={Link} Image={Image} Router={Router}>
-          <QueryClientProvider client={queryClient}>
+          <AppQuery>
             <HydrationBoundary state={pageProps?.dehydratedState}>
               <AppConfig>
-                <AppSession>
-                  <Component {...pageProps} />
-                </AppSession>
+                <AppModal>
+                  <AppSession>
+                    <Component {...pageProps} />
+                  </AppSession>
+                </AppModal>
               </AppConfig>
             </HydrationBoundary>
-          </QueryClientProvider>
+          </AppQuery>
         </ComponentProvider>
       </NoSsr>
     </>

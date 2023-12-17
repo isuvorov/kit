@@ -5,8 +5,8 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { Card, Col, Row } from 'react-bootstrap';
 
-import { useAppConfig } from '@/layouts/app/useAppConfig';
 import { CabinetLayout } from '@/layouts/CabinetLayout';
+import { useAppConfig } from '@/layouts/components/useAppConfig';
 import { useProductListQuery } from '@/queries/products';
 // import { IsomorphicContext } from '@/types';
 
