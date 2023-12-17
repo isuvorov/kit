@@ -18,7 +18,7 @@ export default function AdminIndexPage() {
       </Head>
       <AdminLayout activeHref="/admin">
         {(items || []).map((item) => {
-          if (item.visible === false) return null;
+          if (item.hidden) return null;
           return (
             <p key={item.href}>
               <Link href={item.href}>{item.title}</Link>
@@ -29,5 +29,3 @@ export default function AdminIndexPage() {
     </>
   );
 }
-
-AdminIndexPage.authenticate = true;

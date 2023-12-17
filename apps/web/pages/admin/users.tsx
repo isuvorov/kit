@@ -3,18 +3,20 @@ import { Avatar } from '@rckit/avatar';
 import { Eye, Trash } from '@rckit/icons';
 import { Pencil } from '@rckit/icons/pencil';
 import { HeadMeta } from '@rckit/meta';
+import { useAppModal } from '@rckit/modal';
 import { QueryParams as BaseQueryParams, Table, TableColumn } from '@rckit/table';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Button } from 'react-bootstrap';
 
-import { AdminUsersForm as Filter } from '@/comps/AdminUsersForm';
-import { HumanDate } from '@/comps/HumanDate';
-import { Pagination } from '@/comps/Pagination';
+import { AdminUserEditForm } from '@/comps/AdminUserEditForm';
+import { AdminUsersForm as Filter } from '@/comps/AdminUsersFilterForm';
 import { AdminLayout } from '@/layouts/AdminLayout';
 import { UserListItem, useUserListInfinityQuery } from '@/queries/users2';
+import { HumanDate } from '@/rckit/helpers/HumanDate';
+import { Pagination } from '@/rckit/helpers/Pagination';
 
 type QueryParams = BaseQueryParams & {
   filter?: {
@@ -28,7 +30,7 @@ const UserActions = ({ id }: { id: string }) => (
       // @ts-ignore
       as={Link}
       href={`/users/${id}`}
-      variant="primary"
+      variant="outline-primary"
     >
       <Eye />
     </Button>
@@ -36,7 +38,7 @@ const UserActions = ({ id }: { id: string }) => (
       // @ts-ignore
       as={Link}
       href={`/users/${id}`}
-      variant="warning"
+      variant="outline-warning"
       className="mx-2"
     >
       <Pencil />
@@ -45,7 +47,7 @@ const UserActions = ({ id }: { id: string }) => (
       // @ts-ignore
       as={Link}
       href={`/users/${id}`}
-      variant="danger"
+      variant="outline-danger"
     >
       <Trash />
     </Button>
@@ -101,17 +103,50 @@ export default function AdminUsersPage() {
   useAuthGuard(useRouter(), { role: 'admin' });
   const pageTitle = 'Admin Users';
 
-  // console.log('session', session);
-  // console.log('sessionStatus', sessionStatus);
   const [queryParams, setQueryParams] = useState<QueryParams>({ limit: 10, count: true });
   const query = useUserListInfinityQuery(queryParams);
+  const { openModal } = useAppModal();
 
+  const formRef: React.MutableRefObject<HTMLFormElement | null> = useRef(null);
+  const handleFormRefSubmit = () => {
+    const htmlForm = formRef.current as any;
+    if (!htmlForm) return;
+    htmlForm.dispatchEvent(
+      new Event('submit', {
+        bubbles: true, // if you want the event to bubble up
+        cancelable: true, // if you want the event to be cancelable
+      }),
+    );
+  };
+
+  const openUserEditModal = () => {
+    const onSubmit = async (values: any) => {
+      console.log('values', values);
+    };
+    openModal({
+      title: 'New User',
+      body: <AdminUserEditForm formRef={formRef} onSubmit={onSubmit} />,
+      footer: (
+        <Button variant="primary" onClick={handleFormRefSubmit}>
+          Save
+        </Button>
+      ),
+    });
+  };
+
+  const actions = (
+    <>
+      <Button variant="primary" onClick={openUserEditModal}>
+        New User
+      </Button>
+    </>
+  );
   return (
     <>
       <Head>
         <HeadMeta title={pageTitle} />
       </Head>
-      <AdminLayout activeHref="/admin/users">
+      <AdminLayout activeHref="/admin/users" actions={actions}>
         <Table
           // @ts-ignore
           query={query}

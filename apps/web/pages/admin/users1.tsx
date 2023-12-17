@@ -10,14 +10,14 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { Button, Table } from 'react-bootstrap';
 
-import { Pagination } from '@/comps/Pagination';
+import { Pagination } from '@/rckit/helpers/Pagination';
 // import { FilterMenu } from '@/rckit/ui/FlexTable/FilterMenu';
-import { SortIndicator } from '@/comps/SortIndicator';
+import { SortIndicator } from '@/rckit/helpers/SortIndicator';
 import { AdminLayout } from '@/layouts/AdminLayout';
 // import { useBillingTransactionListQuery } from '@/queries/billing';
 import { useUserListQuery } from '@/queries/users1';
 import { Refresh }  from '@rckit/icons'
-import { getSpinAnimationStyles } from '@/rckit/utils/getSpinAnimationStyles';
+import { getSpinAnimationStyles } from '@/rckit/helpers/getSpinAnimationStyles';
 
 export default function AdminUsersPage() {
   const [page, setPage] = useState(0);

@@ -1,7 +1,6 @@
 import { Form } from 'react-bootstrap';
 
-// @ts-ignore
-export function Switcher({ field, label, id, reverse = false, onChange = null }) {
+export function Switcher({ field, label, id, reverse = false, onChange = null }: any) {
   const checked = reverse ? !field?.value : field?.value;
   function handleChange(e: any) {
     if (reverse) {

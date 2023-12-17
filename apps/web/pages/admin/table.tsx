@@ -23,7 +23,7 @@ import { useVirtual } from 'react-virtual';
 // import { Person } from '@/__components/makeData';
 import { AdminLayout } from '@/layouts/AdminLayout';
 import { ProductListItem, useProductListInfinityQuery } from '@/queries/products';
-import { Badges } from '@/rckit/ui/Badges';
+import { Badges } from '@/rckit/helpers/Badges';
 
 const fetchSize = 25;
 

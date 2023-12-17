@@ -14,10 +14,10 @@ import { useState } from 'react';
 // import { useBillingTransactionListQuery } from '@/queries/billing';
 import { Table } from 'react-bootstrap';
 
-import { Pagination } from '@/comps/Pagination';
 import { AdminLayout } from '@/layouts/AdminLayout';
 import { ProductListItem, useProductListQuery } from '@/queries/products';
-import { Badges } from '@/rckit/ui/Badges';
+import { Badges } from '@/rckit/helpers/Badges';
+import { Pagination } from '@/rckit/helpers/Pagination';
 
 const columnHelper = createColumnHelper<ProductListItem>();
 const columns = [

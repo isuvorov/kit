@@ -11,6 +11,7 @@ type AdminLayoutProps = PropsWithChildren<{
   showNavbar?: boolean;
   title?: string;
   activeHref?: string;
+  actions?: React.ReactNode;
 }>;
 // export const AdminLayout = ({ children }: React.PropsWithChildren<{}>) => (
 export const AdminLayout = ({
@@ -18,11 +19,12 @@ export const AdminLayout = ({
   title,
   activeHref = '',
   children,
+  actions,
 }: AdminLayoutProps) => (
   <>
     {Boolean(showNavbar) && <LayoutNavbar />}
     <Container>
-      <AppBreadcrumbs title={title} activeHref={activeHref} />
+      <AppBreadcrumbs title={title} activeHref={activeHref} actions={actions} />
       <div className="mt-4">{children}</div>
     </Container>
   </>

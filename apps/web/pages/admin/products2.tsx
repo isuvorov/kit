@@ -12,12 +12,12 @@ import { useState } from 'react';
 import { Button, Pagination, Table } from 'react-bootstrap';
 import ReactPaginate from 'react-paginate';
 
-// import { FilterMenu } from '@/rckit/ui/FlexTable/FilterMenu';
-import { SortIndicator } from '@/comps/SortIndicator';
 import { AdminLayout } from '@/layouts/AdminLayout';
 // import { useBillingTransactionListQuery } from '@/queries/billing';
 import { useProductListQuery } from '@/queries/products';
-import { getSpinAnimationStyles } from '@/rckit/utils/getSpinAnimationStyles';
+import { getSpinAnimationStyles } from '@/rckit/helpers/getSpinAnimationStyles';
+// import { FilterMenu } from '@/rckit/ui/FlexTable/FilterMenu';
+import { SortIndicator } from '@/rckit/helpers/SortIndicator';
 
 export default function AdminProductsPage() {
   const [page, setPage] = useState(0);

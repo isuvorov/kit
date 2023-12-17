@@ -4,6 +4,7 @@ import { isDev, stage, version } from '@lsk4/env';
 import { AppConfig, AppSession } from '@rckit/auth';
 import { ComponentProvider } from '@rckit/link';
 import { HeadEnv } from '@rckit/meta';
+import { AppModal } from '@rckit/modal';
 import { DehydratedState, HydrationBoundary } from '@tanstack/react-query';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
@@ -12,8 +13,7 @@ import Link from 'next/link';
 import Router from 'next/router';
 
 import { AppQuery } from '@/layouts/components/AppQuery';
-import { AppModal } from '@/rckit/modal';
-import { NoSsr } from '@/rckit/ui/NoSsr';
+import { NoSsr } from '@/rckit/helpers/NoSsr';
 
 type AppProps2 = AppProps<{ dehydratedState: DehydratedState }>;
 

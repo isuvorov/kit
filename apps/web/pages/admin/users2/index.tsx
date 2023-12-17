@@ -7,7 +7,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { AdminLayout } from '@/layouts/AdminLayout';
 import { UserListItem, UserListResponse, useUserListInfinityQuery } from '@/queries/users2';
-import { getSpinAnimationStyles } from '@/rckit/utils/getSpinAnimationStyles';
+import { getSpinAnimationStyles } from '@/rckit/helpers/getSpinAnimationStyles';
 
 interface User {
   companyId: string;

@@ -2,7 +2,7 @@ import { useSmartForm } from '@rckit/form';
 import { Col, Form, Row } from 'react-bootstrap';
 import { Controller } from 'react-hook-form';
 
-import { Switcher } from './Switcher';
+import { Switcher } from '../rckit/helpers/Switcher';
 
 export interface AdminUsersFormValues {
   role?: string;
