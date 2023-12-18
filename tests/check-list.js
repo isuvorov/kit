@@ -3,17 +3,17 @@
 # Table of Contents
 - [Введение](#введение)
 
-- :rocket:[Основные кейсы](#основные-кейсы)
+- :rocket: [Основные кейсы](#основные-кейсы)
     - [AuthSignup](#1-authsignupmain)
     - [AuthLogin](#2-authlogin)
     - [AuthCompany](#3-authcompany-settings)
     - [AuthRestore](#4-authrestore)
 
-- :ledger:[Неосновнве кейсы](#неосновные-кейсы)
+- :books: [Неосновные кейсы](#неосновные-кейсы)
     - [AuthSignup](#1-authsignupnot-the-main)
     - [AuthLogin](#2-authloginnot-the-main)
     - [AuthCompany](#3-authcompany-settingsnot-the-main)
-    - [AuthCompany](#4-authrestorenot-the-main)
+    - [AuthRestore](#4-authrestorenot-the-main)
 
 
 # Введение
@@ -21,10 +21,10 @@
 "Основные кейсы" включают в себя основные функции, которые необходимо протестировать для обеспечения работоспособности системы. 
 "Неосновные кейсы" включают в себя дополнительные функции, которые также важны для общего качества системы, но могут быть протестированы с меньшим приоритетом.
 
-# Основные кейсы
+:rocket: # Основные кейсы
 ## #1 AuthSignup(main)
 
-## :rocket: Happy path AuthSignup
+## :tada: Happy path AuthSignup:
     
 ### :pushpin: № 1.1 Регистрация на сайте
 1. Нажать "Sign Up".
@@ -65,7 +65,7 @@
 
 **Ожидаемый результат:** появление сообщения "Password сan't be blank"
 
-### :pushpin: № 1.4 Пробелы при введении email
+### :pushpin: № 1.4 Ввести пробелы в поле Email
 
 1. Нажать "Sign Up"
 2. Заполнить поле "First name" и "Last name" валидными данными
@@ -91,7 +91,7 @@
 
 1. Нажать "Sign Up"
 2. Заполнить поле "First name" и "Last name" валидными данными
-3. Заполнить поле "Email Address" адресом электронной почты который есть в базе
+3. Заполнить поле "Email Address" адресом электронной почты, который есть в базе
 4. Нажать чекбокс "I agree to the Terms and Conditions"
 5. Нажать "Submit"
 
@@ -100,7 +100,7 @@
 ### :pushpin: № 1.18 Ввести неверный код из письма, проверка появления сообщения об ошибке
 
 1. Пройти первый шаг регистрации
-2.  На втором шаге ввести неверный код из письма
+2. На втором шаге ввести неверный код из письма
 3. Нажать "Continue"
 
 **Ожидаемый результат:** появление сообщения "Incorrect code"
@@ -108,16 +108,18 @@
 ### :pushpin: № 1.22 Вставить пробел перед заполнением "First name" и "Last name" 
 
 1. Нажать "Sign Up"
-2. Вставить пробел перед заполнением "First name" и "Last name"
-например "First name" - " Дима", "Last name" - " Тестов"
+2. Вставить пробел перед заполнением "First name" и "Last name", например :
+- "First name" - " Дима", 
+- "Last name" - " Тестов"
 
 **Ожидаемый результат:** Проверить что после регистрации пробелы обрезаются, тоже самое с пробелами в конце
 
 ### :pushpin: № 1.23 Ввести в поле пробел по середине "First name" и "Last name"
 
 1. Нажать "Sign Up"
-2. Ввести в поле пробел по середине "First name" и "Last name"
-например "First name" - "Edwin", "Last name" - "Van Der Sar"
+2. Ввести в поле пробел по середине "First name" и "Last name",например:
+- "First name" - "Edwin", 
+- "Last name" - "Van Der Sar"
 3. Остальные поля валидные
 4. Нажать "Submit"
 
@@ -153,9 +155,13 @@
 ### :pushpin: № 1.27 Проверить что в поле "First name" и "Last name" можно заполнить русскими и английскими буквами, uppercase и lowercase
 
 1. Нажать "Sign Up"
-2. Заполнить поля "First name" и "Last name" русскими и английскими буквами, uppercase и lowercase, цифрами
-например "First name" - "ДИМА", "Last name" - "Testov", или "First name" - "DiMa", "Last name" - "тестов", 
-или "First name" - "Дима", "Last name" - "Testov1"
+2. Заполнить поля "First name" и "Last name" русскими и английскими буквами, uppercase и lowercase, цифрами, например:
+- "First name" - "ДИМА", 
+- "Last name" - "Testov",
+- "First name" - "DiMa",
+-  "Last name" - "тестов", 
+- "First name" - "Дима", 
+- "Last name" - "Testov1"
 3. Остальные поля валидные
 4. Нажать "Submit"
 
@@ -244,7 +250,7 @@
 
 ## #2 AuthLogin
 
-## :rocket: № 2.1 Happy path 
+## :tada: № 2.1 Happy path 
 
 ### :pushpin: № 2.1 Залогинится в система
 
@@ -253,7 +259,7 @@
 3. Заполнить поле "Password"
 4. Нажать кнопку "Log In"
 
-**Ожидаемый результат:** переход на грлавную страницу Home
+**Ожидаемый результат:** переход на главную страницу Home
 
 ## :ledger: Тестовые сценарии Login
 
@@ -263,7 +269,7 @@
 2. Выбрать аккаунт
 3. Нажать "Continue"
 
-**Ожидаемый результат:** переход на грлавную страницу Home
+**Ожидаемый результат:** переход на главную страницу Home
 
 ### :pushpin: № 2.3 Залогиниться в систему через кнопку "Continue with Google" юзером которого нет в базе
 
@@ -359,7 +365,7 @@
 
 ## #3 AuthCompany. Settings
 
-## :rocket: №3.1 Happy path AuthCompany – Settings
+## :tada: №3.1 Happy path AuthCompany – Settings
 
 1. Авторизация в системе как Owner компании.
 2. Нажать "Settings"
@@ -395,7 +401,7 @@
 
 ## #4 AuthRestore
 
-## :rocket: № 4.1 Happy path Restore password
+## :tada: № 4.1 Happy path Restore password
 
 1. Нажать "Forgot Password?"
 2. Ввести верный email
@@ -470,7 +476,7 @@
 
 **Ожидаемый результат:** появление сообщения "Please use a corporate email" -->
 
-# Неосновные кейсы
+# :books: Неосновные кейсы
 
 ## #1 AuthSignup(not the main)
 
