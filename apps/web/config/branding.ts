@@ -5,7 +5,7 @@ import { config } from './config';
 const isProd = stage === 'prod' && !isDev;
 // const isProd = true
 
-export const brandLogo = '/assets/bootstrap-logo.svg';
+export const brandLogo = '/assets/logo.svg';
 export const brandCompany = config?.site?.company || 'Lsk.js';
 export const brandTitle = config?.site?.title || 'KIT4';
 export const brandDescription =

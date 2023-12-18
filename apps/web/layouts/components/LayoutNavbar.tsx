@@ -2,7 +2,7 @@ import { AppNavbar as BaseAppNavbar } from '@rckit/navbar';
 
 import { adminMenuItems, menuItems } from '@/config/menus';
 
-import { AppLogo } from './components/AppLogo';
+import { AppLogo } from './AppLogo';
 
 export const LayoutNavbar = (props: any = {}) => (
   <BaseAppNavbar

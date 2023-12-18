@@ -1,11 +1,8 @@
-/* eslint-disable no-continue */
-/* eslint-disable no-restricted-syntax */
 import { PropsWithChildren } from 'react';
 import { Container } from 'react-bootstrap';
 
-import { AppBreadcrumbs } from '@/comps/AppBreadcrumbs';
-
-import { LayoutNavbar } from './LayoutNavbar';
+import { AppBreadcrumbs } from './components/AppBreadcrumbs';
+import { LayoutNavbar } from './components/LayoutNavbar';
 
 type AdminLayoutProps = PropsWithChildren<{
   showNavbar?: boolean;
@@ -13,7 +10,6 @@ type AdminLayoutProps = PropsWithChildren<{
   activeHref?: string;
   actions?: React.ReactNode;
 }>;
-// export const AdminLayout = ({ children }: React.PropsWithChildren<{}>) => (
 export const AdminLayout = ({
   showNavbar = true,
   title,

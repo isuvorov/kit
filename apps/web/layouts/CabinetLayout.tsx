@@ -1,9 +1,9 @@
 import type { PropsWithChildren } from 'react';
 import { Container } from 'react-bootstrap';
 
-import { AppBreadcrumbs } from '@/comps/AppBreadcrumbs';
+import { AppBreadcrumbs } from '@/layouts/components/AppBreadcrumbs';
 
-import { LayoutNavbar } from './LayoutNavbar';
+import { LayoutNavbar } from './components/LayoutNavbar';
 
 type CabinetLayoutProps = PropsWithChildren<{
   showNavbar?: boolean;

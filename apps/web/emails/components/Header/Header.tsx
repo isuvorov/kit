@@ -24,7 +24,7 @@ const hr = {
 export const Header = ({ children }: React.PropsWithChildren) => (
   <>
     <Section style={logoContainer}>
-      <Img src={`${baseUrl}/assets/bootstrap-logo.svg`} width="120" height="100" alt="Logo" />
+      <Img src={`${baseUrl}/assets/logo.svg`} width="120" height="100" alt="Logo" />
     </Section>
     <Heading style={h1}>{children}</Heading>
     <Hr style={hr} />

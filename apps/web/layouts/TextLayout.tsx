@@ -3,7 +3,7 @@ import type { PropsWithChildren } from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 
 import styles from './AuthLayout.module.css';
-import { LayoutNavbar } from './LayoutNavbar';
+import { LayoutNavbar } from './components/LayoutNavbar';
 
 type TextLayoutProps = PropsWithChildren<{
   showNavbar?: boolean;

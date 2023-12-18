@@ -10,6 +10,7 @@ import { MailerModule } from '@nestjs-modules/mailer';
 import { AccessLoggerMiddleware } from '@nestlib/access-logger';
 import { AuthGuard } from '@nestlib/auth/AuthGuard';
 import { ConfigModule, getConfig, loadConfigEnvs } from '@nestlib/config';
+import { loggerFactory } from '@nestlib/mikro-orm';
 import { ReactAdapter } from '@webtre/nestjs-mailer-react-adapter';
 
 import { AuthController, AuthOtpService, AuthService } from '@/nestlib/auth';
@@ -20,7 +21,6 @@ import { UserListController } from './api/UserListController';
 import { ExampleListController } from './examples/ExampleListController';
 import testControlers from './examples/test';
 import models from './nestlib/auth/models';
-import { loggerFactory } from './nestlib/mikro-orm/loggerFactory';
 
 const notNull = (v, def) => (v == null ? def : v);
 

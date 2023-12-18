@@ -63,7 +63,7 @@ export const Footer = ({ social = [], links = [], copyright }: FooterProps) => (
     <Section>
       <Row style={footerLogos}>
         <Column style={{ width: '66%' }}>
-          <Img src={`${baseUrl}/assets/bootstrap-logo.svg`} width="46" height="36" alt="Logo" />
+          <Img src={`${baseUrl}/assets/logo.svg`} width="46" height="36" alt="Logo" />
         </Column>
         <Column style={socialWrapper}>
           {social.map((item) => (

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Button } from 'react-bootstrap';
 
 import { brandCompany, brandDescription, brandTitle } from '@/config/branding';
-import { LayoutNavbar } from '@/layouts/LayoutNavbar';
+import { LayoutNavbar } from '@/layouts/components/LayoutNavbar';
 
 // Inspired by: https://yevgenysim-turkey.github.io/incline/
 export default function HomePage() {

@@ -1,7 +1,7 @@
 
 @import "~bootstrap/dist/css/bootstrap.min.css";
-@import "~animate.css/animate.min.css";
-@import "./theme.css";
+/* @import "~animate.css/animate.min.css"; */
+@import "./theme/theme.css";
 /* @import "~react-datepicker/dist/react-datepicker.css"; */
 /* @import "@rckit/table/lib/index.css"; */
 @import "./rckit-variables.css";

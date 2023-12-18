@@ -2,7 +2,7 @@ import { isActive } from '@rckit/navbar';
 import { PropsWithChildren } from 'react';
 import { Breadcrumb, Col, Row } from 'react-bootstrap';
 
-import { findAppBreadcrumbs } from '@/comps/findAppBreadcrumbs';
+import { findAppBreadcrumbs } from '@/layouts/components/findAppBreadcrumbs';
 
 export type AppBreadcrumbsProps = PropsWithChildren<{
   title?: string;
