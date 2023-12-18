@@ -246,7 +246,7 @@
 
 **Ожидаемый результат:** Выводить сообщение на экран "Incorrect phone number"
 
-## #2 AuthLogin
+## #2 AuthLogin(main)
 
 ## :tada: № 2.1 Happy path 
 
@@ -361,7 +361,7 @@
 
 **Ожидаемый результат:** сообщение: "Check your connection and try again"
 
-## #3 AuthCompany. Settings
+## #3 AuthCompany. Settings(main)
 
 ## :tada: №3.1 Happy path AuthCompany – Settings
 
@@ -397,7 +397,7 @@
 
 **Ожидаемый результат:** У гостя нет доступа в "Settings"
 
-## #4 AuthRestore
+## #4 AuthRestore(main)
 
 ## :tada: № 4.1 Happy path Restore password
 
