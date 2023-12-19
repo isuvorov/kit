@@ -6,10 +6,10 @@ import { Button, Card, Form, Modal } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 
 import { AdminLayout } from '@/layouts/AdminLayout';
-import { UserListItem } from '@/queries/users2';
 
 interface Controls {
-  role?: string;
+  firstName?: string;
+  lastName?: string;
 }
 
 export default function AdminUserPage() {
@@ -19,7 +19,7 @@ export default function AdminUserPage() {
 
   const queryClient = useQueryClient();
 
-  const { data, isLoading } = useQuery<UserListItem>({
+  const { data, isLoading } = useQuery({
     queryKey: ['users', id],
     queryFn: async () => {
       const { data: _data } = await apiClient.request<any, any>({
@@ -32,17 +32,18 @@ export default function AdminUserPage() {
 
   const { register, handleSubmit } = useForm<Controls>({
     defaultValues: {
-      role: data?.role,
+      firstName: data?.info?.firstName,
+      lastName: data?.info?.lastName,
     },
   });
 
   async function onSubmit(fields: Controls) {
-    const { role } = fields;
+    const { firstName } = fields;
     await apiClient.request<any, any>({
       method: 'post',
       url: `/api/users/update`,
       params: { id },
-      data: { role },
+      data: { info: { firstName } },
     });
     if (modal.type === 'invalidate') {
       queryClient.invalidateQueries({ queryKey: ['users', id] });
@@ -62,6 +63,10 @@ export default function AdminUserPage() {
         <Card.Body>
           <Card.Title>{data?.email}</Card.Title>
           <Card.Text>
+            <b>First name:</b> {data?.info?.firstName}
+            <br />
+            <b>Last name:</b> {data?.info?.lastName}
+            <br />
             <b>Email:</b> {data?.email}
             <br />
             <b>Role:</b> {data?.role}
@@ -81,9 +86,9 @@ export default function AdminUserPage() {
               </Modal.Header>
               <Modal.Body>
                 <Form onSubmit={handleSubmit(onSubmit)}>
-                  <Form.Group controlId="role">
-                    <Form.Label>Role</Form.Label>
-                    <Form.Control {...register('role')} placeholder="Enter role" />
+                  <Form.Group controlId="firstName">
+                    <Form.Label>First name</Form.Label>
+                    <Form.Control {...register('firstName')} placeholder="Enter first name" />
                   </Form.Group>
                   <Button variant="primary" type="submit">
                     Save
