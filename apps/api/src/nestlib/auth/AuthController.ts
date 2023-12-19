@@ -2,7 +2,18 @@ import { pick } from '@lsk4/algos';
 import { Err } from '@lsk4/err';
 import { EntityRepository } from '@mikro-orm/mongodb';
 import { InjectRepository } from '@mikro-orm/nestjs';
-import { All, Body, Controller, HttpStatus, Post, Req, Res, UseInterceptors } from '@nestjs/common';
+import {
+  All,
+  Body,
+  Controller,
+  HttpStatus,
+  Post,
+  Req,
+  Res,
+  UseInterceptors,
+  UsePipes,
+  ValidationPipe,
+} from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { MailerService } from '@nestjs-modules/mailer';
 import { AuthRole } from '@nestlib/auth';
@@ -13,6 +24,8 @@ import { toUserJson } from '@/api/toUserJson';
 import { renderOtpEmail } from '../../emails/OtpEmail';
 import { AuthOtpService } from './AuthOtpService';
 import { AuthService } from './AuthService';
+import { SignInDTO } from './dto/SignIn.dto';
+import { SignUpDTO } from './dto/SignUp.dto';
 import { UserModel } from './models/UserModel';
 import { Request, Response, User } from './types';
 
@@ -37,11 +50,8 @@ export class AuthController {
 
   // TODO: не согласен с многим
   @Post('login')
-  async login(
-    @Body('email') email: string,
-    @Body('password') password: string,
-    @Req() req: Request,
-  ) {
+  @UsePipes(new ValidationPipe({ transform: true }))
+  async login(@Body() data: SignInDTO, @Req() req: Request) {
     if (req.session?.user) {
       return {
         _id: req.session.id,
@@ -49,6 +59,7 @@ export class AuthController {
         session: req.session,
       };
     }
+    const { email, password } = data;
 
     const { isPasswordValid, user } = await this.authService.verifyUserCredentials({
       email,
@@ -84,12 +95,9 @@ export class AuthController {
   }
 
   @Post('signup')
-  async signup(
-    @Body('tos') tos: boolean,
-    @Body('email') email: string,
-    @Body('password') password: string,
-    @Req() req: Request,
-  ) {
+  @UsePipes(new ValidationPipe({ transform: true }))
+  async signup(@Body() data: SignUpDTO, @Req() req: Request) {
+    const { tos, email, password } = data;
     if (req.session?.user) {
       return {
         _id: req.session.id,

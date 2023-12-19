@@ -23,6 +23,7 @@ export class UserModel {
   @PrimaryKey({ name: '_id', hidden: false })
   _id!: ObjectId;
 
+  // TODO: to lower case
   @Property()
   email!: string;
 
