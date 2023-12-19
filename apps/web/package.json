@@ -21,7 +21,7 @@
     "@lsk4/err": "^4.5.0",
     "@lsk4/log": "^4.5.0",
     "@rckit/api-client": "^4.14.0",
-    "@rckit/auth": "^4.14.0",
+    "@rckit/auth": "^4.15.1",
     "@rckit/avatar": "^4.14.0",
     "@rckit/debug": "^4.13.0",
     "@rckit/form": "^4.14.0",
