@@ -72,12 +72,15 @@ export class UserListController {
   @Post(['update', 'edit'])
   async update(@Query(['_id', 'id']) id, @Body() raw) {
     const em = this.usersRepository.getEntityManager() as EntityManager;
-    const data = pick(raw, ['info']);
+    // const data = pick(raw, ['info']);
+    const data = pick(raw, ['info', 'role']);
     if (!id) throw new Err('!_id', 'Empty query _id', { status: 400 });
     if (!Object.keys(data).length) throw new Err('!data', 'Empty data', { status: 400 });
     const user = await this.usersRepository.findOne(id);
     if (!user) throw new Err('!user', 'User not found', { status: 404 });
 
+    // REMOVE NEXT LINE. IT IS ONLY FOR SEN-33
+    if (data.role && typeof data.role === 'string') user.role = data.role;
     wrap(user).assign({ info: data.info || {} }, { mergeObjects: true });
     await em.persistAndFlush(user);
     // TODO: а может вернуть измененный объект?
