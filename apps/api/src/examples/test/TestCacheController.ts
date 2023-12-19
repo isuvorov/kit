@@ -1,8 +1,12 @@
 import { createLogger } from '@lsk4/log';
 import { CacheTTL } from '@nestjs/cache-manager';
-import { Controller, Get, Query, UseInterceptors } from '@nestjs/common';
+import { All, Controller, Get, Post, Query, Req, UseInterceptors } from '@nestjs/common';
 import { ErrorInterceptor, ResponseInterceptor } from '@nestlib/interceptors';
 import { delay } from 'fishbird';
+import { ExampleFilter } from 'lib/nestlib/Filter';
+
+import { Cache } from '@/nestlib/decorators/Cache.decorator';
+import { Find, FindParams } from '@/nestlib/list/FindParams.decorator';
 
 // NOTE: тестируем кеш как-то так
 // ab -n 10 -c 1 https://lskjs.ru/
@@ -11,12 +15,14 @@ import { delay } from 'fishbird';
 // по идее при этих 3х запросах максимальное время ответа должен быть плюс минус одно
 
 @Controller('/api/test/cache')
-@UseInterceptors(new ResponseInterceptor(), new ErrorInterceptor())
+@UseInterceptors(ResponseInterceptor, ErrorInterceptor)
 export class TestCacheController {
   log = createLogger(this.constructor.name);
 
   @Get('index')
-  @CacheTTL(60000)
+  @Cache({
+    ttl: 60000,
+  })
   async index() {
     // NOTE: простой пример кеширования
     const updatedAt = new Date();
@@ -27,7 +33,10 @@ export class TestCacheController {
   }
 
   @Get('id')
-  @CacheTTL(60000)
+  @Cache({
+    ttl: 60000,
+    paramIndex: [0],
+  })
   async id(@Query('id') id: string) {
     // NOTE: тут нужен пример кеша для id
     const updatedAt = new Date();
@@ -39,7 +48,9 @@ export class TestCacheController {
   }
 
   @Get('quick')
-  @CacheTTL(1000)
+  @Cache({
+    ttl: 1000,
+  })
   async quick() {
     this.log.debug('quick start');
     // NOTE: эммулируем легкий не критичный запрос
@@ -52,7 +63,9 @@ export class TestCacheController {
   }
 
   @Get('strange')
-  @CacheTTL(1000)
+  @Cache({
+    ttl: 1000,
+  })
   async strange() {
     this.log.debug('strange start');
     // NOTE: странный кейс при котором мы поствили кеш ниже чем долгий запрос, по идее метод должен подтротливать, и возможно в таких случаях надо дать возможность через опцию возвращать не актуальный кеш,
@@ -66,7 +79,9 @@ export class TestCacheController {
   }
 
   @Get('products')
-  @CacheTTL(60000)
+  @Cache({
+    ttl: 60000,
+  })
   async products() {
     this.log.debug('products start');
     // NOTE: эммулируем долгий запрос, очень не хотелось бы чтобы в похожих параллельных запросах мы утонули. примерно как в proxy
@@ -76,6 +91,26 @@ export class TestCacheController {
     this.log.debug('products finish', updatedAt);
     return {
       updatedAt,
+    };
+  }
+
+  @All('find')
+  @Cache({
+    ttl: 60000,
+    paramIndex: [0],
+  })
+  async find(
+    @FindParams({
+      filterDTO: ExampleFilter,
+    })
+    data,
+  ) {
+    this.log.debug('find start');
+    const updatedAt = new Date();
+    this.log.debug('find finish', updatedAt);
+    return {
+      updatedAt,
+      data,
     };
   }
 }

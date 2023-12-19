@@ -1,5 +1,6 @@
 import { isDev } from '@lsk4/env';
 import { MikroOrmModule } from '@mikro-orm/nestjs';
+import { CacheModule } from '@nestjs/cache-manager';
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule as NestConfigModule } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';
@@ -13,6 +14,8 @@ import { ConfigModule, getConfig, loadConfigEnvs } from '@nestlib/config';
 import { loggerFactory } from '@nestlib/mikro-orm';
 import { ReactAdapter } from '@webtre/nestjs-mailer-react-adapter';
 
+// import { redisStore } from 'cache-manager-redis-store';
+// import type { RedisClientOptions } from 'redis';
 import { AuthController, AuthOtpService, AuthService } from '@/nestlib/auth';
 
 import { ApiController } from './api/ApiController';
@@ -33,10 +36,16 @@ const notNull = (v, def) => (v == null ? def : v);
     ConfigModule.forRoot(
       loadConfigEnvs(['process.env.ENV_JSON', '.env.cjs', '../.env.cjs', '../../.env.cjs']),
     ),
+    CacheModule.register(),
     // CacheModule.registerAsync(
-    //   getConfig('redis', (cnf) => ({
-    //     store: redisStore,
-    //     ...cnf,
+    //   getConfig('dbs.mongodb', (cnf: RedisClientOptions) => ({
+    //     store: (): any =>
+    //       redisStore({
+    //         socket: {
+    //           host: cnf.host,
+    //           port: cnf.port,
+    //         },
+    //       }),
     //   })),
     // ),
     MikroOrmModule.forRootAsync(
