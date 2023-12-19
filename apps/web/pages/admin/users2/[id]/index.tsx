@@ -40,7 +40,8 @@ export default function AdminUserPage() {
     const { role } = fields;
     await apiClient.request<any, any>({
       method: 'post',
-      url: `/api/users/edit?_id=${id}`,
+      url: `/api/users/update`,
+      params: { id },
       data: { role },
     });
     if (modal.type === 'invalidate') {
