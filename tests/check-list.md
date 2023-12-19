@@ -7,7 +7,7 @@
     - [AuthCompany](#3-authcompany-settings)
     - [AuthRestore](#4-authrestore)
 
-- :books: [Неосновные кейсы](#неосновные-кейсы)
+- :books: [Дополнительные кейсы](#дополнительные-кейсы)
     - [AuthSignup](#1-authsignupnot-the-main)
     - [AuthLogin](#2-authloginnot-the-main)
     - [AuthCompany](#3-authcompany-settingsnot-the-main)
@@ -474,7 +474,7 @@
 
 **Ожидаемый результат:** появление сообщения "Please use a corporate email" -->
 
-# :books: Неосновные кейсы
+# :books: Дополнительные кейсы
 
 ## #1 AuthSignup(not the main)
 
