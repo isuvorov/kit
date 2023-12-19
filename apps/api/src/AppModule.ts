@@ -31,7 +31,7 @@ const notNull = (v, def) => (v == null ? def : v);
       envFilePath: ['.env', '../.env', '../../.env'],
     }),
     ConfigModule.forRoot(
-      loadConfigEnvs(['process.env.ENV_JSON', '.env.js', '../.env.js', '../../.env.js']),
+      loadConfigEnvs(['process.env.ENV_JSON', '.env.cjs', '../.env.cjs', '../../.env.cjs']),
     ),
     // CacheModule.registerAsync(
     //   getConfig('redis', (cnf) => ({
