@@ -291,6 +291,7 @@ export class AuthController {
           if (err) return reject(err);
           return resolve({});
         });
+        return;
       }
 
       req.session.regenerate((err) => {
