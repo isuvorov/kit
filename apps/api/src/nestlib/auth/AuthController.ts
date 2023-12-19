@@ -2,7 +2,8 @@ import { pick } from '@lsk4/algos';
 import { Err } from '@lsk4/err';
 import { EntityRepository } from '@mikro-orm/mongodb';
 import { InjectRepository } from '@mikro-orm/nestjs';
-import { All, Body, Controller, HttpStatus, Post, Req, UseInterceptors } from '@nestjs/common';
+import { All, Body, Controller, HttpStatus, Post, Req, Res, UseInterceptors } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { MailerService } from '@nestjs-modules/mailer';
 import { AuthRole } from '@nestlib/auth';
 import { ErrorInterceptor, ResponseInterceptor } from '@nestlib/interceptors';
@@ -13,7 +14,7 @@ import { renderOtpEmail } from '../../emails/OtpEmail';
 import { AuthOtpService } from './AuthOtpService';
 import { AuthService } from './AuthService';
 import { UserModel } from './models/UserModel';
-import { Request, User } from './types';
+import { Request, Response, User } from './types';
 
 @Controller('/api/auth')
 @UseInterceptors(new ResponseInterceptor(), new ErrorInterceptor())
@@ -22,6 +23,7 @@ export class AuthController {
     private authService: AuthService,
     private otpService: AuthOtpService,
 
+    private configService: ConfigService,
     private mailerService: MailerService,
 
     @InjectRepository(UserModel)
@@ -244,10 +246,9 @@ export class AuthController {
   }
 
   @Post('logout')
-  async logout(@Req() req: Request) {
-    if (!req.session?.user) return {};
-
-    return this.applySession(req, null);
+  async logout(@Req() req: Request, @Res() res: Response) {
+    res.clearCookie(this.configService.get('auth.session.cookieName'));
+    res.status(200).send(this.applySession(req));
   }
 
   @All('session')
@@ -275,8 +276,15 @@ export class AuthController {
     };
   }
 
-  applySession(req: Request, user: Partial<User>) {
+  applySession(req: Request, user?: Partial<User>) {
     return new Promise((resolve, reject) => {
+      if (!user) {
+        req.session.destroy((err) => {
+          if (err) return reject(err);
+          return resolve({});
+        });
+      }
+
       req.session.regenerate((err) => {
         if (err) return reject(err);
         req.session.user = user;

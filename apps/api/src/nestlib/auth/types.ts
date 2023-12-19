@@ -1,4 +1,4 @@
-import { Request as ExpressRequest } from 'express';
+import { Request as ExpressRequest, Response as ExpressResponse } from 'express';
 
 export interface User {
   _id?: string;
@@ -27,6 +27,7 @@ export interface SessionData {
 }
 
 export type Request = ExpressRequest & { session: any };
+export type Response = ExpressResponse;
 
 // export interface Request extends ExpressRequest {
 //   session: SessionData; // & Express.Session;
