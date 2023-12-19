@@ -3,10 +3,11 @@ import { CacheTTL } from '@nestjs/cache-manager';
 import { All, Controller, Get, Post, Query, Req, UseInterceptors } from '@nestjs/common';
 import { ErrorInterceptor, ResponseInterceptor } from '@nestlib/interceptors';
 import { delay } from 'fishbird';
-import { ExampleFilter } from 'lib/nestlib/Filter';
 
 import { Cache } from '@/nestlib/decorators/Cache.decorator';
 import { Find, FindParams } from '@/nestlib/list/FindParams.decorator';
+
+import { ExampleFilter } from '../Filter';
 
 // NOTE: тестируем кеш как-то так
 // ab -n 10 -c 1 https://lskjs.ru/
