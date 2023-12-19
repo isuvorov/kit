@@ -33,3 +33,13 @@ test('Sign up with too long password', async ({ page }) => {
   const errorMessage = await element.innerText();
   expect(errorMessage).toBe('Password is too long. Maximum length allowed: 64 characters.');
 });
+
+test('Sign up with empty password', async ({ page }) => {
+  await page.goto('https://kit.lskjs.ru/auth/signup');
+
+  await page.fill('[name="email"]', email);
+  await page.click('[name="tos"]');
+  await page.click('[type="submit"]');
+
+  await expect(page.getByText('Password cannot be blank')).toBeVisible();
+});
