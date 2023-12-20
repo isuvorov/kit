@@ -1,6 +1,8 @@
 import { FormButton, FormItem, useSmartForm } from '@rckit/form';
 import { Col, Form, Row } from 'react-bootstrap';
 
+import { validators } from '@/config/validators';
+
 interface FormProps<T> {
   defaultValues: T;
   onSubmit: (values: T) => Promise<any>;
@@ -31,12 +33,33 @@ export function SettingsProfileForm({
             error={formState.errors.firstName?.message}
             required
           >
-            <Form.Control {...register('firstName', { required: 'First name cannot be black' })} />
+            <Form.Control
+              {...register('firstName', {
+                validate: {
+                  trimBlank: validators.trimBlank,
+                  trimNonLetters: validators.trimNonLetters,
+                  minLength: validators.minLength(1),
+                  maxLength: validators.maxLength(64),
+                },
+              })}
+            />
           </FormItem>
         </Col>
         <Col md={6}>
           <FormItem id="lastName" label="Last name" error={formState.errors.lastName?.message}>
-            <Form.Control {...register('lastName')} />
+            <Form.Control
+              {...register('lastName', {
+                pattern: {
+                  value: /^[a-zA-Z]+$/,
+                  message: 'Field must contain only letters',
+                },
+                validate: {
+                  trimBlank: validators.trimBlank,
+                  minLength: validators.minLength(1),
+                  maxLength: validators.maxLength(64),
+                },
+              })}
+            />
           </FormItem>
         </Col>
         <Col md={6}>
