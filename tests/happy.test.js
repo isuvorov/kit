@@ -13,10 +13,10 @@ test('has title', async ({ page }) => {
   await codeLocator.waitFor();
   // replace to email client probably
   const code = await page.evaluate(async (email) => {
-    const res = await fetch(`/api/auth/getOTPByEmail?email=${encodeURIComponent(email)}`).then(
-      (response) => response.json(),
-    );
-    return res.data;
+    const res = await fetch(
+      `/api/auth/getOTPByEmail?email=${encodeURIComponent(email)}&token=dmVyeSBzZWNyZXQgdG9rZW4=`,
+    ).then((response) => response.json());
+    return res.data.code;
   }, login);
   await codeLocator.fill(code);
   await page.click('button[type=submit]');
