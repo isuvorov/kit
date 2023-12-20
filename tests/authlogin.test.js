@@ -14,7 +14,6 @@ test('Check logining', async ({ page }) => {
   await page.click('[type="submit"]');
   // Wait for the success message to appear
   const successMessage = await page.textContent('h1');
-  console.log(successMessage);
   // Check that the success message is "Success"  
   expect(successMessage).toBe("Cabinet Index");
 });
