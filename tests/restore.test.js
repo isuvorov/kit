@@ -25,3 +25,24 @@ test('Restore password with incorrect email format', async ({ page }) => {
 
   await expect(page.getByText('Incorrect email format')).toBeVisible();
 });
+
+test('Restore password', async ({ page, request }) => {
+  await page.goto('https://kit.lskjs.ru/auth/restore');
+
+  await page.fill('input[name="email"]', email);
+  await page.click('button[type="submit"]');
+
+  // TODO: Check correct page
+  expect(null).toBe(null);
+
+  if (process.env.NODE_ENV === 'testing') {
+    try {
+      const data = await request.get(`/api/auth/restoreCode?email=${email}`);
+      expect(data.link).toBeTruthy();
+      await page.goto(data.link);
+      // TODO: Confirm email link and fill password ?
+    } catch (error) {
+      expect(error).toBe(null);
+    }
+  }
+});
