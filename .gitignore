@@ -3,6 +3,10 @@ apps/*/lib
 apps/*/cjs
 apps/*/.release
 apps/*/.reports
+libs/*/lib
+libs/*/cjs
+libs/*/.release
+libs/*/.reports
 **/.env*
 __*
 package-lock.json

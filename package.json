@@ -13,7 +13,8 @@
     "prepack": "        ycmd prepack",
     "release": "        ycmd release",
     "dev:api": "        pnpm --filter {apps/api} dev",
-    "dev:web": "        pnpm --filter {apps/web} dev"
+    "dev:web": "        pnpm --filter {apps/web} dev",
+    "dev:shared": "     pnpm --filter {libs/shared} dev"
   },
   "devDependencies": {
     "@lsk4/eslint-config": "^4.4.0",

@@ -36,6 +36,13 @@ jobs:
     steps:
       - name: GIT – Checkout
         uses: actions/checkout@v4
+      - name: PNPM – Build shared
+        uses: lskjs/action-pnpm@v1
+        with:
+          working-directory: libs/shared
+          node-version: ${{ env.NODE_VERSION }}
+          pnpm-version: ${{ env.PNPM_VERSION }}
+          command: pnpm build
       - name: PNPM – Release
         uses: lskjs/action-pnpm@v1
         with:
@@ -65,6 +72,13 @@ jobs:
     steps:
       - name: GIT – Checkout
         uses: actions/checkout@v4
+      - name: PNPM – Build shared
+        uses: lskjs/action-pnpm@v1
+        with:
+          working-directory: libs/shared
+          node-version: ${{ env.NODE_VERSION }}
+          pnpm-version: ${{ env.PNPM_VERSION }}
+          command: pnpm build
       - name: PNPM – Release
         uses: lskjs/action-pnpm@v1
         with:
