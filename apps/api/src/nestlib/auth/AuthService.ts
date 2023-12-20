@@ -1,3 +1,4 @@
+import { omit } from '@lsk4/algos';
 import { Err } from '@lsk4/err';
 import { EntityRepository } from '@mikro-orm/mongodb';
 import { InjectRepository } from '@mikro-orm/nestjs';
@@ -69,8 +70,9 @@ export class AuthService {
     // if (!hash) {
     //   throw new Err('!hash', { status: 400, message: 'Password or passwordHash is required' });
     // }
-    const userData = {
-      ...userDto,
+    // TODO: перепридумать это, не нравится companyId, role:user
+    const userData: any = {
+      ...omit(userDto, ['password', 'passwordHash'] as any),
       role: 'user',
       companyId: userDto.email,
     };

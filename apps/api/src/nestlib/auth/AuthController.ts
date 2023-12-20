@@ -1,5 +1,6 @@
 import { pick } from '@lsk4/algos';
 import { Err } from '@lsk4/err';
+import { createLogger } from '@lsk4/log';
 import { EntityRepository } from '@mikro-orm/mongodb';
 import { InjectRepository } from '@mikro-orm/nestjs';
 import {
@@ -42,6 +43,8 @@ export class AuthController {
     @InjectRepository(UserModel)
     private usersRepository: EntityRepository<UserModel>,
   ) {}
+
+  log = createLogger(this.constructor.name);
 
   @All()
   index(): string {
@@ -270,6 +273,9 @@ export class AuthController {
     // console.log('[id]', id);
     const rawUser = await this.usersRepository.findOne({ _id: id });
     const user = rawUser ? toUserJson(rawUser) : null;
+    if (id && !user) {
+      this.log.warn('!user', { id, user });
+    }
 
     // if (!rawUser) throw new Err('!user', 'User not found', { status: 404 });
     // return toUserJson(user);
@@ -324,7 +330,7 @@ export class AuthController {
   // TODO: remove TEST only
   @All('getOTPByEmail')
   // @AuthRole(AuthRole.admin)
-  async getOTP(@Req() req: Request) {
+  async getOTPByEmail(@Req() req: Request) {
     const email = req.body.email || req.query.email;
     if (!email) throw new Err('!email');
     return this.otpService.findByEmail(email);
