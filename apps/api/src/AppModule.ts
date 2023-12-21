@@ -59,7 +59,7 @@ const notNull = (v, def) => (v == null ? def : v);
       })),
     ),
     // MikroOrmModule.forFeature({ entities: models }),
-    MikroOrmModule.forRoot({ entities: models }),
+    MikroOrmModule.forRoot({ entities: Object.values(models) }),
 
     // MikroOrmModule.forRoot({
     //   type: 'mongo',
@@ -113,7 +113,7 @@ const notNull = (v, def) => (v == null ? def : v);
     // }),
 
     // NOTE: nestlib
-    AuthModule,
+    AuthModule.forRoot(),
   ],
   controllers: [
     //
