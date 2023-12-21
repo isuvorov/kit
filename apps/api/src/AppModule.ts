@@ -23,6 +23,7 @@ import { ProductsController } from './api/ProductsController';
 import { UserListController } from './api/UserListController';
 import { ExampleListController } from './examples/ExampleListController';
 import testControlers from './examples/test';
+import { AuthModule } from './nestlib/auth/AuthModule';
 import models from './nestlib/auth/models';
 
 const notNull = (v, def) => (v == null ? def : v);
@@ -57,7 +58,8 @@ const notNull = (v, def) => (v == null ? def : v);
         loggerFactory,
       })),
     ),
-    MikroOrmModule.forFeature({ entities: models }),
+    // MikroOrmModule.forFeature({ entities: models }),
+    MikroOrmModule.forRoot({ entities: models }),
 
     // MikroOrmModule.forRoot({
     //   type: 'mongo',
@@ -109,6 +111,9 @@ const notNull = (v, def) => (v == null ? def : v);
     // TelegrafModule.forRoot({
     //   token: '442648582:AAGAupxQq99r5yutexABJ2-Ks9pc2rnGB7s',
     // }),
+
+    // NOTE: nestlib
+    AuthModule,
   ],
   controllers: [
     //
@@ -121,11 +126,14 @@ const notNull = (v, def) => (v == null ? def : v);
     UserListController,
     ApiController,
 
-    AuthController,
+    // NOTE: nestlib
+    // AuthController,
   ],
   providers: [
-    AuthService,
-    AuthOtpService,
+    // NOTE: nestlib
+    // AuthService,
+    // AuthOtpService,
+
     // BotAppService,
 
     // TODO: подумать

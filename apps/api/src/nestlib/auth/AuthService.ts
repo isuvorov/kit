@@ -6,6 +6,7 @@ import { Injectable } from '@nestjs/common';
 
 // import { InjectRepository } from '@nestjs/typeorm';
 import { comparePassword, hashPassword } from './crypto';
+import { CryptoService } from './crypto/CryptoService';
 import { AuthUserModel } from './models/AuthUserModel';
 import { UserDto } from './types';
 
@@ -14,9 +15,9 @@ export class AuthService {
   constructor(
     @InjectRepository(AuthUserModel)
     private usersRepository: EntityRepository<AuthUserModel>,
-  ) {
-    console.log('this.usersRepository', this.usersRepository);
-  }
+
+    private cryptoService: CryptoService,
+  ) {}
 
   async findUserById(userId: string) {
     const user = await this.usersRepository.findOne(userId);
