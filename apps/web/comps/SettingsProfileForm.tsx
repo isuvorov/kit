@@ -1,6 +1,8 @@
 import { FormButton, FormItem, useSmartForm } from '@rckit/form';
 import { Col, Form, Row } from 'react-bootstrap';
 
+import { trimBlank } from '@/config/validators';
+
 interface FormProps<T> {
   defaultValues: T;
   onSubmit: (values: T) => Promise<any>;
@@ -31,12 +33,48 @@ export function SettingsProfileForm({
             error={formState.errors.firstName?.message}
             required
           >
-            <Form.Control {...register('firstName', { required: 'First name cannot be black' })} />
+            <Form.Control
+              {...register('firstName', {
+                pattern: {
+                  value: /^[a-zA-Z]+$/,
+                  message: 'Field must contain only letters',
+                },
+                minLength: {
+                  value: 1,
+                  message: 'Field must contain at least 1 letter',
+                },
+                maxLength: {
+                  value: 64,
+                  message: 'Field must contain no more than 64 letters',
+                },
+                validate: {
+                  trimBlank,
+                },
+              })}
+            />
           </FormItem>
         </Col>
         <Col md={6}>
           <FormItem id="lastName" label="Last name" error={formState.errors.lastName?.message}>
-            <Form.Control {...register('lastName')} />
+            <Form.Control
+              {...register('lastName', {
+                pattern: {
+                  value: /^[a-zA-Z]+$/,
+                  message: 'Field must contain only letters',
+                },
+                minLength: {
+                  value: 1,
+                  message: 'Field must contain at least 1 letter',
+                },
+                maxLength: {
+                  value: 64,
+                  message: 'Field must contain no more than 64 letters',
+                },
+                validate: {
+                  trimBlank,
+                },
+              })}
+            />
           </FormItem>
         </Col>
         <Col md={6}>
