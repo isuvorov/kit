@@ -21,15 +21,13 @@ import { AuthRole } from '@nestlib/auth';
 import { ErrorInterceptor, ResponseInterceptor } from '@nestlib/interceptors';
 import { renderOtpEmail } from 'shared/emails/templates/OtpEmail';
 
-import { toUserJson } from '@/api/toUserJson';
-
 import { AuthOtpService } from './AuthOtpService';
 import { AuthService } from './AuthService';
 import { ResetPasswordDTO } from './dto/ResetPassword.dto';
 import { ResetPasswordRequestDTO } from './dto/ResetPasswordRequest.dto';
 import { SignInDTO } from './dto/SignIn.dto';
 import { SignUpDTO } from './dto/SignUp.dto';
-import { UserModel } from './models/UserModel';
+import { AuthUserModel } from './models/AuthUserModel';
 import { Request, Response, User } from './types';
 
 @Controller('/api/auth')
@@ -42,8 +40,8 @@ export class AuthController {
     private configService: ConfigService,
     private mailerService: MailerService,
 
-    @InjectRepository(UserModel)
-    private usersRepository: EntityRepository<UserModel>,
+    @InjectRepository(AuthUserModel)
+    private usersRepository: EntityRepository<AuthUserModel>,
   ) {}
 
   log = createLogger(this.constructor.name);
@@ -327,7 +325,7 @@ export class AuthController {
     // console.log('[req.session]', req.session);
     // console.log('[id]', id);
     const rawUser = await this.usersRepository.findOne({ _id: id });
-    const user = rawUser ? toUserJson(rawUser) : null;
+    const user = rawUser ? rawUser.toJSON() : null;
     if (id && !user) {
       this.log.warn('!user', { id, user });
     }

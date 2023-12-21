@@ -13,13 +13,13 @@ export function getUserAvatar(user) {
   return null;
 }
 
-export function toUserJson(user) {
-  const _id = user._id.toString();
-  const name = [user.info?.firstName, user.info?.lastName].filter(Boolean).join(' ');
+export function toUserJson(rawUser) {
+  const _id = String(rawUser._id || rawUser.id);
+  const name = [rawUser.info?.firstName, rawUser.info?.lastName].filter(Boolean).join(' ');
   return {
     _id,
-    ...user.toJSON(),
+    ...rawUser,
     name,
-    avatar: getUserAvatar(user),
+    avatar: getUserAvatar(rawUser),
   };
 }

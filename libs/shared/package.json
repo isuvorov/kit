@@ -32,8 +32,8 @@
     "react": "18.2.0"
   },
   "peerDependencies": {
-    "@lsk4/env": "^4.4.0",
-    "@react-email/components": "^0.0.12",
-    "react": "18.2.0"
+    "@lsk4/env": "*",
+    "@react-email/components": "*",
+    "react": "*"
   }
 }
