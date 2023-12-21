@@ -1,7 +1,7 @@
 import { FormButton, FormItem, useSmartForm } from '@rckit/form';
 import { Col, Form, Row } from 'react-bootstrap';
 
-import { validators } from '@/config/validators';
+import { trimBlank } from '@/config/validators';
 
 interface FormProps<T> {
   defaultValues: T;
@@ -35,11 +35,20 @@ export function SettingsProfileForm({
           >
             <Form.Control
               {...register('firstName', {
+                pattern: {
+                  value: /^[a-zA-Z]+$/,
+                  message: 'Field must contain only letters',
+                },
+                minLength: {
+                  value: 1,
+                  message: 'Field must contain at least 1 letter',
+                },
+                maxLength: {
+                  value: 64,
+                  message: 'Field must contain no more than 64 letters',
+                },
                 validate: {
-                  trimBlank: validators.trimBlank,
-                  trimNonLetters: validators.trimNonLetters,
-                  minLength: validators.minLength(1),
-                  maxLength: validators.maxLength(64),
+                  trimBlank,
                 },
               })}
             />
@@ -53,10 +62,16 @@ export function SettingsProfileForm({
                   value: /^[a-zA-Z]+$/,
                   message: 'Field must contain only letters',
                 },
+                minLength: {
+                  value: 1,
+                  message: 'Field must contain at least 1 letter',
+                },
+                maxLength: {
+                  value: 64,
+                  message: 'Field must contain no more than 64 letters',
+                },
                 validate: {
-                  trimBlank: validators.trimBlank,
-                  minLength: validators.minLength(1),
-                  maxLength: validators.maxLength(64),
+                  trimBlank,
                 },
               })}
             />
