@@ -54,7 +54,7 @@ const notNull = (v, def) => (v == null ? def : v);
       getConfig('dbs.mongodb', (cnf) => ({
         type: 'mongo',
         clientUrl: cnf.uri,
-        entities: models,
+        entities: Object.values(models),
         debug: notNull(cnf.debug, isDev),
         loggerFactory,
       })),
