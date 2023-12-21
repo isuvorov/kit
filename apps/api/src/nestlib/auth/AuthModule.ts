@@ -14,15 +14,16 @@ import defaultModels from './models';
 })
 export class AuthModule {
   static forRoot({ models = {} }: any = {}): DynamicModule {
+    const entities = Object.values({
+      ...defaultModels,
+      ...models,
+    });
     const mirkoormOptions = {
       // TODO: прокинуть типы
-      entities: Object.values({
-        ...defaultModels,
-        ...models,
-      }),
+      entities,
     } as any;
     return {
-      imports: [MikroOrmModule.forRoot(mirkoormOptions)],
+      imports: [MikroOrmModule.forFeature(mirkoormOptions)],
       module: AuthModule,
       controllers: [AuthController],
       providers: [CryptoService, AuthOtpService, AuthService],

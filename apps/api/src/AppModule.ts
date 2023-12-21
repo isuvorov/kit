@@ -4,6 +4,7 @@ import { CacheModule } from '@nestjs/cache-manager';
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule as NestConfigModule } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';
+import { DevtoolsModule } from '@nestjs/devtools-integration';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 // import { BotService } from './bot/bot.service';
 import { ScheduleModule } from '@nestjs/schedule';
@@ -59,7 +60,8 @@ const notNull = (v, def) => (v == null ? def : v);
       })),
     ),
     // MikroOrmModule.forFeature({ entities: models }),
-    MikroOrmModule.forRoot({ entities: Object.values(models) }),
+    // MikroOrmModule.forFeature({ entities: Object.values(models) }),
+    // MikroOrmModule.forRoot({ entities: Object.values(models) }),
 
     // MikroOrmModule.forRoot({
     //   type: 'mongo',
@@ -107,6 +109,9 @@ const notNull = (v, def) => (v == null ? def : v);
     ScheduleModule.forRoot(),
     EventEmitterModule.forRoot(),
 
+    DevtoolsModule.register({
+      http: isDev,
+    }),
     // TelegrafModule.forRootAsync(getConfig('telegram', ({ token }) => ({ token }))),
     // TelegrafModule.forRoot({
     //   token: '442648582:AAGAupxQq99r5yutexABJ2-Ks9pc2rnGB7s',
@@ -119,11 +124,11 @@ const notNull = (v, def) => (v == null ? def : v);
     //
     // AuthController,
     // ProductController,
-    ProductsController,
+    // ProductsController,
     // TelegramAvartarController,
     ...testControlers,
-    ExampleListController,
-    UserListController,
+    // ExampleListController,
+    // UserListController,
     ApiController,
 
     // NOTE: nestlib
