@@ -6,15 +6,17 @@ import { Injectable } from '@nestjs/common';
 
 // import { InjectRepository } from '@nestjs/typeorm';
 import { comparePassword, hashPassword } from './crypto';
-import { UserModel } from './models/UserModel';
+import { AuthUserModel } from './models/AuthUserModel';
 import { UserDto } from './types';
 
 @Injectable()
 export class AuthService {
   constructor(
-    @InjectRepository(UserModel)
-    private usersRepository: EntityRepository<UserModel>,
-  ) {}
+    @InjectRepository(AuthUserModel)
+    private usersRepository: EntityRepository<AuthUserModel>,
+  ) {
+    console.log('this.usersRepository', this.usersRepository);
+  }
 
   async findUserById(userId: string) {
     const user = await this.usersRepository.findOne(userId);
@@ -61,7 +63,7 @@ export class AuthService {
     return res;
   }
 
-  async createUser(userDto: UserDto): Promise<UserModel> {
+  async createUser(userDto: UserDto): Promise<AuthUserModel> {
     if (await this.isUserExists(userDto.email)) {
       throw new Err('auth.emailExists', { status: 400, message: 'User already exists' });
     }

@@ -47,7 +47,7 @@ export const InviteTemplate = () => {
         Join the team
       </Button>
       <Text style={text}>or copy and paste this URL into your browser:</Text>
-      <a style={link} href="https://google.com" target="_blank">
+      <a style={link} href="https://google.com" target="_blank" rel="noopener noreferrer">
         https://google.com
       </a>
       <Text style={text}>

@@ -19,15 +19,15 @@ import { ConfigService } from '@nestjs/config';
 import { MailerService } from '@nestjs-modules/mailer';
 import { AuthRole } from '@nestlib/auth';
 import { ErrorInterceptor, ResponseInterceptor } from '@nestlib/interceptors';
+import { renderOtpEmail } from 'shared/emails/templates/OtpEmail';
 
-import { toUserJson } from '@/api/toUserJson';
-
-import { renderOtpEmail } from '../../emails/OtpEmail';
 import { AuthOtpService } from './AuthOtpService';
 import { AuthService } from './AuthService';
+import { ResetPasswordDTO } from './dto/ResetPassword.dto';
+import { ResetPasswordRequestDTO } from './dto/ResetPasswordRequest.dto';
 import { SignInDTO } from './dto/SignIn.dto';
 import { SignUpDTO } from './dto/SignUp.dto';
-import { UserModel } from './models/UserModel';
+import { AuthUserModel } from './models/AuthUserModel';
 import { Request, Response, User } from './types';
 
 @Controller('/api/auth')
@@ -40,8 +40,8 @@ export class AuthController {
     private configService: ConfigService,
     private mailerService: MailerService,
 
-    @InjectRepository(UserModel)
-    private usersRepository: EntityRepository<UserModel>,
+    @InjectRepository(AuthUserModel)
+    private usersRepository: EntityRepository<AuthUserModel>,
   ) {}
 
   log = createLogger(this.constructor.name);
@@ -159,6 +159,59 @@ export class AuthController {
     };
   }
 
+  @Post('resetPassword')
+  async resetPassword(@Body() data: ResetPasswordDTO, @Req() req: Request) {
+    if (req.session?.user) {
+      return {
+        _id: req.session.id,
+        user: req.session.user,
+        session: req.session,
+      };
+    }
+    // в принципе можно и проверку на правильно введённый пароль сделать, но её и на клиенте хватит
+    const { code, otpId, newPassword } = data;
+    const otp = await this.otpService.findAndCheck(otpId, code);
+    const { email } = otp.params;
+    await this.otpService.activate(otpId, code);
+    await this.authService.setNewPassword(email, newPassword);
+    return true;
+  }
+
+  @Post('resetPassword/request')
+  async resetPasswordRequest(@Body() data: ResetPasswordRequestDTO, @Req() req: Request) {
+    if (req.session?.user) {
+      return {
+        _id: req.session.id,
+        user: req.session.user,
+        session: req.session,
+      };
+    }
+    const { email } = data;
+    // защита от перебора юзеров, говорим что отослали
+    if (!(await this.authService.isUserExists(email))) {
+      return true;
+    }
+    // по идее, там внутри должна быть проверка на протухшесть предыдущего токена, чтобы не генерировать новый
+    const otp = await this.otpService.createOtp('6digit', {
+      type: 'resetPassword',
+      params: {
+        email,
+        createdAt: new Date(),
+      },
+    });
+    await this.mailerService.sendMail({
+      to: email,
+      subject: 'Reset your password',
+      template: 'ResetPasswordEmail',
+      context: {
+        otpId: otp._id,
+        link: `${process.env.APP_URL}/auth/resetPassword?_id=${otp._id}&email=${email}&code=${otp.code}`,
+        name: 'John Doe',
+      },
+    });
+    return true;
+  }
+
   @Post('webapp/signup')
   async webappSignup(
     @Body('tos') tos: boolean,
@@ -272,7 +325,7 @@ export class AuthController {
     // console.log('[req.session]', req.session);
     // console.log('[id]', id);
     const rawUser = await this.usersRepository.findOne({ _id: id });
-    const user = rawUser ? toUserJson(rawUser) : null;
+    const user = rawUser ? rawUser.toJSON() : null;
     if (id && !user) {
       this.log.warn('!user', { id, user });
     }
@@ -332,7 +385,9 @@ export class AuthController {
   // @AuthRole(AuthRole.admin)
   async getOTPByEmail(@Req() req: Request) {
     const email = req.body.email || req.query.email;
+    const token = req.body.token || req.query.token;
     if (!email) throw new Err('!email');
+    if (!token || token !== 'dmVyeSBzZWNyZXQgdG9rZW4=') throw new Err('!token');
     return this.otpService.findByEmail(email);
   }
 

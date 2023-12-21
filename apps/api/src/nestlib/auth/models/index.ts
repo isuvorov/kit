@@ -1,5 +1,4 @@
-import { OtpModel } from './OtpModel';
-import { TransactionModel } from './TransactionModel';
-import { UserModel } from './UserModel';
+import { AuthOtpModel } from './AuthOtpModel';
+import { AuthUserModel } from './AuthUserModel';
 
-export default [UserModel, OtpModel, TransactionModel];
+export default [AuthUserModel, AuthOtpModel];

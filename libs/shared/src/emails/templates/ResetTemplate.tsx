@@ -24,12 +24,16 @@ const button = {
   fontWeight: 'bold' as const,
 };
 
-const link = {
+const linkStyle = {
   ...text,
   color: '#8b12fc',
 };
 
-export const ResetTemplate = () => {
+interface ResetTemplateProps {
+  link: string;
+}
+
+export const ResetTemplate = ({ link }: ResetTemplateProps) => {
   const preview = 'Did you forget your password?';
   const header = 'Reset your password';
   return (
@@ -39,7 +43,7 @@ export const ResetTemplate = () => {
         Someone recently requested a password change for your [Your website name] account. If this
         was you, you can set a new password here:
       </Text>
-      <Button style={button} href="https://google.com" target="_blank" rel="noopener noreferrer">
+      <Button style={button} href={link} target="_blank" rel="noopener noreferrer">
         Reset password
       </Button>
       <Text style={text}>
@@ -48,7 +52,7 @@ export const ResetTemplate = () => {
       </Text>
       <Text style={text}>
         To keep your account secure, please don't forward this email to anyone. See our{' '}
-        <a style={link} href="https://google.com">
+        <a style={linkStyle} href="https://google.com">
           Help Center
         </a>{' '}
         for more security tips.
@@ -56,3 +60,5 @@ export const ResetTemplate = () => {
     </BaseTemplate>
   );
 };
+
+export default ResetTemplate;

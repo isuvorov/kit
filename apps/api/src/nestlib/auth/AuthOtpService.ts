@@ -4,8 +4,8 @@ import { InjectRepository } from '@mikro-orm/nestjs';
 import { Injectable } from '@nestjs/common';
 
 // import { InjectRepository } from '@nestjs/typeorm';
-import { OtpModel } from './models/OtpModel';
-import { UserModel } from './models/UserModel';
+import { AuthOtpModel } from './models/AuthOtpModel';
+import { AuthUserModel } from './models/AuthUserModel';
 import { generateCode } from './utils';
 
 const otpTypes = {
@@ -54,11 +54,11 @@ const otpTypes = {
 @Injectable()
 export class AuthOtpService {
   constructor(
-    @InjectRepository(UserModel)
-    private usersRepository: EntityRepository<UserModel>,
+    @InjectRepository(AuthUserModel)
+    private usersRepository: EntityRepository<AuthUserModel>,
 
-    @InjectRepository(OtpModel)
-    private otpsRepository: EntityRepository<OtpModel>,
+    @InjectRepository(AuthOtpModel)
+    private otpsRepository: EntityRepository<AuthOtpModel>,
   ) {}
 
   generateCode(scenario, params = {}) {
@@ -102,11 +102,18 @@ export class AuthOtpService {
   }
   // TODO: only for TEST, remove
   async findByEmail(email: string): Promise<any> {
-    const otp = await this.otpsRepository.findOne({
-      // @ts-ignore
-      'params.email': email,
-    });
-    return otp?.code;
+    const otp = await this.otpsRepository.findOne(
+      {
+        // @ts-ignore
+        'params.email': email,
+      },
+      {
+        orderBy: {
+          _id: -1,
+        },
+      },
+    );
+    return otp;
   }
   async findAndCheck(otpId, code): Promise<any> {
     const otp = await this.otpsRepository.findOne({ _id: otpId });
