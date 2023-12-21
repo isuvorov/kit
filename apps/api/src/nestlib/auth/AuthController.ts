@@ -19,8 +19,8 @@ import { ConfigService } from '@nestjs/config';
 import { MailerService } from '@nestjs-modules/mailer';
 import { AuthRole } from '@nestlib/auth';
 import { ErrorInterceptor, ResponseInterceptor } from '@nestlib/interceptors';
-import { renderOtpEmail } from 'shared/emails/templates/OtpEmail';
 
+// import { renderOtpEmail } from 'shared/emails/templates/OtpEmail';
 import { AuthOtpService } from './AuthOtpService';
 import { AuthService } from './AuthService';
 import { ResetPasswordDTO } from './dto/ResetPassword.dto';
@@ -79,23 +79,23 @@ export class AuthController {
     return this.applySession(req, user);
   }
 
-  @All('email')
-  async email() {
-    const html = renderOtpEmail({ code: 1234 });
-    await this.mailerService.sendMail({
-      to: 'me@coder24.ru',
-      subject: 'Testing react template',
-      template: 'OtpEmail', // The compiled extension is appended automatically.
-      context: {
-        // Data to be passed as props to your template.
-        code: '123456',
-        name: 'John Doe',
-      },
-    });
-    return {
-      __raw: html,
-    };
-  }
+  // @All('email')
+  // async email() {
+  //   // const html = renderOtpEmail({ code: 1234 });
+  //   await this.mailerService.sendMail({
+  //     to: 'me@coder24.ru',
+  //     subject: 'Testing react template',
+  //     template: 'OtpEmail', // The compiled extension is appended automatically.
+  //     context: {
+  //       // Data to be passed as props to your template.
+  //       code: '123456',
+  //       name: 'John Doe',
+  //     },
+  //   });
+  //   return {
+  //     __raw: html,
+  //   };
+  // }
 
   @Post('signup')
   @UsePipes(new ValidationPipe({ transform: true }))

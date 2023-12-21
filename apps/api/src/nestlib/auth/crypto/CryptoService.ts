@@ -17,19 +17,19 @@ export class CryptoService implements OnModuleInit {
 
   async createClient() {
     try {
-      return await import('./bcrypt.js');
+      return await import('./utils/bcrypt.js');
     } catch (err) {
-      this.log.trace('bcrypt.js not found, using bcryptjs');
+      this.log.trace('bcrypt not found, try using bcryptjs');
     }
     try {
-      return await import('./bcryptjs.js');
+      return await import('./utils/bcryptjs.js');
     } catch (err) {
-      this.log.trace('bcryptjs.js not found, using crypto');
+      this.log.trace('bcryptjs not found, try using crypto');
     }
     try {
-      return await import('./crypto.js');
+      return await import('./utils/crypto.js');
     } catch (err) {
-      this.log.trace('crypto.js not found, fatal ');
+      this.log.trace('crypto not found, fatal');
       throw err;
     }
     return null;

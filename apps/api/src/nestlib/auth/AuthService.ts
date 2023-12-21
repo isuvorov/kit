@@ -4,9 +4,9 @@ import { EntityRepository } from '@mikro-orm/mongodb';
 import { InjectRepository } from '@mikro-orm/nestjs';
 import { Injectable } from '@nestjs/common';
 
-// import { InjectRepository } from '@nestjs/typeorm';
-import { comparePassword, hashPassword } from './crypto';
 import { CryptoService } from './crypto/CryptoService';
+// import { InjectRepository } from '@nestjs/typeorm';
+import { comparePassword, hashPassword } from './crypto/utils';
 import { AuthUserModel } from './models/AuthUserModel';
 import { UserDto } from './types';
 

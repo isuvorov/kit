@@ -2,15 +2,14 @@ import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { DynamicModule, Module } from '@nestjs/common';
 
 import { AuthController, AuthOtpService, AuthService } from '.';
-// import { InjectRepository } from '@nestjs/typeorm';
-import { CryptoService } from './crypto/CryptoService';
+import { CryptoModule } from './crypto/CryptoModule';
 import defaultModels from './models';
 
 @Module({
   // import: [],
-  controllers: [AuthController],
-  providers: [CryptoService, AuthOtpService, AuthService],
-  exports: [CryptoService, AuthOtpService, AuthService],
+  // controllers: [AuthController],
+  // providers: [CryptoService, AuthOtpService, AuthService],
+  // exports: [CryptoService, AuthOtpService, AuthService],
 })
 export class AuthModule {
   static forRoot({ models = {} }: any = {}): DynamicModule {
@@ -23,11 +22,11 @@ export class AuthModule {
       entities,
     } as any;
     return {
-      imports: [MikroOrmModule.forFeature(mirkoormOptions)],
+      imports: [MikroOrmModule.forFeature(mirkoormOptions), CryptoModule.forRoot()],
       module: AuthModule,
       controllers: [AuthController],
-      providers: [CryptoService, AuthOtpService, AuthService],
-      exports: [CryptoService, AuthOtpService, AuthService],
+      providers: [AuthOtpService, AuthService],
+      exports: [AuthOtpService, AuthService],
     };
   }
 }
