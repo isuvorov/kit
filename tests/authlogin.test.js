@@ -27,11 +27,10 @@ test('Incorrect login email', async ({ page }) => {
   await page.fill('[name="password"]', password);
   //Click on login button
   await page.click('[type="submit"]');
-
-//   await page.waitForTimeout(5000);
+  await page.waitForSelector('.text-center.form-text.text-danger');
+  await page.waitForTimeout(5000);
 //   await page.waitForSelector('.text-center.form-text.text-danger');
   // Check that the success message is "Success"
   const Message = await page.innerText('.text-center.form-text.text-danger');
-  сonsole.log(Message);
   expect(Message).toBe("User with this email not found");
 });
