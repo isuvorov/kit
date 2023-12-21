@@ -18,6 +18,8 @@ import { ReactAdapter } from '@webtre/nestjs-mailer-react-adapter';
 // import { redisStore } from 'cache-manager-redis-store';
 // import type { RedisClientOptions } from 'redis';
 import { ApiController } from './api/ApiController';
+import { UserListController } from './api/UserListController';
+import { ExampleListController } from './examples/ExampleListController';
 import testControlers from './examples/test';
 
 const notNull = (v, def) => (v == null ? def : v);
@@ -52,21 +54,8 @@ const notNull = (v, def) => (v == null ? def : v);
         loggerFactory,
       })),
     ),
-    // MikroOrmModule.forFeature({ entities: models }),
-    // MikroOrmModule.forFeature({ entities: Object.values(models) }),
-    // MikroOrmModule.forRoot({ entities: Object.values(models) }),
-
-    // MikroOrmModule.forRoot({
-    //   type: 'mongo',
-    //   //   dbName: 'your_database_name',
-    //   //   migrations: {
-    //   //     path: './src/migrations',
-    //   //     pattern: /^[\w-]+\d+\.[jt]s$/, // Specify your migration files pattern
-    //   //   },
-    // }),
-
+    MikroOrmModule.forFeature({ entities: Object.values(models) }),
     // S3Module.forRootAsync(getConfig('s3', (config) => ({ config }))),
-
     // GraphQLModule.forRoot<ApolloDriverConfig>({
     //   driver: YogaDriver,
     //   // driver: ApolloDriver,
@@ -120,8 +109,8 @@ const notNull = (v, def) => (v == null ? def : v);
     // ProductsController,
     // TelegramAvartarController,
     ...testControlers,
-    // ExampleListController,
-    // UserListController,
+    ExampleListController,
+    UserListController,
     ApiController,
 
     // NOTE: nestlib
