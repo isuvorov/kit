@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test';
 
+const restoreEmail = 'test-restore@gmail.com';
 const email = `notexistingemail${Math.random()}@gmail.com`;
 const incorrectEmailFormat = 'email@examplecom';
 
@@ -27,22 +28,39 @@ test('Restore password with incorrect email format', async ({ page }) => {
 });
 
 test('Restore password', async ({ page, request }) => {
-  await page.goto('https://kit.lskjs.ru/auth/restore');
+  const baseURL = 'http://localhost:3000';
+  await page.goto(`${baseURL}/auth/restore`);
 
-  await page.fill('input[name="email"]', email);
+  await page.fill('input[name="email"]', restoreEmail);
   await page.click('button[type="submit"]');
 
-  // TODO: Check correct page
-  expect(null).toBe(null);
+  await page.waitForSelector('[data-test-id="restore-sent"]');
 
-  if (process.env.NODE_ENV === 'testing') {
-    try {
-      const data = await request.get(`/api/auth/restoreCode?email=${email}`);
-      expect(data.link).toBeTruthy();
-      await page.goto(data.link);
-      // TODO: Confirm email link and fill password ?
-    } catch (error) {
-      expect(error).toBe(null);
-    }
-  }
+  const response = await request.get(
+    `${baseURL}/api/auth/getOTPByEmail?email=${encodeURIComponent(
+      restoreEmail,
+    )}&token=dmVyeSBzZWNyZXQgdG9rZW4=`,
+  );
+  const { data } = await response.json();
+
+  expect(data).toEqual(
+    expect.objectContaining({
+      id: expect.any(String),
+      code: expect.any(String),
+      params: expect.objectContaining({
+        email: restoreEmail,
+      }),
+    }),
+  );
+
+  await page.goto(
+    `${baseURL}/auth/resetPassword?_id=${data.id}&code=${data.code}&email=${restoreEmail}`,
+  );
+  const password = `password${Math.random()}`;
+  await page.fill('input[name="newPassword"]', password);
+  await page.click('button[type="submit"]');
+  const h3 = page.locator('h3');
+  await h3.waitFor();
+
+  await expect(h3).toHaveText('Sign In');
 });
