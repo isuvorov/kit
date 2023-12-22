@@ -9,11 +9,13 @@
     "dev": "            concurrently -k npm:dev:*",
     "debug": "          DEBUG=* npm run dev",
     "build": "          ycmd build",
+    "build:lib": "      pnpm -r -F {libs/*} build --prod --silent",
     "test": "           echo ycmd test - skip",
     "prepack": "        ycmd prepack",
     "release": "        ycmd release",
-    "dev:api": "        pnpm --filter {apps/api} dev",
-    "dev:web": "        pnpm --filter {apps/web} dev"
+    "dev:api": "        pnpm -F {apps/api} dev",
+    "dev:web": "        pnpm -F {apps/web} dev",
+    "dev:lib": "        pnpm -F {libs/*} dev"
   },
   "devDependencies": {
     "@lsk4/eslint-config": "^4.4.0",

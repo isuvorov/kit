@@ -1,24 +1,27 @@
+// eslint-disable-next-line max-classes-per-file
 import { pick } from '@lsk4/algos';
 import { Err } from '@lsk4/err';
 import { FilterQuery, wrap } from '@mikro-orm/core';
 import { EntityManager, EntityRepository } from '@mikro-orm/mongodb';
 import { InjectRepository } from '@mikro-orm/nestjs';
 import { All, Body, Controller, Post, UseInterceptors } from '@nestjs/common';
+import { AuthUserModel } from '@nestlib/auth';
+import { Find, FindParams, Query } from '@nestlib/decorators';
 import { ErrorInterceptor, ResponseInterceptor } from '@nestlib/interceptors';
+import { IsOptional, IsString } from 'class-validator';
 
-import { ExampleFilter } from '@/examples/Filter';
-import { UserModel } from '@/nestlib/auth/models/UserModel';
-import { Query } from '@/nestlib/decorators/Query.decorator';
-import { Find, FindParams } from '@/nestlib/list/FindParams.decorator';
-
-import { toUserJson } from './toUserJson';
+export class ExampleFilter {
+  @IsString()
+  @IsOptional()
+  role: string;
+}
 
 @Controller('api/users')
 @UseInterceptors(new ResponseInterceptor(), new ErrorInterceptor())
 export class UserListController {
   constructor(
-    @InjectRepository(UserModel)
-    private usersRepository: EntityRepository<UserModel>,
+    @InjectRepository(AuthUserModel)
+    private usersRepository: EntityRepository<AuthUserModel>,
   ) {}
 
   @All(['find', 'list'])
@@ -28,7 +31,7 @@ export class UserListController {
     })
     findOptions: Find<ExampleFilter>,
   ) {
-    const filter: FilterQuery<UserModel> = {};
+    const filter: FilterQuery<AuthUserModel> = {};
     if (findOptions.filter.role) {
       filter.role = findOptions.filter.role;
     }
@@ -36,7 +39,7 @@ export class UserListController {
       limit: findOptions.limit,
       offset: findOptions.skip,
     });
-    const items = raw.map(toUserJson);
+    const items = raw.map((u) => u.toJSON());
     if (!findOptions.count) return { items };
     // TODO: подумать а может распараллелить?
     const total = await this.usersRepository.count();
@@ -53,20 +56,20 @@ export class UserListController {
       _id: id,
     });
     if (!user) throw new Err('!user', 'User not found', { status: 404 });
-    return toUserJson(user);
+    return user;
   }
 
   @Post('create')
   async create() {
     const em = this.usersRepository.getEntityManager() as EntityManager;
-    const user = new UserModel();
+    const user = new AuthUserModel();
     user.email = `test+${Math.random()}@gmail.com`;
     user.role = 'user';
     user.password = '123';
     user.companyId = '123';
     await em.persistAndFlush(user);
 
-    return toUserJson(user);
+    return user;
   }
 
   @Post(['update', 'edit'])
@@ -87,7 +90,7 @@ export class UserListController {
   @Post(['remove', 'delete'])
   async remove(@Query('_id') id) {
     const em = this.usersRepository.getEntityManager() as EntityManager;
-    await em.nativeDelete(UserModel, {
+    await em.nativeDelete(AuthUserModel, {
       _id: id,
     });
     return true;

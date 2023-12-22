@@ -1,8 +1,8 @@
 import { HeadMeta } from '@rckit/meta';
 import Head from 'next/head';
 import React from 'react';
+import { ResetTemplate } from '@shared/emails/templates/ResetTemplate';
 
-import { ResetTemplate } from '@/emails/templates/ResetTemplate';
 import { AdminLayout } from '@/layouts/AdminLayout';
 
 export default function ResetEmailPage() {
@@ -19,7 +19,7 @@ export default function ResetEmailPage() {
         <HeadMeta title={pageTitle} />
       </Head>
       <AdminLayout activeHref="/admin/emails/reset">
-        <ResetTemplate />
+        <ResetTemplate link={'https://google.com'} />
       </AdminLayout>
     </>
   );

@@ -2,18 +2,18 @@ import { FilterQuery } from '@mikro-orm/core';
 import { EntityManager, EntityRepository } from '@mikro-orm/mongodb';
 import { InjectRepository } from '@mikro-orm/nestjs';
 import { All, Body, Controller, Post, Query, UseInterceptors } from '@nestjs/common';
+import { AuthUserModel } from '@nestlib/auth';
+import { Find, FindParams } from '@nestlib/decorators';
 import { ErrorInterceptor, ResponseInterceptor } from '@nestlib/interceptors';
 
 import { ExampleFilter } from '@/examples/Filter';
-import { UserModel } from '@/nestlib/auth/models/UserModel';
-import { Find, FindParams } from '@/nestlib/list/FindParams.decorator';
 
 @Controller('api/list')
 @UseInterceptors(new ResponseInterceptor(), new ErrorInterceptor())
 export class ExampleListController {
   constructor(
-    @InjectRepository(UserModel)
-    private usersRepository: EntityRepository<UserModel>,
+    @InjectRepository(AuthUserModel)
+    private usersRepository: EntityRepository<AuthUserModel>,
   ) {}
 
   @All(['find', 'list'])
@@ -23,7 +23,7 @@ export class ExampleListController {
     })
     data: Find<ExampleFilter>,
   ) {
-    const filter: FilterQuery<UserModel> = {};
+    const filter: FilterQuery<AuthUserModel> = {};
     if (data.filter.role) {
       filter.role = data.filter.role;
     }
@@ -43,7 +43,7 @@ export class ExampleListController {
   @Post('create')
   async create() {
     const em = this.usersRepository.getEntityManager() as EntityManager;
-    const user = new UserModel();
+    const user = new AuthUserModel();
     user.email = `test+${Math.random()}@gmail.com`;
     user.role = 'user';
     user.password = '123';
@@ -65,7 +65,7 @@ export class ExampleListController {
   @Post(['remove', 'delete'])
   async remove(@Query('_id') id) {
     const em = this.usersRepository.getEntityManager() as EntityManager;
-    await em.nativeDelete(UserModel, {
+    await em.nativeDelete(AuthUserModel, {
       _id: id,
     });
     return true;

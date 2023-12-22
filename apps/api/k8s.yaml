@@ -45,7 +45,7 @@ spec:
           volumeMounts:
             - name: env
               readOnly: true
-              mountPath: "/app/.env.js"
+              mountPath: "/app/.env.cjs"
               subPath: "env_js"
             - name: env
               readOnly: true
