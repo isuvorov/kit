@@ -35,7 +35,7 @@ export default function AuthRestorePage() {
       <AuthLayout>
         <AuthLayout.Body title={pageTitle}>
           {sent ? (
-            <p>
+            <p data-test-id="restore-sent">
               We&apos;ve sent you an email with a link to reset your password. Please check your
               inbox.
             </p>
