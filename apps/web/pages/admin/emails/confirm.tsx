@@ -2,7 +2,7 @@
 import { HeadMeta } from '@rckit/meta';
 import Head from 'next/head';
 import React from 'react';
-import { ConfirmTemplate } from 'shared/emails/templates/ConfirmTemplate';
+import { ConfirmTemplate } from '@shared/emails/templates/ConfirmTemplate';
 
 import { AdminLayout } from '@/layouts/AdminLayout';
 

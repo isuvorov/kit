@@ -1,7 +1,7 @@
 import { HeadMeta } from '@rckit/meta';
 import Head from 'next/head';
 import React from 'react';
-import { WelcomeTemplate } from 'shared/emails/templates/WelcomeTemplate';
+import { WelcomeTemplate } from '@shared/emails/templates/WelcomeTemplate';
 
 import { AdminLayout } from '@/layouts/AdminLayout';
 

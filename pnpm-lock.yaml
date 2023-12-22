@@ -143,6 +143,9 @@ importers:
       '@react-email/text':
         specifier: ^0.0.7
         version: 0.0.7(react@18.2.0)
+      '@shared/emails':
+        specifier: workspace:^
+        version: link:../../libs/shared-emails
       '@types/bcrypt':
         specifier: ^5.0.1
         version: 5.0.2
@@ -215,9 +218,6 @@ importers:
       rxjs:
         specifier: ^7.8.1
         version: 7.8.1
-      shared:
-        specifier: workspace:^
-        version: link:../../libs/shared
       telegraf:
         specifier: ^4.15.3
         version: 4.15.3
@@ -318,6 +318,9 @@ importers:
       '@react-email/components':
         specifier: ^0.0.12
         version: 0.0.12(@types/react@18.2.45)(react@18.2.0)
+      '@shared/emails':
+        specifier: workspace:^
+        version: link:../../libs/shared-emails
       '@tanstack/react-query':
         specifier: ^5.14.1
         version: 5.14.1(react@18.2.0)
@@ -378,9 +381,6 @@ importers:
       react-virtual:
         specifier: ^2.10.4
         version: 2.10.4(react@18.2.0)
-      shared:
-        specifier: workspace:^
-        version: link:../../libs/shared
       use-debounce:
         specifier: ^10.0.0
         version: 10.0.0(react@18.2.0)
@@ -419,7 +419,7 @@ importers:
         specifier: ^5.3.3
         version: 5.3.3
 
-  libs/shared:
+  libs/shared-emails:
     devDependencies:
       '@lsk4/env':
         specifier: ^4.4.0

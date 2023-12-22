@@ -1,7 +1,7 @@
 import { HeadMeta } from '@rckit/meta';
 import Head from 'next/head';
 import React from 'react';
-import { InvoiceTemplate } from 'shared/emails/templates/InvoiceTemplate';
+import { InvoiceTemplate } from '@shared/emails/templates/InvoiceTemplate';
 
 import { AdminLayout } from '@/layouts/AdminLayout';
 

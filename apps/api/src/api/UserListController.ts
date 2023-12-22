@@ -1,3 +1,4 @@
+// eslint-disable-next-line max-classes-per-file
 import { pick } from '@lsk4/algos';
 import { Err } from '@lsk4/err';
 import { FilterQuery, wrap } from '@mikro-orm/core';
@@ -7,8 +8,13 @@ import { All, Body, Controller, Post, UseInterceptors } from '@nestjs/common';
 import { AuthUserModel } from '@nestlib/auth';
 import { Find, FindParams, Query } from '@nestlib/decorators';
 import { ErrorInterceptor, ResponseInterceptor } from '@nestlib/interceptors';
+import { IsOptional, IsString } from 'class-validator';
 
-import { ExampleFilter } from '@/examples/Filter';
+export class ExampleFilter {
+  @IsString()
+  @IsOptional()
+  role: string;
+}
 
 @Controller('api/users')
 @UseInterceptors(new ResponseInterceptor(), new ErrorInterceptor())

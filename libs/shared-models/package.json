@@ -1,0 +1,39 @@
+{
+  "name": "@shared/models",
+  "version": "0.0.1",
+  "description": "Shared code, reusable in the frontend and backend.",
+  "private": true,
+  "scripts": {
+    "dev": "            ycmd dev",
+    "build": "          ycmd build",
+    "test": "           ycmd test",
+    "prepack": "        ycmd prepack",
+    "release": "        ycmd release"
+  },
+  "main": "cjs/index.js",
+  "types": "cjs/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./lib/index.js",
+      "types": "./cjs/index.d.ts",
+      "default": "./cjs/index.js"
+    },
+    "./*": {
+      "import": "./lib/*.js",
+      "types": "./cjs/*.d.ts",
+      "default": "./cjs/*.js"
+    }
+  },
+  "keywords": [],
+  "devDependencies": {
+    "@lsk4/env": "^4.4.0",
+    "@react-email/components": "^0.0.12",
+    "@types/node": "^20.10.5",
+    "react": "18.2.0"
+  },
+  "peerDependencies": {
+    "@lsk4/env": "*",
+    "@react-email/components": "*",
+    "react": "*"
+  }
+}
