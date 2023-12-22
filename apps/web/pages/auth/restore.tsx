@@ -3,29 +3,25 @@ import {
   AuthRestoreForm,
   AuthRestoreFormValues,
   fetchAuthRestore,
-  useAppSession,
   useAuthGuard,
 } from '@rckit/auth';
 import { HeadMeta } from '@rckit/meta';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 import { AuthLayout } from '@/layouts/AuthLayout';
 
-export default function AuthLoginPage() {
+export default function AuthRestorePage() {
   useAuthGuard(useRouter(), { role: 'guestOnly' });
+  const [sent, setSent] = useState(false);
   const pageTitle = 'Restore password';
-  const { updateSessionWithRedirect } = useAppSession();
-  const router = useRouter();
 
   async function onSubmit(values: AuthRestoreFormValues) {
-    // @ts-ignore
-    const { session, otp } = await fetchAuthRestore(values);
-    if (session) {
-      await updateSessionWithRedirect(session, router, '/cabinet');
-    } else if (otp) {
-      router.push(`/auth/otp?_id=${otp._id}`);
+    const isSuccess = await fetchAuthRestore(values);
+    if (isSuccess) {
+      setSent(true);
     } else {
       throw new Err('Something went wrong');
     }
@@ -38,7 +34,14 @@ export default function AuthLoginPage() {
       </Head>
       <AuthLayout>
         <AuthLayout.Body title={pageTitle}>
-          <AuthRestoreForm onSubmit={onSubmit} />
+          {sent ? (
+            <p>
+              We&apos;ve sent you an email with a link to reset your password. Please check your
+              inbox.
+            </p>
+          ) : (
+            <AuthRestoreForm onSubmit={onSubmit} />
+          )}
         </AuthLayout.Body>
         <AuthLayout.Footer>
           Don&apos;t have an account? <Link href="/auth/signup">Sign Up</Link>

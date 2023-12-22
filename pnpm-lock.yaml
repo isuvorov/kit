@@ -280,8 +280,8 @@ importers:
         specifier: ^4.14.0
         version: 4.14.0(react@18.2.0)
       '@rckit/auth':
-        specifier: ^4.15.1
-        version: 4.15.1(react-bootstrap@2.9.1)(react-hook-form@7.49.2)(react@18.2.0)(use-local-storage-state@19.1.0)
+        specifier: ^4.16.0
+        version: 4.16.0(react-bootstrap@2.9.1)(react-hook-form@7.49.2)(react@18.2.0)(use-local-storage-state@19.1.0)
       '@rckit/avatar':
         specifier: ^4.14.0
         version: 4.14.0(react@18.2.0)
@@ -289,8 +289,8 @@ importers:
         specifier: ^4.13.0
         version: 4.13.0(react@18.2.0)
       '@rckit/form':
-        specifier: ^4.14.0
-        version: 4.14.0(react-bootstrap@2.9.1)(react-hook-form@7.49.2)(react@18.2.0)
+        specifier: ^4.16.0
+        version: 4.16.0(react-bootstrap@2.9.1)(react-hook-form@7.49.2)(react@18.2.0)
       '@rckit/icons':
         specifier: ^4.13.0
         version: 4.13.0(react@18.2.0)
@@ -3863,8 +3863,8 @@ packages:
       - debug
     dev: false
 
-  /@rckit/auth@4.15.1(react-bootstrap@2.9.1)(react-hook-form@7.49.2)(react@18.2.0)(use-local-storage-state@19.1.0):
-    resolution: {integrity: sha512-vOrSAZVZjvBdy4+QDJ1afyK7VLgL7eLi3ZA+DPmOVJqiHY7gzR8rnMLI2sdNGqEVET2SddQqEErZaLBrXvbNjQ==}
+  /@rckit/auth@4.16.0(react-bootstrap@2.9.1)(react-hook-form@7.49.2)(react@18.2.0)(use-local-storage-state@19.1.0):
+    resolution: {integrity: sha512-rRGye5YT9ptMcWv0AMG6tpSFJ9YLloqZjtImfbtQS1f3r31Wi9ahKcLese7Bagk7gSWdwUx84v8YMVf5YUob7Q==}
     peerDependencies:
       react: '*'
       react-bootstrap: '*'
@@ -3876,7 +3876,7 @@ packages:
       '@lsk4/log': 4.5.0
       '@rckit/api-client': 4.14.0(react@18.2.0)
       '@rckit/debug': 4.13.0(react@18.2.0)
-      '@rckit/form': 4.14.0(react-bootstrap@2.9.1)(react-hook-form@7.49.2)(react@18.2.0)
+      '@rckit/form': 4.16.0(react-bootstrap@2.9.1)(react-hook-form@7.49.2)(react@18.2.0)
       '@rckit/link': 4.13.0(react@18.2.0)
       fishbird: 1.1.8
       react: 18.2.0
@@ -3907,8 +3907,8 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@rckit/form@4.14.0(react-bootstrap@2.9.1)(react-hook-form@7.49.2)(react@18.2.0):
-    resolution: {integrity: sha512-gVrUUPpag3uCWRxdBooCFnAq5EKPCg4a7crV+iNKPRNKfZXoRM2mHBfPjTyGW41DoM/XYzrn39UyiHBJj5H+RQ==}
+  /@rckit/form@4.16.0(react-bootstrap@2.9.1)(react-hook-form@7.49.2)(react@18.2.0):
+    resolution: {integrity: sha512-UsIxqalwgTvDh4m2NtY2e3CuP2qFFxRihKR+vrq0w7idDanTzcrpVECATsrMjUk+soDx2PgtEe1r+CWDEG7aIA==}
     peerDependencies:
       react: '*'
       react-bootstrap: '*'
@@ -3977,7 +3977,7 @@ packages:
       react-bootstrap: '*'
     dependencies:
       '@lsk4/env': 4.4.0
-      '@rckit/auth': 4.15.1(react-bootstrap@2.9.1)(react-hook-form@7.49.2)(react@18.2.0)(use-local-storage-state@19.1.0)
+      '@rckit/auth': 4.16.0(react-bootstrap@2.9.1)(react-hook-form@7.49.2)(react@18.2.0)(use-local-storage-state@19.1.0)
       '@rckit/avatar': 4.14.0(react@18.2.0)
       '@rckit/link': 4.13.0(react@18.2.0)
       '@rckit/secret-checkbox': 4.13.0(react@18.2.0)
