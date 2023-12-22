@@ -434,6 +434,21 @@ importers:
         specifier: 18.2.0
         version: 18.2.0
 
+  libs/shared-models:
+    devDependencies:
+      '@lsk4/env':
+        specifier: ^4.4.0
+        version: 4.4.0
+      '@react-email/components':
+        specifier: ^0.0.12
+        version: 0.0.12(@types/react@18.2.45)(react@18.2.0)
+      '@types/node':
+        specifier: ^20.10.5
+        version: 20.10.5
+      react:
+        specifier: 18.2.0
+        version: 18.2.0
+
 packages:
 
   /@aashutoshrathi/word-wrap@1.2.6:
