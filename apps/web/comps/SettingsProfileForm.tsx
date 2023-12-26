@@ -1,7 +1,10 @@
 import { FormButton, FormItem, useSmartForm } from '@rckit/form';
 import { Col, Form, Row } from 'react-bootstrap';
+import { Controller } from 'react-hook-form';
 
 import { trimBlank } from '@/config/validators';
+
+import { UploadAvatar } from './UploadAvatar';
 
 interface FormProps<T> {
   defaultValues: T;
@@ -18,7 +21,7 @@ export function SettingsProfileForm({
   onSubmit,
 }: FormProps<SettingsProfileFormValues>) {
   // console.log({ defaultValues });
-  const { register, formState, onSmartSubmit } = useSmartForm<SettingsProfileFormValues>({
+  const { register, formState, onSmartSubmit, control } = useSmartForm<SettingsProfileFormValues>({
     // @ts-ignore
     defaultValues,
     onSubmit,
@@ -26,6 +29,22 @@ export function SettingsProfileForm({
   return (
     <Form onSubmit={onSmartSubmit} style={{ backgroundColor: '#ededed', padding: 16 }}>
       <Row>
+        <Col md={12}>
+          <FormItem id="avatar" label="Avatar" error={formState.errors.avatar?.message}>
+            <Controller
+              name="avatar"
+              control={control}
+              render={({ field }) => (
+                <UploadAvatar
+                  firstName={defaultValues.firstName}
+                  lastName={defaultValues.lastName}
+                  avatar={defaultValues.avatar}
+                  {...field}
+                />
+              )}
+            />
+          </FormItem>
+        </Col>
         <Col md={6}>
           <FormItem
             id="firstName"
@@ -75,11 +94,6 @@ export function SettingsProfileForm({
                 },
               })}
             />
-          </FormItem>
-        </Col>
-        <Col md={6}>
-          <FormItem id="avatar" label="Avatar" error={formState.errors.avatar?.message}>
-            <Form.Control {...register('avatar')} />
           </FormItem>
         </Col>
         <Col lg={12} className="mt-4">

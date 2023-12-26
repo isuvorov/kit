@@ -14,10 +14,13 @@ import { AuthGuard, AuthModule, models } from '@nestlib/auth';
 import { ConfigModule, getConfig, loadConfigEnvs } from '@nestlib/config';
 import { loggerFactory } from '@nestlib/mikro-orm';
 import { ReactAdapter } from '@webtre/nestjs-mailer-react-adapter';
+import { S3Module } from 'nestjs-s3';
 
 // import { redisStore } from 'cache-manager-redis-store';
 // import type { RedisClientOptions } from 'redis';
 import { ApiController } from './api/ApiController';
+import { UploadController } from './api/UploadController';
+import { UploadService } from './api/UploadService';
 import { UserListController } from './api/UserListController';
 import { ExampleListController } from './examples/ExampleListController';
 import testControlers from './examples/test';
@@ -101,6 +104,7 @@ const notNull = (v, def) => (v == null ? def : v);
 
     // NOTE: nestlib
     AuthModule.forRoot(),
+    S3Module.forRootAsync(getConfig('s3', (config) => ({ config }))),
   ],
   controllers: [
     //
@@ -112,6 +116,7 @@ const notNull = (v, def) => (v == null ? def : v);
     ExampleListController,
     UserListController,
     ApiController,
+    UploadController,
 
     // NOTE: nestlib
     // AuthController,
@@ -120,7 +125,7 @@ const notNull = (v, def) => (v == null ? def : v);
     // NOTE: nestlib
     // AuthService,
     // AuthOtpService,
-
+    UploadService,
     // BotAppService,
 
     // TODO: подумать

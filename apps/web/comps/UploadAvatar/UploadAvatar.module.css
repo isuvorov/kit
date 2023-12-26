@@ -1,0 +1,39 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+.innerWrapper {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 10px;
+}
+.innerWrapper > button {
+  width: 100%;
+}
+.error {
+  color: #dc3545;
+  font-size: 14px;
+}
+.dragged {
+  border: 2px dashed #9b9b9b;
+  width: 100%;
+  font-size: 20px;
+  color: #9b9b9b;
+  padding: 20px;
+  height: 127px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media screen and (min-width: 768px) {
+  .wrapper {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .innerWrapper > button {
+    width: auto;
+  }
+}

@@ -51,9 +51,11 @@
     "@react-email/html": "^0.0.7",
     "@react-email/render": "^0.0.10",
     "@react-email/text": "^0.0.7",
+    "@shared/emails": "workspace:^",
     "@types/bcrypt": "^5.0.1",
     "@types/bcryptjs": "^2.4.5",
     "@webtre/nestjs-mailer-react-adapter": "^0.1.2",
+    "aws-sdk": "^2.1523.0",
     "axios": "^1.6.0",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
@@ -75,7 +77,6 @@
     "redis": "3.1.2",
     "reflect-metadata": "^0.2.1",
     "rxjs": "^7.8.1",
-    "@shared/emails": "workspace:^",
     "telegraf": "^4.15.3"
   },
   "devDependencies": {
