@@ -57,6 +57,7 @@
     "@types/bcrypt": "^5.0.1",
     "@types/bcryptjs": "^2.4.5",
     "@webtre/nestjs-mailer-react-adapter": "^0.1.2",
+    "aws-sdk": "^2.1523.0",
     "axios": "^1.6.0",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
