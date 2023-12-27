@@ -120,8 +120,8 @@ importers:
         specifier: ^4.6.0
         version: 4.6.0(@mikro-orm/core@5.9.6)
       '@nestlib/upload':
-        specifier: ^4.12.0
-        version: 4.12.0(@nestjs/common@10.3.0)(@nestjs/config@3.1.1)(nestjs-s3@2.0.1)
+        specifier: ^4.13.0
+        version: 4.13.0(@nestjs/common@10.3.0)(@nestjs/config@3.1.1)(nestjs-s3@2.0.1)
       '@nestlib/utils':
         specifier: ^4.6.0
         version: 4.6.0(@nestjs/common@10.3.0)(@nestjs/config@3.1.1)
@@ -3193,8 +3193,8 @@ packages:
       '@mikro-orm/core': 5.9.6(@mikro-orm/mongodb@5.9.6)
     dev: false
 
-  /@nestlib/upload@4.12.0(@nestjs/common@10.3.0)(@nestjs/config@3.1.1)(nestjs-s3@2.0.1):
-    resolution: {integrity: sha512-o4JH1ADaF3YBOZNo1GJ2UyEXUn3edHAapFqqtYZsTGpg6aa4bZHKaVFadvM0lRsXdGJhMzMTvjy1NvA/kKk6UQ==}
+  /@nestlib/upload@4.13.0(@nestjs/common@10.3.0)(@nestjs/config@3.1.1)(nestjs-s3@2.0.1):
+    resolution: {integrity: sha512-4/7POdFBduUlYiq5YmQ57l+0j1lNT7Y1UKbC0iF5ZoXgJXn0wJA2gDXvortZd3Y0rjn6tNci0culHJ98mPb2Qw==}
     peerDependencies:
       '@nestjs/common': '*'
       '@nestjs/config': '*'
