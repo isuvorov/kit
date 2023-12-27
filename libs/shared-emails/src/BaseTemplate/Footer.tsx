@@ -1,43 +1,9 @@
 import { Column, Hr, Img, Link, Row, Section, Text } from '@react-email/components';
 import React from 'react';
 
+import { footerLink, footerLogos, footerText, hr, socialIcon, socialWrapper } from '../styles';
+
 const baseUrl = process.env.SITE_URL ? `https://${process.env.SITE_URL}` : '';
-
-const footerText = {
-  fontSize: '12px',
-  color: '#b7b7b7',
-  lineHeight: '15px',
-  textAlign: 'left' as const,
-  marginBottom: '50px',
-};
-
-const footerLink = {
-  color: '#b7b7b7',
-  textDecoration: 'underline',
-};
-
-const footerLogos = {
-  marginBottom: '32px',
-  paddingLeft: '8px',
-  paddingRight: '8px',
-  width: '100%',
-};
-
-const socialIcon = {
-  display: 'inline',
-};
-
-const socialWrapper = {
-  display: 'flex',
-  justifyContent: 'flex-end',
-  alignItems: 'center',
-  gap: '10px',
-};
-
-const hr = {
-  borderColor: '#a9a9a9',
-  margin: '20px 0',
-};
 
 interface SocialProps {
   src: string;

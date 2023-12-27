@@ -3,31 +3,7 @@ import { Button, Text } from '@react-email/components';
 import React from 'react';
 
 import { BaseTemplate } from './BaseTemplate';
-
-const text = {
-  fontSize: '20px',
-  lineHeight: '28px',
-  marginBottom: '30px',
-  color: '#4a4a4a',
-};
-
-const button = {
-  backgroundColor: '#8b12fc',
-  borderRadius: '8px',
-  color: '#fff',
-  fontSize: '20px',
-  textDecoration: 'none',
-  textAlign: 'center' as const,
-  display: 'block',
-  width: '100%',
-  padding: '14px 7px',
-  fontWeight: 'bold' as const,
-};
-
-const link = {
-  ...text,
-  color: '#8b12fc',
-};
+import { button, link, text } from './styles';
 
 export const InviteTemplate = () => {
   const preview = 'Someone invited you to join their team';

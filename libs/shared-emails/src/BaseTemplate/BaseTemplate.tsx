@@ -2,20 +2,9 @@
 import { Body, Container, Head, Html, Preview } from '@react-email/components';
 import React from 'react';
 
+import { container, main } from '../styles';
 import { Footer } from './Footer';
 import { Header } from './Header';
-
-const main = {
-  backgroundColor: '#ffffff',
-  margin: '0 auto',
-  fontFamily:
-    "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
-};
-
-const container = {
-  maxWidth: '600px',
-  margin: '0 auto',
-};
 
 type BaseTemplateProps = React.PropsWithChildren<{
   preview: string;
