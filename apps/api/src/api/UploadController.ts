@@ -1,14 +1,13 @@
 import { Err } from '@lsk4/err';
 import { Controller, Post, Req, UploadedFiles, UseInterceptors } from '@nestjs/common';
 import { AnyFilesInterceptor } from '@nestjs/platform-express';
-
-import { UploadService } from './UploadService';
+import { UploadService } from '@nestlib/upload';
 
 @Controller()
 export class UploadController {
   constructor(private readonly uploadService: UploadService) {}
 
-  @Post('api/upload')
+  @Post('/api/upload')
   @UseInterceptors(AnyFilesInterceptor())
   async upload(@Req() req, @UploadedFiles() files) {
     if (!req.session?.user) throw new Err('!auth', { status: 401, message: 'Unauthorized' });
