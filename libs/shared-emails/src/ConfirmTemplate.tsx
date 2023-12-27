@@ -4,24 +4,33 @@ import React from 'react';
 
 import { BaseTemplate } from './BaseTemplate';
 import { code, codeBox, text } from './styles';
+import { EmailsConfigProps } from './types';
 
-export const ConfirmTemplate = () => {
-  const preview = "It's time to confirm your email address";
-  const header = 'Confirm your email address';
-  return (
-    <BaseTemplate preview={preview} header={header}>
-      <Text style={text}>
-        Your confirmation code is below - enter it in your open browser window and we'll help you
-        get signed in.
-      </Text>
+interface ConfirmTemplateProps {
+  preview: string;
+  header: string;
+  code: string;
+  config: EmailsConfigProps;
+}
 
-      <Section style={codeBox}>
-        <Text style={code}>123-123</Text>
-      </Section>
+export const ConfirmTemplate = ({
+  preview,
+  header,
+  code: authCode,
+  config,
+}: ConfirmTemplateProps) => (
+  <BaseTemplate preview={preview} header={header} config={config}>
+    <Text style={text}>
+      Your confirmation code is below - enter it in your open browser window and we'll help you get
+      signed in.
+    </Text>
 
-      <Text style={text}>
-        If you didn't request this email, there's nothing to worry about - you can safely ignore it.
-      </Text>
-    </BaseTemplate>
-  );
-};
+    <Section style={codeBox}>
+      <Text style={code}>{authCode}</Text>
+    </Section>
+
+    <Text style={text}>
+      If you didn't request this email, there's nothing to worry about - you can safely ignore it.
+    </Text>
+  </BaseTemplate>
+);

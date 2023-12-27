@@ -2,15 +2,21 @@ import { Heading, Hr, Img, Section } from '@react-email/components';
 import React from 'react';
 
 import { h1, hr, logoContainer } from '../styles';
+import { EmailsConfigProps } from '../types';
 
-const baseUrl = process.env.SITE_URL ? `https://${process.env.SITE_URL}` : '';
+interface HeaderProps {
+  config: EmailsConfigProps;
+}
 
-export const Header = ({ children }: React.PropsWithChildren) => (
-  <>
-    <Section style={logoContainer}>
-      <Img src={`${baseUrl}/assets/logo.svg`} width="120" height="100" alt="Logo" />
-    </Section>
-    <Heading style={h1}>{children}</Heading>
-    <Hr style={hr} />
-  </>
-);
+export const Header = ({ children, config }: React.PropsWithChildren<HeaderProps>) => {
+  const { src, width, height, alt = '' } = config.header.logo || {};
+  return (
+    <>
+      <Section style={logoContainer}>
+        <Img src={src} width={width} height={height} alt={alt} />
+      </Section>
+      <Heading style={h1}>{children}</Heading>
+      <Hr style={hr} />
+    </>
+  );
+};
