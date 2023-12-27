@@ -59,11 +59,12 @@ interface FooterProps {
 export const Footer = ({ social = [], links = [], copyright }: FooterProps) => (
   <>
     <Hr style={hr} />
-
     <Section>
       <Row style={footerLogos}>
         <Column style={{ width: '66%' }}>
-          <Img src={`${baseUrl}/assets/logo.svg`} width="46" height="36" alt="Logo" />
+          <React.Fragment>
+            <Img src={`${baseUrl}/assets/logo.svg`} width="46" height="36" alt="Logo" />
+          </React.Fragment>
         </Column>
         <Column style={socialWrapper}>
           {social.map((item) => (
@@ -74,7 +75,6 @@ export const Footer = ({ social = [], links = [], copyright }: FooterProps) => (
         </Column>
       </Row>
     </Section>
-
     <Section>
       {links.map((item, idx) => (
         <>

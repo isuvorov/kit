@@ -17,16 +17,12 @@ const container = {
   margin: '0 auto',
 };
 
-interface BaseTemplateProps {
+type BaseTemplateProps = React.PropsWithChildren<{
   preview: string;
   header: string | React.ReactNode;
-}
+}>;
 
-export const BaseTemplate = ({
-  preview,
-  header,
-  children,
-}: React.PropsWithChildren<BaseTemplateProps>) => {
+export const BaseTemplate = ({ preview, header, children }: BaseTemplateProps) => {
   const social = [
     {
       src: 'https://react-email-demo-ijnnx5hul-resend.vercel.app/static/slack-twitter.png',
