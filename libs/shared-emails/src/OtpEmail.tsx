@@ -14,7 +14,7 @@ import {
 } from '@react-email/components';
 import React from 'react';
 
-interface PlaidVerifyIdentityEmailProps {
+interface OtpEmailProps {
   code?: string;
 }
 
@@ -117,7 +117,7 @@ const footer = {
   textTransform: 'uppercase' as const,
 };
 
-export const OtpEmail = ({ code: authCode }: PlaidVerifyIdentityEmailProps) => (
+export const OtpEmail = ({ code: authCode }: OtpEmailProps) => (
   <Html>
     <Head />
     <Body style={main}>
@@ -142,7 +142,7 @@ export const OtpEmail = ({ code: authCode }: PlaidVerifyIdentityEmailProps) => (
   </Html>
 );
 
-export const renderOtpEmail = (props, options = { pretty: isDev }) =>
+export const renderOtpEmail = (props: OtpEmailProps, options = { pretty: isDev }) =>
   render(<OtpEmail {...props} />, options);
 
 export default OtpEmail;

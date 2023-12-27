@@ -14,7 +14,7 @@ import { Button } from 'react-bootstrap';
 import { AdminUserEditForm } from '@/comps/AdminUserEditForm';
 import { AdminUsersForm as Filter } from '@/comps/AdminUsersFilterForm';
 import { AdminLayout } from '@/layouts/AdminLayout';
-import { UserListItem, useUserListInfinityQuery } from '@/queries/users2';
+import { UserListItem, useUserListInfinityQuery } from '@/queries/users/usersList';
 import { HumanDate } from '@/rckit/helpers/HumanDate';
 import { Pagination } from '@/rckit/helpers/Pagination';
 

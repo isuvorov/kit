@@ -1,2 +1,2 @@
-export * from './templates/OtpEmail';
-export * from './templates/ResetTemplate';
+export * from './OtpEmail';
+export * from './ResetTemplate';

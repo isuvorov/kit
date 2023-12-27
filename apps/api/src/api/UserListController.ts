@@ -2,7 +2,7 @@
 import { pick } from '@lsk4/algos';
 import { Err } from '@lsk4/err';
 import { FilterQuery, wrap } from '@mikro-orm/core';
-import { EntityManager, EntityRepository } from '@mikro-orm/mongodb';
+import { EntityRepository } from '@mikro-orm/mongodb';
 import { InjectRepository } from '@mikro-orm/nestjs';
 import { All, Body, Controller, Post, UseInterceptors } from '@nestjs/common';
 import { AuthUserModel } from '@nestlib/auth';
@@ -16,57 +16,53 @@ export class ExampleFilter {
   role: string;
 }
 
-@Controller('api/users')
+@Controller('/api/users')
 @UseInterceptors(new ResponseInterceptor(), new ErrorInterceptor())
 export class UserListController {
   constructor(
     @InjectRepository(AuthUserModel)
-    private usersRepository: EntityRepository<AuthUserModel>,
+    private repo: EntityRepository<AuthUserModel>,
   ) {}
 
   @All(['find', 'list'])
   async find(
-    @FindParams({
-      filterDTO: ExampleFilter,
-    })
+    @FindParams({ filterDTO: ExampleFilter })
     findOptions: Find<ExampleFilter>,
   ) {
     const filter: FilterQuery<AuthUserModel> = {};
     if (findOptions.filter.role) {
       filter.role = findOptions.filter.role;
     }
-    const raw = await this.usersRepository.find(filter, {
+    const raw = await this.repo.find(filter, {
       limit: findOptions.limit,
       offset: findOptions.skip,
     });
-    const items = raw.map((u) => u.toJSON());
+    const items = raw;
+    // const items = raw.map((u) => u.toJSON());
     if (!findOptions.count) return { items };
     // TODO: подумать а может распараллелить?
-    const total = await this.usersRepository.count();
-    const count = await this.usersRepository.count(filter);
+    const total = await this.repo.count();
+    const count = !Object.keys(filter).length ? total : await this.repo.count(filter);
     return { items, count, total };
   }
 
   @All(['findOne', 'get'])
-  async findOne(@Query('_id') _id, @Query('id') id) {
-    // eslint-disable-next-line no-param-reassign
-    id = id || _id;
+  async findOne(@Query(['_id', 'id']) id) {
     if (!id) throw new Err('!_id', 'Empty query _id', { status: 400 });
-    const user = await this.usersRepository.findOne({
-      _id: id,
-    });
-    if (!user) throw new Err('!user', 'User not found', { status: 404 });
-    return user;
+    const item = await this.repo.findOne({ _id: id });
+    if (!item) throw new Err('!item', 'Item not found', { status: 404 });
+    return item;
   }
 
   @Post('create')
   async create() {
-    const em = this.usersRepository.getEntityManager() as EntityManager;
-    const user = new AuthUserModel();
-    user.email = `test+${Math.random()}@gmail.com`;
-    user.role = 'user';
-    user.password = '123';
-    user.companyId = '123';
+    const em = this.repo.getEntityManager();
+    const user = new AuthUserModel({
+      email: `test+${Math.random()}@gmail.com`,
+      role: 'user',
+      password: '123',
+      companyId: '123',
+    });
     await em.persistAndFlush(user);
 
     return user;
@@ -74,22 +70,22 @@ export class UserListController {
 
   @Post(['update', 'edit'])
   async update(@Query(['_id', 'id']) id, @Body() raw) {
-    const em = this.usersRepository.getEntityManager() as EntityManager;
+    const em = this.repo.getEntityManager();
     const data = pick(raw, ['info']);
     if (!id) throw new Err('!_id', 'Empty query _id', { status: 400 });
     if (!Object.keys(data).length) throw new Err('!data', 'Empty data', { status: 400 });
-    const user = await this.usersRepository.findOne(id);
-    if (!user) throw new Err('!user', 'User not found', { status: 404 });
+    const item = await this.repo.findOne(id);
+    if (!item) throw new Err('!item', 'Item not found', { status: 404 });
 
-    wrap(user).assign({ info: data.info || {} }, { mergeObjects: true });
-    await em.persistAndFlush(user);
+    wrap(item).assign({ info: data.info || {} }, { mergeObjects: true });
+    await em.persistAndFlush(item);
     // TODO: а может вернуть измененный объект?
     return true;
   }
 
   @Post(['remove', 'delete'])
-  async remove(@Query('_id') id) {
-    const em = this.usersRepository.getEntityManager() as EntityManager;
+  async remove(@Query(['_id', 'id']) id) {
+    const em = this.repo.getEntityManager();
     await em.nativeDelete(AuthUserModel, {
       _id: id,
     });
@@ -98,6 +94,6 @@ export class UserListController {
 
   @All('count')
   async count() {
-    return this.usersRepository.count();
+    return this.repo.count();
   }
 }

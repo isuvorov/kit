@@ -6,7 +6,7 @@ import { Button, Form } from 'react-bootstrap';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { AdminLayout } from '@/layouts/AdminLayout';
-import { UserListItem, UserListResponse, useUserListInfinityQuery } from '@/queries/users2';
+import { UserListItem, UserListResponse, useUserListInfinityQuery } from '@/queries/users/usersList';
 import { getSpinAnimationStyles } from '@/rckit/helpers/getSpinAnimationStyles';
 
 interface User {

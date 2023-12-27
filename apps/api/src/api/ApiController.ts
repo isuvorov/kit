@@ -1,7 +1,6 @@
 import { omitNull } from '@lsk4/algos';
 import { isDev, stage } from '@lsk4/env';
 import { Controller, Get, UseInterceptors } from '@nestjs/common';
-
 import { ErrorInterceptor, ResponseInterceptor } from '@nestlib/interceptors';
 
 @Controller()

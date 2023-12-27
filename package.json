@@ -13,6 +13,7 @@
     "test": "           echo ycmd test - skip",
     "prepack": "        ycmd prepack",
     "release": "        ycmd release",
+    
     "dev:api": "        pnpm -F {apps/api} dev",
     "dev:web": "        pnpm -F {apps/web} dev",
     "dev:lib": "        pnpm -F {libs/*} dev"

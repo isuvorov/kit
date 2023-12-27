@@ -9,8 +9,8 @@ import { Button, Card, Col, Row } from 'react-bootstrap';
 
 import { SettingsProfileForm, SettingsProfileFormValues } from '@/comps/SettingsProfileForm';
 import { CabinetLayout } from '@/layouts/CabinetLayout';
-import { useUserFindOneQuery } from '@/queries/usersFindOne';
-import { fetchUserUpdate } from '@/queries/usersUpdate';
+import { useUserFindOneQuery } from '@/queries/users/usersFindOne';
+import { fetchUserUpdate } from '@/queries/users/usersUpdate';
 
 export default function CabinetProfilePage() {
   useAuthGuard(useRouter());
