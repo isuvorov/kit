@@ -13,6 +13,7 @@ import { AccessLoggerMiddleware } from '@nestlib/access-logger';
 import { AuthGuard, AuthModule, models } from '@nestlib/auth';
 import { ConfigModule, getConfig, loadConfigEnvs } from '@nestlib/config';
 import { loggerFactory } from '@nestlib/mikro-orm';
+import { UploadService } from '@nestlib/upload';
 import { ReactAdapter } from '@webtre/nestjs-mailer-react-adapter';
 import { S3Module } from 'nestjs-s3';
 
@@ -20,7 +21,6 @@ import { S3Module } from 'nestjs-s3';
 // import type { RedisClientOptions } from 'redis';
 import { ApiController } from './api/ApiController';
 import { UploadController } from './api/UploadController';
-import { UploadService } from './api/UploadService';
 import { UserListController } from './api/UserListController';
 import { ExampleListController } from './examples/ExampleListController';
 import testControlers from './examples/test';
