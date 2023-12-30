@@ -1,7 +1,7 @@
+import { AppBreadcrumbs } from '@rckit/breadcrumbs';
 import { PropsWithChildren } from 'react';
 import { Container } from 'react-bootstrap';
 
-import { AppBreadcrumbs } from './components/AppBreadcrumbs';
 import { LayoutNavbar } from './components/LayoutNavbar';
 
 type AdminLayoutProps = PropsWithChildren<{
@@ -20,7 +20,9 @@ export const AdminLayout = ({
   <>
     {Boolean(showNavbar) && <LayoutNavbar />}
     <Container>
-      <AppBreadcrumbs title={title} activeHref={activeHref} actions={actions} />
+      <div className="mt-4">
+        <AppBreadcrumbs title={title} activeHref={activeHref} actions={actions} />
+      </div>
       <div className="mt-4">{children}</div>
     </Container>
   </>

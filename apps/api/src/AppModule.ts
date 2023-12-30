@@ -17,7 +17,7 @@ import { UploadService } from '@nestlib/upload';
 import { ReactAdapter } from '@webtre/nestjs-mailer-react-adapter';
 import { S3Module } from 'nestjs-s3';
 
-// import { redisStore } from 'cache-manager-redis-store';
+// import { redisStore } from 'cache-manager-redis-store';]
 // import type { RedisClientOptions } from 'redis';
 import { ApiController } from './api/ApiController';
 import { UploadController } from './api/UploadController';

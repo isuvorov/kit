@@ -1,7 +1,8 @@
-import { NavbarMenuItem } from '@rckit/navbar';
+import { MenuItem } from '@rckit/breadcrumbs';
 
-export const menuItems: NavbarMenuItem[] = [
+export const menus: MenuItem[] = [
   {
+    types: ['nav', 'cabinet'],
     title: 'Cabinet',
     href: '/cabinet',
     items: [
@@ -17,6 +18,7 @@ export const menuItems: NavbarMenuItem[] = [
     ],
   },
   {
+    types: ['nav', 'cabinet'],
     title: 'My products',
     href: '/cabinet/products',
   },
@@ -24,10 +26,8 @@ export const menuItems: NavbarMenuItem[] = [
   //   title: 'Admin',
   //   href: '/admin',
   // },
-];
-
-export const adminMenuItems: NavbarMenuItem[] = [
   {
+    types: ['admin'],
     title: 'Admin',
     href: '/admin',
     items: [
@@ -58,6 +58,14 @@ export const adminMenuItems: NavbarMenuItem[] = [
       },
     ],
   },
+  {
+    types: ['profile'],
+    title: 'Profile',
+    href: '/cabinet/profile',
+  },
+  {
+    types: ['profile'],
+    title: 'Settings',
+    href: '/cabinet/settings',
+  },
 ];
-
-export const allMenuItems = [...menuItems, ...adminMenuItems];

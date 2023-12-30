@@ -1,30 +1,24 @@
 import { useAuthGuard } from '@rckit/auth';
+import { useAppMenuConfig } from '@rckit/breadcrumbs';
 import { HeadMeta } from '@rckit/meta';
 import Head from 'next/head';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import { adminMenuItems } from '@/config/menus';
+// import { adminMenuItems } from '@/config/menus';
 import { AdminLayout } from '@/layouts/AdminLayout';
+import { Toc } from '@/rckit/helpers/Toc';
 
 export default function AdminIndexPage() {
   useAuthGuard(useRouter(), { role: 'admin' });
   const pageTitle = 'Admin Index';
-  const { items } = adminMenuItems[0];
+  const { adminItems } = useAppMenuConfig();
   return (
     <>
       <Head>
         <HeadMeta title={pageTitle} />
       </Head>
       <AdminLayout activeHref="/admin">
-        {(items || []).map((item) => {
-          if (item.hidden) return null;
-          return (
-            <p key={item.href}>
-              <Link href={item.href}>{item.title}</Link>
-            </p>
-          );
-        })}
+        <Toc items={adminItems} />
       </AdminLayout>
     </>
   );

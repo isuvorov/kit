@@ -2,6 +2,8 @@ import '@/styles/globals.css';
 
 import { isDev, stage, version } from '@lsk4/env';
 import { AppConfig, AppSession } from '@rckit/auth';
+import { AppMenuConfig } from '@rckit/breadcrumbs';
+// import { App } from '@rckit/breadcrumbs';
 import { ComponentProvider } from '@rckit/link';
 import { HeadEnv } from '@rckit/meta';
 import { AppModal } from '@rckit/modal';
@@ -12,6 +14,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Router from 'next/router';
 
+import { menus } from '@/config/menus';
 import { AppQuery } from '@/layouts/components/AppQuery';
 import { NoSsr } from '@/rckit/helpers/NoSsr';
 
@@ -31,7 +34,9 @@ export default function App({ Component, pageProps }: AppProps2) {
               <AppConfig>
                 <AppModal>
                   <AppSession>
-                    <Component {...pageProps} />
+                    <AppMenuConfig items={menus}>
+                      <Component {...pageProps} />
+                    </AppMenuConfig>
                   </AppSession>
                 </AppModal>
               </AppConfig>

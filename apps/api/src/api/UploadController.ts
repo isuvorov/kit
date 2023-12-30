@@ -2,9 +2,11 @@ import { Err } from '@lsk4/err';
 import { Controller, Get, Post, Query, Req, UploadedFiles, UseInterceptors } from '@nestjs/common';
 import { AnyFilesInterceptor } from '@nestjs/platform-express';
 import { IsAuth } from '@nestlib/auth';
+import { ErrorInterceptor, ResponseInterceptor } from '@nestlib/interceptors';
 import { UploadService } from '@nestlib/upload';
 
 @Controller()
+@UseInterceptors(new ResponseInterceptor(), new ErrorInterceptor())
 export class UploadController {
   constructor(private readonly uploadService: UploadService) {}
 
@@ -12,7 +14,7 @@ export class UploadController {
   @IsAuth()
   @UseInterceptors(AnyFilesInterceptor())
   async upload(@Req() req, @UploadedFiles() files) {
-    const userId = req.session?.user._id;
+    const userId = req.session?.user?._id;
     if (!userId) throw new Err('!userId', { status: 400, message: 'userId is required' });
     if (files?.length === 0) throw new Err('!files', { status: 400, message: 'files is required' });
 
@@ -28,7 +30,7 @@ export class UploadController {
 
     const data = await this.uploadService.uploadMany(items);
 
-    return { data };
+    return data;
   }
 
   @Get('/api/upload')
