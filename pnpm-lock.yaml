@@ -313,8 +313,8 @@ importers:
         specifier: ^4.20.0
         version: 4.20.0(react-bootstrap@2.9.2)(react-toastify@9.1.3)(react@18.2.0)
       '@rckit/navbar':
-        specifier: ^4.26.2
-        version: 4.26.2(react-bootstrap@2.9.2)(react-hook-form@7.49.2)(react@18.2.0)(use-local-storage-state@19.1.0)
+        specifier: ^4.22.2
+        version: 4.22.2(react-bootstrap@2.9.2)(react-hook-form@7.49.2)(react@18.2.0)(use-local-storage-state@19.1.0)
       '@rckit/secret-checkbox':
         specifier: ^4.13.0
         version: 4.13.0(react@18.2.0)
@@ -4286,30 +4286,6 @@ packages:
       - react-hook-form
     dev: false
 
-  /@rckit/auth@4.25.1(react-bootstrap@2.9.2)(react-hook-form@7.49.2)(react@18.2.0)(use-local-storage-state@19.1.0):
-    resolution: {integrity: sha512-8Wrz6EQzuy9JP2wF7uTQ4VIkgYw3TME6/0Qh1fQjSQY/N5KVGiJJbrnqZo768pLNligB/ZvVsnwztEV++AwrqQ==}
-    peerDependencies:
-      react: '*'
-      react-bootstrap: '*'
-      use-local-storage-state: '*'
-    dependencies:
-      '@lsk4/algos': 4.5.0
-      '@lsk4/env': 4.6.0
-      '@lsk4/err': 4.5.0
-      '@lsk4/log': 4.7.0
-      '@rckit/api-client': 4.20.0(react@18.2.0)
-      '@rckit/debug': 4.20.0(react@18.2.0)
-      '@rckit/form': 4.20.0(react-bootstrap@2.9.2)(react-hook-form@7.49.2)(react@18.2.0)
-      '@rckit/link': 4.20.0(react@18.2.0)
-      fishbird: 1.1.8
-      react: 18.2.0
-      react-bootstrap: 2.9.2(@types/react@18.2.46)(react-dom@18.2.0)(react@18.2.0)
-      use-local-storage-state: 19.1.0(react-dom@18.2.0)(react@18.2.0)
-    transitivePeerDependencies:
-      - debug
-      - react-hook-form
-    dev: false
-
   /@rckit/avatar@4.20.0(react@18.2.0):
     resolution: {integrity: sha512-r9kcBwuqVEtAmuKBBDbu6rkUGSqcqM5mHBFCWV5eQelUkOV+fcCZOCkaWxsUOWxVxX+mhRiIhBWq/jMNvtEOEg==}
     peerDependencies:
@@ -4321,32 +4297,8 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@rckit/avatar@4.25.2(react@18.2.0):
-    resolution: {integrity: sha512-8p8aWWAMCWf3kKsPBfyntCKIiKEQElI6FtuIbUTtWxiYuoFXSeZnxqwJ5v8fdM+zQzg8v/a6d2Gm3okgrwTyCQ==}
-    peerDependencies:
-      react: '*'
-    dependencies:
-      '@lsk4/algos': 4.5.0
-      '@lsk4/env': 4.6.0
-      '@rckit/link': 4.20.0(react@18.2.0)
-      react: 18.2.0
-    dev: false
-
   /@rckit/breadcrumbs@4.22.1(react-bootstrap@2.9.2)(react@18.2.0):
     resolution: {integrity: sha512-Z6lxqXVRf3nbTfm0IvqlcsWkLLnpfXh0GPsArY7ZsONj12tha7Z7K168bW6qqr9l8J0eG6K4k04a+Se21JqM8Q==}
-    peerDependencies:
-      react: '*'
-      react-bootstrap: '*'
-    dependencies:
-      '@lsk4/env': 4.6.0
-      '@rckit/icons': 4.21.0(react@18.2.0)
-      '@rckit/link': 4.20.0(react@18.2.0)
-      react: 18.2.0
-      react-bootstrap: 2.9.2(@types/react@18.2.46)(react-dom@18.2.0)(react@18.2.0)
-    dev: false
-
-  /@rckit/breadcrumbs@4.25.4(react-bootstrap@2.9.2)(react@18.2.0):
-    resolution: {integrity: sha512-IS9ajWT4ughsHCGd4XsYj4hB8kD7/e3U5idEMRcawjOo9vdBUSEjgRP854bl5anvpJhGyCoOAE0VpzwmuFy0jA==}
     peerDependencies:
       react: '*'
       react-bootstrap: '*'
@@ -4430,16 +4382,16 @@ packages:
       react-toastify: 9.1.3(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
-  /@rckit/navbar@4.26.2(react-bootstrap@2.9.2)(react-hook-form@7.49.2)(react@18.2.0)(use-local-storage-state@19.1.0):
-    resolution: {integrity: sha512-g47/smPtdN2cICscb0kBQmDivkNwlXkx2TrWYdmQtcrgwgPDrmsNQsuDARbsvExPP1qlVraa5i/LIXjfFyatqw==}
+  /@rckit/navbar@4.22.2(react-bootstrap@2.9.2)(react-hook-form@7.49.2)(react@18.2.0)(use-local-storage-state@19.1.0):
+    resolution: {integrity: sha512-x22Al8jAdMfvGk5w0igBxlI3jIciB7LhGmkwq2oj8gZyVUsTs8F17Qxn8EoFtIIqZMAYCWtaGsc4YxmJg2yinA==}
     peerDependencies:
       react: '*'
       react-bootstrap: '*'
     dependencies:
       '@lsk4/env': 4.6.0
-      '@rckit/auth': 4.25.1(react-bootstrap@2.9.2)(react-hook-form@7.49.2)(react@18.2.0)(use-local-storage-state@19.1.0)
-      '@rckit/avatar': 4.25.2(react@18.2.0)
-      '@rckit/breadcrumbs': 4.25.4(react-bootstrap@2.9.2)(react@18.2.0)
+      '@rckit/auth': 4.20.0(react-bootstrap@2.9.2)(react-hook-form@7.49.2)(react@18.2.0)(use-local-storage-state@19.1.0)
+      '@rckit/avatar': 4.20.0(react@18.2.0)
+      '@rckit/breadcrumbs': 4.22.1(react-bootstrap@2.9.2)(react@18.2.0)
       '@rckit/link': 4.20.0(react@18.2.0)
       '@rckit/secret-checkbox': 4.13.0(react@18.2.0)
       react: 18.2.0

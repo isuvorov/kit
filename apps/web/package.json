@@ -31,7 +31,7 @@
     "@rckit/link": "4.20.0",
     "@rckit/meta": "^4.13.0",
     "@rckit/modal": "^4.20.0",
-    "@rckit/navbar": "^4.26.2",
+    "@rckit/navbar": "^4.22.2",
     "@rckit/secret-checkbox": "^4.13.0",
     "@rckit/table": "^4.21.0",
     "@react-email/components": "^0.0.12",
