@@ -2,7 +2,7 @@ import { MenuItem } from '@rckit/breadcrumbs';
 
 export const menus: MenuItem[] = [
   {
-    types: ['nav', 'cabinet'],
+    type: ['nav', 'cabinet'],
     title: 'Cabinet',
     href: '/cabinet',
     items: [
@@ -18,8 +18,9 @@ export const menus: MenuItem[] = [
     ],
   },
   {
-    types: ['nav', 'cabinet'],
+    type: ['nav', 'cabinet'],
     title: 'My products',
+    image: '/assets/logo.svg',
     href: '/cabinet/products',
   },
   // {
@@ -27,7 +28,7 @@ export const menus: MenuItem[] = [
   //   href: '/admin',
   // },
   {
-    types: ['admin'],
+    type: ['admin'],
     title: 'Admin',
     href: '/admin',
     items: [
@@ -59,12 +60,12 @@ export const menus: MenuItem[] = [
     ],
   },
   {
-    types: ['profile'],
+    type: ['profile'],
     title: 'Profile',
     href: '/cabinet/profile',
   },
   {
-    types: ['profile'],
+    type: ['profile'],
     title: 'Settings',
     href: '/cabinet/settings',
   },

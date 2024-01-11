@@ -26,7 +26,7 @@
   },
   "keywords": [],
   "devDependencies": {
-    "@lsk4/env": "^4.4.0",
+    "@lsk4/env": "^4.6.0",
     "@react-email/components": "^0.0.12",
     "@types/node": "^20.10.5",
     "@types/react": "^18.2.45",

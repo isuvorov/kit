@@ -13,7 +13,6 @@
     "test": "           echo ycmd test - skip",
     "prepack": "        ycmd prepack",
     "release": "        ycmd release",
-    
     "dev:api": "        pnpm -F {apps/api} dev",
     "dev:web": "        pnpm -F {apps/web} dev",
     "dev:lib": "        pnpm -F {libs/*} dev"
@@ -25,7 +24,7 @@
     "@playwright/test": "^1.40.1",
     "concurrently": "^8.2.2",
     "typescript": "^5.3.3",
-    "ycmd": "^0.16.1"
+    "ycmd": "^0.17.1"
   },
   "//": "///////////========================/////////========================/////////========================/////////",
   "prettier": "@lsk4/eslint-config/prettier",
