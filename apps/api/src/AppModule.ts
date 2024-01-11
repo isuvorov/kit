@@ -13,6 +13,7 @@ import { AccessLoggerMiddleware } from '@nestlib/access-logger';
 import { AuthGuard, AuthModule, models } from '@nestlib/auth';
 import { ConfigModule, getConfig, loadConfigEnvs } from '@nestlib/config';
 import { loggerFactory } from '@nestlib/mikro-orm';
+import { LockModule } from '@nestlib/mutex';
 import { UploadService } from '@nestlib/upload';
 import { ReactAdapter } from '@webtre/nestjs-mailer-react-adapter';
 import { S3Module } from 'nestjs-s3';
@@ -37,8 +38,23 @@ const notNull = (v, def) => (v == null ? def : v);
       loadConfigEnvs(['process.env.ENV_JSON', '.env.cjs', '../.env.cjs', '../../.env.cjs']),
     ),
     CacheModule.register(),
+    // LockModule.register({
+    //   redisOptions: {
+    //     host: '127.0.0.1',
+    //     port: '6379',
+    //   },
+    // }),
+    LockModule.register({}),
+    // LockModule.registerAsync(
+    //   getConfig('redis', (config: any) => ({
+    //     redisOptions: {
+    //       host: config.host,
+    //       port: config.port,
+    //     },
+    //   })),
+    // ),
     // CacheModule.registerAsync(
-    //   getConfig('dbs.mongodb', (cnf: RedisClientOptions) => ({
+    //   getConfig('redis', (cnf: RedisClientOptions) => ({
     //     store: (): any =>
     //       redisStore({
     //         socket: {

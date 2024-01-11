@@ -43,6 +43,7 @@
     "@nestlib/decorators": "^4.13.3",
     "@nestlib/interceptors": "^4.15.0",
     "@nestlib/mikro-orm": "^4.14.0",
+    "@nestlib/mutex": "4.16.0",
     "@nestlib/upload": "^4.13.0",
     "@nestlib/utils": "^4.6.0",
     "@react-email/button": "^0.0.13",
