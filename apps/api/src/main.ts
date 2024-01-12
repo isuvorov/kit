@@ -8,6 +8,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { getSessionOptions } from '@nestlib/auth/getSessionOptions';
 import { ConfigService } from '@nestlib/config';
 import { AnyExceptionFilter, createNestLogger } from '@nestlib/utils';
+import { ValidationError } from 'class-validator';
 import cookieParser from 'cookie-parser';
 import { json, urlencoded } from 'express';
 import session from 'express-session';
@@ -31,7 +32,29 @@ async function main() {
   app.use(urlencoded({ extended: true, limit }));
   app.use(session(getSessionOptions(app)));
   app.useGlobalFilters(new AnyExceptionFilter());
-  app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalPipes(
+    new ValidationPipe({
+      exceptionFactory: (validationErrors: ValidationError[] = []) => {
+        const messages = validationErrors.map((error) => {
+          let message;
+          const keys = Object.keys(error.constraints);
+          if (keys.length > 1) {
+            message = Object.values(error.constraints);
+          } else {
+            message = error.constraints[keys[0]];
+          }
+          return {
+            property: error.property,
+            message,
+          };
+        });
+        return new Err('Validation Error', {
+          status: 400,
+          data: messages,
+        });
+      },
+    }),
+  );
   await app.listen(port);
   log.info(`⚡️ Server running on http://localhost:${port}`);
 
