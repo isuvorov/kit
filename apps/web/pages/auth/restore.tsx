@@ -35,7 +35,7 @@ export default function AuthRestorePage() {
       <AuthLayout>
         <AuthLayout.Body title={pageTitle}>
           {sent ? (
-            <p data-test-id="restore-sent">
+            <p data-testid="restore-sent">
               We&apos;ve sent you an email with a link to reset your password. Please check your
               inbox.
             </p>
@@ -44,7 +44,10 @@ export default function AuthRestorePage() {
           )}
         </AuthLayout.Body>
         <AuthLayout.Footer>
-          Don&apos;t have an account? <Link href="/auth/signup">Sign Up</Link>
+          Don&apos;t have an account?{' '}
+          <Link data-testid="signupLink" href="/auth/signup">
+            Sign Up
+          </Link>
         </AuthLayout.Footer>
       </AuthLayout>
     </>

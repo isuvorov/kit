@@ -41,7 +41,10 @@ export default function AuthSignup() {
           <AuthSignupForm onSubmit={onSubmit} />
         </AuthLayout.Body>
         <AuthLayout.Footer>
-          Already have an account? <Link href="/auth/login">Login</Link>
+          Already have an account?{' '}
+          <Link data-testid="loginLink" href="/auth/login">
+            Login
+          </Link>
         </AuthLayout.Footer>
       </AuthLayout>
     </>

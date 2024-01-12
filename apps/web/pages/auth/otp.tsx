@@ -44,7 +44,10 @@ export default function AuthOtpPage() {
         </AuthLayout.Body>
         <AuthLayout.Footer>
           <Debug>
-            Если не пришел код, попробуйте <a href="/auth/otp">еще раз</a>
+            Если не пришел код, попробуйте{' '}
+            <a data-testid="otpLink" href="/auth/otp">
+              еще раз
+            </a>
           </Debug>
         </AuthLayout.Footer>
       </AuthLayout>

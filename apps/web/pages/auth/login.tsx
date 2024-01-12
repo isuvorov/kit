@@ -40,7 +40,10 @@ export default function AuthLoginPage() {
           <AuthLoginForm onSubmit={onSubmit} />
         </AuthLayout.Body>
         <AuthLayout.Footer>
-          Don&apos;t have an account? <Link href="/auth/signup">Sign Up</Link>
+          Don&apos;t have an account?{' '}
+          <Link data-testid="signupLink" href="/auth/signup">
+            Sign Up
+          </Link>
         </AuthLayout.Footer>
       </AuthLayout>
     </>

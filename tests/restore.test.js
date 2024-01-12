@@ -34,7 +34,7 @@ test('Restore password', async ({ page, request }) => {
   await page.fill('input[name="email"]', restoreEmail);
   await page.click('button[type="submit"]');
 
-  await page.waitForSelector('[data-test-id="restore-sent"]');
+  await page.waitForSelector('[data-testid="restore-sent"]');
 
   const response = await request.get(
     `${baseURL}/api/auth/getOTPByEmail?email=${encodeURIComponent(
