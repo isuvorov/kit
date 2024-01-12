@@ -14,7 +14,8 @@ test('Sign up with empty login', async ({ page }) => {
   await page.click('[name="tos"]');
   await page.click('[type="submit"]');
 
-  await expect(page.getByText('Email cannot be blank')).toBeVisible();
+  const errorMessage = await page.getByTestId('email-error').innerText();
+  expect(errorMessage).toBe('Email cannot be blank');
 });
 
 test('Sign up with too long password', async ({ page }) => {
@@ -23,9 +24,8 @@ test('Sign up with too long password', async ({ page }) => {
   await page.click('[name="tos"]');
   await page.click('[type="submit"]');
 
-  await expect(
-    page.getByText('Password is too long. Maximum length allowed: 64 characters.'),
-  ).toBeVisible();
+  const errorMessage = await page.getByTestId('password-error').innerText();
+  expect(errorMessage).toBe('Password is too long. Maximum length allowed: 64 characters.');
 });
 
 test('Sign up with empty password', async ({ page }) => {
@@ -33,5 +33,6 @@ test('Sign up with empty password', async ({ page }) => {
   await page.click('[name="tos"]');
   await page.click('[type="submit"]');
 
-  await expect(page.getByText('Password cannot be blank')).toBeVisible();
+  const errorMessage = await page.getByTestId('password-error').innerText();
+  expect(errorMessage).toBe('Password cannot be blank');
 });

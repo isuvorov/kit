@@ -41,17 +41,11 @@ test('Empty login and password', async ({ page }) => {
   await page.goto('https://kit.lskjs.ru/auth/login');
   // Click on login button
   await page.click('[type="submit"]');
-  const elements = await page.$$('.text-danger.form-text');
-  // get the first and second element
-  const firstElement = elements[0];
-  const secondElement = elements[1];
-  //  get the text
-  const firstElementText = await firstElement.innerText();
-  const secondElementText = await secondElement.innerText();
-  // check the text
+  const emailError = await page.getByTestId('email-error').innerText();
+  const passwordError = await page.getByTestId('password-error').innerText();
 
-  expect(firstElementText).toBe('Email cannot be black');
-  expect(secondElementText).toBe('Password cannot be black');
+  expect(emailError).toBe('Email cannot be black');
+  expect(passwordError).toBe('Password cannot be black');
 });
 
 test('Incorrect password', async ({ page }) => {

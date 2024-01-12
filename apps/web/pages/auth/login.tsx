@@ -41,7 +41,7 @@ export default function AuthLoginPage() {
         </AuthLayout.Body>
         <AuthLayout.Footer>
           Don&apos;t have an account?{' '}
-          <Link data-testid="signupLink" href="/auth/signup">
+          <Link data-testid="signup-link" href="/auth/signup">
             Sign Up
           </Link>
         </AuthLayout.Footer>

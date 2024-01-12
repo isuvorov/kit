@@ -42,7 +42,7 @@ export default function AuthSignup() {
         </AuthLayout.Body>
         <AuthLayout.Footer>
           Already have an account?{' '}
-          <Link data-testid="loginLink" href="/auth/login">
+          <Link data-testid="login-link" href="/auth/login">
             Login
           </Link>
         </AuthLayout.Footer>
