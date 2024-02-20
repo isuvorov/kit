@@ -35,7 +35,7 @@ export class UserListController {
     }
     const raw = await this.repo.find(filter, {
       limit: findOptions.limit,
-      offset: findOptions.skip,
+      offset: findOptions.offset,
     });
     const items = raw;
     // const items = raw.map((u) => u.toJSON());
@@ -77,7 +77,7 @@ export class UserListController {
     const item = await this.repo.findOne(id);
     if (!item) throw new Err('!item', 'Item not found', { status: 404 });
 
-    wrap(item).assign({ info: data.info || {} }, { mergeObjects: true });
+    wrap(item).assign({ info: data.info || {} }, { mergeObjectProperties: true });
     await em.persistAndFlush(item);
     // TODO: а может вернуть измененный объект?
     return true;

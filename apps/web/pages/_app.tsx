@@ -1,8 +1,9 @@
 import '@/styles/globals.css';
 
 import { isDev, stage, version } from '@lsk4/env';
-import { AppConfig, AppSession } from '@rckit/auth';
+import { AppSession } from '@rckit/auth';
 import { AppMenuConfig } from '@rckit/breadcrumbs';
+import { AppConfig } from '@rckit/config';
 // import { App } from '@rckit/breadcrumbs';
 import { ComponentProvider } from '@rckit/link';
 import { HeadEnv } from '@rckit/meta';

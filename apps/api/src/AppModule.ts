@@ -1,8 +1,8 @@
 import { isDev } from '@lsk4/env';
+import { defineConfig } from '@mikro-orm/mongodb';
 import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { CacheModule } from '@nestjs/cache-manager';
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
-import { ConfigModule as NestConfigModule } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';
 // import { DevtoolsModule } from '@nestjs/devtools-integration';
 import { EventEmitterModule } from '@nestjs/event-emitter';
@@ -11,7 +11,7 @@ import { ScheduleModule } from '@nestjs/schedule';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { AccessLoggerMiddleware } from '@nestlib/access-logger';
 import { AuthGuard, AuthModule, models } from '@nestlib/auth';
-import { ConfigModule, getConfig, loadConfigEnvs } from '@nestlib/config';
+import { ConfigModule, getConfig } from '@nestlib/config';
 import { loggerFactory } from '@nestlib/mikro-orm';
 import { LockModule } from '@nestlib/mutex';
 import { UploadService } from '@nestlib/upload';
@@ -31,12 +31,7 @@ const notNull = (v, def) => (v == null ? def : v);
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 @Module({
   imports: [
-    NestConfigModule.forRoot({
-      envFilePath: ['.env', '../.env', '../../.env'],
-    }),
-    ConfigModule.forRoot(
-      loadConfigEnvs(['process.env.ENV_JSON', '.env.cjs', '../.env.cjs', '../../.env.cjs']),
-    ),
+    ConfigModule.forRoot(),
     CacheModule.register(),
     // LockModule.register({
     //   redisOptions: {
@@ -65,13 +60,15 @@ const notNull = (v, def) => (v == null ? def : v);
     //   })),
     // ),
     MikroOrmModule.forRootAsync(
-      getConfig('dbs.mongodb', (cnf) => ({
-        type: 'mongo',
-        clientUrl: cnf.uri,
-        entities: Object.values(models),
-        debug: notNull(cnf.debug, isDev),
-        loggerFactory,
-      })),
+      getConfig('dbs.mongodb', (cnf) =>
+        defineConfig({
+          clientUrl: cnf.uri! as string,
+          entities: Object.values(models),
+          debug: Boolean(cnf.debug ?? isDev),
+          loggerFactory,
+          allowGlobalContext: true,
+        }),
+      ),
     ),
     MikroOrmModule.forFeature({ entities: Object.values(models) }),
     // S3Module.forRootAsync(getConfig('s3', (config) => ({ config }))),

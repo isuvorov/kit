@@ -29,7 +29,7 @@ export class ExampleListController {
     }
     return this.usersRepository.find(filter, {
       limit: data.limit,
-      offset: data.skip,
+      offset: data.offset,
     });
   }
 
