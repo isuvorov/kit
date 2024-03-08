@@ -18,6 +18,7 @@ import { AppModule } from './AppModule.js';
 
 async function main() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
+    snapshot: true,
     logger: createNestLogger(),
   });
   const configService = app.get(ConfigService);

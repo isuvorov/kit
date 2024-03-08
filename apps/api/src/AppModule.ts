@@ -4,6 +4,7 @@ import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { CacheModule } from '@nestjs/cache-manager';
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { APP_GUARD } from '@nestjs/core';
+import { DevtoolsModule } from '@nestjs/devtools-integration';
 // import { DevtoolsModule } from '@nestjs/devtools-integration';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 // import { BotService } from './bot/bot.service';
@@ -118,6 +119,9 @@ const notNull = (v, def) => (v == null ? def : v);
     // NOTE: nestlib
     AuthModule.forRoot(),
     S3Module.forRootAsync(getConfig('s3', (config) => ({ config }))),
+    DevtoolsModule.register({
+      http: true,
+    }),
   ],
   controllers: [
     //
